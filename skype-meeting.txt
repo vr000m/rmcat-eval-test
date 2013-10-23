@@ -1,0 +1,28 @@
+8th August
+- Xiaoqing: to setup webpage/wiki to create simulation/emulation scenarios
+- Xiaoqing: to share media generator for NS-2
+- Varun: pick some reference video YUV files for emulation
+
+12th September
+
+https://sites.google.com/site/ietfrmcatsolutionevaluations/home/experiment-a
+My comments:
+- low delay scenario: start rate? queue-size?
+- is this media limited or does the traffic generator create full traffic?
+- OWD is it sync'ed clocks between the endpoints? or relative to the first packet?
+- Do you want to extract the results or just refer to them?
+
+Changing: experiments to scenarios.
+
+TODO: 
+- traffic generators, how do we generate video flows.
+- startup behaviour?
+- parameter table (losses, latency, capacity, queue size)
+- cross-traffic (synchronized arrival, shifted arrival)
+- Expected behaviour or results?
+
+22 September
+- 1hr call with zahed
+- motivation of the test
+- expected behaviour 
+- pass or fail conditions
