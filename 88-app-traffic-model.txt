@@ -1,0 +1,49 @@
+To model the intrinsic variability of video.
+
+- what target bit rates can be achieved? (max?, min?)
+- how much variability in media bit rate for a given target bit rate
+- how to model motion?
+- capturing high motion leads to higher than target bit rate, but by how much?
+
+On responsiveness to a new target bitrate:
+
+- how quickly can the codec generate a lower bit rate?
+- immediately? does this depend on what is the new or requested rate?
+- what is immediately? is it next frame or a few frames later, until then
+  generates the current rate?
+- if not immediately, what bitrates (and duration) will it generate before
+  meeting the target bitrate.
+
+
+- how quickly can the codec generate a higher bit rate?
+- immediately in the next frame? does this depend on the new or requested rate?
+- not immediately but in steps of intermediate bitrates, i.e., intermediate
+  bitrate for a short duration then an increase in step, repeating until
+  reaching the target bit rate.
+
+- if the target bit rate is achieved in steps, can they be announced to the
+  congestion controller apriori.
+
+- If the media bit rate has not yet reached the requested target bit rate and
+  the congestion control requests a new target bit rate, how does the codec
+  respond?
+
+Application design related:
+- should the congestion control be able to change the frame rate (video) or
+  packetization time (audio)
+- should the congestion control be able to change video resolution?
+- should error-repair: NACKs, FEC be considered part of congestion control or
+  outside it, i.e., it is something that the application does and not
+  congestion control
+- If FEC is controlled by the congestion control, how quickly can the sending
+  rate be adapted by reducing/adding redundancy (FEC)? is something link this
+  done? Does this makes sense at all?
+- Apart from loss and RTT, what other congestion cues are currently used by
+  congestion control algorithms? e.g., Decoding rate/goodput, application
+  decode error rate, ECN, PCN, etc.
+- If the codec is data limited, i.e., producing a sending rate smaller than the
+  one calculated by the congestion control, can the congestion control probe
+  the bandwidth by sending additional data packets in a certain pattern (e.g.,
+  PathChirp)? would something link this help?
+- application input on prioritization: audio vs video (vs data)
+
