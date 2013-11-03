@@ -36,7 +36,7 @@ Application design related:
   outside it, i.e., it is something that the application does and not
   congestion control
 - If FEC is controlled by the congestion control, how quickly can the sending
-  rate be adapted by reducing/adding redundancy (FEC)? is something link this
+  rate be adapted by reducing/adding redundancy (FEC)? is something like this
   done? Does this makes sense at all?
 - Apart from loss and RTT, what other congestion cues are currently used by
   congestion control algorithms? e.g., Decoding rate/goodput, application
