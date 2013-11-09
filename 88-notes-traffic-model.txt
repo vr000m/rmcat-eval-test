@@ -17,7 +17,7 @@ Modelling: variability
 -- max frame rate should be 4x min frame rate
 - i-frames not sent unless something causes a loss of sync (high loss
   rates/source switch on MCU/camera change/etc)
--- assume i-frame is 10x average frame size
+-- assume i-frame is upto 10x average frame size
 -- we'll need to model what loss patterns trigger an i-frame (burst
    length to trigger)
 -- might also want to model codecs that send periodic i-frames
@@ -26,16 +26,17 @@ Modelling: variability
    codecs, then average it out? what does the distribution look like?
 
 Modelling: responsiveness
-- no GOP; can change on next frame 
--- for both increase and decrease in rate
-- seems to be some discussion: codecs may not like increasing rate on the
-  next frame; they increase averaged over several frames?
+- no GOP; 
+- can change bitrate on the next frame for both increase and decrease in rate
+-- seems to be some discussion: codecs may not like increasing rate on the
+   next frame; they increase averaged over several frames?
 - switching between frame sizes generates an i-frame
 - small rate changes (10%?) can be done quickly; larger changes that need
   a change in frame size will cause a i-frame burst
--- sent i-frame slowly in parallel with lower rate coding when up-rating
+-- send i-frame slowly in parallel with lower rate coding when up-rating
 - codec issue: changing resolution too often is a problem; need at least a
   couple of seconds between resolution switches; more would be better
+-- if the sender changes frame rate often, does it degrade or impact the user?
 - at a particular rate, can likely go 0.5x-2.0x target bit rate; there's a 
   significant overlap between the rates that can be encoded for adjacent
   resolutions
