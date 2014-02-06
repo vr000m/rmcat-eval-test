@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="US-ASCII"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
 <!ENTITY rfc2119 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
 <!ENTITY rfc3550 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3550.xml">
@@ -9,56 +9,69 @@
 <!ENTITY rfc5166 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5166.xml">
 <!ENTITY rfc5033 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5033.xml">
 <!ENTITY rfc5681 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5681.xml">
-<!ENTITY I-D.ietf-rmcat-cc-requirements PUBLIC "" 
-"http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-rmcat-cc-requirements.xml">
-<!ENTITY I-D.ietf-avtcore-rtp-circuit-breakers PUBLIC "" 
-"http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-avtcore-rtp-circuit-breakers.xml">
-<!ENTITY I-D.singh-rmcat-cc-eval PUBLIC "" 
-"http://xml.resource.org/public/rfc/bibxml3/reference.I-D.singh-rmcat-cc-eval.xml">
+<!ENTITY I-D.ietf-rmcat-cc-requirements PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-rmcat-cc-requirements.xml">
+<!ENTITY I-D.ietf-avtcore-rtp-circuit-breakers PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-avtcore-rtp-circuit-breakers.xml">
+<!ENTITY I-D.singh-rmcat-cc-eval PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.singh-rmcat-cc-eval.xml">
 ]>
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc symrefs="yes" ?>
-<rfc ipr="trust200902" docName="draft-folks-rmcat-eval-test-00" category="info">
-<!-- What is the category field value-->
-<front>
-    <title abbrev="Evaluating Congestion Control for RMCAT"> 
-        Evaluating Congestion Control for Interactive Real-time Media
-        <!--Evaluation Criteria for RTP Congestion Avoidance Techniques -->
-    </title>
-  
-    <author fullname="Varun Singh" initials="V" surname="Singh">
-        <organization>Aalto University</organization>
-        <address>
-            <postal>
-                <street>School of Electrical Engineering</street>
-                <street>Otakaari 5 A</street>
-                <city>Espoo</city>
-                <region>FIN</region>
-                <code>02150</code>
-                <country>Finland</country>
-            </postal>
-            <email>varun@comnet.tkk.fi</email>
-            <uri>http://www.netlab.tkk.fi/~varun/</uri>
-        </address>
-    </author>
-  
-    <!-- Add Zahed -->
+<rfc category="info" docName="draft-folks-rmcat-eval-test-00"
+     ipr="trust200902">
+  <!-- What is the category field value-->
+
+  <front>
+    <title abbrev="Evaluating Congestion Control for RMCAT">Evaluating
+    Congestion Control for Interactive Real-time Media <!--Evaluation Criteria for RTP Congestion Avoidance Techniques --></title>
+
     <author fullname="Zaheduzzaman Sarker" initials="Z" surname="Sarker">
-        <organization>Ericsson</organization>
-        <address>
-            <postal>
-                <street></street>
-                <city>Lulea</city>
-                <region>SE</region>
-                <code>971 28</code>
-                <country>Sweden</country>
-            </postal>
-            <phone>+46 10 717 37 43</phone>
-            <email>zaheduzzaman.sarker@ericsson.com</email>
-        </address>
+      <organization>Ericsson</organization>
+
+      <address>
+        <postal>
+          <street></street>
+
+          <city>Lulea</city>
+
+          <region>SE</region>
+
+          <code>971 28</code>
+
+          <country>Sweden</country>
+        </postal>
+
+        <phone>+46 10 717 37 43</phone>
+
+        <email>zaheduzzaman.sarker@ericsson.com</email>
+      </address>
     </author>
+
+    <author fullname="Varun Singh" initials="V" surname="Singh">
+      <organization>Aalto University</organization>
+
+      <address>
+        <postal>
+          <street>School of Electrical Engineering</street>
+
+          <street>Otakaari 5 A</street>
+
+          <city>Espoo</city>
+
+          <region>FIN</region>
+
+          <code>02150</code>
+
+          <country>Finland</country>
+        </postal>
+
+        <email>varun@comnet.tkk.fi</email>
+
+        <uri>http://www.netlab.tkk.fi/~varun/</uri>
+      </address>
+    </author>
+
+    <!-- Add Zahed -->
 
     <!-- Add Xiaoqing
     <author fullname=" Xiaoqing Zhu" initials="X" surname="Zhu">
@@ -75,7 +88,7 @@
         </address>
     </author>
 	-->
-    
+
     <!-- Add Michael
     <author fullname="Michael A. Ramalho" initials="M. A." 
             surname="Ramalho">
@@ -93,149 +106,524 @@
       </address>
     </author>
 	-->
-	
-    <date year="2014"/>
+
+    <date year="2014" />
+
     <area>TSV</area>
+
     <workgroup>RMCAT WG</workgroup>
+
     <keyword>RTP</keyword>
+
     <keyword>RTCP</keyword>
+
     <keyword>Congestion Control</keyword>
+
     <abstract>
-        <t></t>
+      <t><!--The draft defines a structure on how to define testcases and uses that stracture to define test case those are essensial to RMCAT to evaluate the candidate algorithms. also the intention here is define the test 
+cases in such a way that people can customize by tunning the same testcase to fit their to be tested network characteristics. this is the theme and we need more text here.--></t>
     </abstract>
-</front>
-<middle>
+  </front>
+
+  <middle>
     <section title="Introduction">
-        
-        <t></t>
-        
+      <t></t>
     </section>
-    
-    <section title="Terminology" anchor="sec-terminology">
-        <!--<t> The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
+
+    <section anchor="sec-terminology" title="Terminology">
+      <!--<t> The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
         "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and
         "OPTIONAL" in this document are to be interpreted as described
         in BCP 14, <xref target="RFC2119" /> and indicate requirement
         levels for compliant implementations. </t> -->
-        
-        <t> The terminology defined in <xref target="RFC3550">RTP</xref>,
-        <xref target="RFC3551">RTP Profile for Audio and Video Conferences
-        with Minimal Control</xref>, <xref target="RFC3611">RTCP Extended
-        Report (XR)</xref>, <xref target="RFC4585">Extended RTP Profile
-        for RTCP-based Feedback (RTP/AVPF)</xref> and <xref
-        target="RFC5506">Support for Reduced-Size RTCP</xref> apply.</t>
+
+      <t>The terminology defined in <xref target="RFC3550">RTP</xref>, <xref
+      target="RFC3551">RTP Profile for Audio and Video Conferences with
+      Minimal Control</xref>, <xref target="RFC3611">RTCP Extended Report
+      (XR)</xref>, <xref target="RFC4585">Extended RTP Profile for RTCP-based
+      Feedback (RTP/AVPF)</xref> and <xref target="RFC5506">Support for
+      Reduced-Size RTCP</xref> apply.</t>
     </section>
 
-	
+    <section anchor="NS" title="Network Scenarios">
+      <t>this section defines different types of networks where real.-time
+      communication takes places.<!--I have just though we can devide the network scenarios as a point of device attachment, however, that kind of divition may not give a proper idea about the network characteritics like what is end to end delay, 
+loss , jitter we are going to see. hence we may need to think a bit more about the scenarios.--></t>
 
-	<section title="Test cases" anchor="tc">
-		<!-- Desired Behavior -->
-		
-	</section>
+      <section title="private network">
+        <t>Private networkffhdfg</t>
 
-	<section title="Network Parameters" anchor="nw">
-		<!-- Bottleneck Link -->
-		<!-- One-way Propogation Delay -->
-		<!-- Bottleneck Queue Types and Size -->
-		<!-- Random Loss Ratio over Link -->
-	</section>
-	
-	<section title="Media Parameters" anchor="mp">
-		<!-- Media Source Behavior -->
-		<!-- RMCAT Flow Startup behaviour -->
-		<!-- Competing traffic behavior: source, adaptation -->
-	</section>
-	
+        <t><list style="symbols">
+            <t>Access Types</t>
 
-	
+            <t>Traffic Mix</t>
+
+            <t>Topology</t>
+
+            <t>QoS</t>
+          </list></t>
+      </section>
+
+      <section title="Enterprise Network">
+        <t>Enterprise network<list style="symbols">
+            <t>Access Types</t>
+
+            <t>Traffic Mix</t>
+
+            <t>Topology</t>
+
+            <t>QoS</t>
+          </list></t>
+      </section>
+
+      <section title="Public network">
+        <t>Public network<list style="symbols">
+            <t>Access Types</t>
+
+            <t>Traffic Mix</t>
+
+            <t>Topology</t>
+
+            <t>QoS</t>
+          </list></t>
+      </section>
+
+      <section title="Operator Network">
+        <t>Operator network<list style="symbols">
+            <t>Access Types</t>
+
+            <t>Traffic Mix</t>
+
+            <t>Topology</t>
+
+            <t>QoS</t>
+          </list></t>
+      </section>
+    </section>
+
+    <section anchor="TS" title="Testcase definition structure">
+      <t>This section describes how to define a new testcase. A new testcase
+      should be described using the following parameters-<list style="symbols">
+          <t>Define testcase<list style="symbols">
+              <t>Problem description</t>
+
+              <t>Define desired behaviour from adaptation algorithm</t>
+
+              <t>Define matrix to evaluate the desired behaviours</t>
+            </list></t>
+
+          <t>Define test bed<list style="symbols">
+              <t>Test duration: </t>
+
+              <t>Transport<list style="symbols">
+                  <t>Number of bottlenecks</t>
+
+                  <t>Bottleneck link speed</t>
+
+                  <t>One-Way propagation delay</t>
+
+                  <t>Bottleneck queue type</t>
+
+                  <t>Bottleneck size</t>
+
+                  <t>Bottleneck link loss ratio</t>
+                </list></t>
+
+              <t>Application<list style="symbols">
+                  <t>Media Source<list style="symbols">
+                      <t>Number of encoder instants/ media sources</t>
+
+                      <t>Encoder configuration</t>
+
+                      <t>Media content</t>
+
+                      <t>Appearace preferece</t>
+                    </list></t>
+
+                  <t>media startup behaviour</t>
+
+                  <t>Competing traffic<list style="symbols">
+                      <t>Number of sources</t>
+
+                      <t>Source types</t>
+
+                      <t>Adaptation algorithms</t>
+
+                      <t>Appearace preferece</t>
+                    </list></t>
+                </list></t>
+
+              <t>Other test specific setup</t>
+            </list></t>
+        </list></t>
+    </section>
+
+    <section anchor="tc" title="Test cases">
+      <!-- Desired Behavior -->
+
+      <section title="Variable Available Bandwidth">
+        <t>In the test case the end to end path bandwidth varies overtime
+        between the communicating peers. This test is designed to measure the
+        reactiveness and convergence ability of the candidate algorithm. The
+        test tries to address the requirement number 1{a sub set of the
+        requirements} depicted in [rmcat-req-draft] which requires the
+        algorithm to adapt the flow(s) and provide lower end to end latency
+        when there exists-<list style="symbols">
+            <t>intermediated bottleneck</t>
+
+            <t>change of bandwidth due to interface change and/or routing
+            change and/or intra technology change</t>
+
+            <t>persistent network load due to competing traffic</t>
+          </list>It should be noted that the exact impact of change of
+        bandwidth due to any of the above completely depends of under laying
+        network technology used, access types involved, behavior of other
+        traffic on the link and more. There can be enormous amount
+        configuration and combination those need to be addressed. Hence, we
+        describe this test case with a set of know factors those can be
+        extended to device a particular test case. </t>
+
+        <t>The expected behavior adaptation algorithm should detect the
+        variation and adapt the flow accordingly. Flow(s) reaches to their
+        maximum, bottleneck appears in the link, flow(s) adapts to the
+        available bandwidth by decreasing it&rsquo;s bitrate, flow(s) reaches
+        to its maximum when congestion is removed/gone. </t>
+
+        <t>To evaluate the performance of the candidate algorithms it is
+        expected to log enough information to visualize the following
+        metics<list style="numbers">
+            <t>Flow level <list style="letters">
+                <t>End to end delay</t>
+
+                <t>End to end loss</t>
+              </list></t>
+
+            <t> Transport level <list style="letters">
+                <t>Bandwidth utilization</t>
+
+                <t>Queue length (ms)<list style="symbols">
+                    <t>average over the length of the session</t>
+
+                    <t>95 percentile</t>
+
+                    <t>5 percentile</t>
+                  </list></t>
+              </list></t>
+          </list>Example Testbed description:</t>
+
+        <t><list style="symbols">
+            <t>Test duration:60s</t>
+
+            <t>Transport<list style="symbols">
+                <t>Number of bottlenecks : One</t>
+
+                <t>Bottleneck link speed : 2Mbps</t>
+
+                <t>One-Way propagation delay: 100Ms</t>
+
+                <t>Bottleneck queue type: Drop tail</t>
+
+                <t>Bottleneck size: 300ms</t>
+
+                <t>Bottleneck link loss ratio: 0%</t>
+              </list></t>
+
+            <t>Application<list style="symbols">
+                <t>Media Source<list style="symbols">
+                    <t>Number of encoder instants/ media sources: two (2)</t>
+
+                    <t>Encoder configuration: Variable bitrate with 5%
+                    deviation from tager bitrate</t>
+
+                    <t>Media content: Foreman sequence</t>
+
+                    <t>Appearace preferece: all at the start up</t>
+                  </list></t>
+
+                <t>media startup behaviour: slow start</t>
+
+                <t>Competing traffic<list style="symbols">
+                    <t>Number of sources : Zero (0)</t>
+
+                    <t>Source types: Not requred</t>
+
+                    <t>Adaptation algorithms: Not required</t>
+                  </list></t>
+              </list></t>
+
+            <t>Test specific setup<list style="symbols">
+                <t>Number of bandwidth variation: Two (2)</t>
+
+                <t>Link vairation pattern: <list style="symbols">
+                    <t>Sequence number: 1</t>
+
+                    <t>Amount of change: 50% of bottleneck link speed</t>
+
+                    <t>Duration: 5s</t>
+
+                    <t>starttime: 10s</t>
+
+                    <t>end behaviour: bandwith is restored to the 80% of
+                    bottleneck link speed</t>
+                  </list></t>
+
+                <t>Link vairation pattern: <list style="symbols">
+                    <t>Sequence number: 2</t>
+
+                    <t>Amount of change: 50% of bottleneck link speed</t>
+
+                    <t>Duration: 10s</t>
+
+                    <t>starttime: 30s</t>
+
+                    <t>end behaviour: bandwith is restored to the 100% of
+                    bottleneck link speed</t>
+                  </list></t>
+              </list></t>
+          </list></t>
+      </section>
+
+      <section title="Applications Maximum Bitrate is Greater than link capacity">
+        <t>In this test the application's maximum bitrate is greater than the
+        link available capacity. The application will trieve to reach its
+        maximum bitrate ever as the link capacity does not allow such a demand
+        the congestion control algorithm should come into play and stabilize
+        the applicaiton seding bitrate. This situaltion can arise when a
+        endpoint is connected to another endpoint via a communication link
+        which has a very low bandwidth to offer even if the access network
+        advertized to have more capacity in the link or in a shared channel
+        where network resources has been reserved for other traffic for
+        whatever reason. The test case address the requirement 1 and
+        requrement 10 of the [rmcat-req-draft].</t>
+
+        <t>In this test case the algorithm must be able to detect the link
+        capacity constrains and adapt the flow to avoid unwanted oscillation.
+        Flow(s) tries to reach their maximum, link capacity is less than
+        flow(s) maximum requirements, flow (s) adapts and converge the bitrate
+        to the available bandwidth.</t>
+
+        <t>To evaluate the performance of the candidate algorithms it is
+        expected to log enough information to visualize the following
+        metics<list style="numbers">
+            <t>Flow level <list style="letters">
+                <t>End to end delay</t>
+
+                <t>End to end loss</t>
+
+                <t>Bitrate Oscillation</t>
+
+                <t>Convergence period.</t>
+              </list></t>
+
+            <t>Transport level <list style="letters">
+                <t>Bandwidth utilization</t>
+
+                <t>Queue length (ms)<list style="symbols">
+                    <t>average over the length of the session</t>
+
+                    <t>95 percentile</t>
+
+                    <t>5 percentile</t>
+                  </list></t>
+              </list></t>
+          </list></t>
+
+        <t>Example testbed description:</t>
+
+        <t><list style="symbols">
+            <t>Test duration:30s</t>
+
+            <t>Transport<list style="symbols">
+                <t>Number of bottlenecks : One</t>
+
+                <t>Bottleneck link speed : 1Mbps</t>
+
+                <t>One-Way propagation delay: 100Ms</t>
+
+                <t>Bottleneck queue type: {Drop tail, fq-codel, pie}</t>
+
+                <t>Bottleneck size: 300ms</t>
+
+                <t>Bottleneck link loss ratio: 0%</t>
+              </list></t>
+
+            <t>Application<list style="symbols">
+                <t>Media Source<list style="symbols">
+                    <t>Number of encoder instants/ media sources: one (1)</t>
+
+                    <t>Encoder configuration: Variable bitrate with 5%
+                    deviation from tager bitrate</t>
+
+                    <t>Media content: foreman sequence</t>
+
+                    <t>Appearace preferece: at the startup</t>
+                  </list></t>
+
+                <t>media startup behaviour: {slow start, at max bitrate}</t>
+
+                <t>Competing traffic<list style="symbols">
+                    <t>Number of sources : Zero (0)</t>
+
+                    <t>Source types: Not requred</t>
+
+                    <t>Adaptation algorithms: Not required</t>
+                  </list></t>
+              </list></t>
+
+            <t>Test specific setup : none</t>
+          </list></t>
+      </section>
+
+      <section title="Flow Competition from Same Adaptive Flow">
+        <t>In this test case the bottleneck link is shared by more than one
+        real-time interactive flow having the same adaptive mechanism. This is
+        a typical scenario where a real-time interactive application have more
+        than one real-time interactive flows to send to the same desitination
+        and the flows are multiplexed over same port. In such a scenario it
+        likely that the flows will be routed via same physical path and will
+        have to share the available bandwidth of the path among themselves.
+        For the sake of simplicity it is assumed that there are no other souce
+        of One can see this is a variation of test case 5.2 however it is a
+        separate test case because the goal of the test is to evaluate the
+        interaction and sharing tendency of the candidate adaptation algorithm
+        where test case 5.2 focuses more on stability.</t>
+
+        <t></t>
+      </section>
+    </section>
+
     <section title="Security Considerations">
-        <t>Security issues have not been discussed in this memo.</t>
-        <!-- Congestion Collapse, Denial of Service -->
+      <t>Security issues have not been discussed in this memo.</t>
+
+      <!-- Congestion Collapse, Denial of Service -->
     </section>
 
     <section title="IANA Considerations">
-        <t>There are no IANA impacts in this memo.</t>
+      <t>There are no IANA impacts in this memo.</t>
     </section>
-    
+
     <section title="Acknowledgements">
-      <t> Much of this document is derived from previous work on
-      congestion control at the IETF.</t>
-      <t>The content and concepts within this document are a product of 
-      the discussion carried out in the Design Team.</t>
+      <t>Much of this document is derived from previous work on congestion
+      control at the IETF.</t>
+
+      <t>The content and concepts within this document are a product of the
+      discussion carried out in the Design Team.</t>
     </section>
-</middle>
-<back>
-    <references title="Normative References"> 
-    <!--&rfc2119;-->
-    <!-- RTP related -->
-    &rfc3550;
-    &rfc3551;
-    &rfc3611;
-    &rfc4585;
-    &rfc5506;
-    <!--RMCAT related -->
-    &I-D.ietf-rmcat-cc-requirements;
-    &I-D.ietf-avtcore-rtp-circuit-breakers;
-    &I-D.singh-rmcat-cc-eval;
+  </middle>
+
+  <back>
+    <references title="Normative References">
+      <!--&rfc2119;-->
+
+      <!-- RTP related -->
+
+      &rfc3550;
+
+      &rfc3551;
+
+      &rfc3611;
+
+      &rfc4585;
+
+      &rfc5506;
+
+      <!--RMCAT related -->
+
+      &I-D.ietf-rmcat-cc-requirements;
+
+      &I-D.ietf-avtcore-rtp-circuit-breakers;
+
+      &I-D.singh-rmcat-cc-eval;
     </references>
-    
-    <references title="Informative References"> 
-    &rfc5033; <!-- CC Evaluation -->
-    &rfc5166; <!-- CC Metrics -->
-    &rfc5681; <!-- Standard TCP -->
-    
-    
-    <reference anchor="SA4-EVAL">
+
+    <references title="Informative References">
+      &rfc5033;
+
+      <!-- CC Evaluation -->
+
+      &rfc5166;
+
+      <!-- CC Metrics -->
+
+      &rfc5681;
+
+      <!-- Standard TCP -->
+
+      <reference anchor="SA4-EVAL">
         <front>
-            <title>LTE Link Level Throughput Data for SA4 Evaluation Framework</title>
-            <author initials="3GPP" surname="R1-081955" fullname="3GPP R1-081955">
-                <organization />
-            </author>
-            <date month="5" year="2008" />
-            <abstract>
+          <title>LTE Link Level Throughput Data for SA4 Evaluation
+          Framework</title>
+
+          <author fullname="3GPP R1-081955" initials="3GPP"
+                  surname="R1-081955">
+            <organization></organization>
+          </author>
+
+          <date month="5" year="2008" />
+
+          <abstract>
             <t>In R1-081720, 3GPP SA4 has requested RAN1 and RAN2 for link
-            level throughput traces to be used in an evaluation framework
-            they are developing for dynamic video rate adaptation.
-            </t></abstract>
+            level throughput traces to be used in an evaluation framework they
+            are developing for dynamic video rate adaptation.</t>
+          </abstract>
         </front>
+
         <seriesInfo name="3GPP" value="R1-081955" />
-        <format type='ZIP' octets='3459875' target='http://www.3gpp.net/ftp/tsg_ran/WG1_RL1/TSGR1_53/Docs/R1-081955.zip' />
-    </reference>
 
-    <reference anchor="SA4-LR">
+        <format octets="3459875"
+                target="http://www.3gpp.net/ftp/tsg_ran/WG1_RL1/TSGR1_53/Docs/R1-081955.zip"
+                type="ZIP" />
+      </reference>
+
+      <reference anchor="SA4-LR">
         <front>
-            <title>Error Patterns for MBMS Streaming over UTRAN and GERAN</title>
-            <author initials="3GPP" surname="S4-050560" fullname="3GPP S4-050560">
-                <organization />
-            </author>
-            <date month="5" year="2008" />
+          <title>Error Patterns for MBMS Streaming over UTRAN and
+          GERAN</title>
+
+          <author fullname="3GPP S4-050560" initials="3GPP"
+                  surname="S4-050560">
+            <organization></organization>
+          </author>
+
+          <date month="5" year="2008" />
         </front>
+
         <seriesInfo name="3GPP" value="S4-050560" />
-        <format type='ZIP' octets='335322' target='http://www.3gpp.org/FTP/tsg_sa/WG4_CODEC/TSGS4_36/Docs/S4-050560.zip' />
-    </reference>
 
-    <reference anchor="TCP-eval-suite">
-      <front>
-        <title>Towards a Common TCP Evaluation Suite</title>
-        <author initials="A." surname="Lachlan"   fullname="Andrew Lachlan"/>
-        <author initials="C." surname="Marcondes" fullname="Cesar Marcondes"/>
-        <author initials="S." surname="Floyd"  fullname="Sally Floyd"/>
-        <author initials="L." surname="Dunn"  fullname="Lawrence Dunn"/>
-        <author initials="R." surname="Guillier"  fullname="Romeric Guillier"/>
-        <author initials="W." surname="Gang"  fullname="Wang Gang"/>
-        <author initials="L." surname="Eggert"  fullname="Lars Eggert"/>
-        <author initials="S." surname="Ha"  fullname="Sangtae Ha"/>            
-        <author initials="I." surname="Rhee"  fullname="Injong Rhee"/>
-        <date month="August" year="2008"/>
-      </front>
-      <seriesInfo name="Proc. PFLDnet." value="2008"/>
-    </reference>
-    
-  </references>
-            
+        <format octets="335322"
+                target="http://www.3gpp.org/FTP/tsg_sa/WG4_CODEC/TSGS4_36/Docs/S4-050560.zip"
+                type="ZIP" />
+      </reference>
 
-    
-    
+      <reference anchor="TCP-eval-suite">
+        <front>
+          <title>Towards a Common TCP Evaluation Suite</title>
+
+          <author fullname="Andrew Lachlan" initials="A." surname="Lachlan"></author>
+
+          <author fullname="Cesar Marcondes" initials="C." surname="Marcondes"></author>
+
+          <author fullname="Sally Floyd" initials="S." surname="Floyd"></author>
+
+          <author fullname="Lawrence Dunn" initials="L." surname="Dunn"></author>
+
+          <author fullname="Romeric Guillier" initials="R." surname="Guillier"></author>
+
+          <author fullname="Wang Gang" initials="W." surname="Gang"></author>
+
+          <author fullname="Lars Eggert" initials="L." surname="Eggert"></author>
+
+          <author fullname="Sangtae Ha" initials="S." surname="Ha"></author>
+
+          <author fullname="Injong Rhee" initials="I." surname="Rhee"></author>
+
+          <date month="August" year="2008" />
+        </front>
+
+        <seriesInfo name="Proc. PFLDnet." value="2008" />
+      </reference>
+    </references>
+
     <!-- <section anchor="App-cl" title="Change Log"> 
     <t>Note to the RFC-Editor: please remove this section prior to
     publication as an RFC.</t>
@@ -246,5 +634,5 @@
         </list></t> 
         </section> 
     </section>-->
-</back>
+  </back>
 </rfc>
