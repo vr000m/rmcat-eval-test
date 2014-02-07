@@ -201,64 +201,118 @@ loss , jitter we are going to see. hence we may need to think a bit more about t
       </section>
     </section>
 
-    <section anchor="TS" title="Testcase definition structure">
+    <section anchor="TS" title="Testcase Definition Structure">
       <t>This section describes how to define a new testcase. A new testcase
       should be described using the following parameters-<list style="symbols">
           <t>Define testcase<list style="symbols">
-              <t>Problem description</t>
+              <t>General description: describs why the particular test case is
+              designed and the goal of the test case </t>
 
               <t>Define desired behaviour from adaptation algorithm</t>
 
-              <t>Define matrix to evaluate the desired behaviours</t>
+              <t>Define matrix to evaluate the desired behaviours: indicates
+              the mimimum set of metrics which are important for the proposed
+              test case. But limited to the list.</t>
             </list></t>
 
           <t>Define test bed<list style="symbols">
-              <t>Test duration: </t>
+              <t>Test duration: defines the duration of the test.</t>
 
-              <t>Transport<list style="symbols">
-                  <t>Number of bottlenecks</t>
+              <t>Transport : defines transport level characteristics of a test
+              case. Includes at least two sets of following link attributes
+              one for forward direction and one for reverse direction.<list
+                  style="symbols">
+                  <t>Path direction: {Forward, Reverse}</t>
 
-                  <t>Bottleneck link speed</t>
+                  <t>Number of bottlenecks: defines one or more bottleneck
+                  links</t>
 
-                  <t>One-Way propagation delay</t>
+                  <t>Bottleneck link speed: defienes the capacity of the
+                  bottleneck links</t>
 
-                  <t>Bottleneck queue type</t>
+                  <t>One-Way propagation delay: defines end to end oneway
+                  propagation delay</t>
 
-                  <t>Bottleneck size</t>
+                  <t>Maximum end to end jitter: defines maximum link jitter of
+                  the end to end path </t>
 
-                  <t>Bottleneck link loss ratio</t>
+                  <t>Bottleneck queue type: {droptail,fq-codel,pie,...}</t>
+
+                  <t>Bottleneck queue size in
+                  miliseconds:{20ms,...,1000ms}</t>
+
+                  <t>Bottleneck link loss ratio: defines non-congestion
+                  related link losses.</t>
                 </list></t>
 
-              <t>Application<list style="symbols">
-                  <t>Media Source<list style="symbols">
-                      <t>Number of encoder instants/ media sources</t>
+              <t>Application: Defines different applications behaviour
+              included in the test case<list style="symbols">
+                  <t>Media Source: defines characteristics of media sources
+                  present in the test case. When using more than one media
+                  source if the media source characteristics varies then
+                  following set of attibutes must be defined for each such
+                  source types. <list style="symbols">
+                      <t>Media direction: {Forward, Reverse}</t>
 
-                      <t>Encoder configuration</t>
+                      <t>Number of media sources: defines total number of
+                      media sources</t>
 
-                      <t>Media content</t>
+                      <t>Encoder configuration: defines how the media encoder
+                      behaves. This may include but not limited to <list
+                          style="symbols">
+                          <t>Maximum Bitrate:{385kbps,....,2mpbs}</t>
 
-                      <t>Appearace preferece</t>
+                          <t>Minimum Bitrate:{100kbps, .....,300kbps}</t>
+
+                          <t>Bitrate generation: {Constant bitrate,Variable
+                          bitrate}</t>
+
+                          <t>Variation from target bitrate: {5%,....,15%}</t>
+
+                          <t>Slagishness in bitrate change
+                          request:{10ms,....,1000ms}</t>
+                        </list></t>
+
+                      <t>Media content: defines types of encoded media
+                      content. for example for video one can use Foreman video
+                      sequence</t>
+
+                      <t>Appearace preferece: Defines at what point of time in
+                      the test run the media source appears.</t>
+
+                      <t>Startup behaviour: {slow start, maximum bitrate} in
+                      terms of kbps</t>
                     </list></t>
 
-                  <t>media startup behaviour</t>
+                  <t>Competing traffic source : defines characteristics of
+                  competing traffic source for the shared bottlenecks. A test
+                  case can <list style="symbols">
+                      <t>Traffic direction:{Forward, Reverse}</t>
 
-                  <t>Competing traffic<list style="symbols">
-                      <t>Number of sources</t>
+                      <t>Number of sources: defines total number of competing
+                      source of same type</t>
 
-                      <t>Source types</t>
+                      <t>Source types: defines the competing source type. for
+                      example whether it is a web browser or FTP download.</t>
 
-                      <t>Adaptation algorithms</t>
+                      <t>Adaptation algorithms: know adaptation algorithms
+                      used by the competing source type.</t>
 
-                      <t>Appearace preferece</t>
+                      <t>Appearace preferece:Defines at what point of time in
+                      the test run the media source appears</t>
                     </list></t>
                 </list></t>
 
-              <t>Other test specific setup</t>
+              <t>Other test specific setup: defines attributes those are a
+              particular test specific and not included in this structure.
+              This attributes should be well defines and should aid to
+              understand the specific nature of the test case. It allows this
+              stracture to be extended.</t>
             </list></t>
         </list></t>
     </section>
 
-    <section anchor="tc" title="Test cases">
+    <section anchor="tc" title="Basic Test Cases">
       <!-- Desired Behavior -->
 
       <section title="Variable Available Bandwidth">
@@ -281,13 +335,13 @@ loss , jitter we are going to see. hence we may need to think a bit more about t
         traffic on the link and more. There can be enormous amount
         configuration and combination those need to be addressed. Hence, we
         describe this test case with a set of know factors those can be
-        extended to device a particular test case. </t>
+        extended to device a particular test case.</t>
 
         <t>The expected behavior adaptation algorithm should detect the
         variation and adapt the flow accordingly. Flow(s) reaches to their
         maximum, bottleneck appears in the link, flow(s) adapts to the
         available bandwidth by decreasing it&rsquo;s bitrate, flow(s) reaches
-        to its maximum when congestion is removed/gone. </t>
+        to its maximum when congestion is removed/gone.</t>
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following
@@ -298,7 +352,7 @@ loss , jitter we are going to see. hence we may need to think a bit more about t
                 <t>End to end loss</t>
               </list></t>
 
-            <t> Transport level <list style="letters">
+            <t>Transport level <list style="letters">
                 <t>Bandwidth utilization</t>
 
                 <t>Queue length (ms)<list style="symbols">
@@ -315,11 +369,15 @@ loss , jitter we are going to see. hence we may need to think a bit more about t
             <t>Test duration:60s</t>
 
             <t>Transport<list style="symbols">
+                <t>Path direction: Forward, Reverse</t>
+
                 <t>Number of bottlenecks : One</t>
 
                 <t>Bottleneck link speed : 2Mbps</t>
 
-                <t>One-Way propagation delay: 100Ms</t>
+                <t>One-Way propagation delay: 100ms</t>
+
+                <t>Maximum end to end jitter: 30ms</t>
 
                 <t>Bottleneck queue type: Drop tail</t>
 
@@ -330,10 +388,21 @@ loss , jitter we are going to see. hence we may need to think a bit more about t
 
             <t>Application<list style="symbols">
                 <t>Media Source<list style="symbols">
+                    <t>Media direction: Forward</t>
+
                     <t>Number of encoder instants/ media sources: two (2)</t>
 
-                    <t>Encoder configuration: Variable bitrate with 5%
-                    deviation from tager bitrate</t>
+                    <t>Encoder configuration: <list style="symbols">
+                        <t>Maximum Bitrate: 2Mpbs</t>
+
+                        <t>Minimum Bitrate: 200Kbps</t>
+
+                        <t>Bitrate generation: Variable bitrate</t>
+
+                        <t>Variation from target bitrate: 5%</t>
+
+                        <t>Slagishness in bitrate change request: 60ms</t>
+                      </list></t>
 
                     <t>Media content: Foreman sequence</t>
 
@@ -344,10 +413,6 @@ loss , jitter we are going to see. hence we may need to think a bit more about t
 
                 <t>Competing traffic<list style="symbols">
                     <t>Number of sources : Zero (0)</t>
-
-                    <t>Source types: Not requred</t>
-
-                    <t>Adaptation algorithms: Not required</t>
                   </list></t>
               </list></t>
 
@@ -479,17 +544,143 @@ loss , jitter we are going to see. hence we may need to think a bit more about t
         real-time interactive flow having the same adaptive mechanism. This is
         a typical scenario where a real-time interactive application have more
         than one real-time interactive flows to send to the same desitination
-        and the flows are multiplexed over same port. In such a scenario it
+        and the flows are multiplexed over same port. In such a scenario it is
         likely that the flows will be routed via same physical path and will
         have to share the available bandwidth of the path among themselves.
-        For the sake of simplicity it is assumed that there are no other souce
-        of One can see this is a variation of test case 5.2 however it is a
-        separate test case because the goal of the test is to evaluate the
-        interaction and sharing tendency of the candidate adaptation algorithm
-        where test case 5.2 focuses more on stability.</t>
+        For the sake of simplicity it is assumed that there are no other
+        competing taffic souce in the bottleneck link and that the total
+        amount needed to bandwidth needed to accomoded all the real-time
+        interactive flows is greater than the bottleneck link capacity. One
+        can see this is a variation of test case 5.2 however it is a separate
+        test case because the goal of the test is to evaluate the interaction
+        and sharing tendency of the candidate adaptation algorithm where test
+        case 5.2 focuses more on stability. Amoung other this test case
+        particularly addresses the requirement number (2,3 and 10).</t>
 
+        <t>It is expected that the competing flows will converge to an optimum
+        bitrate to accomodate all the flows with minumum possible latency and
+        loss. This test will include three flows each appearing at a different
+        period of time. When the second flow appears there should be still
+        available bandwith to accomodate the new flow in the link. However the
+        third flow appears the link bandwidth should be saturated. </t>
+
+        <t>To evaluate the performance of the candidate algorithms it is
+        expected to log enough information to visualize the following
+        metics<list style="symbols">
+            <t>Test duration: 40s</t>
+
+            <t>Transport <list style="symbols">
+                <t>Path direction: Forward, Reverse</t>
+
+                <t>Number of bottlenecks: one</t>
+
+                <t>Bottleneck link speed: 2.5Mbps</t>
+
+                <t>One-Way propagation delay: 50ms</t>
+
+                <t>Maximum end to end jitter: 30ms</t>
+
+                <t>Bottleneck queue type: droptail</t>
+
+                <t>Bottleneck queue size in miliseconds:250ms</t>
+
+                <t>Bottleneck link loss ratio: 0.0%</t>
+              </list></t>
+
+            <t>Application: <list style="symbols">
+                <t>Media Source: <list style="symbols">
+                    <t>Media direction: Forward </t>
+
+                    <t>Number of media sources: Three (3)</t>
+
+                    <t>Encoder configuration: <list style="symbols">
+                        <t>Maximum Bitrate:2Mbps</t>
+
+                        <t>Minimum Bitrate:150Kbps</t>
+
+                        <t>Bitrate generation: Variable bitrate</t>
+
+                        <t>Variation from target bitrate: 5%</t>
+
+                        <t>Slagishness in bitrate change request: 60ms</t>
+                      </list></t>
+
+                    <t>Media content: Foreman video </t>
+
+                    <t>Appearace preferece: Sequenctial delayed. See test
+                    specific setup below. </t>
+
+                    <t>Startup behaviour: 200Kbps</t>
+                  </list></t>
+
+                <t>Competing traffic source : none.</t>
+              </list></t>
+
+            <t>Other test specific setup: <list style="symbols">
+                <t>Media flow appearance:<list style="symbols">
+                    <t>Flow no: one</t>
+
+                    <t>Start ime: 0s</t>
+                  </list></t>
+
+                <t>Media flow appearance:<list style="symbols">
+                    <t>Flow no: two</t>
+
+                    <t>Start ime: 10s</t>
+                  </list></t>
+
+                <t>Media flow appearance:<list style="symbols">
+                    <t>Flow no: one</t>
+
+                    <t>Start ime: 25s</t>
+                  </list></t>
+              </list></t>
+          </list> </t>
+      </section>
+
+      <section title="Flow Competition from Packet Loss based Adaptive Flow">
         <t></t>
       </section>
+
+      <section title="Media Pause and Resume">
+        <t></t>
+      </section>
+
+      <section title="Congested Feedback Link">
+        <t></t>
+      </section>
+
+      <section title="Round Trip Time Fairness">
+        <t></t>
+      </section>
+
+      <section title="Startup Behavior">
+        <t></t>
+      </section>
+
+      <section title="Response to Explicit Congestion Notification">
+        <t></t>
+      </section>
+    </section>
+
+    <section title="Cellular Network Specific Test Cases">
+      <t>TBD<!--may be a link to another draft would be good enough--></t>
+    </section>
+
+    <section title="Wi-Fi Network Specific Test Cases">
+      <t>TBD<!--may be a link to another draft would be good enough--><!--The key network event those have impact on congestion control algorithm are-
+?	AP handover- causing interruption in communication, change in available bandwidth, delay and loss, restart of new session.
+?	Congested AP- causing race condition for medium access and leading to buffer overflow, loss and delay.
+?	Hidden node / exposed node problem- causing unnecessary error in transmission leading to low packet rate over radio and such. 
+However with modern RTS/CTS the situation is much improved.
+It is analyzed how Wi-Fi is used then we can see there is basically three kind of access setup, for simplicity only two 
+endpoints are considered here, ? 1) all the endpoint connected over WiFi to same AP (no internet in between), 2) two endpoints 
+are connected over WiFi to two different access point (AP points may be connected over the Internet), 3) one endpoint is 
+connected over WiFi and another endpoint is connected to the Internet over any other access type than WiFi.    
+It is always encouraged to device test cases with real or simulated Wi-Fi access. However, considering a limited mobility
+ pattern and effect of the events in Wi.FI network a care full investigation may lead to devise a variation of general 
+test cases to evaluate the performance of congestion control algorithms. Hence this section is TBD.
+--></t>
     </section>
 
     <section title="Security Considerations">
