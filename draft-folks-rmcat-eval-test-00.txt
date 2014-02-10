@@ -2,17 +2,23 @@
 
 
 
-RMCAT WG                                                        V. Singh
-Internet-Draft                                          Aalto University
-Intended status: Informational                                 Z. Sarker
-Expires: July 27, 2014                                          Ericsson
-                                                        January 23, 2014
+RMCAT WG                                                       Z. Sarker
+Internet-Draft                                                  Ericsson
+Intended status: Informational                                  V. Singh
+Expires: August 14, 2014                                Aalto University
+                                                       February 10, 2014
 
 
-     Evaluating Congestion Control for Interactive Real-time Media
+               Test Cases for Evaluating RMCAT Proposals
                      draft-folks-rmcat-eval-test-00
 
 Abstract
+
+   The Real-time Transport Protocol (RTP) is used to transmit media in
+   multimedia telephony applications, these applications are typically
+   implement congestion control.  This document describes the test cases
+   required to evaluate the performance of congestion control for
+   interactive point-to-point real-time media.
 
 Status of This Memo
 
@@ -29,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 27, 2014.
+   This Internet-Draft will expire on August 14, 2014.
 
 Copyright Notice
 
@@ -43,6 +49,15 @@ Copyright Notice
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
+
+
+
+
+Sarker & Singh           Expires August 14, 2014                [Page 1]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -50,26 +65,37 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   2
-
-
-
-Singh & Sarker           Expires July 27, 2014                  [Page 1]
-
-Internet-Draft  Evaluating Congestion Control for RMCAT     January 2014
-
-
-   3.  Test cases  . . . . . . . . . . . . . . . . . . . . . . . . .   2
-   4.  Network Parameters  . . . . . . . . . . . . . . . . . . . . .   2
-   5.  Media Parameters  . . . . . . . . . . . . . . . . . . . . . .   2
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   2
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   2
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   2
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   3
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .   3
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   4
+   3.  Basic Structure of Test cases . . . . . . . . . . . . . . . .   3
+   4.  Basic Test Cases  . . . . . . . . . . . . . . . . . . . . . .   5
+     4.1.  Variable Available Capacity . . . . . . . . . . . . . . .   5
+     4.2.  Maximum Media Bit Rate is Greater than Link Capacity  . .   8
+     4.3.  Competing with similar RMCAT flows  . . . . . . . . . . .  10
+     4.4.  RMCAT Flow competing with a long TCP Flow . . . . . . . .  12
+     4.5.  RMCAT Flow competing with short TCP Flows . . . . . . . .  15
+     4.6.  Congested Feedback Link . . . . . . . . . . . . . . . . .  17
+     4.7.  Round Trip Time Fairness  . . . . . . . . . . . . . . . .  19
+     4.8.  Media Pause and Resume  . . . . . . . . . . . . . . . . .  21
+     4.9.  Startup Behavior  . . . . . . . . . . . . . . . . . . . .  23
+     4.10. Response to Explicit Congestion Notification  . . . . . .  25
+   5.  Cellular Network Specific Test Cases  . . . . . . . . . . . .  25
+   6.  Wi-Fi Network Specific Test Cases . . . . . . . . . . . . . .  25
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  26
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  26
+   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  26
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  26
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  27
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  28
 
 1.  Introduction
+
+   This memo describes a set of test cases for evaluating candidate
+   RMCAT proposals, it based on the guidelines enumerated in
+   [I-D.ietf-rmcat-eval-criteria] and requirements discussed in
+   [I-D.ietf-rmcat-cc-requirements].  This document discusses an initial
+   set of scenarios that cover common use-cases.  Additionally, the
+   document provides a basic structure to escribe test cases, which can
+   be customized by an implementer to fit their test scenario.
 
 2.  Terminology
 
@@ -79,21 +105,1312 @@ Internet-Draft  Evaluating Congestion Control for RMCAT     January 2014
    (RTP/AVPF) [RFC4585] and Support for Reduced-Size RTCP [RFC5506]
    apply.
 
-3.  Test cases
 
-4.  Network Parameters
 
-5.  Media Parameters
 
-6.  Security Considerations
+
+Sarker & Singh           Expires August 14, 2014                [Page 2]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+3.  Basic Structure of Test cases
+
+   Defining a common structure enables implementers to describe new
+   scenarios.
+
+   o  Define the test case:
+
+      *  General description: describes the motivation and the goals of
+         the test case.
+
+      *  Additionally, describe the desired rate adaptation behaviour.
+
+      *  Define a checklist to evaluate the desired behaviour: this
+         indicates the mimimum set of metrics that a proposed algorithm
+         needs to achieve to pass the test case.
+
+   o  Define testbed parameters:
+
+      *  Duration: defines the duration of the test case.
+
+      *  Path characteristics: defines the transport level
+         characteristics of a test case.  The characteristics describes
+         two sets of characteristics, one each for the upstream and the
+         downstream direction.  If only one is specified, it is used for
+         both directions.
+
+         +  Path direction: upstream or downstream.
+
+         +  Number of bottlenecks and the link capacity for each
+            bottleneck link.
+
+         +  One-way propagation delay: describes the end-to-end latency
+            along the path.
+
+         +  Maximum end-to-end jitter.
+
+         +  Bottleneck queue type: for example, droptail, FQ-CoDel, or
+            PIE.
+
+         +  Bottleneck queue size in miliseconds.
+
+         +  Link loss ratio: chatacterize the non-congested losses
+            observed on a specific link, for e.g., at the access link or
+            bottleneck link.  Also describe the loss pattern or model to
+            implement the losses.
+
+      *  Application-related: defines different applications behaviour
+         included in the test case
+
+
+
+Sarker & Singh           Expires August 14, 2014                [Page 3]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+         +  Media Source: defines the characteristics of the media
+            sources present in the test case.  When using more than one
+            media source, the following set of attibutes are defined for
+            each such media source.
+
+            -  Media flow direction: upstream, downstream or both.
+
+            -  Number of media sources: defines the total number of
+               media sources
+
+            -  Media source configuration: describes the media encoder
+               behavior.  This may include but not limited to
+
+               o  Bit rate generation: Constant bit rate if the chosen
+                  media stream is not congestion controlled (for
+                  example, IPTV).  Variable bit rate for RMCAT media
+                  streams.
+
+               o  If the media stream is sending VBR, the test case MUST
+                  define the maximum and minimum encoding rates, frame
+                  resolution, and frame rate.
+
+               o  Variation from target bit rate: the encoder produces a
+                  bit rate close to the tartget rate.  For example it
+                  may vary between 5% to 15% above or below the target
+                  bit rate.
+
+               o  Encoder's responsiveness to a new bit rate request:
+                  value typically between 10ms to 1000ms.
+
+            -  Media content: describes the chosen media sequences; For
+               example, the desired frame rate, resolution, etc.  Test
+               sequences are available at: [xiph-seq] [HEVC-seq].
+
+            -  Media timeline: describes the point when the media source
+               is introduced and removed from the network.  For example,
+               the media source may begin transmitting when the test
+               case begins or a few minutes after, etc.
+
+            -  Startup behaviour: the media starts at a defined bit
+               rate, which may be the minimum, maximum bit rate, or a
+               value in between (in kbps).
+
+         +  Competing traffic source : describes the characteristics of
+            the competing traffic source, the different types of
+            competing flows are enumerated in
+            [I-D.ietf-rmcat-eval-criteria].
+
+
+
+
+Sarker & Singh           Expires August 14, 2014                [Page 4]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+            -  Traffic direction: Upstream, downstream or both.
+
+            -  Number and Types of sources: defines the total number of
+               competing sources of each type.  Types of competing
+               traffic flows are listed in
+               [I-D.ietf-rmcat-eval-criteria].  For example, the number
+               of TCP flows connected to a web browser, the mean size
+               and distribution of the content downloaded.
+
+            -  Congestion control: enumerate the congestion control used
+               by each type of competing traffic.
+
+            -  Traffic timeline: describes when the competing is added
+               and removed from the test case.
+
+      *  Additional attributes: describes attributes essential for
+         implementing a test case which are not included in the above
+         structure.  These attributes MUST be well defined, so that
+         other implementers are able to implement it.
+
+   The test cases described in this document follow the above structure.
+
+4.  Basic Test Cases
+
+4.1.  Variable Available Capacity
+
+   In this test case the end-to-end path capacity between the two
+   endpoint varies over time.  This test is designed to measure the
+   responsiveness of the candidate algorithm.  The test tries to address
+   the requirement 1(a) in [I-D.ietf-rmcat-cc-requirements], which
+   requires the algorithm to adapt the flow(s) and provide lower end-to-
+   end latency when there exists:
+
+   o  an intermediated bottleneck
+
+   o  change in available capacity due to interface change and/or
+      routing change.
+
+   o  persistent network load due to competing traffic
+
+   It should be noted that the exact variation in available capcity due
+   to any of the above impairments depends on the under-lying
+   technology.  Hence, we describe a set of known factors, which may be
+   extended to devise a more specific test case.
+
+   Expected behavior: the candidate algorithm should detect the
+   variation and adapt the media stream accordingly.  The candidate
+   algorithm track the available capacity as closely as possible, i.e.,
+
+
+
+Sarker & Singh           Expires August 14, 2014                [Page 5]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+   if there is sufficient capacity the flow(s) reach their respective
+   maximum bit rate.  When the available capacity drops, the RMCAT
+   flow(s) adapts by decreasing its bit rate, and when congestion
+   disappears, the flow(s) are expected to reach their maximum bit rate.
+
+   To evaluate the performance of the candidate algorithms it is
+   expected to log enough information to visualize the following
+   metrics:
+
+   1.  Flow level
+
+       A.  End-to-end delay
+
+       B.  Losses observed at the receiving endpoint
+
+       C.  Feedback message overhead
+
+   2.  Transport level
+
+       A.  Bandwidth utilization
+
+       B.  Queue length (ms)
+
+           +  average over the length of the session
+
+           +  5 and 95 percentile
+
+   Testbed parameters:
+
+   o  Test duration: 60s
+
+   o  Path characteristics
+
+      *  Path direction: Upstream and downstream.
+
+      *  Number of bottlenecks : One.
+
+      *  Bottleneck link capacity : 2Mbps.
+
+      *  One-Way propagation delay: 100ms.
+
+      *  Maximum end-to-end jitter: 30ms.
+
+      *  Bottleneck queue type: Drop tail.
+
+      *  Bottleneck queue size: 300ms.
+
+      *  Link loss ratio: 0%.
+
+
+
+Sarker & Singh           Expires August 14, 2014                [Page 6]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+   o  Application-related
+
+      *  Media Source:
+
+         +  Media direction: Upstream.
+
+         +  Number of media sources: two (2).
+
+         +  Encoder configuration:
+
+            -  Bit rate generation: VBR
+
+            -  Bit rate range: 150kbps-1.5mbps
+
+            -  Frame Resolution: 144p-720p (or 1080p)
+
+            -  Frame rate: 10fps-30fps
+
+            -  Variation from target bitrate: +/-5%
+
+            -  Responsiveness to new bit rate request: 60ms
+
+         +  Media content: Foreman media sequence
+
+         +  Media timeline: all sources appear at start up, end 1s
+            before shutdown.
+
+      *  Media startup behaviour: starts at minimum bit rate (200kbps).
+
+      *  Competing traffic
+
+         +  Number of sources : Zero (0)
+
+   o  Test specific setup
+
+      *  Number of bandwidth variation: Two (2)
+
+      *  Link vairation pattern:
+
+         +  Sequence number: 1
+
+         +  Path direction: Upstream
+
+         +  Amount of change: 50% of bottleneck link speed
+
+         +  Duration: 5s
+
+         +  start time: 10s
+
+
+
+Sarker & Singh           Expires August 14, 2014                [Page 7]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+         +  end behaviour: bandwith is restored to the 80% of bottleneck
+            link speed
+
+      *  Link vairation pattern:
+
+         +  Sequence number: 2
+
+         +  Path direction: Upstream
+
+         +  Amount of change: 50% of bottleneck link speed
+
+         +  Duration: 10s
+
+         +  starttime: 30s
+
+         +  end behaviour: bandwith is restored to the 100% of
+            bottleneck link speed
+
+4.2.  Maximum Media Bit Rate is Greater than Link Capacity
+
+   In this case, the application will attempt to reach its maximum bit
+   rate, since the link capacity is limited to a value lower, the
+   congestion control is expected to stabilize the sending bit rate
+   close to the available bottleneck capacity.  This can occur when the
+   endpoints are connected via thin Internet pipes eventhough the
+   advertised capacity of the access network may be higher.  The test
+   case addresses the requirement 1 and 10 of the
+   [I-D.ietf-rmcat-cc-requirements].
+
+   In this test case the canidate algorithm is expected to detect the
+   limitation in available capacity and avoid bit rate oscillations as
+   it approaches the bottleneck link capacity.  The oscillations occur
+   when the media flow(s) attempts to reach its maximum bit rate,
+   overshoots causing overuse, then reduces the bit rate and starts to
+   probe again.
+
+   To evaluate the performance of the candidate algorithms it is
+   expected to log enough information to visualize the following
+   metrics:
+
+   1.  Flow level
+
+       A.  End-to-end delay.
+
+       B.  RTP packet losses observed at the receiving endpoint.
+
+       C.  Oscillation in sending bit rate.
+
+
+
+
+Sarker & Singh           Expires August 14, 2014                [Page 8]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+       D.  Convergence period.
+
+       E.  Feedback message overhead.
+
+   2.  Transport level
+
+       A.  Bandwidth utilization.
+
+       B.  Queue length (ms)
+
+           +  average over the length of the session
+
+           +  5 and 95 percentile
+
+   Testbed parameters:
+
+   o  Test duration: 120s
+
+   o  Path characteristics
+
+      *  Number of bottlenecks : One
+
+      *  Bottleneck link speed : 1Mbps
+
+      *  One-Way propagation delay: 100 ms
+
+      *  Bottleneck queue type: Droptail, but additionally test with
+         other AQM schemes: FQ-CoDel, or PIE
+
+      *  Bottleneck size: 300ms
+
+      *  Link loss ratio: 0%
+
+   o  Application-related:
+
+      *  Media Source:
+
+         +  Number of media sources: one (1)
+
+         +  Encoder configuration: Variable bit rate.
+
+         +  Variation from target bit rate: +/-5%
+
+         +  Media content: Foreman video sequence
+
+         +  Media timeline: at startup, shutdown 1s before the end.
+
+
+
+
+
+Sarker & Singh           Expires August 14, 2014                [Page 9]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+      *  Media startup behaviour: 1) start at minimum bit rate, 2) start
+         at maximum bit rate.
+
+      *  Competing traffic
+
+         +  Number of sources : Zero (0)
+
+   o  Test specific setup: none
+
+4.3.  Competing with similar RMCAT flows
+
+   In this test case, more than one RMCAT media flow shares the
+   bottleneck link and use the same congestion control algorithm.  This
+   is a typical scenario wherein a real-time interactive application
+   sends more than one media flows to the same desitination and these
+   flows are multiplexed over the same port.  In such a scenario it is
+   likely that the flows will be routed via the same path and need to
+   share the available bandwidth amongst themselves.  For the sake of
+   simplicity it is assumed that there are no other competing taffic
+   sources in the bottleneck link and that there is sufficient capacity
+   to accomodate all the flows.  While this appears to be a variant of
+   the previous test case, however it tests the capacity sharing
+   distribution of the candidate algorithm.  Whereas, the previous test
+   case measures the stability of the candidate algorithm.  This test
+   case particularly addresses the requirements 2,3 and 10 in
+   [I-D.ietf-rmcat-cc-requirements].
+
+   It is expected that the competing flows will converge to an optimum
+   bit rate to accomodate all the flows with minumum possible latency
+   and loss.  Specifically, the test introduces three media flows at
+   different time instances, when the second flow appears there should
+   still be room to accomodate another flow on the bottleneck link.
+   Lastly, when the third flow appears the bottleneck link should be
+   saturated.
+
+   To evaluate the performance of the candidate algorithms it is
+   expected to log enough information to visualize the following
+   metrics:
+
+   1.  Flow level
+
+       A.  End-to-end delay.
+
+       B.  RTP packet losses observed at the receiving endpoint.
+
+       C.  Oscillation in sending bit rate.
+
+       D.  Convergence period.
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 10]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+       E.  Feedback message overhead.
+
+   2.  Transport level
+
+       A.  Bandwidth utilization.
+
+       B.  Queue length (ms)
+
+           +  average over the length of the session
+
+           +  5 and 95 percentile
+
+   Testbed parameters:
+
+   o  Test duration: 40s
+
+   o  Path characteristics
+
+      *  Path direction: Upstream, Downstream
+
+      *  Number of bottlenecks: one
+
+      *  Bottleneck link capacity: 2.5Mbps
+
+      *  One-Way propagation delay: 50ms
+
+      *  Maximum end to end jitter: 30ms
+
+      *  Bottleneck queue type: droptail
+
+      *  Bottleneck queue size: 250ms
+
+      *  Link loss ratio: 0.0%
+
+   o  Application-related:
+
+      *  Media Source:
+
+         +  Media direction: Upstream
+
+         +  Number of media sources: Three (3)
+
+         +  Encoder configuration:
+
+            -  Bit rate generation: VBR
+
+            -  Bit rate range: 150kbps-1.5mbps
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 11]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+            -  Frame Resolution: 144p-720p (or 1080p)
+
+            -  Frame rate: 10fps-30fps
+
+            -  Variation from target bit rate: +/-5%
+
+            -  Responsiveness to new bit rate request: 60ms
+
+         +  Media content: Foreman video video
+
+         +  Media timeline: new media flows are added sequentially, at
+            short time intervals.  See test specific setup below.
+
+         +  Media startup behaviour: starts at minimum bit rate
+            (200kbps).
+
+      *  Competing traffic
+
+         +  Number of sources : Zero (0)
+
+   o  Test specific setup:
+
+      *  Media flow timeline:
+
+         +  Flow no: one
+
+         +  Start ime: 0s
+
+      *  Media flow appearance:
+
+         +  Flow no: two
+
+         +  Start ime: 10s
+
+      *  Media flow appearance:
+
+         +  Flow no: one
+
+         +  Start ime: 25s
+
+4.4.  RMCAT Flow competing with a long TCP Flow
+
+   In this test case, one or more RMCAT media flow shares the bottleneck
+   link with at least one long lived TCP flows.  Long lived TCP flows
+   download data throughout the session and are expected to have
+   infinite amount of data to send and receive.  This is a scenario
+   wherein a multimedia application co-exists with a large file
+   download.  The test case measures the adaptivity of the candidate
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 12]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+   algorithm to competing traffic, it addresses the requirements 8 in
+   [I-D.ietf-rmcat-cc-requirements].
+
+   Depending on the convergence observed in test case 4.1 and 4.2, the
+   candidate algorithm may be able to avoid congestion collapse.  In the
+   worst case, the media stream will fall to the minimum media bit rate.
+
+   To evaluate the performance of the candidate algorithms it is
+   expected to log enough information to visualize the following
+   metrics:
+
+   1.  Flow level
+
+       A.  End-to-end delay for the RMCAT flow.
+
+       B.  RTP packet losses observed at the receiving endpoint.
+
+       C.  Oscillation in sending bit rate for both RMCAT and TCP flows.
+
+       D.  Convergence period.
+
+       E.  Feedback message overhead.
+
+   2.  Transport level
+
+       A.  Bandwidth utilization.
+
+       B.  Queue length (ms)
+
+           +  average over the length of the session
+
+           +  5 and 95 percentile
+
+   Testbed parameters:
+
+   o  Test duration: 120s
+
+   o  Path characteristics
+
+      *  Path direction: Upstream, Downstream
+
+      *  Number of bottlenecks: one
+
+      *  Bottleneck link capacity: 2Mbps
+
+      *  One-Way propagation delay: 50ms
+
+      *  Maximum end to end jitter: 30ms
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 13]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+      *  Bottleneck queue type: droptail, but would benefit from running
+         the same test with different AQM schemes: FQ-Codel, or PIE.
+
+      *  Bottleneck queue size: 250ms
+
+      *  Link loss ratio: 0.0%
+
+   o  Application-related:
+
+      *  Media Source:
+
+         +  Media direction: Upstream and Downstream
+
+         +  Number of media sources: One (1)
+
+         +  Encoder configuration:
+
+            -  Bit rate generation: VBR
+
+            -  Bit rate range: 150kbps-1.5mbps
+
+            -  Frame Resolution: 144p-720p (or 1080p)
+
+            -  Frame rate: 10fps-30fps
+
+            -  Variation from target bit rate: +/-5%
+
+            -  Responsiveness to new bit rate request: 60ms
+
+         +  Media content: Foreman video video
+
+         +  Media timeline: starts at the begining, shutdown 1s before
+            the end.
+
+         +  Media startup behaviour: 1) start at minimum bit rate, 2)
+            start at maximum bit rate.
+
+      *  Competing traffic
+
+         +  Number and Types of sources : one (1), long-lived TCP
+
+         +  Traffic direction : downstream
+
+         +  Default TCP Congestion control (CUBIC).
+
+         +  Traffic timeline: same as media timeline
+
+   o  Test specific setup: none
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 14]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+4.5.  RMCAT Flow competing with short TCP Flows
+
+   In this test case, one or more RMCAT media flow shares the bottleneck
+   link with at multiple short-lived TCP flows.  Short-lived TCP flows
+   resemble the on/off pattern observed in the web traffic, wherein
+   clients (browsers) connect to a server and download a resource
+   (typically a webpage, few images, text files, etc.) using several TCP
+   connections (up to 4).  This scenario shows the performance of the
+   multimedia application when several browser windows are active.  The
+   test case measures the adaptivity of the candidate algorithm to
+   competing web traffic, it addresses the requirements 2 in
+   [I-D.ietf-rmcat-cc-requirements].
+
+   Depending on the convergence observed in test case 4.1 and 4.2, the
+   candidate algorithm may be able to avoid congestion collapse.  In the
+   worst case, the media stream will fall to the minimum media bit rate.
+
+   To evaluate the performance of the candidate algorithms it is
+   expected to log enough information to visualize the following
+   metrics:
+
+   1.  Flow level
+
+       A.  End-to-end delay for the RMCAT flow.
+
+       B.  RTP packet losses observed at the receiving endpoint.
+
+       C.  Oscillation in sending bit rate for both RMCAT and TCP flows.
+
+       D.  Convergence period.
+
+       E.  Feedback message overhead.
+
+   2.  Transport level
+
+       A.  Bandwidth utilization.
+
+       B.  Queue length (ms)
+
+           +  average over the length of the session
+
+           +  5 and 95 percentile
+
+   Testbed parameters:
+
+   o  Test duration: 120s
+
+   o  Path characteristics
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 15]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+      *  Path direction: Upstream, Downstream
+
+      *  Number of bottlenecks: one
+
+      *  Bottleneck link capacity: 2Mbps
+
+      *  One-Way propagation delay: 50ms
+
+      *  Maximum end to end jitter: 30ms
+
+      *  Bottleneck queue type: droptail, but would benefit from running
+         the same test with different AQM schemes: FQ-Codel, or PIE.
+
+      *  Bottleneck queue size: 250ms
+
+      *  Link loss ratio: 0.0%
+
+   o  Application-related:
+
+      *  Media Source:
+
+         +  Media direction: Upstream and Downstream
+
+         +  Number of media sources: One (1)
+
+         +  Encoder configuration:
+
+            -  Bit rate generation: VBR
+
+            -  Bit rate range: 150kbps-1.5mbps
+
+            -  Frame Resolution: 144p-720p (or 1080p)
+
+            -  Frame rate: 10fps-30fps
+
+            -  Variation from target bit rate: +/-5%
+
+            -  Responsiveness to new bit rate request: 60ms
+
+         +  Media content: Foreman video video
+
+         +  Media timeline: starts at the begining, shutdown 1s before
+            the end.
+
+         +  Media startup behaviour: 1) start at minimum bit rate, 2)
+            start at maximum bit rate.
+
+      *  Competing traffic
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 16]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+         +  Number and Types of sources : ten (10), short-lived TCP
+            flows.
+
+         +  Traffic direction : downstream
+
+         +  Default TCP Congestion control (CUBIC).
+
+         +  Traffic timeline: Each short TCP flow is modeled as a
+            sequence of file downloads interleaved with idle periods.
+
+   o  Test specific setup: Short-TCP traffic model
+
+      *  File sizes: uniform distribution between 100KB to 2MB.
+
+      *  Idle period: exponential distribution with the mean value of 10
+         seconds.
+
+4.6.  Congested Feedback Link
+
+   RMCAT WG has been chartered to define algorithms for RTP hence it is
+   assumed that RTCP, RTP header extention or such would be used as
+   signalling means for the adaptation algorithm in the backchannel.
+   Due to assymetry nature of the link between communicating peers it is
+   possible to observer lack such backchannel information due to
+   impaired backchannel link (even when forward channel might be
+   unimpaired).  This test case is designed to observer candidate
+   congestion control behaviour in such an event.  This test case
+   addresses requirement number 5 and in particular, requirement number
+   7.
+
+   It is expected that the candidate algorithms should cope will the
+   lack of backchannel information and adapt to minimize the performace
+   of media flows in the forward channel.
+
+   To evaluate the performance of the candidate algorithms it is
+   expected to log enough information to visualize the following
+   metrics:
+
+   1.  Flow level
+
+       A.  End-to-end delay
+
+       B.  Losses observed at the receiving endpoint
+
+       C.  Feedback message overhead
+
+   2.  Transport level
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 17]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+       A.  Bandwidth utilization
+
+       B.  Queue length (ms)
+
+           +  average over the length of the session
+
+           +  5 and 95 percentile
+
+   It should be noted that for this test case log is needed for the
+   reference case where the downstream channel have no impairments.
+
+   Example Testbed parameters:
+
+   o  Test duration: 60s
+
+   o  Path characteristics: Same as test case 4.1
+
+   o  Application-related:
+
+      *  Media Source:
+
+         +  Media direction: Upstream, Downstream
+
+         +  Number of media sources: two (2).
+
+         +  Encoder configuration:
+
+            -  Bit rate generation: VBR
+
+            -  Bit rate range: 150kbps-1.5mbps
+
+            -  Frame Resolution: 144p-720p (or 1080p)
+
+            -  Frame rate: 10fps-30fps
+
+            -  Variation from target bitrate: +/-5%
+
+            -  Responsiveness to new bit rate request: 60ms
+
+         +  Media content: Foreman media sequence
+
+         +  Media timeline: all sources appear at start up, end 1s
+            before shutdown.
+
+      *  Media startup behaviour: starts at minimum bit rate (200kbps).
+
+      *  Competing traffic
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 18]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+         +  Number of sources : Zero (0)
+
+   o  Test specific setup:
+
+      *  Number of bandwidth variation: Two (2)
+
+      *  Link vairation pattern:
+
+         +  Sequence number: 1
+
+         +  Path direction: Upstream
+
+         +  Amount of change: 50% of bottleneck link speed
+
+         +  Duration: 10s
+
+         +  start time: 10s
+
+         +  end behaviour: bandwith is restored to the 80% of bottleneck
+            link speed
+
+      *  Link vairation pattern:
+
+         +  Sequence number: 2
+
+         +  Path direction: Downstream
+
+         +  Amount of change: 50% of bottleneck link speed
+
+         +  Duration: 5s
+
+         +  starttime: 15s
+
+         +  end behaviour: bandwith is restored to the 100% of
+            bottleneck link speed
+
+4.7.  Round Trip Time Fairness
+
+   In this test case, more than one RMCAT media flow shares the
+   bottleneck link, but the end-to-end path latency for each RMCAT flow
+   is different.  For the sake of simplicity it is assumed that there
+   are no other competing taffic sources in the bottleneck link and that
+   there is sufficient capacity to accomodate all the flows.  While this
+   appears to be a variant of the test case 4.2, it tests the capacity
+   sharing distribution of the candidate algorithm under different RTTs.
+   This test case particularly addresses the requirements 2
+   [I-D.ietf-rmcat-cc-requirements].
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 19]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+   It is expected that the competing flows will converge to an optimum
+   bit rate to accomodate all the flows with minumum possible latency
+   and loss.  Specifically, the test introduces five media flows at the
+   same time instance.
+
+   To evaluate the performance of the candidate algorithms it is
+   expected to log enough information to visualize the following
+   metrics:
+
+   1.  Flow level
+
+       A.  End-to-end delay.
+
+       B.  RTP packet losses observed at the receiving endpoint.
+
+       C.  Oscillation in sending bit rate.
+
+       D.  Convergence period.
+
+   2.  Transport level
+
+       A.  Bandwidth utilization.
+
+       B.  Queue length (ms)
+
+           +  average over the length of the session
+
+           +  5 an 95 percentile
+
+   Testbed parameters:
+
+   o  Test duration: 40s
+
+   o  Path characteristics
+
+      *  Path direction: Upstream, Downstream
+
+      *  Number of bottlenecks: one
+
+      *  Bottleneck link capacity: 2.5Mbps
+
+      *  One-Way propagation delay for each path is: 25ms, 50ms, 100ms,
+         150ms, 200ms.
+
+      *  Maximum end to end jitter: 30ms
+
+      *  Bottleneck queue type: droptail
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 20]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+      *  Bottleneck queue size: 250ms
+
+      *  Link loss ratio: 0.0%
+
+   o  Application-related:
+
+      *  Media Source:
+
+         +  Media direction: Upstream
+
+         +  Number of media sources: Five (5)
+
+         +  Encoder configuration:
+
+            -  Bit rate generation: VBR
+
+            -  Bit rate range: 150kbps-1.5mbps
+
+            -  Frame Resolution: 144p-720p (or 1080p)
+
+            -  Frame rate: 10fps-30fps
+
+            -  Variation from target bit rate: +/-5%
+
+            -  Responsiveness to new bit rate request: 60ms
+
+         +  Media content: Foreman video video
+
+         +  Media timeline: starts at the begining, shutdown 1s before
+            the end.
+
+         +  Media startup behaviour: 1) start at minimum bit rate, 2)
+            start at maximum bit rate.
+
+      *  Competing traffic
+
+         +  Number of sources : Zero (0)
+
+   o  Test specific setup: None
+
+4.8.  Media Pause and Resume
+
+   In this test case, more than one real-time interactive media flows
+   share the link bandwidth and all flows reach to a steady state by
+   utilizing the link capacity in a optimum way.  At these stage one of
+   the media flow is paused for a moment.  This event will result in
+   more available bandwidth for the rest of the flows and as they are on
+   a shared link those available bandwidth will also be shared among the
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 21]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+   rest of the flows.  When the paused media flow will resume it would
+   no longer have the same bandwidth share on the link.  Hence has to
+   make it way through the other existing flows in the link to achieve a
+   fairshare of the link capacity.  This test case is important
+   specially for real-time interactive media which consists of more than
+   one media flows and can pause/resume media flow at any point of time
+   during the session.  This test case directly addresses the
+   requirement number 1.B in [I-D.ietf-rmcat-cc-requirements].  One can
+   think it a variation of test case 4.3 however, it is different as the
+   candidate algorithms can use different strategies to increase the
+   fairness, convergence time and fairness of the fact that they have
+   previous information of the link.
+
+   To evaluate the performance of the candidate algorithms it is
+   expected to log enough information to visualize the following metics:
+
+   1.  Flow level
+
+       A.  End-to-end delay.
+
+       B.  RTP packet losses observed at the receiving endpoint.
+
+       C.  Oscillation in sending bit rate.
+
+       D.  Convergence period.
+
+       E.  Feedback message overhead.
+
+   2.  Transport level
+
+       A.  Bandwidth utilization.
+
+       B.  Queue length (ms)
+
+           +  average over the length of the session
+
+           +  5 and 95 percentile
+
+   Testbed parameters: The gerenal description of the test bed
+   parameters are same as test case 4.3 with only chages in the test
+   specific setup as below-
+
+   o  Other test specific setup:
+
+      *  Media flow timeline:
+
+         +  Flow no: one
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 22]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+         +  Start time: 0s
+
+         +  Flow duration: 60s
+
+         +  Pause time: not required
+
+         +  Resume time: not required
+
+      *  Media flow appearance:
+
+         +  Flow no: two
+
+         +  Start time: 0s
+
+         +  Flow duration: 60s
+
+         +  Pause time: 20s
+
+         +  Resume time: 30s
+
+      *  Media flow appearance:
+
+         +  Flow no: one
+
+         +  Start time: 0s
+
+         +  Flow dureation:60s
+
+         +  Pause time: not required
+
+         +  Resume time: not required
+
+4.9.  Startup Behavior
+
+   In this test case, more than one RMCAT media flow shares the
+   bottleneck link, but they start at different start rates and there
+   are no other competing taffic sources in the bottleneck link.  While
+   this appears to be a variant of the test case 4.2, it tests the
+   rampup and capacity sharing of the candidate algorithm when starting
+   at different rates.  This test case particularly addresses the
+   requirements 3 and 10.  [I-D.ietf-rmcat-cc-requirements].
+
+   It is expected that the competing flows will converge to an optimum
+   bit rate to accomodate all the flows with minumum possible latency
+   and loss.  Specifically, the test introduces five media flows at the
+   same time instance, but with differrent start rates.
+
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 23]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+   To evaluate the performance of the candidate algorithms it is
+   expected to log enough information to visualize the following
+   metrics:
+
+   1.  Flow level
+
+       A.  End-to-end delay.
+
+       B.  RTP packet losses observed at the receiving endpoint.
+
+       C.  Oscillation in sending bit rate.
+
+       D.  Convergence period.
+
+   2.  Transport level
+
+       A.  Bandwidth utilization.
+
+       B.  Queue length (ms)
+
+           +  average over the length of the session
+
+           +  5 an 95 percentile
+
+   Testbed parameters:
+
+   o  Test duration: 40s
+
+   o  Path characteristics
+
+      *  Path direction: Upstream, Downstream
+
+      *  Number of bottlenecks: one
+
+      *  Bottleneck link capacity: 3Mbps
+
+      *  One-Way propagation delay for each path is: 100ms.
+
+      *  Maximum end-to-end jitter: 30ms
+
+      *  Bottleneck queue type: droptail
+
+      *  Bottleneck queue size: 250ms
+
+      *  Link loss ratio: 0.0%
+
+   o  Application-related:
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 24]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+      *  Media Source:
+
+         +  Media direction: Upstream
+
+         +  Number of media sources: Five (5)
+
+         +  Encoder configuration:
+
+            -  Bit rate generation: VBR
+
+            -  Bit rate range: 150kbps-1.5mbps
+
+            -  Frame Resolution: 144p-720p (or 1080p)
+
+            -  Frame rate: 10fps-30fps
+
+            -  Variation from target bit rate: +/-5%
+
+            -  Responsiveness to new bit rate request: 60ms
+
+         +  Media content: Foreman video video
+
+         +  Media timeline: starts at the begining, shutdown 1s before
+            the end.
+
+         +  Media startup behaviour: each media source stats at a
+            different rate: 200, 500, 800, 1000, 1200 kbps.
+
+      *  Competing traffic
+
+         +  Number of sources : Zero (0)
+
+   o  Test specific setup: None
+
+4.10.  Response to Explicit Congestion Notification
+
+   TBD
+
+5.  Cellular Network Specific Test Cases
+
+   Additional cellular network specific test cases are define in
+   .....[Ref]
+
+6.  Wi-Fi Network Specific Test Cases
+
+   TBD
+
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 25]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+7.  Security Considerations
 
    Security issues have not been discussed in this memo.
 
-7.  IANA Considerations
+8.  IANA Considerations
 
    There are no IANA impacts in this memo.
 
-8.  Acknowledgements
+9.  Acknowledgements
 
    Much of this document is derived from previous work on congestion
    control at the IETF.
@@ -101,22 +1418,9 @@ Internet-Draft  Evaluating Congestion Control for RMCAT     January 2014
    The content and concepts within this document are a product of the
    discussion carried out in the Design Team.
 
+10.  References
 
-
-
-
-
-
-
-
-Singh & Sarker           Expires July 27, 2014                  [Page 2]
-
-Internet-Draft  Evaluating Congestion Control for RMCAT     January 2014
-
-
-9.  References
-
-9.1.  Normative References
+10.1.  Normative References
 
    [RFC3550]  Schulzrinne, H., Casner, S., Frederick, R., and V.
               Jacobson, "RTP: A Transport Protocol for Real-Time
@@ -139,36 +1443,44 @@ Internet-Draft  Evaluating Congestion Control for RMCAT     January 2014
               Real-Time Transport Control Protocol (RTCP): Opportunities
               and Consequences", RFC 5506, April 2009.
 
+   [RFC5506.e7199]
+              Johansson, I. and M. Westerlund, "Support for Reduced-Size
+              Real-Time Transport Control Protocol (RTCP): Opportunities
+              and Consequences", RFC 5506, April 2009.
+
+
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 26]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+   [I-D.ietf-rmcat-eval-criteria]
+              Singh, V. and J. Ott, "Evaluating Congestion Control for
+              Interactive Real-time Media", draft-ietf-rmcat-eval-
+              criteria-00 (work in progress), January 2014.
+
    [I-D.ietf-rmcat-cc-requirements]
               Jesup, R., "Congestion Control Requirements For RMCAT",
-              draft-ietf-rmcat-cc-requirements-00 (work in progress),
-              July 2013.
+              draft-ietf-rmcat-cc-requirements-01 (work in progress),
+              December 2013.
 
-   [I-D.ietf-avtcore-rtp-circuit-breakers]
-              Perkins, C. and V. Singh, "RTP Congestion Control: Circuit
-              Breakers for Unicast Sessions", draft-ietf-avtcore-rtp-
-              circuit-breakers-01 (work in progress), October 2012.
+10.2.  Informative References
 
-   [I-D.singh-rmcat-cc-eval]
-              Singh, V. and J. Ott, "Evaluating Congestion Control for
-              Interactive Real-time Media", draft-singh-rmcat-cc-eval-04
-              (work in progress), October 2013.
-
-9.2.  Informative References
+   [I-D.ietf-rtcweb-use-cases-and-requirements]
+              Holmberg, C., Hakansson, S., and G. Eriksson, "Web Real-
+              Time Communication Use-cases and Requirements", draft-
+              ietf-rtcweb-use-cases-and-requirements-13 (work in
+              progress), February 2014.
 
    [RFC5033]  Floyd, S. and M. Allman, "Specifying New Congestion
               Control Algorithms", BCP 133, RFC 5033, August 2007.
 
    [RFC5166]  Floyd, S., "Metrics for the Evaluation of Congestion
               Control Mechanisms", RFC 5166, March 2008.
-
-
-
-
-Singh & Sarker           Expires July 27, 2014                  [Page 3]
-
-Internet-Draft  Evaluating Congestion Control for RMCAT     January 2014
-
 
    [RFC5681]  Allman, M., Paxson, V., and E. Blanton, "TCP Congestion
               Control", RFC 5681, September 2009.
@@ -180,13 +1492,38 @@ Internet-Draft  Evaluating Congestion Control for RMCAT     January 2014
    [SA4-LR]   S4-050560, 3GPP., "Error Patterns for MBMS Streaming over
               UTRAN and GERAN", 3GPP S4-050560, 5 2008.
 
+   [xiph-seq]
+              Xiph.org, , "Video Test Media",
+              http://media.xiph.org/video/derf/ , .
+
+   [HEVC-seq]
+              HEVC, , "Test Sequences",
+              http://www.netlab.tkk.fi/~varun/test_sequences/ , .
+
    [TCP-eval-suite]
               Lachlan, A., Marcondes, C., Floyd, S., Dunn, L., Guillier,
               R., Gang, W., Eggert, L., Ha, S., and I. Rhee, "Towards a
               Common TCP Evaluation Suite", Proc. PFLDnet. 2008, August
               2008.
 
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 27]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
 Authors' Addresses
+
+   Zaheduzzaman Sarker
+   Ericsson
+   Lulea, SE  971 28
+   Sweden
+
+   Phone: +46 10 717 37 43
+   Email: zaheduzzaman.sarker@ericsson.com
+
 
    Varun Singh
    Aalto University
@@ -199,13 +1536,6 @@ Authors' Addresses
    URI:   http://www.netlab.tkk.fi/~varun/
 
 
-   Zaheduzzaman Sarker
-   Ericsson
-   Lulea, SE  971 28
-   Sweden
-
-   Phone: +46 10 717 37 43
-   Email: zaheduzzaman.sarker@ericsson.com
 
 
 
@@ -220,4 +1550,19 @@ Authors' Addresses
 
 
 
-Singh & Sarker           Expires July 27, 2014                  [Page 4]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sarker & Singh           Expires August 14, 2014               [Page 28]
