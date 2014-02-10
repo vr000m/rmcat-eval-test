@@ -119,11 +119,15 @@
     <keyword>Congestion Control</keyword>
 
     <abstract>
-      <t>The Real-time Transport Protocol (RTP) is used to transmit media in
-      multimedia telephony applications, these applications are typically
-      implement congestion control. This document describes the test cases
-      required to evaluate the performance of congestion control for
-      interactive point-to-point real-time media. <!--The draft defines a structure on how to define test cases and uses
+      <t>
+		  The Real-time Transport Protocol (RTP) is used to transmit media in
+		  multimedia telephony applications, these applications are typically
+		  required to implement congestion control. The RMCAT working group is
+		  currently working on candidate algorithms for WebRTC. This document
+		  describes the test cases needed to evaluate the performance of those
+		  candidate algorithms.
+
+		   <!--The draft defines a structure on how to define test cases and uses
 		  that stracture to define test case those are essensial to RMCAT to evaluate
 		  the candidate algorithms. also the intention here is define the test cases
 		  in such a way that people can customize by tunning the same test case to fit
@@ -134,14 +138,16 @@
 
   <middle>
     <section title="Introduction">
-      <t>This memo describes a set of test cases for evaluating candidate
-      RMCAT proposals, it based on the guidelines enumerated in <xref
-      target="I-D.ietf-rmcat-eval-criteria"></xref> and requirements discussed
-      in <xref target="I-D.ietf-rmcat-cc-requirements"></xref>. This document
-      discusses an initial set of scenarios that cover common use-cases.
-      Additionally, the document provides a basic structure to escribe test
-      cases, which can be customized by an implementer to fit their test
-      scenario.</t>
+      <t>
+	  This memo describes a set of test cases for evaluating candidate
+	  RMCAT proposals, it is based on the guidelines enumerated in <xref
+	  target="I-D.ietf-rmcat-eval-criteria" /> and requirements discussed in
+	  <xref target="I-D.ietf-rmcat-cc-requirements" />. The test cases cover
+	  basic usage scenarios and are described using a common structure, which
+	  allows any implementer to provide new test cases to fit their test
+	  scenario. Each test cases incorporates the metrics, evaluation guidelines
+	  and parameters described in <xref target="I-D.ietf-rmcat-eval-criteria" />.
+	  </t>
 
       <t></t>
     </section>
@@ -153,12 +159,16 @@
         in BCP 14, <xref target="RFC2119" /> and indicate requirement
         levels for compliant implementations. </t> -->
 
-      <t>The terminology defined in <xref target="RFC3550">RTP</xref>, <xref
-      target="RFC3551">RTP Profile for Audio and Video Conferences with
-      Minimal Control</xref>, <xref target="RFC3611">RTCP Extended Report
-      (XR)</xref>, <xref target="RFC4585">Extended RTP Profile for RTCP-based
-      Feedback (RTP/AVPF)</xref> and <xref target="RFC5506">Support for
-      Reduced-Size RTCP</xref> apply.</t>
+      <t>
+		  The terminology defined in <xref target="RFC3550">RTP</xref>, <xref
+		  target="RFC3551">RTP Profile for Audio and Video Conferences with Minimal
+		  Control</xref>, <xref target="RFC3611">RTCP Extended Report (XR)</xref>,
+		  <xref target="RFC4585">Extended RTP Profile for RTCP-based Feedback
+		  (RTP/AVPF)</xref>, <xref target="RFC5506">Support for Reduced-Size
+		  RTCP</xref>, and <xref target="I-D.ietf-avtcore-rtp-circuit-breakers">RTP
+		  Circuit Breaker algorithm</xref> apply. 
+	  </t>
+
     </section>
 
     <!-- <section anchor="NS" title="Network Scenarios">
@@ -264,7 +274,7 @@
 
               <t>Define a checklist to evaluate the desired behaviour: this
               indicates the mimimum set of metrics that a proposed algorithm
-              needs to achieve to pass the test case. </t>
+              needs to measure. </t>
             </list></t>
 
           <t>Define testbed parameters: <list style="symbols">
@@ -556,9 +566,11 @@
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
 
-                <t>Oscillation in sending bit rate.</t>
+                <t>Variation in sending bit rate and goodput. Mainly observing
+                the frequency and magnitude of oscillations.</t>
 
-                <t>Convergence period.</t>
+
+                <t>Convergence time.</t>
 
                 <t>Feedback message overhead.</t>
               </list></t>
@@ -655,9 +667,11 @@ not be true -->
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
 
-                <t>Oscillation in sending bit rate.</t>
+                <t>Variation in sending bit rate and goodput. Mainly observing
+                the frequency and magnitude of oscillations.</t>
 
-                <t>Convergence period.</t>
+
+                <t>Convergence time.</t>
 
                 <t>Feedback message overhead.</t>
               </list></t>
@@ -779,10 +793,12 @@ not be true -->
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
 
-                <t>Oscillation in sending bit rate for both RMCAT and TCP
-                flows.</t>
-
-                <t>Convergence period.</t>
+                <t>Variation in sending bit rate and goodput. Mainly observing
+                the frequency and magnitude of oscillations.</t>
+				
+				<t>Variation in the sending rate of the TCP flow</t>
+				
+                <t>Convergence time.</t>
 
                 <t>Feedback message overhead.</t>
               </list></t>
@@ -896,10 +912,12 @@ not be true -->
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
 
-                <t>Oscillation in sending bit rate for both RMCAT and TCP
-                flows.</t>
-
-                <t>Convergence period.</t>
+                <t>Variation in sending bit rate and goodput. Mainly observing
+                the frequency and magnitude of oscillations.</t>
+				
+				<t>Variation in the sending rate of the TCP flow</t>
+				
+                <t>Convergence time.</t>
 
                 <t>Feedback message overhead.</t>
               </list></t>
@@ -1139,9 +1157,11 @@ not be true -->
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
 
-                <t>Oscillation in sending bit rate.</t>
+                <t>Variation in sending bit rate and goodput. Mainly observing
+                the frequency and magnitude of oscillations.</t>
+				
 
-                <t>Convergence period.</t>
+                <t>Convergence time.</t>
               </list></t>
 
             <t>Transport level <list style="letters">
@@ -1248,9 +1268,10 @@ not be true -->
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
 
-                <t>Oscillation in sending bit rate.</t>
+                <t>Variation in sending bit rate and goodput. Mainly observing
+                the frequency and magnitude of oscillations.</t>
 
-                <t>Convergence period.</t>
+                <t>Convergence time.</t>
 
                 <t>Feedback message overhead.</t>
               </list></t>
@@ -1333,9 +1354,10 @@ not be true -->
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
 
-                <t>Oscillation in sending bit rate.</t>
+                <t>Variation in sending bit rate and goodput. Mainly observing
+                the frequency and magnitude of oscillations.</t>
 
-                <t>Convergence period.</t>
+                <t>Convergence time.</t>
               </list></t>
 
             <t>Transport level <list style="letters">
@@ -1480,7 +1502,7 @@ test cases to evaluate the performance of congestion control algorithms. Hence t
 
       &rfc5506;
 
-      <!-- &I-D.ietf-avtcore-rtp-circuit-breakers; -->
+      &I-D.ietf-avtcore-rtp-circuit-breakers;
 
       &I-D.ietf-rmcat-eval-criteria;
 
@@ -1530,8 +1552,7 @@ test cases to evaluate the performance of congestion control algorithms. Hence t
 
       <reference anchor="SA4-LR">
         <front>
-          <title>Error Patterns for MBMS Streaming over UTRAN and
-          GERAN</title>
+          <title>Error Patterns for MBMS Streaming over UTRAN and GERAN</title>
 
           <author fullname="3GPP S4-050560" initials="3GPP"
                   surname="S4-050560">
@@ -1551,24 +1572,18 @@ test cases to evaluate the performance of congestion control algorithms. Hence t
       <reference anchor="xiph-seq">
         <front>
           <title>Video Test Media</title>
-
           <author fullname="" initials="" surname="Xiph.org"></author>
-
           <date month="" year="" />
         </front>
-
         <seriesInfo name="http://media.xiph.org/video/derf/" value="" />
       </reference>
 
       <reference anchor="HEVC-seq">
         <front>
           <title>Test Sequences</title>
-
           <author fullname="" initials="" surname="HEVC"></author>
-
           <date month="" year="" />
         </front>
-
         <seriesInfo name="http://www.netlab.tkk.fi/~varun/test_sequences/"
                     value="" />
       </reference>
@@ -1576,25 +1591,15 @@ test cases to evaluate the performance of congestion control algorithms. Hence t
       <reference anchor="TCP-eval-suite">
         <front>
           <title>Towards a Common TCP Evaluation Suite</title>
-
           <author fullname="Andrew Lachlan" initials="A." surname="Lachlan"></author>
-
           <author fullname="Cesar Marcondes" initials="C." surname="Marcondes"></author>
-
           <author fullname="Sally Floyd" initials="S." surname="Floyd"></author>
-
           <author fullname="Lawrence Dunn" initials="L." surname="Dunn"></author>
-
           <author fullname="Romeric Guillier" initials="R." surname="Guillier"></author>
-
           <author fullname="Wang Gang" initials="W." surname="Gang"></author>
-
           <author fullname="Lars Eggert" initials="L." surname="Eggert"></author>
-
           <author fullname="Sangtae Ha" initials="S." surname="Ha"></author>
-
           <author fullname="Injong Rhee" initials="I." surname="Rhee"></author>
-
           <date month="August" year="2008" />
         </front>
 
