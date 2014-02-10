@@ -122,10 +122,10 @@
 		  implement congestion control. This document describes the test cases
 		  required to evaluate the performance of congestion control for interactive
 		  point-to-point real-time media. 
-		  <!--The draft defines a structure on how to define testcases and uses
+		  <!--The draft defines a structure on how to define test cases and uses
 		  that stracture to define test case those are essensial to RMCAT to evaluate
 		  the candidate algorithms. also the intention here is define the test cases
-		  in such a way that people can customize by tunning the same testcase to fit
+		  in such a way that people can customize by tunning the same test case to fit
 		  their to be tested network characteristics. this is the theme and we need
 		  more text here.-->
 	</t>
@@ -292,7 +292,8 @@
 
                   <t>Maximum end-to-end jitter.</t> <!-- This needs to be explained -->
 				  
-                  <t>Bottleneck queue type: for example, droptail, fq-codel, or pie.</t>
+                  <t>Bottleneck queue type: for example, droptail, FQ-CoDel, or
+                  PIE.</t>
 
                   <t>Bottleneck queue size in miliseconds.</t>
 
@@ -321,18 +322,19 @@
                       <t>Media source configuration: describes the media encoder
                       behavior. This may include but not limited to <list
                           style="symbols">
-                          <t>Maximum Bit rate.</t>
-
-                          <t>Minimum Bit rate.</t>
 
                           <t>Bit rate generation: Constant bit rate if the
                           chosen media stream is not congestion controlled (for
                           example, IPTV). Variable bit rate for RMCAT media
                           streams.</t>
 
-						  <!-- CBR?? possibly remove it. We are doing
+						  <!-- VS: CBR?? possibly remove it. We are doing
 						  congestion conrol, right. Or is it for modeling traffic which is not
-						  congestion control-->
+						  congestion controlled?-->
+						  
+						  <t>If the media stream is sending VBR, the test case
+						  MUST define the maximum and minimum encoding rates, frame resolution,
+						  and frame rate.</t>
 
                           <t>Variation from target bit rate: the encoder
                           produces a bit rate close to the tartget rate. For
@@ -342,7 +344,7 @@
 
                           <t>Encoder's responsiveness to a new bit rate
                           request: value typically between 10ms to 1000ms.</t>
-
+						  
                         </list></t>
 
                       <t>Media content: describes the chosen media sequences;
@@ -400,7 +402,7 @@
       <!-- Desired Behavior -->
 
       <section title="Variable Available Capacity">
-        <t>In this testcase the end-to-end path capacity between the two
+        <t>In this test case the end-to-end path capacity between the two
         endpoint varies over time. This test is designed to measure the
         responsiveness of the candidate algorithm. The test
         tries to address the requirement 1(a) in <xref
@@ -431,7 +433,7 @@
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following
-        metics:
+        metrics:
 		<list style="numbers">
             <t>Flow level <list style="letters">
                 <t>End-to-end delay</t>
@@ -452,7 +454,9 @@
         <t><list style="symbols">
             <t>Test duration: 60s</t>
 
-            <t>Transport<list style="symbols">
+
+            <t>Path characteristics 
+				<list style="symbols">
                 <t>Path direction: Upstream and downstream.</t>
                 <t>Number of bottlenecks : One.</t>
                 <t>Bottleneck link capacity : 2Mbps.</t>
@@ -470,10 +474,11 @@
                     <t>Number of media sources: two (2).</t>
 
                     <t>Encoder configuration: <list style="symbols">
-                        <t>Maximum Bit rate: 2Mpbs.</t>
-                        <t>Minimum Bit rate: 200Kbps.</t>
-                        <t>Bit rate generation: Variable bit rate.</t>
-                        <t>Variation from target bitrate: 5%</t>
+                        <t>Bit rate generation: VBR</t>
+					  	<t>Bit rate range: 150kbps-1.5mbps</t>
+						<t>Frame Resolution: 144p-720p (or 1080p)</t>
+						<t>Frame rate: 10fps-30fps</t>
+                        <t>Variation from target bitrate: +/-5%</t>
                         <t>Responsiveness to new bit rate request: 60ms</t>
                       </list></t>
 
@@ -539,7 +544,7 @@
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following
-        metics:
+        metrics:
 		<list style="numbers">
             <t>Flow level <list style="letters">
                 <t>End-to-end delay.</t>
@@ -564,13 +569,13 @@
         <t><list style="symbols">
             <t>Test duration: 120s</t>
 
-            <t>Transport<list style="symbols">
+            <t>Path characteristics 
+				<list style="symbols">
                 <t>Number of bottlenecks : One</t>
                 <t>Bottleneck link speed : 1Mbps</t>
                 <t>One-Way propagation delay: 100 ms</t>
-                <t>Bottleneck queue type: one of Drop tail</t>
-				<!-- VS: wouldn't fq-codel, or pie require additional
-				parameters?. -->
+                <t>Bottleneck queue type: Droptail, but additionally test with
+                other AQM schemes: FQ-CoDel, or PIE</t>
                 <t>Bottleneck size: 300ms</t>
                 <t>Link loss ratio: 0%</t>
               </list></t>
@@ -581,7 +586,7 @@
 					<list style="symbols">
                     <t>Number of media sources: one (1)</t>
                     <t>Encoder configuration: Variable bit rate.</t>
-                    <t>Variation from target bit rate: 5%</t>					
+                    <t>Variation from target bit rate: +/-5%</t>					
                     <t>Media content: Foreman video sequence</t>
                     <t>Media timeline: at startup, shutdown 1s before the
                     end.</t>
@@ -597,7 +602,7 @@
                   </list></t>
               </list></t>
 
-            <t>Test specific setup : none</t>
+            <t>Test specific setup: none</t>
           </list></t>
       </section>
 
@@ -614,8 +619,8 @@
         bottleneck link and that there is sufficient capacity to accomodate all
         the flows. While this appears to be a variant of the previous test
         case, however it tests the capacity sharing distribution of the
-        candidate algorithm. Whereas, the previous testcase measures the
-        stability of the candidate algorithm. This testcase particularly
+        candidate algorithm. Whereas, the previous test case measures the
+        stability of the candidate algorithm. This test case particularly
         addresses the requirements 2,3 and 10 in <xref
         target="I-D.ietf-rmcat-cc-requirements" />.</t>
 
@@ -631,7 +636,7 @@ not be true -->
 		
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following
-        metics:
+        metrics:
 		<list style="numbers">
         <t>Flow level 
 			<list style="letters">
@@ -658,7 +663,7 @@ not be true -->
             <t>Test duration: 40s</t>
 			<!-- VS: i think it should be longer, they might not ramp up
 			quickly -->
-            <t>Transport 
+            <t>Path characteristics 
 				<list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
                 <t>Number of bottlenecks: one</t>
@@ -675,16 +680,17 @@ not be true -->
                     <t>Media direction: Upstream </t>
                     <t>Number of media sources: Three (3)</t>
                     <t>Encoder configuration: <list style="symbols">
-                        <t>Maximum Bit rate:2Mbps</t>
-                        <t>Minimum Bit rate:200Kbps</t>
                         <t>Bit rate generation: VBR</t>
-                        <t>Variation from target bit rate: 5%</t>
+					  	<t>Bit rate range: 150kbps-1.5mbps</t>
+					  	<t>Frame Resolution: 144p-720p (or 1080p)</t>
+						<t>Frame rate: 10fps-30fps</t>
+                        <t>Variation from target bit rate: +/-5%</t>
                         <t>Responsiveness to new bit rate request: 60ms</t>
                       </list></t>
 
                     <t>Media content: Foreman video video </t>
-                    <t>Media timeline: sequentially, at short time intervals.
-                    See test specific setup below. </t>
+                    <t>Media timeline: new media flows are added sequentially,
+                    at short time intervals. See test specific setup below. </t>
 
 					<t>Media startup behaviour: starts at minimum bit rate (200kbps).</t>
                   </list></t>
@@ -695,7 +701,7 @@ not be true -->
                     </list></t>
               </list></t>
 
-            <t>Other test specific setup: <list style="symbols">
+            <t>Test specific setup: <list style="symbols">
                 <t>Media flow timeline:<list style="symbols">
                     <t>Flow no: one</t>
                     <t>Start ime: 0s</t>
@@ -714,13 +720,208 @@ not be true -->
           </list> </t>
       </section>
 
-      <section title="RMCAT Flow competing with a Long TCP Flow">
-        <t>TBD</t>
-      </section>
+      <section title="RMCAT Flow competing with a long TCP Flow">
+          <t>In this test case, one or more RMCAT media flow shares the
+          bottleneck link with at least one long lived TCP flows. Long lived
+          TCP flows download data throughout the session and are expected to
+          have infinite amount of data to send and receive. This is a scenario
+          wherein a multimedia application co-exists with a large file
+          download. The test case measures the adaptivity of the candidate
+          algorithm to competing traffic, it addresses the requirements 8 in
+          <xref target="I-D.ietf-rmcat-cc-requirements" />.</t>
+
+          <t>Depending on the convergence observed in test case 4.1 and 4.2,
+          the candidate algorithm may be able to avoid congestion collapse.
+		  In the worst case, the media stream will fall to the minimum media
+		  bit rate.</t>
+ 		
+          <t>To evaluate the performance of the candidate algorithms it is
+          expected to log enough information to visualize the following
+          metrics:
+  		<list style="numbers">
+          <t>Flow level 
+  			<list style="letters">
+              <t>End-to-end delay for the RMCAT flow.</t>
+              <t>RTP packet losses observed at the receiving endpoint.</t>
+              <t>Oscillation in sending bit rate for both RMCAT and TCP
+              flows.</t>
+              <t>Convergence period.</t>
+            </list></t>
+		  
+          <t>Transport level 
+  			<list style="letters">
+              <t>Bandwidth utilization.</t>
+              <t>Queue length (ms)
+  				<list style="symbols">
+                  <t>average over the length of the session</t>
+                  <t>5 an 95 percentile</t>
+  				</list></t>
+            </list></t>
+  		</list></t>
+		
+          <t>Testbed parameters:</t>
+		
+  		<t><list style="symbols">
+              <t>Test duration: 120s</t>
+  			<!-- VS: i think it should be longer, they might not ramp up
+  			quickly -->
+            <t>Path characteristics 
+				<list style="symbols">
+                  <t>Path direction: Upstream, Downstream</t>
+                  <t>Number of bottlenecks: one</t>
+                  <t>Bottleneck link capacity: 2Mbps</t>
+                  <t>One-Way propagation delay: 50ms</t>
+                  <t>Maximum end to end jitter: 30ms</t>
+                  <t>Bottleneck queue type: droptail, but would benefit from
+                  running the same test with different AQM schemes: FQ-Codel,
+                  or PIE.</t>
+                  <t>Bottleneck queue size: 250ms</t>
+                  <t>Link loss ratio: 0.0%</t>
+                </list></t>
+
+              <t>Application-related: <list style="symbols">
+                  <t>Media Source: 
+					  <list style="symbols">
+                      <t>Media direction: Upstream and Downstream</t>
+                      <t>Number of media sources: One (1)</t>
+                      <t>Encoder configuration: 
+						  <list style="symbols">
+                          <t>Bit rate generation: VBR</t>
+						  <t>Bit rate range: 150kbps-1.5mbps</t>
+						  <t>Frame Resolution: 144p-720p (or 1080p)</t>
+						  <t>Frame rate: 10fps-30fps</t>
+                          <t>Variation from target bit rate: +/-5%</t>
+                          <t>Responsiveness to new bit rate request: 60ms</t>
+                        </list></t>
+
+                      <t>Media content: Foreman video video </t>
+                      <t>Media timeline: starts at the begining, shutdown 1s
+                      before the end. </t>
+
+
+	                  <t>Media startup behaviour: 1) start at minimum bit rate, 2)
+	                  start at maximum bit rate.</t>
+                    </list></t>
+
+                    <t>Competing traffic
+    					<list style="symbols">
+                        <t>Number and Types of sources : one (1), long-lived
+                        TCP</t>
+						<t>Traffic direction : downstream</t> 
+						<t>Default TCP Congestion control (CUBIC).</t>
+						<t>Traffic timeline: same as media timeline</t>
+                      </list></t>
+                </list></t>
+	            <t>Test specific setup: none</t>
+				
+            </list> </t>
+        </section>
 	  
       <section title="RMCAT Flow competing with short TCP Flows">
-        <t>TBD</t>
-      </section>
+          <t>In this test case, one or more RMCAT media flow shares the
+          bottleneck link with at multiple short-lived TCP flows. Short-lived
+          TCP flows resemble the on/off pattern observed in the web traffic,
+          wherein clients (browsers) connect to a server and download a
+          resource (typically a webpage, few images, text files, etc.) using
+          several TCP connections (up to 4). This scenario shows the
+          performance of the multimedia application when several browser
+          windows are active. The test case measures the adaptivity of the
+          candidate algorithm to competing web traffic, it addresses the
+          requirements 2 in <xref target="I-D.ietf-rmcat-cc-requirements"
+          />.</t>
+
+          <t>Depending on the convergence observed in test case 4.1 and 4.2,
+          the candidate algorithm may be able to avoid congestion collapse.
+		  In the worst case, the media stream will fall to the minimum media
+		  bit rate.</t>
+ 		
+          <t>To evaluate the performance of the candidate algorithms it is
+          expected to log enough information to visualize the following
+          metrics:
+  		<list style="numbers">
+          <t>Flow level 
+  			<list style="letters">
+              <t>End-to-end delay for the RMCAT flow.</t>
+              <t>RTP packet losses observed at the receiving endpoint.</t>
+              <t>Oscillation in sending bit rate for both RMCAT and TCP
+              flows.</t>
+              <t>Convergence period.</t>
+            </list></t>
+		  
+          <t>Transport level 
+  			<list style="letters">
+              <t>Bandwidth utilization.</t>
+              <t>Queue length (ms)
+  				<list style="symbols">
+                  <t>average over the length of the session</t>
+                  <t>5 an 95 percentile</t>
+  				</list></t>
+            </list></t>
+  		</list></t>
+		
+          <t>Testbed parameters:</t>
+		
+  		<t><list style="symbols">
+              <t>Test duration: 120s</t>
+  			<!-- VS: i think it should be longer, they might not ramp up
+  			quickly -->
+            <t>Path characteristics 
+				<list style="symbols">
+                  <t>Path direction: Upstream, Downstream</t>
+                  <t>Number of bottlenecks: one</t>
+                  <t>Bottleneck link capacity: 2Mbps</t>
+                  <t>One-Way propagation delay: 50ms</t>
+                  <t>Maximum end to end jitter: 30ms</t>
+                  <t>Bottleneck queue type: droptail, but would benefit from
+                  running the same test with different AQM schemes: FQ-Codel,
+                  or PIE.</t>
+                  <t>Bottleneck queue size: 250ms</t>
+                  <t>Link loss ratio: 0.0%</t>
+                </list></t>
+
+              <t>Application-related: <list style="symbols">
+                  <t>Media Source: 
+					  <list style="symbols">
+                      <t>Media direction: Upstream and Downstream</t>
+                      <t>Number of media sources: One (1)</t>
+                      <t>Encoder configuration: 
+						  <list style="symbols">
+                          <t>Bit rate generation: VBR</t>
+						  <t>Bit rate range: 150kbps-1.5mbps</t>
+						  <t>Frame Resolution: 144p-720p (or 1080p)</t>
+						  <t>Frame rate: 10fps-30fps</t>
+                          <t>Variation from target bit rate: +/-5%</t>
+                          <t>Responsiveness to new bit rate request: 60ms</t>
+                        </list></t>
+
+                      <t>Media content: Foreman video video </t>
+                      <t>Media timeline: starts at the begining, shutdown 1s
+                      before the end. </t>
+
+
+	                  <t>Media startup behaviour: 1) start at minimum bit rate, 2)
+	                  start at maximum bit rate.</t>
+                    </list></t>
+
+                    <t>Competing traffic
+    					<list style="symbols">
+                        <t>Number and Types of sources : ten (10), short-lived
+                        TCP flows.</t>
+						<t>Traffic direction : downstream</t> 
+						<t>Default TCP Congestion control (CUBIC).</t>
+						<t>Traffic timeline: Each short TCP flow is modeled as
+						a sequence of file downloads interleaved with idle periods.</t>
+                      </list></t>
+                </list></t>
+	            <t>Test specific setup: Short-TCP traffic model
+				  <list style="symbols">
+					<t>File sizes: uniform distribution between 100KB to
+					2MB.</t>
+					<t>Idle period: exponential distribution with the mean
+					value of 10 seconds.</t>
+                  </list></t>
+            </list> </t>
+        </section>
 
       <section title="Media Pause and Resume">
         <t>TBD</t>
@@ -731,9 +932,101 @@ not be true -->
       </section>
 
       <section title="Round Trip Time Fairness">
-        <t>TBD</t>
-      </section>
+          <t>In this test case, more than one RMCAT media flow shares the
+          bottleneck link, but the end-to-end path latency for each RMCAT flow
+          is different. For the sake of simplicity it is assumed that there are
+          no other competing taffic sources in the bottleneck link and that
+          there is sufficient capacity to accomodate all the flows. While this
+          appears to be a variant of the test case 4.2, it tests the capacity
+          sharing distribution of the candidate algorithm under different RTTs.
+          This test case particularly addresses the requirements 2 <xref
+          target="I-D.ietf-rmcat-cc-requirements" />.</t>
 
+
+
+          <t>It is expected that the competing flows will converge to an
+          optimum bit rate to accomodate all the flows with minumum possible
+          latency and loss. Specifically, the test introduces five media flows
+          at the same time instance. </t>
+
+  <!-- this assumes that the congestion control ramps up that quickly, which may
+  not be true -->
+
+		
+          <t>To evaluate the performance of the candidate algorithms it is
+          expected to log enough information to visualize the following
+          metrics:
+  		<list style="numbers">
+          <t>Flow level 
+  			<list style="letters">
+              <t>End-to-end delay.</t>
+              <t>RTP packet losses observed at the receiving endpoint.</t>
+              <t>Oscillation in sending bit rate.</t>
+              <t>Convergence period.</t>
+            </list></t>
+		  
+          <t>Transport level 
+  			<list style="letters">
+              <t>Bandwidth utilization.</t>
+              <t>Queue length (ms)
+  				<list style="symbols">
+                  <t>average over the length of the session</t>
+                  <t>5 an 95 percentile</t>
+  				</list></t>
+            	</list></t>
+  		</list></t>
+		
+          <t>Testbed parameters:</t>
+		
+  		<t><list style="symbols">
+              <t>Test duration: 40s</t>
+  			<!-- VS: i think it should be longer, they might not ramp up
+  			quickly -->
+              <t>Path characteristics 
+  				<list style="symbols">
+                  <t>Path direction: Upstream, Downstream</t>
+                  <t>Number of bottlenecks: one</t>
+                  <t>Bottleneck link capacity: 2.5Mbps</t>
+                  <t>One-Way propagation delay for each path is: 25ms, 50ms,
+                  100ms, 150ms, 200ms.</t>
+                  <t>Maximum end to end jitter: 30ms</t>
+                  <t>Bottleneck queue type: droptail</t>
+                  <t>Bottleneck queue size: 250ms</t>
+                  <t>Link loss ratio: 0.0%</t>
+                </list></t>
+
+              <t>Application-related: <list style="symbols">
+                  <t>Media Source: <list style="symbols">
+                      <t>Media direction: Upstream </t>
+                      <t>Number of media sources: Five (5)</t>
+                      <t>Encoder configuration: <list style="symbols">
+                          <t>Bit rate generation: VBR</t>
+  					  	<t>Bit rate range: 150kbps-1.5mbps</t>
+  					  	<t>Frame Resolution: 144p-720p (or 1080p)</t>
+  						<t>Frame rate: 10fps-30fps</t>
+                          <t>Variation from target bit rate: +/-5%</t>
+                          <t>Responsiveness to new bit rate request: 60ms</t>
+                        </list></t>
+
+                      <t>Media content: Foreman video video </t>
+                      <t>Media timeline: starts at the begining, shutdown 1s
+                      before the end. </t>
+
+	                  <t>Media startup behaviour: 1) start at minimum bit rate, 2)
+	                  start at maximum bit rate.</t>
+                    </list></t>
+
+                    <t>Competing traffic
+    					<list style="symbols">
+                        <t>Number of sources : Zero (0)</t>
+                      </list></t>
+                </list></t>
+
+              <t>Test specific setup: None</t>
+				  
+            </list> </t>
+      </section>
+		
       <section title="Startup Behavior">
         <t>TBD</t>
       </section>
