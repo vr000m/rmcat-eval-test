@@ -571,7 +571,7 @@
 
 <p> </p>
 <h1 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5.</a> RMCAT Flow competing with short TCP Flows</h1>
-<p id="rfc.section.4.5.p.1">In this test case, one or more RMCAT media flow shares the bottleneck link with at multiple short-lived TCP flows. Short-lived TCP flows resemble the on/off pattern observed in the web traffic, wherein clients (browsers) connect to a server and download a resource (typically a webpage, few images, text files, etc.) using several TCP connections (up to 4). This scenario shows the performance of the multimedia application when several browser windows are active. The test case measures the adaptivity of the candidate algorithm to competing web traffic, it addresses the requirements 2 in <a href="#I-D.ietf-rmcat-cc-requirements">[I-D.ietf-rmcat-cc-requirements]</a>.</p>
+<p id="rfc.section.4.5.p.1">In this test case, one or more RMCAT media flow shares the bottleneck link with at multiple short-lived TCP flows. Short-lived TCP flows resemble the on/off pattern observed in the web traffic, wherein clients (browsers) connect to a server and download a resource (typically a webpage, few images, text files, etc.) using several TCP connections (up to 4). This scenario shows the performance of the multimedia application when several browser windows are active. The test case measures the adaptivity of the candidate algorithm to competing web traffic, it addresses the requirement 2 in <a href="#I-D.ietf-rmcat-cc-requirements">[I-D.ietf-rmcat-cc-requirements]</a>.</p>
 <p id="rfc.section.4.5.p.2">Depending on the convergence observed in test case 4.1 and 4.2, the candidate algorithm may be able to avoid congestion collapse.  In the worst case, the media stream will fall to the minimum media bit rate.</p>
 <p id="rfc.section.4.5.p.3">To evaluate the performance of the candidate algorithms it is expected to log enough information to visualize the following metrics: </p>
 
@@ -608,14 +608,32 @@
 
 <ul>
   <li>Test duration: 40s</li>
-  <li>Path characteristics <ul><li>Path direction: Upstream, Downstream</li><li>Number of bottlenecks: one</li><li>Bottleneck link capacity: 2.5Mbps</li><li>One-Way propagation delay for each path is: 25ms, 50ms, 100ms, 150ms, 200ms.</li><li>Maximum end to end jitter: 30ms</li><li>Bottleneck queue type: droptail</li><li>Bottleneck queue size: 250ms</li><li>Link loss ratio: 0.0%</li></ul></li>
+  <li>Path characteristics <ul><li>Path direction: Upstream, Downstream</li><li>Number of bottlenecks: one</li><li>Bottleneck link capacity: 3Mbps</li><li>One-Way propagation delay for each path is: 25ms, 50ms, 100ms, 150ms, 200ms.</li><li>Maximum end to end jitter: 30ms</li><li>Bottleneck queue type: droptail</li><li>Bottleneck queue size: 250ms</li><li>Link loss ratio: 0.0%</li></ul></li>
   <li>Application-related: <ul><li>Media Source: <ul><li>Media direction: Upstream </li><li>Number of media sources: Five (5)</li><li>Encoder configuration: <ul><li>Bit rate generation: VBR</li><li>Bit rate range: 150kbps-1.5mbps</li><li>Frame Resolution: 144p-720p (or 1080p)</li><li>Frame rate: 10fps-30fps</li><li>Variation from target bit rate: +/-5%</li><li>Responsiveness to new bit rate request: 60ms</li></ul></li><li>Media content: Foreman video video </li><li>Media timeline: starts at the begining, shutdown 1s before the end. </li><li>Media startup behaviour: 1) start at minimum bit rate, 2) start at maximum bit rate.</li></ul></li><li>Competing traffic <ul><li>Number of sources : Zero (0)</li></ul></li></ul></li>
   <li>Test specific setup: None</li>
 </ul>
 
 <p> </p>
 <h1 id="rfc.section.4.9"><a href="#rfc.section.4.9">4.9.</a> Startup Behavior</h1>
-<p id="rfc.section.4.9.p.1">TBD</p>
+<p id="rfc.section.4.9.p.1">In this test case, more than one RMCAT media flow shares the bottleneck link, but they start at different start rates and there are no other competing taffic sources in the bottleneck link. While this appears to be a variant of the test case 4.2, it tests the rampup and capacity sharing of the candidate algorithm when starting at different rates.  This test case particularly addresses the requirements 3 and 10. <a href="#I-D.ietf-rmcat-cc-requirements">[I-D.ietf-rmcat-cc-requirements]</a>.</p>
+<p id="rfc.section.4.9.p.2">It is expected that the competing flows will converge to an optimum bit rate to accomodate all the flows with minumum possible latency and loss. Specifically, the test introduces five media flows at the same time instance, but with differrent start rates.</p>
+<p id="rfc.section.4.9.p.3">To evaluate the performance of the candidate algorithms it is expected to log enough information to visualize the following metrics: </p>
+
+<ol>
+  <li>Flow level <ol style="list-style-type: lower-alpha"><li>End-to-end delay.</li><li>RTP packet losses observed at the receiving endpoint.</li><li>Oscillation in sending bit rate.</li><li>Convergence period.</li></ol></li>
+  <li>Transport level <ol style="list-style-type: lower-alpha"><li>Bandwidth utilization.</li><li>Queue length (ms) <ul><li>average over the length of the session</li><li>5 an 95 percentile</li></ul></li></ol></li>
+</ol>
+<p id="rfc.section.4.9.p.4">Testbed parameters:</p>
+<p/>
+
+<ul>
+  <li>Test duration: 40s</li>
+  <li>Path characteristics <ul><li>Path direction: Upstream, Downstream</li><li>Number of bottlenecks: one</li><li>Bottleneck link capacity: 3Mbps</li><li>One-Way propagation delay for each path is: 100ms.</li><li>Maximum end-to-end jitter: 30ms</li><li>Bottleneck queue type: droptail</li><li>Bottleneck queue size: 250ms</li><li>Link loss ratio: 0.0%</li></ul></li>
+  <li>Application-related: <ul><li>Media Source: <ul><li>Media direction: Upstream </li><li>Number of media sources: Five (5)</li><li>Encoder configuration: <ul><li>Bit rate generation: VBR</li><li>Bit rate range: 150kbps-1.5mbps</li><li>Frame Resolution: 144p-720p (or 1080p)</li><li>Frame rate: 10fps-30fps</li><li>Variation from target bit rate: +/-5%</li><li>Responsiveness to new bit rate request: 60ms</li></ul></li><li>Media content: Foreman video video </li><li>Media timeline: starts at the begining, shutdown 1s before the end. </li><li>Media startup behaviour: each media source stats at a different rate: 200, 500, 800, 1000, 1200 kbps.</li></ul></li><li>Competing traffic <ul><li>Number of sources : Zero (0)</li></ul></li></ul></li>
+  <li>Test specific setup: None</li>
+</ul>
+
+<p> </p>
 <h1 id="rfc.section.4.10"><a href="#rfc.section.4.10">4.10.</a> Response to Explicit Congestion Notification</h1>
 <p id="rfc.section.4.10.p.1">TBD</p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> Cellular Network Specific Test Cases</h1>

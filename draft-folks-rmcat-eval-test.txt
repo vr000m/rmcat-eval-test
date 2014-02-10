@@ -83,16 +83,16 @@ Table of Contents
      4.7.  Congested Feedback Link . . . . . . . . . . . . . . . . .  17
      4.8.  Round Trip Time Fairness  . . . . . . . . . . . . . . . .  17
      4.9.  Startup Behavior  . . . . . . . . . . . . . . . . . . . .  19
-     4.10. Response to Explicit Congestion Notification  . . . . . .  19
-   5.  Cellular Network Specific Test Cases  . . . . . . . . . . . .  19
-   6.  Wi-Fi Network Specific Test Cases . . . . . . . . . . . . . .  19
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  19
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  19
-   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  19
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  20
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  20
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  20
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  21
+     4.10. Response to Explicit Congestion Notification  . . . . . .  21
+   5.  Cellular Network Specific Test Cases  . . . . . . . . . . . .  21
+   6.  Wi-Fi Network Specific Test Cases . . . . . . . . . . . . . .  21
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  21
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  21
+   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  21
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  22
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  22
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  22
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
 
 1.  Introduction
 
@@ -792,7 +792,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    TCP connections (up to 4).  This scenario shows the performance of
    the multimedia application when several browser windows are active.
    The test case measures the adaptivity of the candidate algorithm to
-   competing web traffic, it addresses the requirements 2 in
+   competing web traffic, it addresses the requirement 2 in
    [I-D.ietf-rmcat-cc-requirements].
 
    Depending on the convergence observed in test case 4.1 and 4.2, the
@@ -976,7 +976,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Number of bottlenecks: one
 
-      *  Bottleneck link capacity: 2.5Mbps
+      *  Bottleneck link capacity: 3Mbps
 
       *  One-Way propagation delay for each path is: 25ms, 50ms, 100ms,
          150ms, 200ms.
@@ -1034,7 +1034,115 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 4.9.  Startup Behavior
 
-   TBD
+   In this test case, more than one RMCAT media flow shares the
+   bottleneck link, but they start at different start rates and there
+   are no other competing taffic sources in the bottleneck link.  While
+   this appears to be a variant of the test case 4.2, it tests the
+   rampup and capacity sharing of the candidate algorithm when starting
+   at different rates.  This test case particularly addresses the
+   requirements 3 and 10.  [I-D.ietf-rmcat-cc-requirements].
+
+   It is expected that the competing flows will converge to an optimum
+   bit rate to accomodate all the flows with minumum possible latency
+   and loss.  Specifically, the test introduces five media flows at the
+   same time instance, but with differrent start rates.
+
+   To evaluate the performance of the candidate algorithms it is
+   expected to log enough information to visualize the following
+   metrics:
+
+   1.  Flow level
+
+       a.  End-to-end delay.
+
+       b.  RTP packet losses observed at the receiving endpoint.
+
+       c.  Oscillation in sending bit rate.
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 19]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+       d.  Convergence period.
+
+   2.  Transport level
+
+       a.  Bandwidth utilization.
+
+       b.  Queue length (ms)
+
+           +  average over the length of the session
+
+           +  5 an 95 percentile
+
+   Testbed parameters:
+
+   o  Test duration: 40s
+
+   o  Path characteristics
+
+      *  Path direction: Upstream, Downstream
+
+      *  Number of bottlenecks: one
+
+      *  Bottleneck link capacity: 3Mbps
+
+      *  One-Way propagation delay for each path is: 100ms.
+
+      *  Maximum end-to-end jitter: 30ms
+
+      *  Bottleneck queue type: droptail
+
+      *  Bottleneck queue size: 250ms
+
+      *  Link loss ratio: 0.0%
+
+   o  Application-related:
+
+      *  Media Source:
+
+         +  Media direction: Upstream
+
+         +  Number of media sources: Five (5)
+
+         +  Encoder configuration:
+
+            -  Bit rate generation: VBR
+
+            -  Bit rate range: 150kbps-1.5mbps
+
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 20]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+            -  Frame Resolution: 144p-720p (or 1080p)
+
+            -  Frame rate: 10fps-30fps
+
+            -  Variation from target bit rate: +/-5%
+
+            -  Responsiveness to new bit rate request: 60ms
+
+         +  Media content: Foreman video video
+
+         +  Media timeline: starts at the begining, shutdown 1s before
+            the end.
+
+         +  Media startup behaviour: each media source stats at a
+            different rate: 200, 500, 800, 1000, 1200 kbps.
+
+      *  Competing traffic
+
+         +  Number of sources : Zero (0)
+
+   o  Test specific setup: None
 
 4.10.  Response to Explicit Congestion Notification
 
@@ -1058,16 +1166,17 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 9.  Acknowledgements
 
+   Much of this document is derived from previous work on congestion
+   control at the IETF.
 
 
 
-Sarker & Singh          Expires August 14, 2014                [Page 19]
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 21]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
-
-   Much of this document is derived from previous work on congestion
-   control at the IETF.
 
    The content and concepts within this document are a product of the
    discussion carried out in the Design Team.
@@ -1117,7 +1226,10 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 14, 2014                [Page 20]
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 22]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -1173,7 +1285,7 @@ Authors' Addresses
 
 
 
-Sarker & Singh          Expires August 14, 2014                [Page 21]
+Sarker & Singh          Expires August 14, 2014                [Page 23]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -1228,4 +1340,4 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 14, 2014                [Page 22]
+Sarker & Singh          Expires August 14, 2014                [Page 24]

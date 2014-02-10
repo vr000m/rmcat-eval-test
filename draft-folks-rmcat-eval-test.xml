@@ -827,7 +827,7 @@ not be true -->
           performance of the multimedia application when several browser
           windows are active. The test case measures the adaptivity of the
           candidate algorithm to competing web traffic, it addresses the
-          requirements 2 in <xref target="I-D.ietf-rmcat-cc-requirements"
+          requirement 2 in <xref target="I-D.ietf-rmcat-cc-requirements"
           />.</t>
 
           <t>Depending on the convergence observed in test case 4.1 and 4.2,
@@ -942,16 +942,10 @@ not be true -->
           This test case particularly addresses the requirements 2 <xref
           target="I-D.ietf-rmcat-cc-requirements" />.</t>
 
-
-
           <t>It is expected that the competing flows will converge to an
           optimum bit rate to accomodate all the flows with minumum possible
           latency and loss. Specifically, the test introduces five media flows
           at the same time instance. </t>
-
-  <!-- this assumes that the congestion control ramps up that quickly, which may
-  not be true -->
-
 		
           <t>To evaluate the performance of the candidate algorithms it is
           expected to log enough information to visualize the following
@@ -986,7 +980,7 @@ not be true -->
   				<list style="symbols">
                   <t>Path direction: Upstream, Downstream</t>
                   <t>Number of bottlenecks: one</t>
-                  <t>Bottleneck link capacity: 2.5Mbps</t>
+                  <t>Bottleneck link capacity: 3Mbps</t>
                   <t>One-Way propagation delay for each path is: 25ms, 50ms,
                   100ms, 150ms, 200ms.</t>
                   <t>Maximum end to end jitter: 30ms</t>
@@ -1028,7 +1022,92 @@ not be true -->
       </section>
 		
       <section title="Startup Behavior">
-        <t>TBD</t>
+          <t>In this test case, more than one RMCAT media flow shares the
+          bottleneck link, but they start at different start rates and there
+          are no other competing taffic sources in the bottleneck link. While this
+          appears to be a variant of the test case 4.2, it tests the rampup and capacity
+          sharing of the candidate algorithm when starting at different rates.
+          This test case particularly addresses the requirements 3 and 10. <xref
+          target="I-D.ietf-rmcat-cc-requirements" />.</t>
+
+
+
+          <t>It is expected that the competing flows will converge to an
+          optimum bit rate to accomodate all the flows with minumum possible
+          latency and loss. Specifically, the test introduces five media flows
+          at the same time instance, but with differrent start rates.</t>
+		
+          <t>To evaluate the performance of the candidate algorithms it is
+          expected to log enough information to visualize the following
+          metrics:
+  		<list style="numbers">
+          <t>Flow level 
+  			<list style="letters">
+              <t>End-to-end delay.</t>
+              <t>RTP packet losses observed at the receiving endpoint.</t>
+              <t>Oscillation in sending bit rate.</t>
+              <t>Convergence period.</t>
+            </list></t>
+		  
+          <t>Transport level 
+  			<list style="letters">
+              <t>Bandwidth utilization.</t>
+              <t>Queue length (ms)
+  				<list style="symbols">
+                  <t>average over the length of the session</t>
+                  <t>5 an 95 percentile</t>
+  				</list></t>
+            	</list></t>
+  		</list></t>
+		
+          <t>Testbed parameters:</t>
+		
+  		<t><list style="symbols">
+              <t>Test duration: 40s</t>
+  			<!-- VS: i think it should be longer, they might not ramp up
+  			quickly -->
+              <t>Path characteristics 
+  				<list style="symbols">
+                  <t>Path direction: Upstream, Downstream</t>
+                  <t>Number of bottlenecks: one</t>
+                  <t>Bottleneck link capacity: 3Mbps</t>
+                  <t>One-Way propagation delay for each path is: 100ms.</t>
+                  <t>Maximum end-to-end jitter: 30ms</t>
+                  <t>Bottleneck queue type: droptail</t>
+                  <t>Bottleneck queue size: 250ms</t>
+                  <t>Link loss ratio: 0.0%</t>
+                </list></t>
+
+              <t>Application-related: <list style="symbols">
+                  <t>Media Source: <list style="symbols">
+                      <t>Media direction: Upstream </t>
+                      <t>Number of media sources: Five (5)</t>
+                      <t>Encoder configuration: <list style="symbols">
+                          <t>Bit rate generation: VBR</t>
+  					  	<t>Bit rate range: 150kbps-1.5mbps</t>
+  					  	<t>Frame Resolution: 144p-720p (or 1080p)</t>
+  						<t>Frame rate: 10fps-30fps</t>
+                          <t>Variation from target bit rate: +/-5%</t>
+                          <t>Responsiveness to new bit rate request: 60ms</t>
+                        </list></t>
+
+                      <t>Media content: Foreman video video </t>
+                      <t>Media timeline: starts at the begining, shutdown 1s
+                      before the end. </t>
+
+	                  <t>Media startup behaviour: each media source stats at a different rate:
+						  200, 500, 800, 1000, 1200 kbps.</t>
+                    </list></t>
+
+                    <t>Competing traffic
+    					<list style="symbols">
+                        <t>Number of sources : Zero (0)</t>
+                      </list></t>
+                </list></t>
+
+              <t>Test specific setup: None</t>
+				  
+            </list> </t>
       </section>
 
       <section title="Response to Explicit Congestion Notification">
