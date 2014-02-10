@@ -157,11 +157,14 @@
         levels for compliant implementations. </t> -->
 
       <t>The terminology defined in <xref target="RFC3550">RTP</xref>, <xref
-      target="RFC3551">RTP Profile for Audio and Video Conferences with
-      Minimal Control</xref>, <xref target="RFC3611">RTCP Extended Report
-      (XR)</xref>, <xref target="RFC4585">Extended RTP Profile for RTCP-based
-      Feedback (RTP/AVPF)</xref> and <xref target="RFC5506">Support for
-      Reduced-Size RTCP</xref> apply.</t>
+      target="RFC3551">RTP Profile for Audio and Video Conferences with Minimal
+      Control</xref>, <xref target="RFC3611">RTCP Extended Report (XR)</xref>,
+      <xref target="RFC4585">Extended RTP Profile for RTCP-based Feedback
+      (RTP/AVPF)</xref>, <xref target="RFC5506">Support for Reduced-Size
+      RTCP</xref>, and <xref target="I-D.ietf-avtcore-rtp-circuit-breakers">RTP
+      Circuit Breaker algorithm</xref> apply.</t>
+
+
     </section>
 
 
@@ -270,7 +273,7 @@
 
               <t>Define a checklist to evaluate the desired behaviour: this
               indicates the mimimum set of metrics that a proposed algorithm
-			  needs to achieve to pass the test case.</t>
+			  needs to measure.</t>
             </list></t>
 
           <t>Define testbed parameters:
@@ -1169,7 +1172,7 @@ test cases to evaluate the performance of congestion control algorithms. Hence t
 
       <!--RMCAT related -->
       &rfc5506;
-      <!-- &I-D.ietf-avtcore-rtp-circuit-breakers; -->
+      &I-D.ietf-avtcore-rtp-circuit-breakers;
       &I-D.ietf-rmcat-eval-criteria;
 	  &I-D.ietf-rmcat-cc-requirements;
     </references>

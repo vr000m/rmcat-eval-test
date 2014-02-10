@@ -16,9 +16,10 @@ Abstract
 
    The Real-time Transport Protocol (RTP) is used to transmit media in
    multimedia telephony applications, these applications are typically
-   implement congestion control.  This document describes the test cases
-   required to evaluate the performance of congestion control for
-   interactive point-to-point real-time media.
+   required to implement congestion control.  The RMCAT working group is
+   currently working on candidate algorithms for WebRTC.  This document
+   describes the test cases needed to evaluate the performance of those
+   candidate algorithms.
 
 Status of This Memo
 
@@ -42,14 +43,13 @@ Copyright Notice
    Copyright (c) 2014 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
-
-
-
-
-
-
-
-
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
 
 
 
@@ -58,13 +58,6 @@ Sarker & Singh          Expires August 14, 2014                 [Page 1]
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -89,23 +82,30 @@ Table of Contents
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  21
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  21
    9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  21
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  22
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  22
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  21
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  21
      10.2.  Informative References . . . . . . . . . . . . . . . . .  22
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
 
 1.  Introduction
 
    This memo describes a set of test cases for evaluating candidate
-   RMCAT proposals, it based on the guidelines enumerated in
+   RMCAT proposals, it is based on the guidelines enumerated in
    [I-D.ietf-rmcat-eval-criteria] and requirements discussed in
-   [I-D.ietf-rmcat-cc-requirements].  This document discusses an initial
-   set of scenarios that cover common use-cases.  Additionally, the
-   document provides a basic structure to escribe test cases, which can
-   be customized by an implementer to fit their test scenario.
+   [I-D.ietf-rmcat-cc-requirements].  The test cases cover basic usage
+   scenarios and are described using a common structure, which allows
+   any implementer to provide new test cases to fit their test scenario.
+   Each test cases incorporates the metrics, evaluation guidelines and
+   parameters described in [I-D.ietf-rmcat-eval-criteria].
 
 2.  Terminology
 
+   The terminology defined in RTP [RFC3550], RTP Profile for Audio and
+   Video Conferences with Minimal Control [RFC3551], RTCP Extended
+   Report (XR) [RFC3611], Extended RTP Profile for RTCP-based Feedback
+   (RTP/AVPF) [RFC4585], Support for Reduced-Size RTCP [RFC5506], and
+   RTP Circuit Breaker algorithm [I-D.ietf-avtcore-rtp-circuit-breakers]
+   apply.
 
 
 
@@ -113,12 +113,6 @@ Sarker & Singh          Expires August 14, 2014                 [Page 2]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
-
-   The terminology defined in RTP [RFC3550], RTP Profile for Audio and
-   Video Conferences with Minimal Control [RFC3551], RTCP Extended
-   Report (XR) [RFC3611], Extended RTP Profile for RTCP-based Feedback
-   (RTP/AVPF) [RFC4585] and Support for Reduced-Size RTCP [RFC5506]
-   apply.
 
 3.  Basic Structure of Test cases
 
@@ -134,7 +128,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Define a checklist to evaluate the desired behaviour: this
          indicates the mimimum set of metrics that a proposed algorithm
-         needs to achieve to pass the test case.
+         needs to measure.
 
    o  Define testbed parameters:
 
@@ -161,15 +155,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Bottleneck queue size in miliseconds.
 
-
-
-
-
-Sarker & Singh          Expires August 14, 2014                 [Page 3]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
          +  Link loss ratio: chatacterize the non-congested losses
             observed on a specific link, for e.g., at the access link or
             bottleneck link.  Also describe the loss pattern or model to
@@ -177,6 +162,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Application-related: defines different applications behaviour
          included in the test case
+
+
+
+Sarker & Singh          Expires August 14, 2014                 [Page 3]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
          +  Media Source: defines the characteristics of the media
             sources present in the test case.  When using more than one
@@ -217,15 +209,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
                the media source may begin transmitting when the test
                case begins or a few minutes after, etc.
 
-
-
-
-
-Sarker & Singh          Expires August 14, 2014                 [Page 4]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
             -  Startup behaviour: the media starts at a defined bit
                rate, which may be the minimum, maximum bit rate, or a
                value in between (in kbps).
@@ -234,6 +217,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
             the competing traffic source, the different types of
             competing flows are enumerated in
             [I-D.ietf-rmcat-eval-criteria].
+
+
+
+
+Sarker & Singh          Expires August 14, 2014                 [Page 4]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
             -  Traffic direction: Upstream, downstream or both.
 
@@ -275,13 +266,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    o  persistent network load due to competing traffic
 
-
-
-Sarker & Singh          Expires August 14, 2014                 [Page 5]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
    It should be noted that the exact variation in available capcity due
    to any of the above impairments depends on the under-lying
    technology.  Hence, we describe a set of known factors, which may be
@@ -290,6 +274,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    Expected behavior: the candidate algorithm should detect the
    variation and adapt the media stream accordingly.  The candidate
    algorithm track the available capacity as closely as possible, i.e.,
+
+
+
+Sarker & Singh          Expires August 14, 2014                 [Page 5]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
    if there is sufficient capacity the flow(s) reach their respective
    maximum bit rate.  When the available capacity drops, the RMCAT
    flow(s) adapts by decreasing its bit rate, and when congestion
@@ -331,13 +323,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Maximum end-to-end jitter: 30ms.
 
-
-
-Sarker & Singh          Expires August 14, 2014                 [Page 6]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
       *  Bottleneck queue type: Drop tail.
 
       *  Bottleneck queue size: 300ms.
@@ -345,6 +330,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
       *  Link loss ratio: 0%.
 
    o  Application-related
+
+
+
+Sarker & Singh          Expires August 14, 2014                 [Page 6]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
       *  Media Source:
 
@@ -387,19 +379,20 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Amount of change: 50% of bottleneck link speed
 
-
-
-Sarker & Singh          Expires August 14, 2014                 [Page 7]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
          +  Duration: 5s
 
          +  start time: 10s
 
          +  end behaviour: bandwith is restored to the 80% of bottleneck
             link speed
+
+
+
+
+Sarker & Singh          Expires August 14, 2014                 [Page 7]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
       *  Link vairation pattern:
 
@@ -442,14 +435,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        b.  RTP packet losses observed at the receiving endpoint.
 
-
-
-
-Sarker & Singh          Expires August 14, 2014                 [Page 8]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
        c.  Oscillation in sending bit rate.
 
        d.  Convergence period.
@@ -457,6 +442,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    2.  Transport level
 
        a.  Bandwidth utilization.
+
+
+
+Sarker & Singh          Expires August 14, 2014                 [Page 8]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
        b.  Queue length (ms)
 
@@ -497,15 +489,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media timeline: at startup, shutdown 1s before the end.
 
-
-
-
-
-Sarker & Singh          Expires August 14, 2014                 [Page 9]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
       *  Media startup behaviour: 1) start at minimum bit rate, 2) start
          at maximum bit rate.
 
@@ -514,6 +497,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
          +  Number of sources : Zero (0)
 
    o  Test specific setup: none
+
+
+
+
+Sarker & Singh          Expires August 14, 2014                 [Page 9]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
 4.3.  Competing with similar RMCAT flows
 
@@ -555,13 +546,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        d.  Convergence period.
 
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 10]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
    2.  Transport level
 
        a.  Bandwidth utilization.
@@ -569,6 +553,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
        b.  Queue length (ms)
 
            +  average over the length of the session
+
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 10]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
            +  5 an 95 percentile
 
@@ -610,14 +602,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
             -  Frame Resolution: 144p-720p (or 1080p)
 
-
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 11]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
             -  Frame rate: 10fps-30fps
 
             -  Variation from target bit rate: +/-5%
@@ -625,6 +609,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
             -  Responsiveness to new bit rate request: 60ms
 
          +  Media content: Foreman video video
+
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 11]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
          +  Media timeline: new media flows are added sequentially, at
             short time intervals.  See test specific setup below.
@@ -667,13 +659,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    algorithm to competing traffic, it addresses the requirements 8 in
    [I-D.ietf-rmcat-cc-requirements].
 
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 12]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
    Depending on the convergence observed in test case 4.1 and 4.2, the
    candidate algorithm may be able to avoid congestion collapse.  In the
    worst case, the media stream will fall to the minimum media bit rate.
@@ -681,6 +666,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    To evaluate the performance of the candidate algorithms it is
    expected to log enough information to visualize the following
    metrics:
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 12]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
    1.  Flow level
 
@@ -723,13 +715,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Bottleneck queue size: 250ms
 
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 13]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
       *  Link loss ratio: 0.0%
 
    o  Application-related:
@@ -737,6 +722,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
       *  Media Source:
 
          +  Media direction: Upstream and Downstream
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 13]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
          +  Number of media sources: One (1)
 
@@ -778,14 +770,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    In this test case, one or more RMCAT media flow shares the bottleneck
    link with at multiple short-lived TCP flows.  Short-lived TCP flows
-
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 14]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
    resemble the on/off pattern observed in the web traffic, wherein
    clients (browsers) connect to a server and download a resource
    (typically a webpage, few images, text files, etc.)  using several
@@ -794,6 +778,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    The test case measures the adaptivity of the candidate algorithm to
    competing web traffic, it addresses the requirement 2 in
    [I-D.ietf-rmcat-cc-requirements].
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 14]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
    Depending on the convergence observed in test case 4.1 and 4.2, the
    candidate algorithm may be able to avoid congestion collapse.  In the
@@ -835,13 +826,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Bottleneck link capacity: 2Mbps
 
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 15]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
       *  One-Way propagation delay: 50ms
 
       *  Maximum end to end jitter: 30ms
@@ -850,6 +834,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
          the same test with different AQM schemes: FQ-Codel, or PIE.
 
       *  Bottleneck queue size: 250ms
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 15]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
       *  Link loss ratio: 0.0%
 
@@ -890,14 +881,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Traffic direction : downstream
 
-
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 16]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
          +  Default TCP Congestion control (CUBIC).
 
          +  Traffic timeline: Each short TCP flow is modeled as a
@@ -906,6 +889,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    o  Test specific setup: Short-TCP traffic model
 
       *  File sizes: uniform distribution between 100KB to 2MB.
+
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 16]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
       *  Idle period: exponential distribution with the mean value of 10
          seconds.
@@ -947,13 +938,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        c.  Oscillation in sending bit rate.
 
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 17]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
        d.  Convergence period.
 
    2.  Transport level
@@ -961,6 +945,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
        a.  Bandwidth utilization.
 
        b.  Queue length (ms)
+
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 17]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
            +  average over the length of the session
 
@@ -1003,13 +995,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
             -  Bit rate range: 150kbps-1.5mbps
 
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 18]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
             -  Frame Resolution: 144p-720p (or 1080p)
 
             -  Frame rate: 10fps-30fps
@@ -1017,6 +1002,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
             -  Variation from target bit rate: +/-5%
 
             -  Responsiveness to new bit rate request: 60ms
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 18]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
          +  Media content: Foreman video video
 
@@ -1059,13 +1051,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        c.  Oscillation in sending bit rate.
 
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 19]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
        d.  Convergence period.
 
    2.  Transport level
@@ -1073,6 +1058,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
        a.  Bandwidth utilization.
 
        b.  Queue length (ms)
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 19]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
            +  average over the length of the session
 
@@ -1114,14 +1106,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
             -  Bit rate range: 150kbps-1.5mbps
 
-
-
-
-Sarker & Singh          Expires August 14, 2014                [Page 20]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
             -  Frame Resolution: 144p-720p (or 1080p)
 
             -  Frame rate: 10fps-30fps
@@ -1129,6 +1113,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
             -  Variation from target bit rate: +/-5%
 
             -  Responsiveness to new bit rate request: 60ms
+
+
+
+
+Sarker & Singh          Expires August 14, 2014                [Page 20]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
          +  Media content: Foreman video video
 
@@ -1169,6 +1161,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    Much of this document is derived from previous work on congestion
    control at the IETF.
 
+   The content and concepts within this document are a product of the
+   discussion carried out in the Design Team.
+
+10.  References
+
+10.1.  Normative References
+
+
 
 
 
@@ -1177,13 +1177,6 @@ Sarker & Singh          Expires August 14, 2014                [Page 21]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
-
-   The content and concepts within this document are a product of the
-   discussion carried out in the Design Team.
-
-10.  References
-
-10.1.  Normative References
 
    [RFC3550]  Schulzrinne, H., Casner, S., Frederick, R., and V.
               Jacobson, "RTP: A Transport Protocol for Real-Time
@@ -1210,6 +1203,11 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
               Real-Time Transport Control Protocol (RTCP): Opportunities
               and Consequences", RFC 5506, April 2009.
 
+   [I-D.ietf-avtcore-rtp-circuit-breakers]
+              Perkins, C. and V. Singh, "RTP Congestion Control: Circuit
+              Breakers for Unicast Sessions", draft-ietf-avtcore-rtp-
+              circuit-breakers-01 (work in progress), October 2012.
+
    [I-D.ietf-rmcat-eval-criteria]
               Singh, V. and J. Ott, "Evaluating Congestion Control for
               Interactive Real-time Media", draft-ietf-rmcat-eval-
@@ -1223,8 +1221,10 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 10.2.  Informative References
 
    [I-D.ietf-rtcweb-use-cases-and-requirements]
-
-
+              Holmberg, C., Hakansson, S., and G. Eriksson, "Web Real-
+              Time Communication Use-cases and Requirements", draft-
+              ietf-rtcweb-use-cases-and-requirements-10 (work in
+              progress), December 2012.
 
 
 
@@ -1233,11 +1233,6 @@ Sarker & Singh          Expires August 14, 2014                [Page 22]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
-
-              Holmberg, C., Hakansson, S., and G. Eriksson, "Web Real-
-              Time Communication Use-cases and Requirements", draft-
-              ietf-rtcweb-use-cases-and-requirements-10 (work in
-              progress), December 2012.
 
    [RFC5033]  Floyd, S. and M. Allman, "Specifying New Congestion
               Control Algorithms", BCP 133, RFC 5033, August 2007.
@@ -1278,6 +1273,11 @@ Authors' Addresses
 
    Phone: +46 10 717 37 43
    Email: zaheduzzaman.sarker@ericsson.com
+
+
+
+
+
 
 
 
