@@ -138,14 +138,14 @@
     <section title="Introduction">
       <t>
 		  This memo describes a set of test cases for evaluating candidate
-		  RMCAT proposals, it based on the guidelines enumerated in <xref
+		  RMCAT proposals, it is based on the guidelines enumerated in <xref
 		  target="I-D.ietf-rmcat-eval-criteria" /> and requirements discussed in
-		  <xref target="I-D.ietf-rmcat-cc-requirements" />. This document discusses
-		  an initial set of scenarios that cover common use-cases. Additionally, the
-		  document provides a basic structure to escribe test cases, which can be
-		  customized by an implementer to fit their test scenario.
-      </t>
-	  <t></t>
+		  <xref target="I-D.ietf-rmcat-cc-requirements" />. The test cases cover
+		  basic usage scenarios and are described using a common structure, which
+		  allows any implementer to provide new test cases to fit their test
+		  scenario. Each test cases incorporates the metrics, evaluation guidelines
+		  and parameters described in <xref target="I-D.ietf-rmcat-eval-criteria" />.
+	  </t>
 		  
     </section>
 
