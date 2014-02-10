@@ -119,9 +119,11 @@
       <t>
 		  The Real-time Transport Protocol (RTP) is used to transmit media in
 		  multimedia telephony applications, these applications are typically
-		  implement congestion control. This document describes the test cases
-		  required to evaluate the performance of congestion control for interactive
-		  point-to-point real-time media. 
+		  required to implement congestion control. The RMCAT working group is
+		  currently working on candidate algorithms for WebRTC. This document
+		  describes the test cases needed to evaluate the performance of those 
+		  candidate algorithms.
+
 		  <!--The draft defines a structure on how to define test cases and uses
 		  that stracture to define test case those are essensial to RMCAT to evaluate
 		  the candidate algorithms. also the intention here is define the test cases
