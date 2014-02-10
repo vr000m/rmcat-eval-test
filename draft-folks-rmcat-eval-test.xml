@@ -163,13 +163,13 @@
     </section>
 
 
- <section anchor="NS" title="Network Scenarios">
+ <!-- <section anchor="NS" title="Network Scenarios">
 		<t>
 			Video communication may be deployed in different types of networks,
 			catering to different types of use-cases <xref
 			target="I-D.ietf-rtcweb-use-cases-and-requirements" />, they are discussed
 			below.
-		</t>
+		</t> -->
 
 	<!--Zahed: I have just though we can devide the network scenarios as a
 	point of device attachment, however, that kind of divition may not give a
@@ -180,7 +180,7 @@
 	probably does not belong in this document?-->
 
 
-      <section title="Small-Office/Home-Office (SOHO) Network">
+<!--       <section title="Small-Office/Home-Office (SOHO) Network">
         <t>
 			These networks contain several wired and wireless devices
 			connected to a single home router/gateway.
@@ -201,13 +201,13 @@
 
             <t>QoS</t>
           </list></t>
-      </section>
+      </section> -->
 
 	<!-- VS: Private networking to me seems like a special case of public networking,
 	or vice-versa, while Enterprise and ISP scenarios appear to be more controlled
 	scenarios.  -->
 
-      <section title="Enterprise Network">
+      <!-- <section title="Enterprise Network">
         <t>
 			An enterprise network connects geographically separated offices to one
 			another. 
@@ -250,7 +250,7 @@
             <t>QoS</t>
           </list></t>
       </section>
-    </section>
+    </section> -->
 
     <section anchor="TS" title="Basic Structure of Test cases">
       <t>
@@ -318,8 +318,8 @@
                       <t>Number of media sources: defines the total number of
                       media sources</t>
 
-                      <t>Encoder configuration: describes the media encoder
-                      behaves. This may include but not limited to <list
+                      <t>Media source configuration: describes the media encoder
+                      behavior. This may include but not limited to <list
                           style="symbols">
                           <t>Maximum Bit rate.</t>
 
@@ -463,8 +463,9 @@
                 <t>Link loss ratio: 0%.</t>
               </list></t>
 
-            <t>Application<list style="symbols">
-                <t>Media Source<list style="symbols">
+            <t>Application-related<list style="symbols">
+                <t>Media Source:
+					<list style="symbols">
                     <t>Media direction: Upstream.</t>
                     <t>Number of media sources: two (2).</t>
 
@@ -574,8 +575,10 @@
                 <t>Link loss ratio: 0%</t>
               </list></t>
 
-            <t>Application<list style="symbols">
-                <t>Media Source<list style="symbols">
+            <t>Application-related:
+				<list style="symbols">
+                <t>Media Source:
+					<list style="symbols">
                     <t>Number of media sources: one (1)</t>
                     <t>Encoder configuration: Variable bit rate.</t>
                     <t>Variation from target bit rate: 5%</t>					
@@ -622,7 +625,10 @@
         time instances, when the second flow appears there should still be room
         to accomodate another flow on the bottleneck link. Lastly, when the
         third flow appears the bottleneck link should be saturated. </t>
+<!-- this assumes that the congestion control ramps up that quickly, which may
+not be true -->
 
+		
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following
         metics:
@@ -661,16 +667,16 @@
                 <t>Maximum end to end jitter: 30ms</t>
                 <t>Bottleneck queue type: droptail</t>
                 <t>Bottleneck queue size: 250ms</t>
-                <t>Bottleneck link loss ratio: 0.0%</t>
+                <t>Link loss ratio: 0.0%</t>
               </list></t>
 
-            <t>Application: <list style="symbols">
+            <t>Application-related: <list style="symbols">
                 <t>Media Source: <list style="symbols">
                     <t>Media direction: Upstream </t>
                     <t>Number of media sources: Three (3)</t>
                     <t>Encoder configuration: <list style="symbols">
                         <t>Maximum Bit rate:2Mbps</t>
-                        <t>Minimum Bit rate:150Kbps</t>
+                        <t>Minimum Bit rate:200Kbps</t>
                         <t>Bit rate generation: VBR</t>
                         <t>Variation from target bit rate: 5%</t>
                         <t>Responsiveness to new bit rate request: 60ms</t>
