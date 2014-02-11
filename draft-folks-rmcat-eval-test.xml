@@ -124,14 +124,12 @@
       required to implement congestion control. The RMCAT working group is
       currently working on candidate algorithms for WebRTC. This document
       describes the test cases needed to evaluate the performance of those
-      candidate algorithms. 
-	  <!--The draft defines a structure on how to define test cases and uses
+      candidate algorithms. <!--The draft defines a structure on how to define test cases and uses
 	  that stracture to define test case those are essensial to RMCAT to evaluate
 	  the candidate algorithms. also the intention here is define the test cases
 	  in such a way that people can customize by tunning the same test case to fit
 	  their to be tested network characteristics. this is the theme and we need
-	  more text here.-->
-	  </t>
+	  more text here.--></t>
     </abstract>
   </front>
 
@@ -258,15 +256,13 @@
     </section> -->
 
     <section anchor="TS" title="Basic Structure of Test cases">
-      <t>
-		  All test cases in this document follow a basic structure, it enables
-		  implementers to describe new test scenarios without explaining common
-		  attributes repeatedly. The structure includes a general description 
-		  section that describe the test case and motivations, additionally it 
-		  defines a set of attributes that characterize the testbed, i.e., the 
-		  network path between communicating peers and the diverse traffic 
-		  sources.
-	  </t>
+      <t>All test cases in this document follow a basic structure, it enables
+      implementers to describe new test scenarios without explaining common
+      attributes repeatedly. The structure includes a general description
+      section that describe the test case and motivations, additionally it
+      defines a set of attributes that characterize the testbed, i.e., the
+      network path between communicating peers and the diverse traffic
+      sources.</t>
 
       <t><list style="symbols">
           <t>Define the test case: <list style="symbols">
@@ -279,7 +275,7 @@
               <t>Define a checklist to evaluate the desired behaviour: this
               indicates the minimum set of metrics that a proposed algorithm
               needs to measure to validate the expected rate adaptation
-			  behaviour.</t>
+              behaviour.</t>
             </list></t>
 
           <t>Define testbed attributes: <list style="symbols">
@@ -289,8 +285,7 @@
               characteristics of a test case. The characteristics describes
               two sets of characteristics, one each for the upstream and the
               downstream direction. If only one is specified, it is used for
-              both directions. 
-			  <list style="symbols">
+              both directions. <list style="symbols">
                   <t>Path direction: upstream or downstream.</t>
 
                   <t>Number of bottlenecks and the link capacity for each
@@ -311,20 +306,19 @@
 
                   <t>Link loss ratio: chatacterize the non-congested losses
                   observed on a specific link, for e.g., at the access link or
-                  a bottleneck link. Also describe the loss pattern or loss 
-				  model.</t>
+                  a bottleneck link. Also describe the loss pattern or loss
+                  model.</t>
 
                   <!-- VS: Losses may occur at the access link, expanded the 
 				  definition to include any link on the path -->
                 </list></t>
 
-              <t>Application-related: defines the media-related behaviour 
-				  for implementing the test case 
-			  <list style="symbols">
+              <t>Application-related: defines the media-related behaviour for
+              implementing the test case <list style="symbols">
                   <t>Media Source: defines the characteristics of the media
-                  sources present. When using more than one media source, 
-				  the different attributes are enumerated separately.
-				   <list style="symbols">
+                  sources present. When using more than one media source, the
+                  different attributes are enumerated separately. <list
+                      style="symbols">
                       <t>Media flow direction: upstream, downstream or
                       both.</t>
 
@@ -336,8 +330,8 @@
                       <list style="symbols">
                           <t>Bit rate generation: Constant Bit Rate (CBR) if
                           the chosen media stream is produced at the exact
-                          rate as the target bit rate. Variable Bit Rate (VBR) 
-						  if there exits some variation at the media output
+                          rate as the target bit rate. Variable Bit Rate (VBR)
+                          if there exits some variation at the media output
                           bit rate than the target bit rate for RMCAT media
                           streams.</t>
 
@@ -370,7 +364,7 @@
 
                       <t>Startup behaviour: the media starts at a defined bit
                       rate, which may be the minimum, maximum bit rate, or a
-                      value in between (in kbps).</t>
+                      value in between (in Kbps).</t>
                     </list></t>
 
                   <t>Competing traffic source: describes the characteristics
@@ -422,44 +416,44 @@
         the requirement 1(a) in <xref
         target="I-D.ietf-rmcat-cc-requirements"></xref>, which requires the
         algorithm to adapt the flow(s) and provide lower end-to-end latency
-        when there exists: 
-		<list style="symbols">
+        when there exists: <list style="symbols">
             <t>an intermediate bottleneck</t>
+
             <t>change in available capacity due to interface change and/or
             routing change.</t>
-            <t>persistent network load due to competing traffic</t>
-          </list>
-		  
-		It should be noted that the exact variation in available capcity due to
-		any of the above depends on the under-lying technologies. Hence, we 
-		describe a set of known factors, which may be extended to devise a more 
-		specific test case targering certain behaviour in a certain network 
-		environment.</t>
 
-        <t>Expected behavior: the candidate algorithms is expected to detect the
-        variation in available capacity and adapt the media stream(s) 
-		accordingly.  The candidate algorithm tracks the available capacity as 
-		closely as possible, i.e., if there is sufficient capacity the flow(s) 
-		reach their respective maximum bit rate. When the available capacity 
-		drops, the flow(s) adapts by decreasing its bit rate, and when 
-		congestion disappears, the flow(s) are again expected to rampup.</t>
+            <t>persistent network load due to competing traffic</t>
+          </list> It should be noted that the exact variation in available
+        capcity due to any of the above depends on the under-lying
+        technologies. Hence, we describe a set of known factors, which may be
+        extended to devise a more specific test case targering certain
+        behaviour in a certain network environment.</t>
+
+        <t>Expected behavior: the candidate algorithms is expected to detect
+        the variation in available capacity and adapt the media stream(s)
+        accordingly. The candidate algorithm tracks the available capacity as
+        closely as possible, i.e., if there is sufficient capacity the flow(s)
+        reach their respective maximum bit rate. When the available capacity
+        drops, the flow(s) adapts by decreasing its bit rate, and when
+        congestion disappears, the flow(s) are again expected to rampup.</t>
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
-            <t>Flow level: 
-			  <list style="letters">
+            <t>Flow level: <list style="letters">
                 <t>End-to-end delay</t>
+
                 <t>Losses observed at the receiving endpoint</t>
+
                 <t>Feedback message overhead</t>
               </list></t>
 
-            <t>Transport level:
-				<list style="letters">
+            <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization</t>
-                <t>Queue length (ms)
-				  <list style="symbols">
+
+                <t>Queue length (ms) <list style="symbols">
                     <t>average over the length of the session</t>
+
                     <t>5 and 95 percentile</t>
                   </list></t>
               </list></t>
@@ -467,40 +461,55 @@
 
         <t><list style="symbols">
             <t>Test duration: 60s</t>
+
             <t>Path characteristics: <list style="symbols">
                 <t>Path direction: Upstream and downstream.</t>
+
                 <t>Number of bottlenecks : One (1).</t>
+
                 <t>Bottleneck link capacity : 2Mbps.</t>
+
                 <t>One-Way propagation delay: 100ms.</t>
+
                 <t>Maximum end-to-end jitter: 30ms.</t>
+
                 <t>Bottleneck queue type: Drop tail.</t>
+
                 <t>Bottleneck queue size: 300ms.</t>
+
                 <t>Link loss ratio: 0%.</t>
               </list></t>
 
             <t>Application-related:<list style="symbols">
                 <t>Media Source: <list style="symbols">
                     <t>Media direction: Upstream.</t>
+
                     <t>Number of media sources: Two (2).</t>
+
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
+
                         <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
+
                         <t>Frame Resolution: 144p - 720p (or 1080p)</t>
+
                         <t>Frame rate: 10fps - 30fps</t>
+
                         <t>Variation from target bitrate: +/-5%</t>
+
                         <t>Responsiveness to new bit rate request: 100ms</t>
                       </list></t>
 
                     <t>Media content: Foreman media sequence.</t>
 
-                    <t>Media timeline: 
-					  <list style="symbols">
+                    <t>Media timeline: <list style="symbols">
                         <t>Start time: 0s.</t>
+
                         <t>End time: 59s.</t>
                       </list></t>
                   </list></t>
 
-                <t>Media startup behaviour: 200kbps.</t>
+                <t>Media startup behaviour: [200Kbps,1500Kbps].</t>
 
                 <t>Competing traffic<list style="symbols">
                     <t>Number of sources : Zero (0)</t>
@@ -510,56 +519,64 @@
             <t>Test specific setup<list style="symbols">
                 <t>Number of bandwidth variation: Three (3)</t>
 
-                <t>Bottleneck link vairation pattern: 
-					<list style="symbols">
+                <t>Bottleneck link vairation pattern: <list style="symbols">
                     <t>Sequence number: 1</t>
+
                     <t>Path direction: Upstream</t>
+
                     <t>Bottleneck Capacity: 1Mbps.</t>
+
                     <t>Start time: 30s</t>
+
                     <t>End behaviour: Bandwith is restored to the 80% of
                     bottleneck link speed</t>
                   </list></t>
 
-                <t>Bottleneck link vairation pattern: 
-					<list style="symbols">
+                <t>Bottleneck link vairation pattern: <list style="symbols">
                     <t>Sequence number: 2</t>
+
                     <t>Path direction: Upstream</t>
+
                     <t>Bottleneck Capacity: 0.5Mbps</t>
+
                     <t>Start time: 45s</t>
                   </list></t>
-              <t>Bottleneck link vairation pattern: 
-				  <list style="symbols">
-                  <t>Sequence number: 3</t>
-                  <t>Path direction: Upstream</t>
-                  <t>Bottleneck Capacity: 2Mbps</t>
-                  <t>Start time: 50s</t>
-                </list></t>
+
+                <t>Bottleneck link vairation pattern: <list style="symbols">
+                    <t>Sequence number: 3</t>
+
+                    <t>Path direction: Upstream</t>
+
+                    <t>Bottleneck Capacity: 2Mbps</t>
+
+                    <t>Start time: 50s</t>
+                  </list></t>
               </list></t>
           </list></t>
       </section>
 
       <section title="Maximum Media Bit Rate is Greater than Link Capacity">
-        <t>In this case, the application will attempt to ramp up to its maximum
-        bit rate, since the link capacity is limited to a value lower, the
-        congestion control is expected to stabilize the sending bit rate close
-        to the available bottleneck capacity. This situation can occur when the
-        endpoints are connected via thin long networks eventhough the
+        <t>In this case, the application will attempt to ramp up to its
+        maximum bit rate, since the link capacity is limited to a value lower,
+        the congestion control is expected to stabilize the sending bit rate
+        close to the available bottleneck capacity. This situation can occur
+        when the endpoints are connected via thin long networks eventhough the
         advertised capacity of the access network may be higher. The test case
         addresses the requirement 1 and 10 of the <xref
         target="I-D.ietf-rmcat-cc-requirements"></xref>.</t>
 
         <t>Expected behavior: the canidate algorithm is expected to detect the
-        limitation in available capacity and avoid future bit rate oscillations 
-		as it approaches the bottleneck link capacity. The oscillations occur 
-		when the media flow(s) attempts to reach its maximum bit rate, overshoots
-        the available bottleneck capacity causing overuse, to rectify it reduces 
-		the bit rate and starts to probe again.</t>
+        limitation in available capacity and avoid future bit rate
+        oscillations as it approaches the bottleneck link capacity. The
+        oscillations occur when the media flow(s) attempts to reach its
+        maximum bit rate, overshoots the available bottleneck capacity causing
+        overuse, to rectify it reduces the bit rate and starts to probe
+        again.</t>
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
-            <t>Flow level:
-				<list style="letters">
+            <t>Flow level: <list style="letters">
                 <t>End-to-end delay.</t>
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
@@ -572,12 +589,12 @@
                 <t>Feedback message overhead.</t>
               </list></t>
 
-            <t>Transport level: 
-				<list style="letters">
+            <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
                 <t>Queue length (ms)<list style="symbols">
                     <t>average over the length of the session</t>
+
                     <t>5 and 95 percentile</t>
                   </list></t>
               </list></t>
@@ -588,43 +605,57 @@
         <t><list style="symbols">
             <t>Test duration: 60s</t>
 
-            <t>Path characteristics: 
-				<list style="symbols">
+            <t>Path characteristics: <list style="symbols">
                 <t>Path direction: Upstream and downstream.</t>
+
                 <t>Number of bottlenecks : One (1)</t>
+
                 <t>Bottleneck link speed : 1Mbps</t>
+
                 <t>One-Way propagation delay: 100 ms</t>
+
                 <t>Maximum end-to-end jitter: 30ms.</t>
-                <t>Bottleneck queue type: Droptail. Additional tests with other
-                AQM schemes are recommended: FQ-CoDel, PIE</t>
+
+                <t>Bottleneck queue type: Droptail. Additional tests with
+                other AQM schemes are recommended: FQ-CoDel, PIE</t>
+
                 <t>Bottleneck size: 300ms</t>
+
                 <t>Link loss ratio: 0%</t>
               </list></t>
 
             <t>Application-related: <list style="symbols">
-                <t>Media Source: 
-					<list style="symbols">
+                <t>Media Source: <list style="symbols">
                     <t>Media direction: Upstream.</t>
+
                     <t>Number of media sources: One (1)</t>
+
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
+
                         <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
+
                         <t>Frame Resolution: 144p-720p (or 1080p)</t>
+
                         <t>Frame rate: 10fps-30fps</t>
+
                         <t>Variation from target bitrate: +/-5%</t>
+
                         <t>Responsiveness to new bit rate request: 100ms</t>
                       </list></t>
 
                     <t>Media content: Foreman video sequence</t>
+
                     <t>Media timeline: <list style="symbols">
                         <t>Start time: 0s.</t>
+
                         <t>End time: 59s.</t>
                       </list></t>
                   </list></t>
 
-                <t>Media startup behaviour: [200kbps, 1.5Mbps].</t>
-                <t>Competing traffic: 
-				  <list style="symbols">
+                <t>Media startup behaviour: [200Kbps, 1500Kbps].</t>
+
+                <t>Competing traffic: <list style="symbols">
                     <t>Number of sources : Zero (0)</t>
                   </list></t>
               </list></t>
@@ -663,8 +694,7 @@ not be true -->
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
-            <t>Flow level:
-				<list style="letters">
+            <t>Flow level: <list style="letters">
                 <t>End-to-end delay.</t>
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
@@ -677,8 +707,7 @@ not be true -->
                 <t>Feedback message overhead.</t>
               </list></t>
 
-            <t>Transport level:
-				<list style="letters">
+            <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
                 <t>Queue length (ms) <list style="symbols">
@@ -702,7 +731,7 @@ not be true -->
 
                 <t>Number of bottlenecks: One (1)</t>
 
-                <t>Bottleneck link capacity: 3.5mbps</t>
+                <t>Bottleneck link capacity: 3.5Mbps</t>
 
                 <t>One-Way propagation delay: 50ms</t>
 
@@ -741,7 +770,7 @@ not be true -->
                     at short time intervals. See test specific setup
                     below.</t>
 
-                    <t>Media startup behaviour: 200kbps.</t>
+                    <t>Media startup behaviour: 200Kbps.</t>
                   </list></t>
 
                 <t>Competing traffic <list style="symbols">
@@ -795,8 +824,7 @@ not be true -->
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
-            <t>Flow level:
-				<list style="letters">
+            <t>Flow level: <list style="letters">
                 <t>End-to-end delay for the RMCAT flow.</t>
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
@@ -813,8 +841,7 @@ not be true -->
                 <t>Feedback message overhead.</t>
               </list></t>
 
-            <t>Transport level:
-				<list style="letters">
+            <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
                 <t>Queue length (ms) <list style="symbols">
@@ -848,7 +875,7 @@ not be true -->
                 running the same test with different AQM schemes: FQ-Codel, or
                 PIE.</t>
 
-                <t>Bottleneck queue size:  [20ms, 250ms, 1000ms]</t>
+                <t>Bottleneck queue size: [20ms, 250ms, 1000ms]</t>
 
                 <t>Link loss ratio: 0.0%</t>
               </list></t>
@@ -881,7 +908,7 @@ not be true -->
                         <t>End time: 59s.</t>
                       </list></t>
 
-                    <t>Media startup behaviour: [200kbps, 1500kbps].</t>
+                    <t>Media startup behaviour: [200Kbps, 1500Kbps].</t>
                   </list></t>
 
                 <t>Competing traffic:<list style="symbols">
@@ -929,8 +956,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
-            <t>Flow level:
-				<list style="letters">
+            <t>Flow level: <list style="letters">
                 <t>End-to-end delay for the RMCAT flow.</t>
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
@@ -947,8 +973,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                 <t>Feedback message overhead.</t>
               </list></t>
 
-            <t>Transport level: 
-				<list style="letters">
+            <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
                 <t>Queue length (ms) <list style="symbols">
@@ -967,12 +992,12 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
             <!-- VS: i think it should be longer, they might not ramp up
   			quickly -->
 
-            <t>Path characteristics <list style="symbols">
+            <t>Path characteristics: <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
 
                 <t>Number of bottlenecks: One (1)</t>
 
-                <t>Bottleneck link capacity: 2.0mbps</t>
+                <t>Bottleneck link capacity: 2.0Mbps</t>
 
                 <t>One-Way propagation delay: [50ms, 200ms]</t>
 
@@ -1015,10 +1040,10 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                         <t>End time: 59s.</t>
                       </list></t>
 
-                    <t>Media startup behaviour: [200kbps, 1500kbps].</t>
+                    <t>Media startup behaviour: [200Kbps, 1500Kbps].</t>
                   </list></t>
 
-                <t>Competing traffic <list style="symbols">
+                <t>Competing traffic: <list style="symbols">
                     <t>Number and Types of sources : Ten (10), short-lived TCP
                     flows.</t>
 
@@ -1063,8 +1088,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
-            <t>Flow level:
-				<list style="letters">
+            <t>Flow level: <list style="letters">
                 <t>End-to-end delay</t>
 
                 <t>Losses observed at the receiving endpoint</t>
@@ -1072,8 +1096,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                 <t>Feedback message overhead</t>
               </list></t>
 
-            <t>Transport level: 
-				<list style="letters">
+            <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization</t>
 
                 <t>Queue length (ms)<list style="symbols">
@@ -1115,11 +1138,14 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
 
                     <t>Media content: Foreman media sequence</t>
 
-                    <t>Media timeline: all sources appear at start up, end 1s
-                    before shutdown.</t>
+                    <t>Media timeline: <list style="symbols">
+                        <t>Start time: 0s.</t>
+
+                        <t>End time: 59s.</t>
+                      </list></t>
                   </list></t>
 
-                <t>Media startup behaviour: 200kbps.</t>
+                <t>Media startup behaviour: 200Kbps.</t>
 
                 <t>Competing traffic<list style="symbols">
                     <t>Number of sources : Zero (0)</t>
@@ -1138,9 +1164,9 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
 
                     <t>Duration: 10s</t>
 
-                    <t>start time: 10s</t>
+                    <t>Start time: 10s</t>
 
-                    <t>end behaviour: bandwith is restored to the 80% of
+                    <t>End behaviour: bandwith is restored to the 80% of
                     bottleneck link speed</t>
                   </list></t>
 
@@ -1153,9 +1179,9 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
 
                     <t>Duration: 5s</t>
 
-                    <t>starttime: 15s</t>
+                    <t>Starttime: 15s</t>
 
-                    <t>end behaviour: bandwith is restored to the 100% of
+                    <t>End behaviour: bandwith is restored to the 100% of
                     bottleneck link speed</t>
                   </list></t>
               </list></t>
@@ -1184,8 +1210,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
-            <t>Flow level: 
-				<list style="letters">
+            <t>Flow level: <list style="letters">
                 <t>End-to-end delay.</t>
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
@@ -1196,8 +1221,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                 <t>Convergence time.</t>
               </list></t>
 
-            <t>Transport level:
-				<list style="letters">
+            <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
                 <t>Queue length (ms) <list style="symbols">
@@ -1211,26 +1235,26 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
         <t>Testbed attributes:</t>
 
         <t><list style="symbols">
-            <t>Test duration: 40s</t>
+            <t>Test duration: 60s</t>
 
             <!-- VS: i think it should be longer, they might not ramp up
   			quickly -->
 
-            <t>Path characteristics <list style="symbols">
+            <t>Path characteristics: <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
 
-                <t>Number of bottlenecks: one</t>
+                <t>Number of bottlenecks: One (1)</t>
 
-                <t>Bottleneck link capacity: 2.5Mbps</t>
+                <t>Bottleneck link capacity: 3.0Mbps</t>
 
                 <t>One-Way propagation delay for each path is: 25ms, 50ms,
                 100ms, 150ms, 200ms.</t>
 
                 <t>Maximum end to end jitter: 30ms</t>
 
-                <t>Bottleneck queue type: droptail</t>
+                <t>Bottleneck queue type: Droptail</t>
 
-                <t>Bottleneck queue size: 250ms</t>
+                <t>Bottleneck queue size: 300ms</t>
 
                 <t>Link loss ratio: 0.0%</t>
               </list></t>
@@ -1257,13 +1281,16 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
 
                     <t>Media content: Foreman video video</t>
 
-                    <t>Media timeline: starts at the begining, shutdown 1s
-                    before the end.</t>
+                    <t>Media timeline: <list style="symbols">
+                        <t>Start time: 0s.</t>
 
-                    <t>Media startup behaviour: [200 kbps, 1500 kbps].</t>
+                        <t>End time: 59s.</t>
+                      </list></t>
+
+                    <t>Media startup behaviour: [200 Kbps, 1500 Kbps].</t>
                   </list></t>
 
-                <t>Competing traffic <list style="symbols">
+                <t>Competing traffic: <list style="symbols">
                     <t>Number of sources : Zero (0)</t>
                   </list></t>
               </list></t>
@@ -1275,28 +1302,27 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
       <section title="Media Pause and Resume">
         <t>In this test case, more than one real-time interactive media flows
         share the link bandwidth and all flows reach to a steady state by
-        utilizing the link capacity in a optimum way. At these stage one of
+        utilizing the link capacity in an optimum way. At these stage one of
         the media flow is paused for a moment. This event will result in more
         available bandwidth for the rest of the flows and as they are on a
-        shared link those available bandwidth will also be shared among the
-        rest of the flows. When the paused media flow will resume it would no
-        longer have the same bandwidth share on the link. Hence has to make it
-        way through the other existing flows in the link to achieve a
-        fairshare of the link capacity. This test case is important specially
-        for real-time interactive media which consists of more than one media
-        flows and can pause/resume media flow at any point of time during the
-        session. This test case directly addresses the requirement number 1.B
-        in <xref target="I-D.ietf-rmcat-cc-requirements"></xref>. One can
-        think it a variation of test case 4.3 however, it is different as the
-        candidate algorithms can use different strategies to increase the
-        fairness, convergence time and fairness of the fact that they have
-        previous information of the link.</t>
+        shared link. When the paused media flow will resume it would no longer
+        have the same bandwidth share on the link. It has to make it way
+        through the other existing flows in the link to achieve a fairshare of
+        the link capacity. This test case is important specially for real-time
+        interactive media which consists of more than one media flows and can
+        pause/resume media flow at any point of time during the session. This
+        test case directly addresses the requirement number 1.B in <xref
+        target="I-D.ietf-rmcat-cc-requirements"></xref>. One can think it as a
+        variation of test case 4.3 however, it is different as the candidate
+        algorithms can use different strategies to increase it s efficiency,
+        for example the fairness, convergence time, reduce osillation etc, by
+        capitalizing the fact that they have previous information of the
+        link.</t>
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metics:
         <list style="numbers">
-            <t>Flow level:
-				<list style="letters">
+            <t>Flow level: <list style="letters">
                 <t>End-to-end delay.</t>
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
@@ -1309,8 +1335,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                 <t>Feedback message overhead.</t>
               </list></t>
 
-            <t>Transport level:
-				<list style="letters">
+            <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
                 <t>Queue length (ms) <list style="symbols">
@@ -1328,11 +1353,11 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
         <t><list style="symbols">
             <t>Other test specific setup: <list style="symbols">
                 <t>Media flow timeline:<list style="symbols">
-                    <t>Flow no: one</t>
+                    <t>Flow no: One (1)</t>
 
                     <t>Start time: 0s</t>
 
-                    <t>Flow duration: 60s</t>
+                    <t>Flow duration: 59s</t>
 
                     <t>Pause time: not required</t>
 
@@ -1340,11 +1365,11 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                   </list></t>
 
                 <t>Media flow appearance:<list style="symbols">
-                    <t>Flow no: two</t>
+                    <t>Flow no: Two (2)</t>
 
                     <t>Start time: 0s</t>
 
-                    <t>Flow duration: 60s</t>
+                    <t>Flow duration: 59s</t>
 
                     <t>Pause time: 20s</t>
 
@@ -1352,11 +1377,11 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                   </list></t>
 
                 <t>Media flow appearance:<list style="symbols">
-                    <t>Flow no: one</t>
+                    <t>Flow no: One (1)</t>
 
                     <t>Start time: 0s</t>
 
-                    <t>Flow dureation:60s</t>
+                    <t>Flow dureation:59s</t>
 
                     <t>Pause time: not required</t>
 
@@ -1365,6 +1390,8 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
               </list></t>
           </list></t>
       </section>
+
+      <!---->
 
       <section title="Startup Behavior">
         <t>In this test case, more than one RMCAT media flow shares the
@@ -1383,8 +1410,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
-            <t>Flow level:
-				<list style="letters">
+            <t>Flow level: <list style="letters">
                 <t>End-to-end delay.</t>
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
@@ -1395,8 +1421,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                 <t>Convergence time.</t>
               </list></t>
 
-            <t>Transport level:
-				<list style="letters">
+            <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
                 <t>Queue length (ms) <list style="symbols">
@@ -1459,7 +1484,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                     before the end.</t>
 
                     <t>Media startup behaviour: each media source stats at a
-                    different rate: 200, 500, 800, 1000, 1200 kbps.</t>
+                    different rate: 200, 500, 800, 1000, 1200 Kbps.</t>
                   </list></t>
 
                 <t>Competing traffic <list style="symbols">
@@ -1470,6 +1495,8 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
             <t>Test specific setup: None</t>
           </list></t>
       </section>
+
+      <!---->
 
       <section title="Explicit Congestion Notification Usage">
         <t>TBD</t>
