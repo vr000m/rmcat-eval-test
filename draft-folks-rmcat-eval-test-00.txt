@@ -75,17 +75,17 @@ Table of Contents
      4.6.  Congested Feedback Link . . . . . . . . . . . . . . . . .  19
      4.7.  Round Trip Time Fairness  . . . . . . . . . . . . . . . .  21
      4.8.  Media Pause and Resume  . . . . . . . . . . . . . . . . .  23
-     4.9.  Startup Behavior  . . . . . . . . . . . . . . . . . . . .  25
-     4.10. Explicit Congestion Notification Usage  . . . . . . . . .  27
-   5.  Cellular Network Specific Test Cases  . . . . . . . . . . . .  27
-   6.  Wi-Fi Network Specific Test Cases . . . . . . . . . . . . . .  27
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  27
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  27
-   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  27
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  28
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  28
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  29
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  29
+     4.9.  Explicit Congestion Notification Usage  . . . . . . . . .  25
+   5.  Wireless Access Links . . . . . . . . . . . . . . . . . . . .  25
+     5.1.  Cellular Network Specific Test Cases  . . . . . . . . . .  25
+     5.2.  Wi-Fi Network Specific Test Cases . . . . . . . . . . . .  25
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  25
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  25
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  25
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  26
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  27
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  27
 
 1.  Introduction
 
@@ -1362,38 +1362,38 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Start time: 0s
 
-         +  Flow dureation:59s
+         +  Flow duration:59s
 
          +  Pause time: not required
 
          +  Resume time: not required
 
-4.9.  Startup Behavior
+4.9.  Explicit Congestion Notification Usage
 
-   In this test case, more than one RMCAT media flow shares the
-   bottleneck link, but they start at different start rates and there
-   are no other competing taffic sources in the bottleneck link.  While
-   this appears to be a variant of the test case 4.2, it tests the
-   rampup and capacity sharing of the candidate algorithm when starting
-   at different rates.  This test case particularly addresses the
-   requirements 3 and 10.  [I-D.ietf-rmcat-cc-requirements].
+   TBD
 
-   It is expected that the competing flows will converge to an optimum
-   bit rate to accomodate all the flows with minumum possible latency
-   and loss.  Specifically, the test introduces five media flows at the
-   same time instance, but with differrent start rates.
+5.  Wireless Access Links
 
-   To evaluate the performance of the candidate algorithms it is
-   expected to log enough information to visualize the following
-   metrics:
+5.1.  Cellular Network Specific Test Cases
 
-   1.  Flow level:
+   Additional cellular network specific test cases are define in
 
-       a.  End-to-end delay.
+5.2.  Wi-Fi Network Specific Test Cases
 
-       b.  RTP packet losses observed at the receiving endpoint.
+   TBD
 
+6.  Security Considerations
 
+   Security issues have not been discussed in this memo.
+
+7.  IANA Considerations
+
+   There are no IANA impacts in this memo.
+
+8.  Acknowledgements
+
+   Much of this document is derived from previous work on congestion
+   control at the IETF.
 
 
 
@@ -1402,127 +1402,12 @@ Sarker & Singh          Expires August 15, 2014                [Page 25]
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
-       c.  Variation in sending bit rate and goodput.  Mainly observing
-           the frequency and magnitude of oscillations.
-
-       d.  Convergence time.
-
-   2.  Transport level:
-
-       a.  Bandwidth utilization.
-
-       b.  Queue length (ms)
-
-           +  average over the length of the session
-
-           +  5 an 95 percentile
-
-   Testbed attributes:
-
-   o  Test duration: 40s
-
-   o  Path characteristics
-
-      *  Path direction: Upstream, Downstream
-
-      *  Number of bottlenecks: one
-
-      *  Bottleneck link capacity: 3Mbps
-
-      *  One-Way propagation delay for each path is: 100ms.
-
-      *  Maximum end-to-end jitter: 30ms
-
-      *  Bottleneck queue type: droptail
-
-      *  Bottleneck queue size: 250ms
-
-      *  Link loss ratio: 0.0%
-
-   o  Application-related:
-
-      *  Media Source:
-
-         +  Media direction: Upstream
-
-         +  Number of media sources: Five (5)
-
-         +  Encoder configuration:
-
-            -  Bit rate generation: VBR
-
-
-
-Sarker & Singh          Expires August 15, 2014                [Page 26]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
-            -  Bit rate range: 150 Kbps - 1.5 Mbps
-
-            -  Frame Resolution: 144p-720p (or 1080p)
-
-            -  Frame rate: 10fps-30fps
-
-            -  Variation from target bit rate: +/-5%
-
-            -  Responsiveness to new bit rate request: 60ms
-
-         +  Media content: Foreman video video
-
-         +  Media timeline: starts at the begining, shutdown 1s before
-            the end.
-
-         +  Media startup behaviour: each media source stats at a
-            different rate: 200, 500, 800, 1000, 1200 Kbps.
-
-      *  Competing traffic
-
-         +  Number of sources : Zero (0)
-
-   o  Test specific setup: None
-
-4.10.  Explicit Congestion Notification Usage
-
-   TBD
-
-5.  Cellular Network Specific Test Cases
-
-   Additional cellular network specific test cases are define in
-   .....[Ref]
-
-6.  Wi-Fi Network Specific Test Cases
-
-   TBD
-
-7.  Security Considerations
-
-   Security issues have not been discussed in this memo.
-
-8.  IANA Considerations
-
-   There are no IANA impacts in this memo.
-
-9.  Acknowledgements
-
-
-
-
-
-Sarker & Singh          Expires August 15, 2014                [Page 27]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
-   Much of this document is derived from previous work on congestion
-   control at the IETF.
-
    The content and concepts within this document are a product of the
    discussion carried out in the Design Team.
 
-10.  References
+9.  References
 
-10.1.  Normative References
+9.1.  Normative References
 
    [RFC3550]  Schulzrinne, H., Casner, S., Frederick, R., and V.
               Jacobson, "RTP: A Transport Protocol for Real-Time
@@ -1560,21 +1445,20 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
               criteria-00 (work in progress), January 2014.
 
    [I-D.ietf-rmcat-cc-requirements]
-
-
-
-
-
-Sarker & Singh          Expires August 15, 2014                [Page 28]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
               Jesup, R., "Congestion Control Requirements For RMCAT",
               draft-ietf-rmcat-cc-requirements-00 (work in progress),
               July 2013.
 
-10.2.  Informative References
+
+
+
+
+Sarker & Singh          Expires August 15, 2014                [Page 26]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+9.2.  Informative References
 
    [I-D.ietf-rtcweb-use-cases-and-requirements]
               Holmberg, C., Hakansson, S., and G. Eriksson, "Web Real-
@@ -1614,18 +1498,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 Authors' Addresses
 
-
-
-
-
-
-
-
-Sarker & Singh          Expires August 15, 2014                [Page 29]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
    Zaheduzzaman Sarker
    Ericsson
    Lulea, SE  971 28
@@ -1633,6 +1505,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    Phone: +46 10 717 37 43
    Email: zaheduzzaman.sarker@ericsson.com
+
+
+
+
+Sarker & Singh          Expires August 15, 2014                [Page 27]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
    Varun Singh
@@ -1676,4 +1555,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 30]
+
+
+
+
+
+
+
+
+
+Sarker & Singh          Expires August 15, 2014                [Page 28]

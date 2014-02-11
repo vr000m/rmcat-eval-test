@@ -1402,7 +1402,7 @@ not be true -->
           </list></t>
       </section>
 
-      <!---->
+      <!--
 
       <section title="Startup Behavior">
         <t>In this test case, more than one RMCAT media flow shares the
@@ -1447,9 +1447,6 @@ not be true -->
 
         <t><list style="symbols">
             <t>Test duration: 40s</t>
-
-            <!-- VS: i think it should be longer, they might not ramp up
-  			quickly -->
 
             <t>Path characteristics <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
@@ -1507,7 +1504,7 @@ not be true -->
           </list></t>
       </section>
 
-      <!---->
+-->
 
       <section title="Explicit Congestion Notification Usage">
         <t>TBD</t>

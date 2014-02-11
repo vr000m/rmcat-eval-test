@@ -364,16 +364,16 @@
 <link href="#rfc.section.4.6" rel="Chapter" title="4.6 Congested Feedback Link"/>
 <link href="#rfc.section.4.7" rel="Chapter" title="4.7 Round Trip Time Fairness"/>
 <link href="#rfc.section.4.8" rel="Chapter" title="4.8 Media Pause and Resume"/>
-<link href="#rfc.section.4.9" rel="Chapter" title="4.9 Startup Behavior"/>
-<link href="#rfc.section.4.10" rel="Chapter" title="4.10 Explicit Congestion Notification Usage"/>
-<link href="#rfc.section.5" rel="Chapter" title="5 Cellular Network Specific Test Cases"/>
-<link href="#rfc.section.6" rel="Chapter" title="6 Wi-Fi Network Specific Test Cases"/>
-<link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations"/>
-<link href="#rfc.section.8" rel="Chapter" title="8 IANA Considerations"/>
-<link href="#rfc.section.9" rel="Chapter" title="9 Acknowledgements"/>
-<link href="#rfc.references" rel="Chapter" title="10 References"/>
-<link href="#rfc.references.1" rel="Chapter" title="10.1 Normative References"/>
-<link href="#rfc.references.2" rel="Chapter" title="10.2 Informative References"/>
+<link href="#rfc.section.4.9" rel="Chapter" title="4.9 Explicit Congestion Notification Usage"/>
+<link href="#rfc.section.5" rel="Chapter" title="5 Wireless Access Links"/>
+<link href="#rfc.section.5.1" rel="Chapter" title="5.1 Cellular Network Specific Test Cases"/>
+<link href="#rfc.section.5.2" rel="Chapter" title="5.2 Wi-Fi Network Specific Test Cases"/>
+<link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations"/>
+<link href="#rfc.section.7" rel="Chapter" title="7 IANA Considerations"/>
+<link href="#rfc.section.8" rel="Chapter" title="8 Acknowledgements"/>
+<link href="#rfc.references" rel="Chapter" title="9 References"/>
+<link href="#rfc.references.1" rel="Chapter" title="9.1 Normative References"/>
+<link href="#rfc.references.2" rel="Chapter" title="9.2 Informative References"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
 
@@ -455,16 +455,16 @@
 <li>4.6.   <a href="#rfc.section.4.6">Congested Feedback Link</a></li>
 <li>4.7.   <a href="#rfc.section.4.7">Round Trip Time Fairness</a></li>
 <li>4.8.   <a href="#rfc.section.4.8">Media Pause and Resume</a></li>
-<li>4.9.   <a href="#rfc.section.4.9">Startup Behavior</a></li>
-<li>4.10.   <a href="#rfc.section.4.10">Explicit Congestion Notification Usage</a></li>
-<li>5.   <a href="#rfc.section.5">Cellular Network Specific Test Cases</a></li>
-<li>6.   <a href="#rfc.section.6">Wi-Fi Network Specific Test Cases</a></li>
-<li>7.   <a href="#rfc.section.7">Security Considerations</a></li>
-<li>8.   <a href="#rfc.section.8">IANA Considerations</a></li>
-<li>9.   <a href="#rfc.section.9">Acknowledgements</a></li>
-<li>10.   <a href="#rfc.references">References</a></li>
-<li>10.1.   <a href="#rfc.references.1">Normative References</a></li>
-<li>10.2.   <a href="#rfc.references.2">Informative References</a></li>
+<li>4.9.   <a href="#rfc.section.4.9">Explicit Congestion Notification Usage</a></li>
+<li>5.   <a href="#rfc.section.5">Wireless Access Links</a></li>
+<li>5.1.   <a href="#rfc.section.5.1">Cellular Network Specific Test Cases</a></li>
+<li>5.2.   <a href="#rfc.section.5.2">Wi-Fi Network Specific Test Cases</a></li>
+<li>6.   <a href="#rfc.section.6">Security Considerations</a></li>
+<li>7.   <a href="#rfc.section.7">IANA Considerations</a></li>
+<li>8.   <a href="#rfc.section.8">Acknowledgements</a></li>
+<li>9.   <a href="#rfc.references">References</a></li>
+<li>9.1.   <a href="#rfc.references.1">Normative References</a></li>
+<li>9.2.   <a href="#rfc.references.2">Informative References</a></li>
 <li><a href="#rfc.authors">Authors' Addresses</a></li>
 
 
@@ -564,12 +564,12 @@
 <ul>
   <li>Test duration: 120s</li>
   <li>Path characteristics <ul><li>Path direction: Upstream, Downstream</li><li>Number of bottlenecks: one</li><li>Bottleneck link capacity: 2Mbps</li><li>One-Way propagation delay: [50ms, 200ms]</li><li>Maximum end to end jitter: 30ms</li><li>Bottleneck queue type: Droptail, but would benefit from running the same test with different AQM schemes: FQ-Codel, or PIE.</li><li>Bottleneck queue size: [20ms, 250ms, 1000ms]</li><li>Link loss ratio: 0.0%</li></ul></li>
-  <li>Application-related: <ul><li>Media Source: <ul><li>Media direction: Upstream and Downstream</li><li>Number of media sources: One (1)</li><li>Encoder configuration: <ul><li>Bit rate generation: VBR</li><li>Bit rate range: 150 Kbps - 1.5 Mbps</li><li>Frame Resolution: 144p-720p (or 1080p)</li><li>Frame rate: 10fps-30fps</li><li>Variation from target bit rate: +/-5%</li><li>Responsiveness to new bit rate request: 60ms</li></ul></li><li>Media content: Foreman video video</li><li>Media timeline: <ul><li>Start time: 5s.</li><li>End time: 59s.</li></ul></li><li>Media startup behaviour: [200Kbps, 1500Kbps].</li></ul></li><li>Competing traffic:<ul><li>Number and Types of sources : one (1), long-lived TCP</li><li>Traffic direction : Downstream</li><li>Congestion control: Default TCP congestion control.</li><li>Traffic timeline: <ul><li>Start time: 0s.</li><li>End time: 59s.</li></ul></li></ul></li></ul></li>
+  <li>Application-related: <ul><li>Media Source: <ul><li>Media direction: Upstream and Downstream</li><li>Number of media sources: One (1)</li><li>Encoder configuration: <ul><li>Bit rate generation: VBR</li><li>Bit rate range: 150 Kbps - 1.5 Mbps</li><li>Frame Resolution: 144p-720p (or 1080p)</li><li>Frame rate: 10fps-30fps</li><li>Variation from target bit rate: +/-5%</li><li>Responsiveness to new bit rate request: 60ms</li></ul></li><li>Media content: Foreman video video</li><li>Media timeline: <ul><li>Start time: 5s.</li><li>End time: 59s.</li></ul></li><li>Media startup behaviour: [200Kbps, 1500Kbps].</li></ul></li><li>Competing traffic:<ul><li>Number and Types of sources : one (1), long-lived TCP</li><li>Traffic direction : Downstream</li><li>Congestion control: Default TCP congestion control.</li><li>Traffic timeline: <ul><li>Start time: 0s.  </li><li>End time: 59s.</li></ul></li></ul></li></ul></li>
   <li>Test specific setup: None</li>
 </ul>
 <h1 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5.</a> RMCAT Flow competing with short TCP Flows</h1>
 <p id="rfc.section.4.5.p.1">In this test case, one or more RMCAT media flow shares the bottleneck link with at multiple short-lived TCP flows. Short-lived TCP flows resemble the on/off pattern observed in the web traffic, wherein clients (browsers) connect to a server and download a resource (typically a webpage, few images, text files, etc.) using several TCP connections (up to 4). This scenario shows the performance of the multimedia application when several browser windows are active. The test case measures the adaptivity of the candidate algorithm to competing web traffic, it addresses the requirements 2 in <a href="#I-D.ietf-rmcat-cc-requirements">[I-D.ietf-rmcat-cc-requirements]</a>.</p>
-<p id="rfc.section.4.5.p.2">Depending on the convergence observed in test case 4.1 and 4.2, the candidate algorithm may be able to avoid congestion collapse. In the worst case, the media stream will fall to the minimum media bit rate.</p>
+<p id="rfc.section.4.5.p.2">Depending on the convergence observed in test case 4.1 and 4.2, the candidate algorithm may be able to avoid congestion collapse. In the worst case, the media stream will fall to the minimum media bit rate.  </p>
 <p id="rfc.section.4.5.p.3">To evaluate the performance of the candidate algorithms it is expected to log enough information to visualize the following metrics: </p>
 
 <ol>
@@ -635,41 +635,24 @@
 <p/>
 
 <ul>
-  <li>Other test specific setup: <ul><li>Media flow timeline:<ul><li>Flow no: One (1)</li><li>Start time: 0s</li><li>Flow duration: 59s</li><li>Pause time: not required</li><li>Resume time: not required</li></ul></li><li>Media flow appearance:<ul><li>Flow no: Two (2)</li><li>Start time: 0s</li><li>Flow duration: 59s</li><li>Pause time: 20s</li><li>Resume time: 30s</li></ul></li><li>Media flow appearance:<ul><li>Flow no: One (1)</li><li>Start time: 0s</li><li>Flow dureation:59s</li><li>Pause time: not required</li><li>Resume time: not required</li></ul></li></ul></li>
+  <li>Other test specific setup: <ul><li>Media flow timeline:<ul><li>Flow no: One (1)</li><li>Start time: 0s</li><li>Flow duration: 59s</li><li>Pause time: not required</li><li>Resume time: not required</li></ul></li><li>Media flow appearance:<ul><li>Flow no: Two (2)</li><li>Start time: 0s</li><li>Flow duration: 59s</li><li>Pause time: 20s</li><li>Resume time: 30s</li></ul></li><li>Media flow appearance:<ul><li>Flow no: One (1)</li><li>Start time: 0s</li><li>Flow duration:59s</li><li>Pause time: not required</li><li>Resume time: not required</li></ul></li></ul></li>
 </ul>
-<h1 id="rfc.section.4.9"><a href="#rfc.section.4.9">4.9.</a> Startup Behavior</h1>
-<p id="rfc.section.4.9.p.1">In this test case, more than one RMCAT media flow shares the bottleneck link, but they start at different start rates and there are no other competing taffic sources in the bottleneck link. While this appears to be a variant of the test case 4.2, it tests the rampup and capacity sharing of the candidate algorithm when starting at different rates. This test case particularly addresses the requirements 3 and 10. <a href="#I-D.ietf-rmcat-cc-requirements">[I-D.ietf-rmcat-cc-requirements]</a>.</p>
-<p id="rfc.section.4.9.p.2">It is expected that the competing flows will converge to an optimum bit rate to accomodate all the flows with minumum possible latency and loss. Specifically, the test introduces five media flows at the same time instance, but with differrent start rates.</p>
-<p id="rfc.section.4.9.p.3">To evaluate the performance of the candidate algorithms it is expected to log enough information to visualize the following metrics: </p>
-
-<ol>
-  <li>Flow level: <ol style="list-style-type: lower-alpha"><li>End-to-end delay.</li><li>RTP packet losses observed at the receiving endpoint.</li><li>Variation in sending bit rate and goodput. Mainly observing the frequency and magnitude of oscillations.</li><li>Convergence time.</li></ol></li>
-  <li>Transport level: <ol style="list-style-type: lower-alpha"><li>Bandwidth utilization.</li><li>Queue length (ms) <ul><li>average over the length of the session</li><li>5 an 95 percentile</li></ul></li></ol></li>
-</ol>
-<p id="rfc.section.4.9.p.4">Testbed attributes:</p>
-<p/>
-
-<ul>
-  <li>Test duration: 40s</li>
-  <li>Path characteristics <ul><li>Path direction: Upstream, Downstream</li><li>Number of bottlenecks: one</li><li>Bottleneck link capacity: 3Mbps</li><li>One-Way propagation delay for each path is: 100ms.</li><li>Maximum end-to-end jitter: 30ms</li><li>Bottleneck queue type: droptail</li><li>Bottleneck queue size: 250ms</li><li>Link loss ratio: 0.0%</li></ul></li>
-  <li>Application-related: <ul><li>Media Source: <ul><li>Media direction: Upstream</li><li>Number of media sources: Five (5)</li><li>Encoder configuration: <ul><li>Bit rate generation: VBR</li><li>Bit rate range: 150 Kbps - 1.5 Mbps</li><li>Frame Resolution: 144p-720p (or 1080p)</li><li>Frame rate: 10fps-30fps</li><li>Variation from target bit rate: +/-5%</li><li>Responsiveness to new bit rate request: 60ms</li></ul></li><li>Media content: Foreman video video</li><li>Media timeline: starts at the begining, shutdown 1s before the end.</li><li>Media startup behaviour: each media source stats at a different rate: 200, 500, 800, 1000, 1200 Kbps.</li></ul></li><li>Competing traffic <ul><li>Number of sources : Zero (0)</li></ul></li></ul></li>
-  <li>Test specific setup: None</li>
-</ul>
-<h1 id="rfc.section.4.10"><a href="#rfc.section.4.10">4.10.</a> Explicit Congestion Notification Usage</h1>
-<p id="rfc.section.4.10.p.1">TBD</p>
-<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> Cellular Network Specific Test Cases</h1>
-<p id="rfc.section.5.p.1">Additional cellular network specific test cases are define in .....[Ref]</p>
-<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> Wi-Fi Network Specific Test Cases</h1>
-<p id="rfc.section.6.p.1">TBD</p>
-<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> Security Considerations</h1>
-<p id="rfc.section.7.p.1">Security issues have not been discussed in this memo.</p>
-<h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> IANA Considerations</h1>
-<p id="rfc.section.8.p.1">There are no IANA impacts in this memo.</p>
-<h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a> Acknowledgements</h1>
-<p id="rfc.section.9.p.1">Much of this document is derived from previous work on congestion control at the IETF.</p>
-<p id="rfc.section.9.p.2">The content and concepts within this document are a product of the discussion carried out in the Design Team.</p>
-<h1 id="rfc.references"><a href="#rfc.references">10.</a> References</h1>
-<h1 id="rfc.references.1"><a href="#rfc.references.1">10.1.</a> Normative References</h1>
+<h1 id="rfc.section.4.9"><a href="#rfc.section.4.9">4.9.</a> Explicit Congestion Notification Usage</h1>
+<p id="rfc.section.4.9.p.1">TBD</p>
+<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> Wireless Access Links</h1>
+<h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> Cellular Network Specific Test Cases</h1>
+<p id="rfc.section.5.1.p.1">Additional cellular network specific test cases are define in</p>
+<h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> Wi-Fi Network Specific Test Cases</h1>
+<p id="rfc.section.5.2.p.1">TBD</p>
+<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> Security Considerations</h1>
+<p id="rfc.section.6.p.1">Security issues have not been discussed in this memo.</p>
+<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> IANA Considerations</h1>
+<p id="rfc.section.7.p.1">There are no IANA impacts in this memo.</p>
+<h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> Acknowledgements</h1>
+<p id="rfc.section.8.p.1">Much of this document is derived from previous work on congestion control at the IETF.</p>
+<p id="rfc.section.8.p.2">The content and concepts within this document are a product of the discussion carried out in the Design Team.</p>
+<h1 id="rfc.references"><a href="#rfc.references">9.</a> References</h1>
+<h1 id="rfc.references.1"><a href="#rfc.references.1">9.1.</a> Normative References</h1>
 <table>
   <tbody>
     <tr>
@@ -728,7 +711,7 @@
     </tr>
   </tbody>
 </table>
-<h1 id="rfc.references.2"><a href="#rfc.references.2">10.2.</a> Informative References</h1>
+<h1 id="rfc.references.2"><a href="#rfc.references.2">9.2.</a> Informative References</h1>
 <table>
   <tbody>
     <tr>
