@@ -1378,7 +1378,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 5.1.  Cellular Network Specific Test Cases
 
-   Additional cellular network specific test cases are define in
+   Additional cellular network specific test cases are define in [ref]
 
 5.2.  Wi-Fi Network Specific Test Cases
 
