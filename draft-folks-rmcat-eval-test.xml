@@ -537,26 +537,27 @@
       </section>
 
       <section title="Maximum Media Bit Rate is Greater than Link Capacity">
-        <t>In this case, the application will attempt to reach its maximum bit
-        rate, since the link capacity is limited to a value lower, the
+        <t>In this case, the application will attempt to ramp up to its maximum
+        bit rate, since the link capacity is limited to a value lower, the
         congestion control is expected to stabilize the sending bit rate close
-        to the available bottleneck capacity. This can occur when the
-        endpoints are connected via thin Internet pipes eventhough the
+        to the available bottleneck capacity. This situation can occur when the
+        endpoints are connected via thin long networks eventhough the
         advertised capacity of the access network may be higher. The test case
         addresses the requirement 1 and 10 of the <xref
         target="I-D.ietf-rmcat-cc-requirements"></xref>.</t>
 
-        <t>Expected behavior- the canidate algorithm is expected to detect the
-        limitation in available capacity and avoid bit rate oscillations as it
-        approaches the bottleneck link capacity. The oscillations occur when
-        the media flow(s) attempts to reach its maximum bit rate, overshoots
-        causing overuse, then reduces the bit rate and starts to probe
-        again.</t>
+        <t>Expected behavior: the canidate algorithm is expected to detect the
+        limitation in available capacity and avoid future bit rate oscillations 
+		as it approaches the bottleneck link capacity. The oscillations occur 
+		when the media flow(s) attempts to reach its maximum bit rate, overshoots
+        the available bottleneck capacity causing overuse, to rectify it reduces 
+		the bit rate and starts to probe again.</t>
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
-            <t>Flow level<list style="letters">
+            <t>Flow level:
+				<list style="letters">
                 <t>End-to-end delay.</t>
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
@@ -574,7 +575,6 @@
 
                 <t>Queue length (ms)<list style="symbols">
                     <t>average over the length of the session</t>
-
                     <t>5 and 95 percentile</t>
                   </list></t>
               </list></t>
@@ -585,57 +585,43 @@
         <t><list style="symbols">
             <t>Test duration: 60s</t>
 
-            <t>Path characteristics: <list style="symbols">
+            <t>Path characteristics: 
+				<list style="symbols">
                 <t>Path direction: Upstream and downstream.</t>
-
-                <t>Number of bottlenecks : One</t>
-
+                <t>Number of bottlenecks : One (1)</t>
                 <t>Bottleneck link speed : 2Mbps</t>
-
                 <t>One-Way propagation delay: 100 ms</t>
-
                 <t>Maximum end-to-end jitter: 30ms.</t>
-
-                <t>Bottleneck queue type: Droptail, but additionally test with
-                other AQM schemes: FQ-CoDel, or PIE</t>
-
+                <t>Bottleneck queue type: Droptail. Additional tests with other
+                AQM schemes are recommended: FQ-CoDel, PIE</t>
                 <t>Bottleneck size: 300ms</t>
-
                 <t>Link loss ratio: 0%</t>
               </list></t>
 
             <t>Application-related: <list style="symbols">
-                <t>Media Source: <list style="symbols">
+                <t>Media Source: 
+					<list style="symbols">
                     <t>Media direction: Upstream.</t>
-
                     <t>Number of media sources: One (1)</t>
-
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
-
                         <t>Bit rate range: 150kbps-2mbps</t>
-
                         <t>Frame Resolution: 144p-720p (or 1080p)</t>
-
                         <t>Frame rate: 10fps-30fps</t>
-
                         <t>Variation from target bitrate: +/-5%</t>
-
                         <t>Responsiveness to new bit rate request: 100ms</t>
                       </list></t>
 
                     <t>Media content: Foreman video sequence</t>
-
                     <t>Media timeline: <list style="symbols">
                         <t>Start time: 0s.</t>
-
                         <t>End time: 59s.</t>
                       </list></t>
                   </list></t>
 
-                <t>Media startup behaviour: {200kbps, 2Mbps}.</t>
-
-                <t>Competing traffic: <list style="symbols">
+                <t>Media startup behaviour: [200kbps, 2Mbps].</t>
+                <t>Competing traffic: 
+				  <list style="symbols">
                     <t>Number of sources : Zero (0)</t>
                   </list></t>
               </list></t>
@@ -674,7 +660,8 @@ not be true -->
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
-            <t>Flow level <list style="letters">
+            <t>Flow level 
+				<list style="letters">
                 <t>End-to-end delay.</t>
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
