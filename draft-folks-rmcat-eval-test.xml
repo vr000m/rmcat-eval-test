@@ -509,7 +509,7 @@
                       </list></t>
                   </list></t>
 
-                <t>Media startup behaviour: [200Kbps,1500Kbps].</t>
+                <t>Media startup behaviour: [200Kbps, 1500Kbps].</t>
 
                 <t>Competing traffic<list style="symbols">
                     <t>Number of sources : Zero (0)</t>
@@ -527,9 +527,6 @@
                     <t>Bottleneck Capacity: 1Mbps.</t>
 
                     <t>Start time: 30s</t>
-
-                    <t>End behaviour: Bandwidth is restored to the 80% of
-                    bottleneck link speed</t>
                   </list></t>
 
                 <t>Bottleneck link variation pattern: <list style="symbols">
