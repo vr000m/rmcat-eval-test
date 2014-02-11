@@ -124,12 +124,14 @@
       required to implement congestion control. The RMCAT working group is
       currently working on candidate algorithms for WebRTC. This document
       describes the test cases needed to evaluate the performance of those
-      candidate algorithms. <!--The draft defines a structure on how to define test cases and uses
-		  that stracture to define test case those are essensial to RMCAT to evaluate
-		  the candidate algorithms. also the intention here is define the test cases
-		  in such a way that people can customize by tunning the same test case to fit
-		  their to be tested network characteristics. this is the theme and we need
-		  more text here.--></t>
+      candidate algorithms. 
+	  <!--The draft defines a structure on how to define test cases and uses
+	  that stracture to define test case those are essensial to RMCAT to evaluate
+	  the candidate algorithms. also the intention here is define the test cases
+	  in such a way that people can customize by tunning the same test case to fit
+	  their to be tested network characteristics. this is the theme and we need
+	  more text here.-->
+	  </t>
     </abstract>
   </front>
 
@@ -256,11 +258,15 @@
     </section> -->
 
     <section anchor="TS" title="Basic Structure of Test cases">
-      <t>Defining a common structure enables implementers to describe new test
-      scenarios. This structure includes a general description section to
-      describe the test case and defines set of attributes to characterize the
-      testbed. The testbed attributes can be used to define the network link
-      between communicating peers and the traffic sources. </t>
+      <t>
+		  All test cases in this document follow a basic structure, it enables
+		  implementers to describe new test scenarios without explaining common
+		  attributes repeatedly. The structure includes a general description 
+		  section that describe the test case and motivations, additionally it 
+		  defines a set of attributes that characterize the testbed, i.e., the 
+		  network path between communicating peers and the diverse traffic 
+		  sources.
+	  </t>
 
       <t><list style="symbols">
           <t>Define the test case: <list style="symbols">
@@ -270,9 +276,10 @@
               <t>Additionally, describe the desired rate adaptation
               behaviour.</t>
 
-              <t>Define a checklist to evaluate the desired behaviour: This
+              <t>Define a checklist to evaluate the desired behaviour: this
               indicates the minimum set of metrics that a proposed algorithm
-              needs to measure.</t>
+              needs to measure to validate the expected rate adaptation
+			  behaviour.</t>
             </list></t>
 
           <t>Define testbed attributes: <list style="symbols">
@@ -282,7 +289,8 @@
               characteristics of a test case. The characteristics describes
               two sets of characteristics, one each for the upstream and the
               downstream direction. If only one is specified, it is used for
-              both directions. <list style="symbols">
+              both directions. 
+			  <list style="symbols">
                   <t>Path direction: upstream or downstream.</t>
 
                   <t>Number of bottlenecks and the link capacity for each
@@ -294,28 +302,29 @@
                   <t>Maximum end-to-end jitter: defines maximum jitter can be
                   obsereved along the path.</t>
 
-                  <!-- This needs to be explained -->
+                  <!-- VS: This needs to be explained -->
 
                   <t>Bottleneck queue type: for example, droptail, FQ-CoDel,
                   or PIE.</t>
 
-                  <t>Bottleneck queue size: in miliseconds.</t>
+                  <t>Bottleneck queue size: (in miliseconds).</t>
 
                   <t>Link loss ratio: chatacterize the non-congested losses
                   observed on a specific link, for e.g., at the access link or
-                  bottleneck link. Also describe the loss pattern or model to
-                  implement the losses.</t>
+                  a bottleneck link. Also describe the loss pattern or loss 
+				  model.</t>
 
                   <!-- VS: Losses may occur at the access link, expanded the 
 				  definition to include any link on the path -->
                 </list></t>
 
-              <t>Application-related: defines different applications behaviour
-              included in the test case <list style="symbols">
+              <t>Application-related: defines the media-related behaviour 
+				  for implementing the test case 
+			  <list style="symbols">
                   <t>Media Source: defines the characteristics of the media
-                  sources present in the test case. When using more than one
-                  media source, the following set of attibutes are defined for
-                  each such media source. <list style="symbols">
+                  sources present. When using more than one media source, 
+				  the different attributes are enumerated separately.
+				   <list style="symbols">
                       <t>Media flow direction: upstream, downstream or
                       both.</t>
 
@@ -327,9 +336,9 @@
                       <list style="symbols">
                           <t>Bit rate generation: Constant Bit Rate (CBR) if
                           the chosen media stream is produced at the exact
-                          rate as taget bit rate. Variable Bit Rate (VBR) if
-                          there exits some variation at the media output
-                          bitrate than the target bit rate for RMCAT media
+                          rate as the target bit rate. Variable Bit Rate (VBR) 
+						  if there exits some variation at the media output
+                          bit rate than the target bit rate for RMCAT media
                           streams.</t>
 
                           <!-- VS: CBR?? possibly remove it. We are doing
@@ -337,7 +346,7 @@
 						  congestion controlled?-->
 
                           <t>If the media stream is sending VBR, the test case
-                          MUST define the maximum and minimum encoding rates,
+                          MUST define the maximum and minimum encoding rate,
                           frame resolution, and frame rate.</t>
 
                           <t>Variation from target bit rate: the encoder
@@ -350,13 +359,12 @@
                         </list></t>
 
                       <t>Media content: describes the chosen media sequences;
-                      For example, the desired frame rate, resolution, etc.
-                      Test sequences are available at: <xref
+                      For example, test sequences are available at: <xref
                       target="xiph-seq"></xref> <xref
                       target="HEVC-seq"></xref>.</t>
 
                       <t>Media timeline: describes the point when the media
-                      source is introduced and removed from the network. For
+                      source is introduced and removed from the testbed. For
                       example, the media source may begin transmitting when
                       the test case begins or a few seconds after, etc.</t>
 
@@ -365,7 +373,7 @@
                       value in between (in kbps).</t>
                     </list></t>
 
-                  <t>Competing traffic source : describes the characteristics
+                  <t>Competing traffic source: describes the characteristics
                   of the competing traffic source, the different types of
                   competing flows are enumerated in <xref
                   target="I-D.ietf-rmcat-eval-criteria"></xref>. <list
@@ -395,9 +403,10 @@
             </list></t>
         </list></t>
 
-      <t>Any attribute can have a set of values (enclosed with"{}"). Each
-      member value of such set SHOULD be treated as different value for the
-      same attribute. </t>
+      <t>Any attribute can have a set of values (enclosed within "[]"). Each
+      member value of such a set MUST be treated as different value for the
+      same attribute. This occurs when defining different attributes for the
+      same type of traffic source.</t>
 
       <t>The test cases described in this document follow the above
       structure.</t>
