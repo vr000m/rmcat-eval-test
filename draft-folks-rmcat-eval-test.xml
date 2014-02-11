@@ -422,44 +422,42 @@
         the requirement 1(a) in <xref
         target="I-D.ietf-rmcat-cc-requirements"></xref>, which requires the
         algorithm to adapt the flow(s) and provide lower end-to-end latency
-        when there exists: <list style="symbols">
-            <t>an intermediated bottleneck</t>
-
+        when there exists: 
+		<list style="symbols">
+            <t>an intermediate bottleneck</t>
             <t>change in available capacity due to interface change and/or
             routing change.</t>
-
             <t>persistent network load due to competing traffic</t>
-          </list>It should be noted that the exact variation in available
-        capcity due to any of the above depends on the under-lying
-        technologies. Hence, we describe a set of known factors, which may be
-        extended to devise a more specific test case targering certain
-        behaviour in a certain network environment.</t>
+          </list>
+		  
+		It should be noted that the exact variation in available capcity due to
+		any of the above depends on the under-lying technologies. Hence, we 
+		describe a set of known factors, which may be extended to devise a more 
+		specific test case targering certain behaviour in a certain network 
+		environment.</t>
 
-        <t>Expected behavior- the candidate algorithms should detect the
-        variation and adapt the media stream(s) accordingly. The candidate
-        algorithms track the available capacity as closely as possible, i.e.,
-        if there is sufficient capacity the flow(s) reach their respective
-        maximum bit rate. When the available capacity drops, the flow(s)
-        adapts by decreasing its bit rate, and when congestion disappears, the
-        flow(s) are expected to reach their maximum bit rate.</t>
+        <t>Expected behavior: the candidate algorithms is expected to detect the
+        variation in available capacity and adapt the media stream(s) 
+		accordingly.  The candidate algorithm tracks the available capacity as 
+		closely as possible, i.e., if there is sufficient capacity the flow(s) 
+		reach their respective maximum bit rate. When the available capacity 
+		drops, the flow(s) adapts by decreasing its bit rate, and when 
+		congestion disappears, the flow(s) are again expected to rampup.</t>
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
             <t>Flow level <list style="letters">
                 <t>End-to-end delay</t>
-
                 <t>Losses observed at the receiving endpoint</t>
-
                 <t>Feedback message overhead</t>
               </list></t>
 
             <t>Transport level <list style="letters">
                 <t>Bandwidth utilization</t>
-
-                <t>Queue length (ms)<list style="symbols">
+                <t>Queue length (ms)
+				  <list style="symbols">
                     <t>average over the length of the session</t>
-
                     <t>5 and 95 percentile</t>
                   </list></t>
               </list></t>
@@ -467,50 +465,35 @@
 
         <t><list style="symbols">
             <t>Test duration: 60s</t>
-
             <t>Path characteristics: <list style="symbols">
                 <t>Path direction: Upstream and downstream.</t>
-
                 <t>Number of bottlenecks : One (1).</t>
-
                 <t>Bottleneck link capacity : 2Mbps.</t>
-
                 <t>One-Way propagation delay: 100ms.</t>
-
                 <t>Maximum end-to-end jitter: 30ms.</t>
-
                 <t>Bottleneck queue type: Drop tail.</t>
-
                 <t>Bottleneck queue size: 300ms.</t>
-
                 <t>Link loss ratio: 0%.</t>
               </list></t>
 
             <t>Application-related:<list style="symbols">
                 <t>Media Source: <list style="symbols">
                     <t>Media direction: Upstream.</t>
-
                     <t>Number of media sources: Two (2).</t>
-
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
-
-                        <t>Bit rate range: 150kbps-1mbps</t>
-
-                        <t>Frame Resolution: 144p-720p (or 1080p)</t>
-
-                        <t>Frame rate: 10fps-30fps</t>
-
+                        <t>Bit rate range: 150 Kbps - 1 Mbps</t>
+                        <t>Frame Resolution: 144p - 720p (or 1080p)</t>
+                        <t>Frame rate: 10fps - 30fps</t>
                         <t>Variation from target bitrate: +/-5%</t>
-
                         <t>Responsiveness to new bit rate request: 100ms</t>
                       </list></t>
 
-                    <t>Media content: Foreman media sequence</t>
+                    <t>Media content: Foreman media sequence.</t>
 
-                    <t>Media timeline: <list style="symbols">
+                    <t>Media timeline: 
+					  <list style="symbols">
                         <t>Start time: 0s.</t>
-
                         <t>End time: 59s.</t>
                       </list></t>
                   </list></t>
@@ -523,39 +506,32 @@
               </list></t>
 
             <t>Test specific setup<list style="symbols">
-                <t>Number of bandwidth variation: Two (2)</t>
+                <t>Number of bandwidth variation: Three (3)</t>
 
-                <t>Link vairation pattern: <list style="symbols">
-                    <t>Sequence number: One (1)</t>
-
+                <t>Bottleneck link vairation pattern: 
+					<list style="symbols">
+                    <t>Sequence number: 1</t>
                     <t>Path direction: Upstream</t>
-
-                    <t>Amount of change: Reduces 50% of bottleneck link
-                    speed</t>
-
-                    <t>Duration: 5s</t>
-
-                    <t>Start time: 10s</t>
-
+                    <t>Bottleneck Capacity: 1Mbps.</t>
+                    <t>Start time: 30s</t>
                     <t>End behaviour: Bandwith is restored to the 80% of
                     bottleneck link speed</t>
                   </list></t>
 
-                <t>Link vairation pattern: <list style="symbols">
-                    <t>Sequence number: Two (2)</t>
-
+                <t>Bottleneck link vairation pattern: 
+					<list style="symbols">
+                    <t>Sequence number: 2</t>
                     <t>Path direction: Upstream</t>
-
-                    <t>Amount of change: Reduces 50% of bottleneck link
-                    speed</t>
-
-                    <t>Duration: 10s</t>
-
-                    <t>starttime: 25s</t>
-
-                    <t>End behaviour: Bandwith is restored to the 100% of
-                    bottleneck link speed</t>
+                    <t>Bottleneck Capacity: 0.5Mbps</t>
+                    <t>Start time: 45s</t>
                   </list></t>
+              <t>Bottleneck link vairation pattern: 
+				  <list style="symbols">
+                  <t>Sequence number: 3</t>
+                  <t>Path direction: Upstream</t>
+                  <t>Bottleneck Capacity: 2Mbps</t>
+                  <t>Start time: 50s</t>
+                </list></t>
               </list></t>
           </list></t>
       </section>
