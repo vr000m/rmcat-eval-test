@@ -920,10 +920,17 @@ not be true -->
                     <t>Congestion control: Default TCP congestion control.</t>
 
                     <t>Traffic timeline: <list style="symbols">
-                        <t>Start time: 0s.<!--ZS: now a days TCP implementation uses different techniques like auto tuning, hence if media and data traffic start at the same
-the receiver window may be tuned in a way that it does not grow more than a certain value. Hence this test case will require
-a wamp-up time where TCP settings are settled down. However, this also means we need to make sure the warm-up session does
-not sature the link capacity when the media flows are inserted.--></t>
+                        <t>Start time: 0s.
+		<!--ZS: now a days TCP implementation uses
+		different techniques like auto tuning, hence if media and data traffic
+		start at the same the receiver window may be tuned in a way that it does
+		not grow more than a certain value. Hence this test case will require a
+		wamp-up time where TCP settings are settled down. However, this also
+		means we need to make sure the warm-up session does not sature the link
+		capacity when the media flows are inserted.-->
+		<!-- VS: I think we can split into 3 cases, TCP starts before, TCP starts
+	together with media, TCP starts after media. How does that sound? -->
+						</t>
 
                         <t>End time: 59s.</t>
                       </list></t>
@@ -949,9 +956,18 @@ not sature the link capacity when the media flows are inserted.--></t>
         <t>Depending on the convergence observed in test case 4.1 and 4.2, the
         candidate algorithm may be able to avoid congestion collapse. In the
         worst case, the media stream will fall to the minimum media bit
-        rate.<!--ZS: will this not a test case where the candidate algorithms does not really react that much as the TCP connections are short lived? I believe the reaction towards
-the short lives flows will depend on how much queue the build in the bottleneck. Hence I was thinking to have a variable amount of download on each short sessions.
-creating  a  huge number of short lived flows emitting a long lived flow characteristics.--></t>
+        rate.
+		<!--ZS: will this not a test case where the candidate algorithms does
+		not really react that much as the TCP connections are short lived? I believe
+		the reaction towards the short lives flows will depend on how much queue the
+		build in the bottleneck. Hence I was thinking to have a variable amount of
+		download on each short sessions. creating a huge number of short lived flows
+		emitting a long lived flow characteristics.-->
+		<!-- VS: yes this is possible, 
+		OTOH, if we want to observe the impact of transience, then we should
+		limit the number of TCP flows a small value, assuming here that lots
+		of small TCP flows do infact appear as a long TCP flow. -->
+		</t>
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
@@ -1381,7 +1397,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
 
                     <t>Start time: 0s</t>
 
-                    <t>Flow dureation:59s</t>
+                    <t>Flow duration:59s</t>
 
                     <t>Pause time: not required</t>
 
@@ -1503,27 +1519,30 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
       </section>
     </section>
 
-    <section title="Cellular Network Specific Test Cases">
-      <t><!--may be a link to another draft would be good enough-->Additional
-      cellular network specific test cases are define in .....[Ref]</t>
-    </section>
+    <section title="Wireless Access Links">
+		<section title="Cellular Network Specific Test Cases">
+			<t>Additional cellular network specific test cases are define in</t>
+			<!--ZS: may be a link to another draft would be good enough-->
+		</section>
 
-    <!---->
+    <!-- keep the comments out of the tags.-->
 
-    <section title="Wi-Fi Network Specific Test Cases">
-      <t>TBD<!--may be a link to another draft would be good enough--><!--The key network event those have impact on congestion control algorithm are-
-?	AP handover- causing interruption in communication, change in available bandwidth, delay and loss, restart of new session.
-?	Congested AP- causing race condition for medium access and leading to buffer overflow, loss and delay.
-?	Hidden node / exposed node problem- causing unnecessary error in transmission leading to low packet rate over radio and such. 
-However with modern RTS/CTS the situation is much improved.
-It is analyzed how Wi-Fi is used then we can see there is basically three kind of access setup, for simplicity only two 
-endpoints are considered here, ? 1) all the endpoint connected over WiFi to same AP (no internet in between), 2) two endpoints 
-are connected over WiFi to two different access point (AP points may be connected over the Internet), 3) one endpoint is 
-connected over WiFi and another endpoint is connected to the Internet over any other access type than WiFi.    
-It is always encouraged to device test cases with real or simulated Wi-Fi access. However, considering a limited mobility
- pattern and effect of the events in Wi.FI network a care full investigation may lead to devise a variation of general 
-test cases to evaluate the performance of congestion control algorithms. Hence this section is TBD.
---></t>
+		<section title="Wi-Fi Network Specific Test Cases">
+			<t>TBD</t>
+	  <!--ZS: may be a link to another draft would be good enough--><!--The key network event those have impact on congestion control algorithm are-
+	  ?	AP handover- causing interruption in communication, change in available bandwidth, delay and loss, restart of new session.
+	  ?	Congested AP- causing race condition for medium access and leading to buffer overflow, loss and delay.
+	  ?	Hidden node / exposed node problem- causing unnecessary error in transmission leading to low packet rate over radio and such. 
+	  However with modern RTS/CTS the situation is much improved.
+	  It is analyzed how Wi-Fi is used then we can see there is basically three kind of access setup, for simplicity only two 
+	  endpoints are considered here, ? 1) all the endpoint connected over WiFi to same AP (no internet in between), 2) two endpoints 
+	  are connected over WiFi to two different access point (AP points may be connected over the Internet), 3) one endpoint is 
+	  connected over WiFi and another endpoint is connected to the Internet over any other access type than WiFi.    
+	  It is always encouraged to device test cases with real or simulated Wi-Fi access. However, considering a limited mobility
+	   pattern and effect of the events in Wi.FI network a care full investigation may lead to devise a variation of general 
+	  test cases to evaluate the performance of congestion control algorithms. Hence this section is TBD.
+	  -->
+	      </section>
     </section>
 
     <section title="Security Considerations">
