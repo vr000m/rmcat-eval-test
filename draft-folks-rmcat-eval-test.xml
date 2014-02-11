@@ -297,8 +297,6 @@
                   <t>Maximum end-to-end jitter: defines maximum jitter can be
                   observed along the path.</t>
 
-                  <!-- VS: This needs to be explained -->
-
                   <t>Bottleneck queue type: for example, Droptail, FQ-CoDel,
                   or PIE.</t>
 
@@ -308,9 +306,6 @@
                   observed on a specific link, for e.g., at the access link or
                   a bottleneck link. Also describe the loss pattern or loss
                   model.</t>
-
-                  <!-- VS: Losses may occur at the access link, expanded the 
-				  definition to include any link on the path -->
                 </list></t>
 
               <t>Application-related: defines the media-related behaviour for
@@ -334,10 +329,6 @@
                           if there exits some variation at the media output
                           bit rate than the target bit rate for RMCAT media
                           streams.</t>
-
-                          <!-- VS: CBR?? possibly remove it. We are doing
-						  congestion conrol, right. Or is it for modeling traffic which is not
-						  congestion controlled?-->
 
                           <t>If the media stream is sending VBR, the test case
                           MUST define the maximum and minimum encoding rate,
@@ -407,8 +398,6 @@
     </section>
 
     <section anchor="TC" title="Basic Test Cases">
-      <!-- Desired Behavior -->
-
       <section title="Variable Available Capacity">
         <t>In this test case the end-to-end path capacity between the two
         endpoints varies over time. This test is designed to measure the
@@ -689,9 +678,6 @@
         Lastly, when the third flow appears the bottleneck link should be
         saturated.</t>
 
-        <!-- this assumes that the congestion control ramps up that quickly, which may
-not be true -->
-
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
@@ -723,9 +709,6 @@ not be true -->
 
         <t><list style="symbols">
             <t>Test duration: 60s</t>
-
-            <!-- VS: i think it should be longer, they might not ramp up
-			quickly -->
 
             <t>Path characteristics <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
@@ -858,8 +841,7 @@ not be true -->
         <t><list style="symbols">
             <t>Test duration: 120s</t>
 
-            <!-- VS: i think it should be longer, they might not ramp up
-  			quickly -->
+            <!-- -->
 
             <t>Path characteristics <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
@@ -999,9 +981,6 @@ not be true -->
 
         <t><list style="symbols">
             <t>Test duration: 300s</t>
-
-            <!-- VS: i think it should be longer, they might not ramp up
-  			quickly -->
 
             <t>Path characteristics: <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
@@ -1215,9 +1194,6 @@ not be true -->
         and loss. Specifically, the test introduces five media flows at the
         same time instance.</t>
 
-        <!-- this assumes that the congestion control ramps up that quickly, which may
-  not be true -->
-
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics:
         <list style="numbers">
@@ -1247,9 +1223,6 @@ not be true -->
 
         <t><list style="symbols">
             <t>Test duration: 60s</t>
-
-            <!-- VS: i think it should be longer, they might not ramp up
-  			quickly -->
 
             <t>Path characteristics: <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
@@ -1513,7 +1486,8 @@ not be true -->
 
     <section title="Wireless Access Links">
       <section title="Cellular Network Specific Test Cases">
-        <t>Additional cellular network specific test cases are define in</t>
+        <t>Additional cellular network specific test cases are define in
+        [ref]</t>
 
         <!--ZS: may be a link to another draft would be good enough-->
       </section>
