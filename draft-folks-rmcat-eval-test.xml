@@ -484,7 +484,7 @@
                     <t>Number of media sources: Two (2).</t>
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
-                        <t>Bit rate range: 150 Kbps - 1 Mbps</t>
+                        <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
                         <t>Frame Resolution: 144p - 720p (or 1080p)</t>
                         <t>Frame rate: 10fps - 30fps</t>
                         <t>Variation from target bitrate: +/-5%</t>
@@ -592,7 +592,7 @@
 				<list style="symbols">
                 <t>Path direction: Upstream and downstream.</t>
                 <t>Number of bottlenecks : One (1)</t>
-                <t>Bottleneck link speed : 2Mbps</t>
+                <t>Bottleneck link speed : 1Mbps</t>
                 <t>One-Way propagation delay: 100 ms</t>
                 <t>Maximum end-to-end jitter: 30ms.</t>
                 <t>Bottleneck queue type: Droptail. Additional tests with other
@@ -608,7 +608,7 @@
                     <t>Number of media sources: One (1)</t>
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
-                        <t>Bit rate range: 150kbps-2mbps</t>
+                        <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
                         <t>Frame Resolution: 144p-720p (or 1080p)</t>
                         <t>Frame rate: 10fps-30fps</t>
                         <t>Variation from target bitrate: +/-5%</t>
@@ -622,7 +622,7 @@
                       </list></t>
                   </list></t>
 
-                <t>Media startup behaviour: [200kbps, 2Mbps].</t>
+                <t>Media startup behaviour: [200kbps, 1.5Mbps].</t>
                 <t>Competing traffic: 
 				  <list style="symbols">
                     <t>Number of sources : Zero (0)</t>
@@ -724,7 +724,7 @@ not be true -->
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
 
-                        <t>Bit rate range: 150kbps-1.5mbps</t>
+                        <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                         <t>Frame Resolution: 144p-720p (or 1080p)</t>
 
@@ -840,7 +840,7 @@ not be true -->
 
                 <t>Bottleneck link capacity: 2Mbps</t>
 
-                <t>One-Way propagation delay: {50ms, 200ms}</t>
+                <t>One-Way propagation delay: [50ms, 200ms]</t>
 
                 <t>Maximum end to end jitter: 30ms</t>
 
@@ -848,7 +848,7 @@ not be true -->
                 running the same test with different AQM schemes: FQ-Codel, or
                 PIE.</t>
 
-                <t>Bottleneck queue size: { 20ms, 250ms, 1000ms}</t>
+                <t>Bottleneck queue size:  [20ms, 250ms, 1000ms]</t>
 
                 <t>Link loss ratio: 0.0%</t>
               </list></t>
@@ -862,7 +862,7 @@ not be true -->
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
 
-                        <t>Bit rate range: 150kbps-1.5mbps</t>
+                        <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                         <t>Frame Resolution: 144p-720p (or 1080p)</t>
 
@@ -881,7 +881,7 @@ not be true -->
                         <t>End time: 59s.</t>
                       </list></t>
 
-                    <t>Media startup behaviour: {200kbps, 1500kbps}.</t>
+                    <t>Media startup behaviour: [200kbps, 1500kbps].</t>
                   </list></t>
 
                 <t>Competing traffic:<list style="symbols">
@@ -974,7 +974,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
 
                 <t>Bottleneck link capacity: 2.0mbps</t>
 
-                <t>One-Way propagation delay: {50ms,200ms}</t>
+                <t>One-Way propagation delay: [50ms, 200ms]</t>
 
                 <t>Maximum end to end jitter: 30ms</t>
 
@@ -996,7 +996,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
 
-                        <t>Bit rate range: 150kbps-1.5mbps</t>
+                        <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                         <t>Frame Resolution: 144p-720p (or 1080p)</t>
 
@@ -1015,7 +1015,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                         <t>End time: 59s.</t>
                       </list></t>
 
-                    <t>Media startup behaviour: {200kbps,1500kbps}.</t>
+                    <t>Media startup behaviour: [200kbps, 1500kbps].</t>
                   </list></t>
 
                 <t>Competing traffic <list style="symbols">
@@ -1102,7 +1102,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
 
-                        <t>Bit rate range: 150kbps-1.5mbps</t>
+                        <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                         <t>Frame Resolution: 144p-720p (or 1080p)</t>
 
@@ -1119,8 +1119,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                     before shutdown.</t>
                   </list></t>
 
-                <t>Media startup behaviour: starts at minimum bit rate
-                (200kbps).</t>
+                <t>Media startup behaviour: 200kbps.</t>
 
                 <t>Competing traffic<list style="symbols">
                     <t>Number of sources : Zero (0)</t>
@@ -1245,7 +1244,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
 
-                        <t>Bit rate range: 150kbps-1.5mbps</t>
+                        <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                         <t>Frame Resolution: 144p-720p (or 1080p)</t>
 
@@ -1261,8 +1260,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                     <t>Media timeline: starts at the begining, shutdown 1s
                     before the end.</t>
 
-                    <t>Media startup behaviour: 1) start at minimum bit rate,
-                    2) start at maximum bit rate.</t>
+                    <t>Media startup behaviour: [200 kbps, 1500 kbps].</t>
                   </list></t>
 
                 <t>Competing traffic <list style="symbols">
@@ -1444,7 +1442,7 @@ creating  a  huge number of short lived flows emitting a long lived flow charact
                     <t>Encoder configuration: <list style="symbols">
                         <t>Bit rate generation: VBR</t>
 
-                        <t>Bit rate range: 150kbps-1.5mbps</t>
+                        <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                         <t>Frame Resolution: 144p-720p (or 1080p)</t>
 
