@@ -382,7 +382,7 @@
 
   <meta name="dct.creator" content="Sarker, Z. and V. Singh" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-folks-rmcat-eval-test-00" />
-  <meta name="dct.issued" scheme="ISO8601" content="2014-2-11" />
+  <meta name="dct.issued" scheme="ISO8601" content="2014-2-12" />
   <meta name="dct.abstract" content="The Real-time Transport Protocol (RTP) is used to transmit media in multimedia telephony applications, these applications are typically required to implement congestion control. The RMCAT working group is currently working on candidate algorithms for such interactive real-time multimedia applications. This document describes the test cases needed to evaluate the performance of those candidate algorithms. " />
   <meta name="description" content="The Real-time Transport Protocol (RTP) is used to transmit media in multimedia telephony applications, these applications are typically required to implement congestion control. The RMCAT working group is currently working on candidate algorithms for such interactive real-time multimedia applications. This document describes the test cases needed to evaluate the performance of those candidate algorithms. " />
 
@@ -406,12 +406,12 @@
   <td class="right">V. Singh</td>
 </tr>
 <tr>
-  <td class="left">Expires: August 15, 2014</td>
+  <td class="left">Expires: August 16, 2014</td>
   <td class="right">Aalto University</td>
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">February 11, 2014</td>
+  <td class="right">February 12, 2014</td>
 </tr>
 
     	
@@ -431,7 +431,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on August 15, 2014.</p>
+<p>This Internet-Draft will expire on August 16, 2014.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -569,7 +569,7 @@
 </ul>
 <h1 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5.</a> RMCAT Flow competing with short TCP Flows</h1>
 <p id="rfc.section.4.5.p.1">In this test case, one or more RMCAT media flow shares the bottleneck link with at multiple short-lived TCP flows. Short-lived TCP flows resemble the on/off pattern observed in the web traffic, wherein clients (browsers) connect to a server and download a resource (typically a webpage, few images, text files, etc.) using several TCP connections (up to 4). This scenario shows the performance of the multimedia application when several browser windows are active. The test case measures the adaptivity of the candidate algorithm to competing web traffic, it addresses the requirements 2 in <a href="#I-D.ietf-rmcat-cc-requirements">[I-D.ietf-rmcat-cc-requirements]</a>.</p>
-<p id="rfc.section.4.5.p.2">Depending on the convergence observed in test case 4.1 and 4.2, the candidate algorithm may be able to avoid congestion collapse. In the worst case, the media stream will fall to the minimum media bit rate.  </p>
+<p id="rfc.section.4.5.p.2">Depending on the number of short TCP flows, the cross-traffic either appears as a short burst flow or resembles a long TCP flow. The intention of this test is to observe the impact of short-term burst on the behaviour of the candidate algorithm.</p>
 <p id="rfc.section.4.5.p.3">To evaluate the performance of the candidate algorithms it is expected to log enough information to visualize the following metrics: </p>
 
 <ol>
@@ -582,8 +582,8 @@
 <ul>
   <li>Test duration: 300s</li>
   <li>Path characteristics: <ul><li>Path direction: Upstream, Downstream</li><li>Number of bottlenecks: One (1)</li><li>Bottleneck link capacity: 2.0Mbps</li><li>One-Way propagation delay: [50ms, 200ms]</li><li>Maximum end to end jitter: 30ms</li><li>Bottleneck queue type: Droptail, but would benefit from running the same test with different AQM schemes: FQ-Codel, or PIE.</li><li>Bottleneck queue size: 300ms</li><li>Link loss ratio: 0.0%</li></ul></li>
-  <li>Application-related: <ul><li>Media Source: <ul><li>Media direction: Upstream and Downstream</li><li>Number of media sources: One (1)</li><li>Encoder configuration: <ul><li>Bit rate generation: VBR</li><li>Bit rate range: 150 Kbps - 1.5 Mbps</li><li>Frame Resolution: 144p-720p (or 1080p)</li><li>Frame rate: 10fps-30fps</li><li>Variation from target bit rate: +/-5%</li><li>Responsiveness to new bit rate request: 60ms</li></ul></li><li>Media content: Foreman video sequence</li><li>Media timeline: <ul><li>Start time: 0s.</li><li>End time: 59s.</li></ul></li><li>Media startup behaviour: [200Kbps, 1500Kbps].</li></ul></li><li>Competing traffic: <ul><li>Number and Types of sources : Ten (10), short-lived TCP flows.</li><li>Traffic direction : Downstream</li><li>Congestion algorithm: Default TCP Congestion control.</li><li>Traffic timeline: Each short TCP flow is modeled as a sequence of file downloads interleaved with idle periods.  See test specific setup.</li></ul></li></ul></li>
-  <li>Test specific setup: <ul><li>Short-TCP traffic model<ul><li>File sizes: uniform distribution between 100KB to 1MB</li><li>Idle period: exponential distribution with the mean value of 10 seconds.</li></ul></li></ul></li>
+  <li>Application-related: <ul><li>Media Source: <ul><li>Media direction: Upstream and Downstream</li><li>Number of media sources: One (1)</li><li>Encoder configuration: <ul><li>Bit rate generation: VBR</li><li>Bit rate range: 150 Kbps - 1.5 Mbps</li><li>Frame Resolution: 144p-720p (or 1080p)</li><li>Frame rate: 10fps-30fps</li><li>Variation from target bit rate: +/-5%</li><li>Responsiveness to new bit rate request: 60ms</li></ul></li><li>Media content: Foreman video sequence</li><li>Media timeline: <ul><li>Start time: 0s.</li><li>End time: 59s.</li></ul></li><li>Media startup behaviour: [200Kbps, 1500Kbps].</li></ul></li><li>Competing traffic: <ul><li>Number and Types of sources : Ten (10), short-lived TCP flows.</li><li>Traffic direction : Downstream</li><li>Congestion algorithm: Default TCP Congestion control.</li><li>Traffic timeline: Each short TCP flow is modeled as a sequence of file downloads interleaved with idle periods.  See test specific setup. Not all short TCPs start at the same time, 2 start in the ON state while 8 start in an OFF stats. The model for the idle times for the OFF state is discussed in the Short-TCP model. </li></ul></li></ul></li>
+  <li>Test specific setup: <ul><li>Short-TCP traffic model<ul><li>File sizes: uniform distribution between 100KB to 1MB</li><li>Idle period: the duration of the OFF state is derived from an exponential distribution with the mean value of 10 seconds.</li></ul></li></ul></li>
 </ul>
 <h1 id="rfc.section.4.6"><a href="#rfc.section.4.6">4.6.</a> Congested Feedback Link</h1>
 <p id="rfc.section.4.6.p.1">RMCAT WG has been chartered to define algorithms for RTP hence it is assumed that RTCP, RTP header extension or such would be used as signalling means for the adaptation algorithm in the backchannel. Due to asymmetry nature of the link between communicating peers it is possible to observer lack such backchannel information due to impaired backchannel link (even when forward channel might be unimpaired). This test case is designed to observer candidate congestion control behaviour in such an event. This test case addresses requirement number 5 and in particular, requirement number 7.</p>

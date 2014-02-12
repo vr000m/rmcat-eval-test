@@ -5,8 +5,8 @@
 RMCAT WG                                                       Z. Sarker
 Internet-Draft                                               Ericsson AB
 Intended status: Informational                                  V. Singh
-Expires: August 15, 2014                                Aalto University
-                                                       February 11, 2014
+Expires: August 16, 2014                                Aalto University
+                                                       February 12, 2014
 
 
                Test Cases for Evaluating RMCAT Proposals
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 15, 2014.
+   This Internet-Draft will expire on August 16, 2014.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Sarker & Singh          Expires August 15, 2014                 [Page 1]
+Sarker & Singh          Expires August 16, 2014                 [Page 1]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -81,11 +81,11 @@ Table of Contents
      5.2.  Wi-Fi Network Specific Test Cases . . . . . . . . . . . .  25
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  25
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  25
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  25
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  26
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  26
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  27
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  27
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  28
 
 1.  Introduction
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Sarker & Singh          Expires August 15, 2014                 [Page 2]
+Sarker & Singh          Expires August 16, 2014                 [Page 2]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -165,7 +165,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                 [Page 3]
+Sarker & Singh          Expires August 16, 2014                 [Page 3]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -221,7 +221,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                 [Page 4]
+Sarker & Singh          Expires August 16, 2014                 [Page 4]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -277,7 +277,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                 [Page 5]
+Sarker & Singh          Expires August 16, 2014                 [Page 5]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -333,7 +333,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                 [Page 6]
+Sarker & Singh          Expires August 16, 2014                 [Page 6]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -389,7 +389,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                 [Page 7]
+Sarker & Singh          Expires August 16, 2014                 [Page 7]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -445,7 +445,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                 [Page 8]
+Sarker & Singh          Expires August 16, 2014                 [Page 8]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -501,7 +501,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                 [Page 9]
+Sarker & Singh          Expires August 16, 2014                 [Page 9]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -557,7 +557,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 10]
+Sarker & Singh          Expires August 16, 2014                [Page 10]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -613,7 +613,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 11]
+Sarker & Singh          Expires August 16, 2014                [Page 11]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -669,7 +669,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 12]
+Sarker & Singh          Expires August 16, 2014                [Page 12]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -725,7 +725,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 13]
+Sarker & Singh          Expires August 16, 2014                [Page 13]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -781,7 +781,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 14]
+Sarker & Singh          Expires August 16, 2014                [Page 14]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -837,7 +837,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 15]
+Sarker & Singh          Expires August 16, 2014                [Page 15]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -875,9 +875,10 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    competing web traffic, it addresses the requirements 2 in
    [I-D.ietf-rmcat-cc-requirements].
 
-   Depending on the convergence observed in test case 4.1 and 4.2, the
-   candidate algorithm may be able to avoid congestion collapse.  In the
-   worst case, the media stream will fall to the minimum media bit rate.
+   Depending on the number of short TCP flows, the cross-traffic either
+   appears as a short burst flow or resembles a long TCP flow.  The
+   intention of this test is to observe the impact of short-term burst
+   on the behaviour of the candidate algorithm.
 
    To evaluate the performance of the candidate algorithms it is
    expected to log enough information to visualize the following
@@ -892,8 +893,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-
-Sarker & Singh          Expires August 15, 2014                [Page 16]
+Sarker & Singh          Expires August 16, 2014                [Page 16]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -949,7 +949,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 17]
+Sarker & Singh          Expires August 16, 2014                [Page 17]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
@@ -993,25 +993,28 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Traffic timeline: Each short TCP flow is modeled as a
             sequence of file downloads interleaved with idle periods.
-            See test specific setup.
+            See test specific setup.  Not all short TCPs start at the
+            same time, 2 start in the ON state while 8 start in an OFF
+            stats.  The model for the idle times for the OFF state is
+            discussed in the Short-TCP model.
 
    o  Test specific setup:
 
       *  Short-TCP traffic model
 
-         +  File sizes: uniform distribution between 100KB to 1MB
 
 
 
-
-
-Sarker & Singh          Expires August 15, 2014                [Page 18]
+Sarker & Singh          Expires August 16, 2014                [Page 18]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
-         +  Idle period: exponential distribution with the mean value of
-            10 seconds.
+         +  File sizes: uniform distribution between 100KB to 1MB
+
+         +  Idle period: the duration of the OFF state is derived from
+            an exponential distribution with the mean value of 10
+            seconds.
 
 4.6.  Congested Feedback Link
 
@@ -1055,16 +1058,17 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    It should be noted that for this test case log is needed for the
    reference case where the downstream channel have no impairments.
 
-   Example Testbed attributes:
-
-   o  Test duration: 60s
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 19]
+Sarker & Singh          Expires August 16, 2014                [Page 19]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
+
+   Example Testbed attributes:
+
+   o  Test duration: 60s
 
    o  Path characteristics: Same as test case 4.1
 
@@ -1110,17 +1114,17 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Link variation pattern:
 
-         +  Sequence number: 1
-
-         +  Path direction: Upstream
 
 
 
-
-Sarker & Singh          Expires August 15, 2014                [Page 20]
+Sarker & Singh          Expires August 16, 2014                [Page 20]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
+
+         +  Sequence number: 1
+
+         +  Path direction: Upstream
 
          +  Amount of change: 50% of bottleneck link speed
 
@@ -1167,16 +1171,16 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    expected to log enough information to visualize the following
    metrics:
 
-   1.  Flow level:
-
-       a.  End-to-end delay.
 
 
-
-Sarker & Singh          Expires August 15, 2014                [Page 21]
+Sarker & Singh          Expires August 16, 2014                [Page 21]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
+
+   1.  Flow level:
+
+       a.  End-to-end delay.
 
        b.  RTP packet losses observed at the receiving endpoint.
 
@@ -1222,17 +1226,17 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Media Source:
 
-         +  Media direction: Upstream
-
-         +  Number of media sources: Five (5)
 
 
 
-
-Sarker & Singh          Expires August 15, 2014                [Page 22]
+Sarker & Singh          Expires August 16, 2014                [Page 22]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
+
+         +  Media direction: Upstream
+
+         +  Number of media sources: Five (5)
 
          +  Encoder configuration:
 
@@ -1278,18 +1282,18 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    for real-time interactive media which consists of more than one media
    flows and can pause/resume media flow at any point of time during the
    session.  This test case directly addresses the requirement number
-   1.B in [I-D.ietf-rmcat-cc-requirements].  One can think it as a
-   variation of test case 4.3 however, it is different as the candidate
-   algorithms can use different strategies to increase it s efficiency,
-   for example the fairness, convergence time, reduce oscillation etc,
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 23]
+Sarker & Singh          Expires August 16, 2014                [Page 23]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
+   1.B in [I-D.ietf-rmcat-cc-requirements].  One can think it as a
+   variation of test case 4.3 however, it is different as the candidate
+   algorithms can use different strategies to increase it s efficiency,
+   for example the fairness, convergence time, reduce oscillation etc,
    by capitalizing the fact that they have previous information of the
    link.
 
@@ -1334,17 +1338,17 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Flow duration: 59s
 
-         +  Pause time: not required
-
-         +  Resume time: not required
 
 
 
-
-Sarker & Singh          Expires August 15, 2014                [Page 24]
+Sarker & Singh          Expires August 16, 2014                [Page 24]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
+
+         +  Pause time: not required
+
+         +  Resume time: not required
 
       *  Media flow appearance:
 
@@ -1390,17 +1394,17 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 7.  IANA Considerations
 
-   There are no IANA impacts in this memo.
-
-8.  Acknowledgements
 
 
 
-
-Sarker & Singh          Expires August 15, 2014                [Page 25]
+Sarker & Singh          Expires August 16, 2014                [Page 25]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
+
+   There are no IANA impacts in this memo.
+
+8.  Acknowledgements
 
    Much of this document is derived from previous work on congestion
    control at the IETF.
@@ -1447,17 +1451,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
               Interactive Real-time Media", draft-ietf-rmcat-eval-
               criteria-00 (work in progress), January 2014.
 
-   [I-D.ietf-rmcat-cc-requirements]
 
 
-
-
-
-Sarker & Singh          Expires August 15, 2014                [Page 26]
+Sarker & Singh          Expires August 16, 2014                [Page 26]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
+   [I-D.ietf-rmcat-cc-requirements]
               Jesup, R., "Congestion Control Requirements For RMCAT",
               draft-ietf-rmcat-cc-requirements-00 (work in progress),
               July 2013.
@@ -1500,7 +1501,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
               Common TCP Evaluation Suite", Proc. PFLDnet. 2008, August
               2008.
 
-Authors' Addresses
 
 
 
@@ -1509,10 +1509,12 @@ Authors' Addresses
 
 
 
-Sarker & Singh          Expires August 15, 2014                [Page 27]
+Sarker & Singh          Expires August 16, 2014                [Page 27]
 
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
+
+Authors' Addresses
 
    Zaheduzzaman Sarker
    Ericsson AB
@@ -1562,6 +1564,4 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-
-
-Sarker & Singh          Expires August 15, 2014                [Page 28]
+Sarker & Singh          Expires August 16, 2014                [Page 28]
