@@ -1041,7 +1041,13 @@
 
                     <t>Traffic timeline: Each short TCP flow is modeled as a
                     sequence of file downloads interleaved with idle periods.
-                    See test specific setup.</t>
+                    See test specific setup. Not all short TCPs start at the
+                    same time, 2 start in the ON state while 8 start in an OFF
+                    stats. The model for the idle times for the OFF state is
+                    discussed in the Short-TCP model. </t>
+
+
+
                   </list></t>
               </list></t>
 
@@ -1050,8 +1056,9 @@
                     <t>File sizes: uniform distribution between 100KB to
                     1MB</t>
 
-                    <t>Idle period: exponential distribution with the mean
-                    value of 10 seconds.</t>
+                    <t>Idle period: the duration of the OFF state is derived
+                    from an exponential distribution with the mean value of 10
+                    seconds.</t>
                   </list></t>
               </list></t>
           </list></t>
