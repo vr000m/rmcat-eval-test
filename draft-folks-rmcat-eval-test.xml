@@ -325,7 +325,9 @@
                   bottleneck link.</t>
 
                   <t>One-way propagation delay: describes the end-to-end
-                  latency along the path.</t>
+                  latency along the path i.e., the time it takes for a packet
+                  to go from the sender to the receiver, it does not include
+                  any queuing delay.</t>
 
                   <t>Maximum end-to-end jitter: defines maximum jitter can be
                   observed along the path.</t>
