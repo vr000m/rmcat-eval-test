@@ -253,13 +253,15 @@
     </section> -->
 
     <section anchor="TS" title="Basic Structure of Test cases">
-      <t>All test cases in this document follow a basic structure, it enables
-      implementers to describe new test scenarios without explaining common
-      attributes repeatedly. The structure includes a general description
-      section that describe the test case and motivations, additionally it
-      defines a set of attributes that characterize the testbed, i.e., the
-      network path between communicating peers and the diverse traffic
-      sources.</t>
+      <t>   
+        All test cases in this document follow a basic structure allowing
+        implementers to describe new test scenarios without repeatedly
+        explaining common attributes. The structure includes a general
+        description section that describe the test case and motivations,
+        additionally it defines a set of attributes that characterize the
+        testbed, i.e., the network path between communicating peers and the
+        diverse traffic sources.
+      </t>
 
       <t><list style="symbols">
           <t>Define the test case: <list style="symbols">
