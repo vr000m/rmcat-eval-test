@@ -276,6 +276,40 @@
               needs to measure to validate the expected rate adaptation
               behaviour.</t>
             </list></t>
+			
+		  <t>Basic Topology: 
+			  <xref target="fig-eval-topo" /> shows an example evaluation
+			  topology, where S1..Sn are traffic sources, these sources are either 
+			  RMCAT or a mixture of competing traffic flows. R1..Rn are the 
+			  corresponding receivers. The path from the source to destination
+			  is denoted as upstream and the path from a destination to a 
+			  source is denoted as downstream. It is possible for a testbed
+			  to have different path characteristics for each source in either
+			  direction. Mainly for simplicity in describing the topology
+			  an endpoint is defined as a RMCAT senders or receiver. However
+			  in practice, for more complex scenarios the endpoint wil act
+			  both as a sender and receiver, again for simplicity in describing
+			  the path characteristics should be done from the perspective
+			  of endpoints on the left-hand side of the 
+			  <xref target="fig-eval-topo" />.
+		  </t>
+<t><figure anchor="fig-eval-topo" title="Simple Topology">
+<artwork><![CDATA[
++---+                                                         +---+   
+|S1 |===== \                 UPSTREAM -->            / =======|R1 |   
++---+      \\                                       //        +---+   
+            \\                                     //                 
++---+       +-----+                               +-----+       +---+   
+|S2 |=======|  A  |------------------------------>|  B  |=======|R2 |   
++---+       |     |<------------------------------|     |       +---+   
+          +-----+                                 +-----+               
+(...)         //                                     \\         (...)   
+             //          <-- DOWNSTREAM               \\                
++---+       //                                         \\       +---+   
+|Sn |====== /                                           \ ======|Rn |   
++---+                                                           +---+   
+]]></artwork>
+</figure></t>	  
 
           <t>Define testbed attributes: <list style="symbols">
               <t>Duration: defines the duration of the test case.</t>
