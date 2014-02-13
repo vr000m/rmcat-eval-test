@@ -108,34 +108,42 @@
     <keyword>Congestion Control</keyword>
 
     <abstract>
-      <t>The Real-time Transport Protocol (RTP) is used to transmit media in
-      multimedia telephony applications, these applications are typically
-      required to implement congestion control. The RMCAT working group is
-      currently working on candidate algorithms for such interactive real-time
-      multimedia applications. This document describes the test cases needed
-      to evaluate the performance of those candidate algorithms. <!--The draft defines a structure on how to define test cases and uses
+      
+      <t>
+		The Real-time Transport Protocol (RTP) is used to transmit media in
+		multimedia telephony applications, these applications are typically required
+		to implement congestion control. The RMCAT working group is currently working
+		on candidate algorithms for such interactive real-time multimedia
+		applications. This document describes the test cases to be used in the
+		evaluation of the performance of those candidate algorithms.
+      </t>
+      <!--The draft defines a structure on how to define test cases and uses
 	  that stracture to define test case those are essensial to RMCAT to evaluate
 	  the candidate algorithms. also the intention here is define the test cases
 	  in such a way that people can customize by tunning the same test case to fit
 	  their to be tested network characteristics. this is the theme and we need
-	  more text here.--></t>
+	  more text here.-->
     </abstract>
   </front>
 
   <middle>
     <section title="Introduction">
-      <t>This memo describes a set of test cases for evaluating candidate
-      RMCAT congestion control algorithm proposals, it is based on the
-      guidelines enumerated in <xref
-      target="I-D.ietf-rmcat-eval-criteria"></xref> and requirements discussed
-      in <xref target="I-D.ietf-rmcat-cc-requirements"></xref>. The test cases
-      cover basic usage scenarios and are described using a common structure,
-      which allows any implementer to provide new test cases to fit their test
-      scenario and link characteristics. Each test cases incorporates the
-      metrics, evaluation guidelines and parameters described in <xref
-      target="I-D.ietf-rmcat-eval-criteria"></xref>.</t>
+    <t>
+      This memo describes a set of test cases for evaluating candidate RMCAT
+      congestion control algorithm proposals, it is based on the guidelines
+      enumerated in <xref target="I-D.ietf-rmcat-eval-criteria" /> and
+      requirements discussed in <xref target="I-D.ietf-rmcat-cc-requirements" />. 
+	  The test cases cover basic usage scenarios and are described using a
+	  common structure, which allows for additional test cases to be added to
+	  those described herein to accommodate other topologies and/or the modeling
+	  of different link characteristics. Each test cases incorporates the metrics,
+	  evaluation guidelines and parameters described in <xref
+	  target="I-D.ietf-rmcat-eval-criteria" />. It is the intention of this work
+	  to capture the consensus of the RMCAT working group participants regarding
+	  the test cases upon which the performance of the candidate RMCAT proposals
+	  should be evaluated.
+    </t>
 
-      <t></t>
     </section>
 
     <section anchor="sec-terminology" title="Terminology">
