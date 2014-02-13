@@ -28,17 +28,13 @@
 
     <author fullname="Zaheduzzaman Sarker" initials="Z" surname="Sarker">
       <organization>Ericsson AB</organization>
-
+	  
       <address>
         <postal>
           <street></street>
-
           <city>Lule&aring;</city>
-
           <region>SE</region>
-
           <code>977 53</code>
-
           <country>Sweden</country>
         </postal>
 
@@ -54,25 +50,20 @@
       <address>
         <postal>
           <street>School of Electrical Engineering</street>
-
           <street>Otakaari 5 A</street>
-
           <city>Espoo</city>
-
           <region>FIN</region>
-
           <code>02150</code>
-
           <country>Finland</country>
         </postal>
 
         <email>varun@comnet.tkk.fi</email>
-
         <uri>http://www.netlab.tkk.fi/~varun/</uri>
       </address>
     </author>
 
-    <!-- Add Xiaoqing
+    <!-- Add Xiaoqing	-->
+
     <author fullname=" Xiaoqing Zhu" initials="X" surname="Zhu">
         <organization>Cisco Systems</organization>
         <address>
@@ -86,9 +77,8 @@
             <email>xiaoqzhu@cisco.com</email>
         </address>
     </author>
-	-->
 
-    <!-- Add Michael
+    <!-- Add Michael	-->
     <author fullname="Michael A. Ramalho" initials="M. A." 
             surname="Ramalho">
 	    <organization abbrev="Cisco Systems">Cisco Systems, Inc.</organization>
@@ -104,7 +94,6 @@
         <email>mramalho@cisco.com</email>
       </address>
     </author>
-	-->
 
     <date year="2014" />
 
