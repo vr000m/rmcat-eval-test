@@ -172,10 +172,10 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    o
 
-   +---+                                                         +---+
-   |S1 |===== \                 UPSTREAM -->            / =======|R1 |
-   +---+      \\                                       //        +---+
-               \\                                     //
+   +---+                                                           +---+
+   |S1 |====== \                 UPSTREAM -->             / =======|R1 |
+   +---+       \\                                        //        +---+
+                \\                                      //
    +---+       +-----+                               +-----+       +---+
    |S2 |=======|  A  |------------------------------>|  B  |=======|R2 |
    +---+       |     |<------------------------------|     |       +---+
@@ -394,7 +394,7 @@ Sarker, et al.          Expires August 18, 2014                 [Page 7]
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
-       b.  Queue length (ms)
+       b.  Queue length (ms):
 
            +  average over the length of the session
 
@@ -464,7 +464,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media source behaviour:
 
-            -  Adaptability
+            -  Adaptability:
 
                o  Bit rate range: 150 Kbps - 1.5 Mbps
 
@@ -486,11 +486,11 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Media startup behaviour: [200Kbps, 1500Kbps].
 
-      *  Competing traffic
+      *  Competing traffic:
 
          +  Number of sources : Zero (0)
 
-   o  Test specific setup
+   o  Test specific setup:
 
       *  Number of bandwidth variations: Three (4)
 
@@ -605,7 +605,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        a.  Bandwidth utilization.
 
-       b.  Queue length (ms)
+       b.  Queue length (ms):
 
            +  average over the length of the session
 
@@ -655,7 +655,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media source behaviour:
 
-            -  Adaptability
+            -  Adaptability:
 
                o  Bit rate range: 150 Kbps - 1.5 Mbps
 
@@ -745,7 +745,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        a.  Bandwidth utilization.
 
-       b.  Queue length (ms)
+       b.  Queue length (ms):
 
            +  average over the length of the session
 
@@ -786,7 +786,7 @@ Sarker, et al.          Expires August 18, 2014                [Page 14]
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
-   o  Path characteristics
+   o  Path characteristics:
 
       *  Path direction: Upstream, Downstream
 
@@ -816,7 +816,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media source behaviour:
 
-            -  Adaptability
+            -  Adaptability:
 
                o  Bit rate range: 150 Kbps - 1.5 Mbps
 
@@ -842,7 +842,7 @@ Sarker, et al.          Expires August 18, 2014                [Page 15]
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
-      *  Competing traffic
+      *  Competing traffic:
 
          +  Number of sources : Zero (0)
 
@@ -923,7 +923,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        a.  Bandwidth utilization.
 
-       b.  Queue length (ms)
+       b.  Queue length (ms):
 
            +  average over the length of the session
 
@@ -968,7 +968,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    o  Test duration: 120s
 
-   o  Path characteristics
+   o  Path characteristics:
 
       *  Path direction: Upstream, Downstream
 
@@ -999,7 +999,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media source behaviour:
 
-            -  Adaptability
+            -  Adaptability:
 
                o  Bit rate range: 150 Kbps - 1.5 Mbps
 
@@ -1096,7 +1096,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        a.  Bandwidth utilization.
 
-       b.  Queue length (ms)
+       b.  Queue length (ms):
 
            +  average over the length of the session
 
@@ -1157,7 +1157,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media source behaviour:
 
-            -  Adaptability
+            -  Adaptability:
 
                o  Bit rate range: 150 Kbps - 1.5 Mbps
 
@@ -1204,7 +1204,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    o  Test specific setup:
 
-      *  Short-TCP traffic model
+      *  Short-TCP traffic model:
 
          +  File sizes: uniform distribution between 100KB to 1MB
 
@@ -1257,7 +1257,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        a.  Bandwidth utilization
 
-       b.  Queue length (ms)
+       b.  Queue length (ms):
 
            +  average over the length of the session
 
@@ -1332,7 +1332,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media source behaviour:
 
-            -  Adaptability
+            -  Adaptability:
 
                o  Bit rate range: 150 Kbps - 1.5 Mbps
 
@@ -1372,7 +1372,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media source behaviour:
 
-            -  Adaptability
+            -  Adaptability:
 
                o  Bit rate range: 150 Kbps - 1.5 Mbps
 
@@ -1402,7 +1402,7 @@ Sarker, et al.          Expires August 18, 2014                [Page 25]
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
-      *  Competing traffic
+      *  Competing traffic:
 
          +  Number of sources : Zero (0)
 
@@ -1504,7 +1504,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        a.  Bandwidth utilization.
 
-       b.  Queue length (ms)
+       b.  Queue length (ms):
 
 
 
@@ -1643,7 +1643,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        a.  Bandwidth utilization.
 
-       b.  Queue length (ms)
+       b.  Queue length (ms):
 
            +  average over the length of the session
 

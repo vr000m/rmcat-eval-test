@@ -280,7 +280,8 @@
       diverse traffic sources.</t>
 
       <t><list style="symbols">
-          <t>Define the test case: <list style="symbols">
+          <t>Define the test case: 
+            <list style="symbols">
               <t>General description: describes the motivation and the goals
               of the test case.</t>
 
@@ -315,10 +316,10 @@
           <t><figure anchor="fig-eval-topo"
               title="Example of A Testbed Topology">
               <artwork><![CDATA[
-+---+                                                         +---+   
-|S1 |===== \                 UPSTREAM -->            / =======|R1 |   
-+---+      \\                                       //        +---+   
-            \\                                     //                 
++---+                                                           +---+   
+|S1 |====== \                 UPSTREAM -->             / =======|R1 |   
++---+       \\                                        //        +---+   
+             \\                                      //                 
 +---+       +-----+                               +-----+       +---+   
 |S2 |=======|  A  |------------------------------>|  B  |=======|R2 |   
 +---+       |     |<------------------------------|     |       +---+   
@@ -336,7 +337,8 @@
           contributed by other devices connected to such a testbed. It is
           recommended to not route non-test traffic through the testbed.</t>
 
-          <t>Define testbed attributes: <list style="symbols">
+          <t>Define testbed attributes: 
+            <list style="symbols">
               <t>Duration: defines the duration of the test.</t>
 
               <t>Path characteristics: defines the end-to-end transport level
@@ -346,7 +348,8 @@
               path characteristics for a particular path direction is
               applicable to all the Sources "S" sending traffic on that path.
               If only one attribute is specified, it is used for both path
-              directions. <list style="symbols">
+              directions. 
+              <list style="symbols">
                   <t>Path direction: upstream or downstream.</t>
 
                   <t>Bottleneck-link capacity: defines minimum capacity of the
@@ -374,11 +377,13 @@
                 </list></t>
 
               <t>Application-related: defines the media-related behaviour for
-              implementing the test case <list style="symbols">
+              implementing the test case 
+              <list style="symbols">
                   <t>Media Source: defines the characteristics of the media
                   sources present. When using more than one media source, the
                   different attributes are enumerated separately for each
-                  different media source. <list style="symbols">
+                  different media source. 
+                  <list style="symbols">
                       <t>Media type: Video/Voice/Application/Text</t>
 
                       <t>Media flow direction: upstream, downstream or
@@ -393,7 +398,8 @@
                       <t>Media source behaviour: describes the media encoder
                       behavior. It MUST define the main parameters than affect
                       the adaptation behaviour. This may include but not
-                      limited to: <list style="symbols">
+                      limited to: 
+                      <list style="symbols">
                           <t>Adaptability: describes the adaptation options.
                           For example, in case of video it defines the range
                           of bitrate adaptation, frame rate adaption, video
@@ -476,7 +482,8 @@
         the requirement 1(a) in <xref
         target="I-D.ietf-rmcat-cc-requirements"></xref>, which requires the
         algorithm to adapt the flow(s) and provide lower end-to-end latency
-        when there exists: <list style="symbols">
+        when there exists: 
+        <list style="symbols">
             <t>an intermediate bottleneck</t>
 
             <t>change in available capacity due to interface change and/or
@@ -499,8 +506,10 @@
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics
-        at a fine enough time granularity: <list style="numbers">
-            <t>Flow level: <list style="letters">
+        at a fine enough time granularity: 
+        <list style="numbers">
+            <t>Flow level: 
+              <list style="letters">
                 <t>End-to-end delay</t>
 
                 <t>Losses observed at the receiving endpoint</t>
@@ -508,10 +517,12 @@
                 <t>Feedback message overhead</t>
               </list></t>
 
-            <t>Transport level: <list style="letters">
+            <t>Transport level: 
+              <list style="letters">
                 <t>Bandwidth utilization</t>
 
-                <t>Queue length (ms) <list style="symbols">
+                <t>Queue length (ms):
+                  <list style="symbols">
                     <t>average over the length of the session</t>
 
                     <t>5 and 95 percentile</t>
@@ -549,7 +560,8 @@
         <t><list style="symbols">
             <t>Test duration: 120s</t>
 
-            <t>Path characteristics: <list style="symbols">
+            <t>Path characteristics: 
+              <list style="symbols">
                 <t>Path direction: Upstream and downstream.</t>
 
                 <t>Bottleneck-link capacity: 4Mbps.</t>
@@ -565,8 +577,10 @@
                 <t>path loss ratio: 0%.</t>
               </list></t>
 
-            <t>Application-related:<list style="symbols">
-                <t>Media Source: <list style="symbols">
+            <t>Application-related:
+              <list style="symbols">
+                <t>Media Source: 
+                  <list style="symbols">
                     <t>Media type: Video</t>
 
                     <t>Media direction: Upstream.</t>
@@ -575,8 +589,10 @@
 
                     <t>Media codec: VBR</t>
 
-                    <t>Media source behaviour: <list style="symbols">
-                        <t>Adaptability<list style="symbols">
+                    <t>Media source behaviour: 
+                      <list style="symbols">
+                        <t>Adaptability: 
+                          <list style="symbols">
                             <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                             <t>Frame Resolution: 144p - 720p (or 1080p)</t>
@@ -591,7 +607,8 @@
 
                     <t>Media content: Foreman media sequence.</t>
 
-                    <t>Media timeline: <list style="symbols">
+                    <t>Media timeline: 
+                      <list style="symbols">
                         <t>Start time: 0s.</t>
 
                         <t>End time: 119s.</t>
@@ -600,15 +617,18 @@
 
                 <t>Media startup behaviour: [200Kbps, 1500Kbps].</t>
 
-                <t>Competing traffic<list style="symbols">
+                <t>Competing traffic:
+                  <list style="symbols">
                     <t>Number of sources : Zero (0)</t>
                   </list></t>
               </list></t>
 
-            <t>Test specific setup<list style="symbols">
+            <t>Test specific setup:
+              <list style="symbols">
                 <t>Number of bandwidth variations: Three (4)</t>
 
-                <t>Variation pattern: <list style="symbols">
+                <t>Variation pattern: 
+                  <list style="symbols">
                     <t>Sequence number: 1</t>
 
                     <t>Path direction: Upstream</t>
@@ -618,7 +638,8 @@
                     <t>Start time: 30s</t>
                   </list></t>
 
-                <t>Variation pattern: <list style="symbols">
+                <t>Variation pattern: 
+                  <list style="symbols">
                     <t>Sequence number: 2</t>
 
                     <t>Path direction: Upstream</t>
@@ -628,7 +649,8 @@
                     <t>Start time: 50s</t>
                   </list></t>
 
-                <t>Variation pattern: <list style="symbols">
+                <t>Variation pattern: 
+                  <list style="symbols">
                     <t>Sequence number: 3</t>
 
                     <t>Path direction: Upstream</t>
@@ -638,7 +660,8 @@
                     <t>Start time: 70s</t>
                   </list></t>
 
-                <t>Variation pattern: <list style="symbols">
+                <t>Variation pattern: 
+                  <list style="symbols">
                     <t>Sequence number: 4</t>
 
                     <t>Path direction: Upstream</t>
@@ -703,7 +726,8 @@
             <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
-                <t>Queue length (ms)<list style="symbols">
+                <t>Queue length (ms):
+                  <list style="symbols">
                     <t>average over the length of the session</t>
 
                     <t>5 and 95 percentile</t>
@@ -718,7 +742,8 @@
         <t><list style="symbols">
             <t>Test duration: 60s</t>
 
-            <t>Path characteristics: <list style="symbols">
+            <t>Path characteristics: 
+              <list style="symbols">
                 <t>Path direction: Upstream and downstream.</t>
 
                 <t>Bottleneck-link capacity: 1Mbps</t>
@@ -735,8 +760,10 @@
                 <t>Path loss ratio: 0%</t>
               </list></t>
 
-            <t>Application-related: <list style="symbols">
-                <t>Media Source: <list style="symbols">
+            <t>Application-related: 
+              <list style="symbols">
+                <t>Media Source: 
+                  <list style="symbols">
                     <t>Media type: Video</t>
 
                     <t>Media direction: Upstream.</t>
@@ -745,8 +772,10 @@
 
                     <t>Media codec: VBR</t>
 
-                    <t>Media source behaviour: <list style="symbols">
-                        <t>Adaptability<list style="symbols">
+                    <t>Media source behaviour: 
+                      <list style="symbols">
+                        <t>Adaptability:
+                          <list style="symbols">
                             <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                             <t>Frame Resolution: 144p - 720p (or 1080p)</t>
@@ -761,7 +790,8 @@
 
                     <t>Media content: Foreman video sequence</t>
 
-                    <t>Media timeline: <list style="symbols">
+                    <t>Media timeline: 
+                      <list style="symbols">
                         <t>Start time: 0s.</t>
 
                         <t>End time: 59s.</t>
@@ -770,7 +800,8 @@
 
                 <t>Media startup behaviour: [200Kbps, 1500Kbps].</t>
 
-                <t>Competing traffic: <list style="symbols">
+                <t>Competing traffic: 
+                  <list style="symbols">
                     <t>Number of sources : Zero (0)</t>
                   </list></t>
               </list></t>
@@ -825,7 +856,8 @@
             <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
-                <t>Queue length (ms) <list style="symbols">
+                <t>Queue length (ms):
+                  <list style="symbols">
                     <t>average over the length of the session</t>
 
                     <t>5 and 95 percentile</t>
@@ -863,7 +895,8 @@
         <t><list style="symbols">
             <t>Test duration: 60s</t>
 
-            <t>Path characteristics <list style="symbols">
+            <t>Path characteristics: 
+              <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
 
                 <t>Bottleneck-link capacity: 3.5Mbps</t>
@@ -879,8 +912,10 @@
                 <t>Link loss ratio: 0.0%</t>
               </list></t>
 
-            <t>Application-related: <list style="symbols">
-                <t>Media Source: <list style="symbols">
+            <t>Application-related: 
+              <list style="symbols">
+                <t>Media Source: 
+                  <list style="symbols">
                     <t>Media type: Video</t>
 
                     <t>Media direction: Upstream</t>
@@ -889,8 +924,10 @@
 
                     <t>Media codec: VBR</t>
 
-                    <t>Media source behaviour: <list style="symbols">
-                        <t>Adaptability<list style="symbols">
+                    <t>Media source behaviour: 
+                      <list style="symbols">
+                        <t>Adaptability:
+                          <list style="symbols">
                             <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                             <t>Frame Resolution: 144p - 720p (or 1080p)</t>
@@ -912,13 +949,16 @@
                     <t>Media startup behaviour: 200Kbps.</t>
                   </list></t>
 
-                <t>Competing traffic <list style="symbols">
+                <t>Competing traffic: 
+                  <list style="symbols">
                     <t>Number of sources : Zero (0)</t>
                   </list></t>
               </list></t>
 
-            <t>Test specific setup: <list style="symbols">
-                <t>Media flow timeline:<list style="symbols">
+            <t>Test specific setup: 
+              <list style="symbols">
+                <t>Media flow timeline:
+                  <list style="symbols">
                     <t>Flow no: One (1)</t>
 
                     <t>Start time: 0s</t>
@@ -926,7 +966,8 @@
                     <t>End time: 59s</t>
                   </list></t>
 
-                <t>Media flow appearance:<list style="symbols">
+                <t>Media flow appearance:
+                  <list style="symbols">
                     <t>Flow no: Two (2)</t>
 
                     <t>Start time: 20s</t>
@@ -934,7 +975,8 @@
                     <t>End time: 59s</t>
                   </list></t>
 
-                <t>Media flow appearance:<list style="symbols">
+                <t>Media flow appearance:
+                  <list style="symbols">
                     <t>Flow no: Three (3)</t>
 
                     <t>Start time: 40s</t>
@@ -983,7 +1025,8 @@
             <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
-                <t>Queue length (ms) <list style="symbols">
+                <t>Queue length (ms):
+                  <list style="symbols">
                     <t>average over the length of the session</t>
 
                     <t>5 and 95 percentile</t>
@@ -1028,7 +1071,8 @@
 
             <!-- -->
 
-            <t>Path characteristics <list style="symbols">
+            <t>Path characteristics: 
+              <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
 
                 <t>Bottleneck-link capacity: 2Mbps</t>
@@ -1046,8 +1090,10 @@
                 <t>Path loss ratio: 0.0%</t>
               </list></t>
 
-            <t>Application-related: <list style="symbols">
-                <t>Media Source: <list style="symbols">
+            <t>Application-related: 
+              <list style="symbols">
+                <t>Media Source: 
+                  <list style="symbols">
                     <t>Media type: Video</t>
 
                     <t>Media direction: Upstream and Downstream</t>
@@ -1056,8 +1102,10 @@
 
                     <t>Media codec: VBR</t>
 
-                    <t>Media source behaviour: <list style="symbols">
-                        <t>Adaptability<list style="symbols">
+                    <t>Media source behaviour: 
+                      <list style="symbols">
+                        <t>Adaptability:
+                          <list style="symbols">
                             <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                             <t>Frame Resolution: 144p - 720p (or 1080p)</t>
@@ -1072,7 +1120,8 @@
 
                     <t>Media content: Foreman video sequence</t>
 
-                    <t>Media timeline: <list style="symbols">
+                    <t>Media timeline: 
+                      <list style="symbols">
                         <t>Start time: 5s.</t>
 
                         <!--ZS:see the next comment to find why it start 5 s later than the start period-->
@@ -1083,7 +1132,8 @@
                     <t>Media startup behaviour: [200Kbps, 1500Kbps].</t>
                   </list></t>
 
-                <t>Competing traffic:<list style="symbols">
+                <t>Competing traffic:
+                  <list style="symbols">
                     <t>Number and Types of sources : one (1), long-lived
                     TCP</t>
 
@@ -1091,7 +1141,8 @@
 
                     <t>Congestion control: Default TCP congestion control.</t>
 
-                    <t>Traffic timeline: <list style="symbols">
+                    <t>Traffic timeline: 
+                      <list style="symbols">
                         <t>Start time: 0s. <!--ZS: now a days TCP implementation uses
 		different techniques like auto tuning, hence if media and data traffic
 		start at the same the receiver window may be tuned in a way that it does
@@ -1150,7 +1201,8 @@
             <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
-                <t>Queue length (ms) <list style="symbols">
+                <t>Queue length (ms): 
+                  <list style="symbols">
                     <t>average over the length of the session</t>
 
                     <t>5 and 95 percentile</t>
@@ -1175,7 +1227,8 @@
         <t><list style="symbols">
             <t>Test duration: 300s</t>
 
-            <t>Path characteristics: <list style="symbols">
+            <t>Path characteristics: 
+              <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
 
                 <t>Bottleneck-link capacity: 2.0Mbps</t>
@@ -1193,8 +1246,10 @@
                 <t>Path loss ratio: 0.0%</t>
               </list></t>
 
-            <t>Application-related: <list style="symbols">
-                <t>Media Source: <list style="symbols">
+            <t>Application-related: 
+              <list style="symbols">
+                <t>Media Source: 
+                  <list style="symbols">
                     <t>Media type: Video</t>
 
                     <t>Media direction: Upstream and Downstream</t>
@@ -1203,8 +1258,10 @@
 
                     <t>Media codec: VBR</t>
 
-                    <t>Media source behaviour: <list style="symbols">
-                        <t>Adaptability<list style="symbols">
+                    <t>Media source behaviour: 
+                      <list style="symbols">
+                        <t>Adaptability:
+                          <list style="symbols">
                             <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                             <t>Frame Resolution: 144p - 720p (or 1080p)</t>
@@ -1219,7 +1276,8 @@
 
                     <t>Media content: Foreman video sequence</t>
 
-                    <t>Media timeline: <list style="symbols">
+                    <t>Media timeline: 
+                      <list style="symbols">
                         <t>Start time: 0s.</t>
 
                         <t>End time: 299s.</t>
@@ -1228,7 +1286,8 @@
                     <t>Media startup behaviour: [200Kbps, 1500Kbps].</t>
                   </list></t>
 
-                <t>Competing traffic: <list style="symbols">
+                <t>Competing traffic: 
+                  <list style="symbols">
                     <t>Number and Types of sources : Ten (10), short-lived TCP
                     flows.</t>
 
@@ -1246,8 +1305,10 @@
                   </list></t>
               </list></t>
 
-            <t>Test specific setup: <list style="symbols">
-                <t>Short-TCP traffic model<list style="symbols">
+            <t>Test specific setup: 
+              <list style="symbols">
+                <t>Short-TCP traffic model:
+                  <list style="symbols">
                     <t>File sizes: uniform distribution between 100KB to
                     1MB</t>
 
@@ -1291,7 +1352,8 @@
             <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization</t>
 
-                <t>Queue length (ms)<list style="symbols">
+                <t>Queue length (ms):
+                  <list style="symbols">
                     <t>average over the length of the session</t>
 
                     <t>5 and 95 percentile</t>
@@ -1348,8 +1410,10 @@
                 <t>path loss ratio: 0%.</t>
               </list></t>
 
-            <t>Application-related:<list style="symbols">
-                <t>Media Source:<list style="symbols">
+            <t>Application-related:
+              <list style="symbols">
+                <t>Media Source:
+                  <list style="symbols">
                     <t>Media type: Video</t>
 
                     <t>Media direction: Upstream</t>
@@ -1358,8 +1422,10 @@
 
                     <t>Media codec: VBR</t>
 
-                    <t>Media source behaviour: <list style="symbols">
-                        <t>Adaptability<list style="symbols">
+                    <t>Media source behaviour: 
+                      <list style="symbols">
+                        <t>Adaptability:
+                          <list style="symbols">
                             <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                             <t>Frame Resolution: 144p - 720p (or 1080p)</t>
@@ -1374,14 +1440,16 @@
 
                     <t>Media content: Foreman media sequence</t>
 
-                    <t>Media timeline: <list style="symbols">
+                    <t>Media timeline: 
+                      <list style="symbols">
                         <t>Start time: 0s.</t>
 
                         <t>End time: 59s.</t>
                       </list></t>
                   </list></t>
 
-                <t>Media Source: <list style="symbols">
+                <t>Media Source: 
+                  <list style="symbols">
                     <t>Media type: Video</t>
 
                     <t>Media direction: Downstream</t>
@@ -1390,8 +1458,10 @@
 
                     <t>Media codec: VBR</t>
 
-                    <t>Media source behaviour: <list style="symbols">
-                        <t>Adaptability<list style="symbols">
+                    <t>Media source behaviour: 
+                      <list style="symbols">
+                        <t>Adaptability:
+                          <list style="symbols">
                             <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
 
                             <t>Frame Resolution: 144p - 720p (or 1080p)</t>
@@ -1406,7 +1476,8 @@
 
                     <t>Media content: Foreman media sequence</t>
 
-                    <t>Media timeline: <list style="symbols">
+                    <t>Media timeline: 
+                      <list style="symbols">
                         <t>Start time: 0s.</t>
 
                         <t>End time: 59s.</t>
@@ -1415,15 +1486,18 @@
 
                 <t>Media startup behaviour: 200Kbps.</t>
 
-                <t>Competing traffic<list style="symbols">
+                <t>Competing traffic:
+                  <list style="symbols">
                     <t>Number of sources : Zero (0)</t>
                   </list></t>
               </list></t>
 
-            <t>Test specific setup:<list style="symbols">
+            <t>Test specific setup:
+              <list style="symbols">
                 <t>Number of bandwidth variation: Two (2)</t>
 
-                <t>Variation pattern: <list style="symbols">
+                <t>Variation pattern: 
+                  <list style="symbols">
                     <t>Sequence number: 1</t>
 
                     <t>Path direction: Upstream</t>
@@ -1433,7 +1507,8 @@
                     <t>Start time: 20s</t>
                   </list></t>
 
-                <t>Variation pattern: <list style="symbols">
+                <t>Variation pattern: 
+                  <list style="symbols">
                     <t>Sequence number: 2</t>
 
                     <t>Path direction: Upstream</t>
@@ -1443,7 +1518,8 @@
                     <t>Start time: 30s</t>
                   </list></t>
 
-                <t>Variation pattern: <list style="symbols">
+                <t>Variation pattern: 
+                  <list style="symbols">
                     <t>Sequence number: 3</t>
 
                     <t>Path direction: Upstream</t>
@@ -1453,7 +1529,8 @@
                     <t>Start time: 50s</t>
                   </list></t>
 
-                <t>Variation pattern: <list style="symbols">
+                <t>Variation pattern: 
+                  <list style="symbols">
                     <t>Sequence number: 1</t>
 
                     <t>Path direction: Downstream</t>
@@ -1463,7 +1540,8 @@
                     <t>Start time: 30s</t>
                   </list></t>
 
-                <t>Variation pattern: <list style="symbols">
+                <t>Variation pattern: 
+                  <list style="symbols">
                     <t>Sequence number: 2</t>
 
                     <t>Path direction: Downstream</t>
@@ -1509,7 +1587,8 @@
             <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
-                <t>Queue length (ms) <list style="symbols">
+                <t>Queue length (ms):
+                  <list style="symbols">
                     <t>average over the length of the session</t>
 
                     <t>5 an 95 percentile</t>
@@ -1530,7 +1609,8 @@
         <t><list style="symbols">
             <t>Test duration: 60s</t>
 
-            <t>Path characteristics: <list style="symbols">
+            <t>Path characteristics: 
+              <list style="symbols">
                 <t>Path direction: Upstream, Downstream</t>
 
                 <t>Number of bottlenecks: One (1)</t>
@@ -1549,13 +1629,16 @@
                 <t>Link loss ratio: 0.0%</t>
               </list></t>
 
-            <t>Application-related: <list style="symbols">
-                <t>Media Source: <list style="symbols">
+            <t>Application-related: 
+              <list style="symbols">
+                <t>Media Source: 
+                  <list style="symbols">
                     <t>Media direction: Upstream</t>
 
                     <t>Number of media sources: Five (5)</t>
 
-                    <t>Encoder configuration: <list style="symbols">
+                    <t>Encoder configuration: 
+                      <list style="symbols">
                         <t>Bit rate generation: VBR</t>
 
                         <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
@@ -1571,7 +1654,8 @@
 
                     <t>Media content: Foreman video sequence</t>
 
-                    <t>Media timeline: <list style="symbols">
+                    <t>Media timeline: 
+                      <list style="symbols">
                         <t>Start time: 0s.</t>
 
                         <t>End time: 59s.</t>
@@ -1580,7 +1664,8 @@
                     <t>Media startup behaviour: [200 Kbps, 1500 Kbps].</t>
                   </list></t>
 
-                <t>Competing traffic: <list style="symbols">
+                <t>Competing traffic: 
+                  <list style="symbols">
                     <t>Number of sources : Zero (0)</t>
                   </list></t>
               </list></t>
@@ -1611,8 +1696,10 @@
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics
-        at a fine enough time granularity: <list style="numbers">
-            <t>Flow level: <list style="letters">
+        at a fine enough time granularity: 
+        <list style="numbers">
+            <t>Flow level: 
+              <list style="letters">
                 <t>End-to-end delay.</t>
 
                 <t>RTP packet losses observed at the receiving endpoint.</t>
@@ -1628,7 +1715,8 @@
             <t>Transport level: <list style="letters">
                 <t>Bandwidth utilization.</t>
 
-                <t>Queue length (ms) <list style="symbols">
+                <t>Queue length (ms): 
+                  <list style="symbols">
                     <t>average over the length of the session</t>
 
                     <t>5 and 95 percentile</t>
@@ -1644,8 +1732,10 @@
         setup as below-</t>
 
         <t><list style="symbols">
-            <t>Other test specific setup: <list style="symbols">
-                <t>Media flow timeline:<list style="symbols">
+            <t>Other test specific setup: 
+              <list style="symbols">
+                <t>Media flow timeline:
+                  <list style="symbols">
                     <t>Flow no: One (1)</t>
 
                     <t>Start time: 0s</t>
@@ -1657,7 +1747,8 @@
                     <t>Resume time: not required</t>
                   </list></t>
 
-                <t>Media flow appearance:<list style="symbols">
+                <t>Media flow appearance:
+                  <list style="symbols">
                     <t>Flow no: Two (2)</t>
 
                     <t>Start time: 0s</t>
@@ -1669,7 +1760,8 @@
                     <t>Resume time: 30s</t>
                   </list></t>
 
-                <t>Media flow appearance:<list style="symbols">
+                <t>Media flow appearance:
+                  <list style="symbols">
                     <t>Flow no: Three (3)</t>
 
                     <t>Start time: 0s</t>
