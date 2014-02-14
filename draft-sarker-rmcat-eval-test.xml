@@ -290,30 +290,31 @@
               <t>Define a checklist to evaluate the desired behaviour: this
               indicates the minimum set of metrics (e.g., link utiilization,
               media sending rate) that a proposed algorithm needs to measure
-              to validate the expected rate adaptation behaviour. It should also
-              indicate the time granularity (e.g., averaged over 10ms,
+              to validate the expected rate adaptation behaviour. It should
+              also indicate the time granularity (e.g., averaged over 10ms,
               100ms, or 1s) for measuring certain metrics. Typical measurement
-			  interval is 200ms.</t>
+              interval is 200ms.</t>
             </list></t>
 
           <t>Define testbed topology: every test case needs to define an
           evaluation testbed topology. <xref target="fig-eval-topo"></xref>
-          shows such an evaluation topology. In this evaluation
-          topology, S1..Sn are traffic sources, these sources either generate
-          media traffic and use an RMCAT candidate congestion control algorithm 
-		  or use a different congestion control algorithm than that one used in 
-		  the media source. R1..Rn are the corresponding receivers. 
-		  A test case can have one or more such traffic source (S)
-          and corresponding receiver (R). The path from the source to
-          destination is denoted as upstream and the path from a destination
-          to a source is denoted as downstream. It is possible for a testbed
-          to have different path characteristics in either directions. The
-          following basic structure of test case has been described from the
-          perspective of endpoints attached on the left-hand side of <xref
-          target="fig-eval-topo"></xref>. </t>
-		  
-<t><figure anchor="fig-eval-topo" title="Example of A Testbed Topology">
-<artwork><![CDATA[
+          shows such an evaluation topology. In this evaluation topology,
+          S1..Sn are traffic sources, these sources either generate media
+          traffic and use an RMCAT candidate congestion control algorithm or
+          use a different congestion control algorithm than that one used in
+          the media source. R1..Rn are the corresponding receivers. A test
+          case can have one or more such traffic source (S) and corresponding
+          receiver (R). The path from the source to destination is denoted as
+          upstream and the path from a destination to a source is denoted as
+          downstream. It is possible for a testbed to have different path
+          characteristics in either directions. The following basic structure
+          of test case has been described from the perspective of endpoints
+          attached on the left-hand side of <xref
+          target="fig-eval-topo"></xref>.</t>
+
+          <t><figure anchor="fig-eval-topo"
+              title="Example of A Testbed Topology">
+              <artwork><![CDATA[
 +---+                                                         +---+   
 |S1 |===== \                 UPSTREAM -->            / =======|R1 |   
 +---+      \\                                       //        +---+   
@@ -327,13 +328,13 @@
 +---+       //                                         \\       +---+   
 |Sn |====== /                                           \ ======|Rn |   
 +---+                                                           +---+   
-]]></artwork></figure></t>
-			
-		  <t>In a laboratory testbed environment there exists
-          large amount of traffic on the network path between the
-          endpoints, which may be contributed by other devices connected to such
-          a testbed. It is recommended to not route non-test traffic through 
-		  the testbed.</t>
+]]></artwork>
+            </figure></t>
+
+          <t>In a laboratory testbed environment there exists large amount of
+          traffic on the network path between the endpoints, which may be
+          contributed by other devices connected to such a testbed. It is
+          recommended to not route non-test traffic through the testbed.</t>
 
           <t>Define testbed attributes: <list style="symbols">
               <t>Duration: defines the duration of the test.</t>
@@ -343,13 +344,13 @@
               Two sets of attributes describes the path characteristics, one
               for the upstream path and the other for the downstream path. The
               path characteristics for a particular path direction is
-              applicable to all the Sources "S" sending traffic on that path. 
-			  If only one attribute is specified, it is used for both path directions. 
-			  <list style="symbols">
+              applicable to all the Sources "S" sending traffic on that path.
+              If only one attribute is specified, it is used for both path
+              directions. <list style="symbols">
                   <t>Path direction: upstream or downstream.</t>
 
-                  <t>Bottleneck-link capacity: defines minimum capacity of the end-to-end
-                  path</t>
+                  <t>Bottleneck-link capacity: defines minimum capacity of the
+                  end-to-end path</t>
 
                   <t>One-way propagation delay: describes the end-to-end
                   latency along the path when network queues are empty i.e.,
@@ -358,7 +359,8 @@
 
                   <t>Maximum end-to-end jitter: defines maximum jitter can be
                   observed along the path.</t>
-				  <!-- VS: we need a model for this. -->
+
+                  <!-- VS: we need a model for this. -->
 
                   <t>Bottleneck queue type: for example, Droptail, FQ-CoDel,
                   or PIE.</t>
@@ -372,8 +374,7 @@
                 </list></t>
 
               <t>Application-related: defines the media-related behaviour for
-              implementing the test case 
-			  <list style="symbols">
+              implementing the test case <list style="symbols">
                   <t>Media Source: defines the characteristics of the media
                   sources present. When using more than one media source, the
                   different attributes are enumerated separately for each
@@ -387,13 +388,12 @@
                       media sources</t>
 
                       <t>Media codec: Constant Bit Rate (CBR) or Variable Bit
-                      Rate (VBR) </t>
+                      Rate (VBR)</t>
 
                       <t>Media source behaviour: describes the media encoder
                       behavior. It MUST define the main parameters than affect
                       the adaptation behaviour. This may include but not
-                      limited to:
-					  <list style="symbols">
+                      limited to: <list style="symbols">
                           <t>Adaptability: describes the adaptation options.
                           For example, in case of video it defines the range
                           of bitrate adaptation, frame rate adaption, video
@@ -442,7 +442,7 @@
                       downloaded.</t>
 
                       <t>Number of sources: defines the total number of
-                      competing sources of each type. </t>
+                      competing sources of each type.</t>
 
                       <t>Congestion control: enumerate the congestion control
                       used by each type of competing traffic.</t>
@@ -462,7 +462,7 @@
       <t>Any attribute can have a set of values (enclosed within "[]"). Each
       member value of such a set MUST be treated as different value for the
       same attribute. It is desired to run separate tests for each such
-      attribute value. </t>
+      attribute value.</t>
 
       <t>The test cases described in this document follow the above
       structure.</t>
@@ -662,12 +662,12 @@
         target="I-D.ietf-rmcat-cc-requirements"></xref>.</t>
 
         <t>Expected behavior: the candidate algorithm is expected to detect
-        the path capacity constraint, converges to bottleneck link's capacity and
-        adapt the flow to avoid unwanted oscillation when the sending bit rate
-        is approaching the bottleneck link's capacity. The oscillations occur when
-        the media flow(s) attempts to reach its maximum bit rate, overshoots
-        the usage of the available bottleneck capacity, to rectify it reduces
-        the bit rate and starts to ramp up again. </t>
+        the path capacity constraint, converges to bottleneck link's capacity
+        and adapt the flow to avoid unwanted oscillation when the sending bit
+        rate is approaching the bottleneck link's capacity. The oscillations
+        occur when the media flow(s) attempts to reach its maximum bit rate,
+        overshoots the usage of the available bottleneck capacity, to rectify
+        it reduces the bit rate and starts to ramp up again.</t>
 
         <t>Testbed topology: One media source S1 is connected to corresponding
         R1. The media traffic is transported over the upstream path and
@@ -993,17 +993,18 @@
 
         <t>Testbed topology: One (1) media source S1 is connected to
         corresponding R1, but both endpoints are additionally receiving and
-		sending data, respectively. The media traffic (S1->S2) is transported 
-		over the upstream path and corresponding feedback/control traffic is
-        transported over the downstream path. Likewise media traffic (S2->S1)
-		is transported over the downstram path and corresponding 
-		feedback/control traffic is transported over the upstream path.
-		The TCP uploads traffic over upstream path and downloads over downstream 
-		path. Hence, TCP traffic exits in both path directions.</t>
-		
-<t><figure anchor="fig-eval-topo-4-4" 
-	title="Testbed Topology for TCP vs RMCAT Flows">
-<artwork><![CDATA[
+        sending data, respectively. The media traffic (S1-&gt;S2) is
+        transported over the upstream path and corresponding feedback/control
+        traffic is transported over the downstream path. Likewise media
+        traffic (S2-&gt;S1) is transported over the downstram path and
+        corresponding feedback/control traffic is transported over the
+        upstream path. The TCP uploads traffic over upstream path and
+        downloads over downstream path. Hence, TCP traffic exits in both path
+        directions.</t>
+
+        <t><figure anchor="fig-eval-topo-4-4"
+            title="Testbed Topology for TCP vs RMCAT Flows">
+            <artwork><![CDATA[
 	 +--+                                                       +--+   
 	 |S1|===== \                UPSTREAM -->           / =======|R1|   
 	 +--+      \\                                     //        +--+   
@@ -1018,7 +1019,7 @@
 	|R2|====== /                                         \ ======|S2|   
 	+--+                                                         +--+   
 	]]></artwork>
-</figure></t>
+          </figure></t>
 
         <t>Testbed attributes:</t>
 
@@ -1073,7 +1074,8 @@
 
                     <t>Media timeline: <list style="symbols">
                         <t>Start time: 5s.</t>
-	<!--ZS:see the next comment to find why it start 5 s later than the start period-->
+
+                        <!--ZS:see the next comment to find why it start 5 s later than the start period-->
 
                         <t>End time: 119s.</t>
                       </list></t>
@@ -1156,17 +1158,17 @@
               </list></t>
           </list></t>
 
-        <t>Testbed topology: One (1) media source S1 is 
-			connected to corresponding R1, but both endpoints are additionally 
-			receiving and sending data, respectively. The media traffic (S1->S2) 
-			is transported  over the upstream path and corresponding 
-			feedback/control traffic is transported over the downstream path. 
-			Likewise media traffic (S2->S1) is transported over the downstram 
-			path and corresponding  feedback/control traffic is transported 
-			over the upstream path. The TCP uploads traffic over upstream path 
-			and downloads over downstream path. Hence, TCP traffic exits in 
-			both path directions. The topology described here is similar to the 
-			one described in <xref target="fig-eval-topo-4-4" />.</t>
+        <t>Testbed topology: One (1) media source S1 is connected to
+        corresponding R1, but both endpoints are additionally receiving and
+        sending data, respectively. The media traffic (S1-&gt;S2) is
+        transported over the upstream path and corresponding feedback/control
+        traffic is transported over the downstream path. Likewise media
+        traffic (S2-&gt;S1) is transported over the downstram path and
+        corresponding feedback/control traffic is transported over the
+        upstream path. The TCP uploads traffic over upstream path and
+        downloads over downstream path. Hence, TCP traffic exits in both path
+        directions. The topology described here is similar to the one
+        described in <xref target="fig-eval-topo-4-4"></xref>.</t>
 
         <t>Testbed attributes:</t>
 
@@ -1297,17 +1299,18 @@
               </list></t>
           </list>.</t>
 
-        <t>Testbed topology: One (1) media source S1 is 
-			connected to corresponding R1, but both endpoints are additionally 
-			receiving and sending data, respectively. The media traffic (S1->S2) 
-			is transported  over the upstream path and corresponding 
-			feedback/control traffic is transported over the downstream path. 
-			Likewise media traffic (S2->S1) is transported over the downstram 
-			path and corresponding  feedback/control traffic is transported 
-			over the upstream path. </t>
-		<t><figure anchor="fig-eval-topo-4-6" 
-			title="Testbed Topology for Congested Feedback Link">
-<artwork><![CDATA[
+        <t>Testbed topology: One (1) media source S1 is connected to
+        corresponding R1, but both endpoints are additionally receiving and
+        sending data, respectively. The media traffic (S1-&gt;S2) is
+        transported over the upstream path and corresponding feedback/control
+        traffic is transported over the downstream path. Likewise media
+        traffic (S2-&gt;S1) is transported over the downstram path and
+        corresponding feedback/control traffic is transported over the
+        upstream path.</t>
+
+        <t><figure anchor="fig-eval-topo-4-6"
+            title="Testbed Topology for Congested Feedback Link">
+            <artwork><![CDATA[
 	 +---+                                                         +---+   
 	 |S1 |===== \                UPSTREAM -->             / =======|R1 |   
 	 +---+      \\                                       //        +---+   
@@ -1322,7 +1325,7 @@
 	|R2 |===== /                                           \ ======|S2 |   
 	+---+                                                          +---+   
 	]]></artwork>
-</figure></t>
+          </figure></t>
 
         <t>Testbed attributes:</t>
 
@@ -1513,14 +1516,14 @@
                   </list></t>
               </list></t>
           </list></t>
-		  
-          <t>Testbed Topology: Five (5) media sources S1,S2,..,S5 are connected to
-          their corresponding media sinks R1,R2,..,R5. The media traffic is 
-		  transported over the upstream path and corresponding feedback/control 
-		  traffic is transported over the downstream path. The topology is the 
-		  same as test case 4.3 defined in <xref target="TC4-3" />. The
-		  end-to-end path delay for S1-R1 is 10ms, S2-R2 is 25ms, S3-R3 is 50ms, 
-		  S4-R4 is 100ms, S5-R5 is 150ms.</t>
+
+        <t>Testbed Topology: Five (5) media sources S1,S2,..,S5 are connected
+        to their corresponding media sinks R1,R2,..,R5. The media traffic is
+        transported over the upstream path and corresponding feedback/control
+        traffic is transported over the downstream path. The topology is the
+        same as test case 4.3 defined in <xref target="TC4-3"></xref>. The
+        end-to-end path delay for S1-R1 is 10ms, S2-R2 is 25ms, S3-R3 is 50ms,
+        S4-R4 is 100ms, S5-R5 is 150ms.</t>
 
         <t>Testbed attributes:</t>
 
@@ -1792,8 +1795,8 @@
 
     <section title="Wireless Access Links">
       <section title="Cellular Network Specific Test Cases">
-        <t>Additional cellular network specific test cases are define in
-        [ref]</t>
+        <t>Additional cellular network specific test cases are define in <xref
+        target="I-D.draft-sarker-rmcat-cellular-eval-test-cases"></xref></t>
 
         <!--ZS: may be a link to another draft would be good enough-->
       </section>
@@ -1868,6 +1871,20 @@
       &I-D.ietf-rmcat-eval-criteria;
 
       &I-D.ietf-rmcat-cc-requirements;
+
+      <reference anchor="I-D.draft-sarker-rmcat-cellular-eval-test-cases"
+                 target="http://www.ietf.org/id/draft-sarker-rmcat-cellular-eval-test-cases-00.txt">
+        <front>
+          <title>Evaluation Test Cases for Interactive Real-Time Media over
+          Cellular Networks</title>
+
+          <author fullname="Zaheduzzaman Sarker" initials="Z" surname="Sarker">
+            <organization></organization>
+          </author>
+
+          <date />
+        </front>
+      </reference>
     </references>
 
     <references title="Informative References">

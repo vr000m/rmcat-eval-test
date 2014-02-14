@@ -2,7 +2,7 @@
 
 
 
-Individual                                                     Z. Sarker
+Network Working Group                                          Z. Sarker
 Internet-Draft                                               Ericsson AB
 Intended status: Informational                                  V. Singh
 Expires: August 18, 2014                                Aalto University
@@ -77,19 +77,19 @@ Table of Contents
      4.4.  RMCAT Flow competing with a long TCP Flow . . . . . . . .  16
      4.5.  RMCAT Flow competing with short TCP Flows . . . . . . . .  19
      4.6.  Congested Feedback Link . . . . . . . . . . . . . . . . .  22
-     4.7.  Round Trip Time Fairness  . . . . . . . . . . . . . . . .  26
-     4.8.  Media Pause and Resume  . . . . . . . . . . . . . . . . .  28
-     4.9.  Explicit Congestion Notification Usage  . . . . . . . . .  30
-   5.  Wireless Access Links . . . . . . . . . . . . . . . . . . . .  30
-     5.1.  Cellular Network Specific Test Cases  . . . . . . . . . .  30
-     5.2.  Wi-Fi Network Specific Test Cases . . . . . . . . . . . .  30
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  30
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  30
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  30
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  30
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  31
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  32
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  32
+     4.7.  Round Trip Time Fairness  . . . . . . . . . . . . . . . .  27
+     4.8.  Media Pause and Resume  . . . . . . . . . . . . . . . . .  29
+     4.9.  Explicit Congestion Notification Usage  . . . . . . . . .  31
+   5.  Wireless Access Links . . . . . . . . . . . . . . . . . . . .  31
+     5.1.  Cellular Network Specific Test Cases  . . . . . . . . . .  31
+     5.2.  Wi-Fi Network Specific Test Cases . . . . . . . . . . . .  31
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  32
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  32
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  32
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  32
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  32
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  33
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
 
 1.  Introduction
 
@@ -100,7 +100,7 @@ Table of Contents
    cases cover basic usage scenarios and are described using a common
    structure, which allows for additional test cases to be added to
    those described herein to accommodate other topologies and/or the
-   modeling of different link characteristics.  Each test cases
+   modeling of different link characteristics.  Each test case
    incorporates the metrics, evaluation guidelines and parameters
    described in [I-D.ietf-rmcat-eval-criteria].  It is the intention of
    this work to capture the consensus of the RMCAT working group
@@ -126,9 +126,9 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 3.  Basic Structure of Test cases
 
    All test cases in this document follow a basic structure allowing
-   implementers to describe new test scenarios without repeatedly
+   implementers to describe a new test scenarios without repeatedly
    explaining common attributes.  The structure includes a general
-   description section that describe the test case and motivations,
+   description section that describes the test case and motivations,
    additionally it defines a set of attributes that characterize the
    testbed, i.e., the network path between communicating peers and the
    diverse traffic sources.
@@ -141,27 +141,27 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
       *  Additionally, describe the desired rate adaptation behaviour.
 
       *  Define a checklist to evaluate the desired behaviour: this
-         indicates the minimum set of metrics that a proposed algorithm
-         needs to measure to validate the expected rate adaptation
-         behaviour.
+         indicates the minimum set of metrics (e.g., link utiilization,
+         media sending rate) that a proposed algorithm needs to measure
+         to validate the expected rate adaptation behaviour.  It should
+         also indicate the time granularity (e.g., averaged over 10ms,
+         100ms, or 1s) for measuring certain metrics.  Typical
+         measurement interval is 200ms.
 
    o  Define testbed topology: every test case needs to define an
       evaluation testbed topology.  Figure 1 shows such an evaluation
-      topology which is considered while defining the basic test
-      structure in this document.  In this evaluation topology, S1..Sn
-      are traffic sources, these sources are either media source which
-      uses a RMCAT candidate congestion control algorithm or a traffic
-      source with different congestion control algorithm than that one
-      used in the media source.  R1..Rn are the corresponding receivers.
-      A test case can have one or more such traffic source (S) and
-      corresponding receiver (R).  The path from the source to
-      destination is denoted as upstream and the path from a destination
-      to a source is denoted as downstream.  It is possible for a
-      testbed to have different path characteristics in either
-      directions.  The following basic structure of test case has been
-      described from the perspective of endpoints attached on the left-
-      hand side of Figure 1.
-
+      topology.  In this evaluation topology, S1..Sn are traffic
+      sources, these sources either generate media traffic and use an
+      RMCAT candidate congestion control algorithm or use a different
+      congestion control algorithm than that one used in the media
+      source.  R1..Rn are the corresponding receivers.  A test case can
+      have one or more such traffic source (S) and corresponding
+      receiver (R).  The path from the source to destination is denoted
+      as upstream and the path from a destination to a source is denoted
+      as downstream.  It is possible for a testbed to have different
+      path characteristics in either directions.  The following basic
+      structure of test case has been described from the perspective of
+      endpoints attached on the left-hand side of Figure 1.
 
 
 
@@ -170,46 +170,46 @@ Sarker, et al.           Expires August 18, 2014                [Page 3]
 Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
-+--------+                                                         +---+
-|S1 |===== \                 UPSTREAM -->            / =======|R1 |
-+---+      \\                                       //        +---+
-            \\                                     //
-+---+       +-----+                               +-----+       +---+
-|S2 |=======|  A  |------------------------------>|  B  |=======|R2 |
-+---+       |     |<------------------------------|     |       +---+
-            +-----+                               +-----+
-(...)         //                                     \\         (...)
-             //          <-- DOWNSTREAM               \\
-+---+       //                                         \\       +---+
-|Sn |====== /                                           \ ======|Rn |
-+---+                                                           +---+
+   o
 
-                         Figure 1: Simple Topology
+   +---+                                                         +---+
+   |S1 |===== \                 UPSTREAM -->            / =======|R1 |
+   +---+      \\                                       //        +---+
+               \\                                     //
+   +---+       +-----+                               +-----+       +---+
+   |S2 |=======|  A  |------------------------------>|  B  |=======|R2 |
+   +---+       |     |<------------------------------|     |       +---+
+               +-----+                               +-----+
+   (...)         //                                     \\         (...)
+                //          <-- DOWNSTREAM               \\
+   +---+       //                                         \\       +---+
+   |Sn |====== /                                           \ ======|Rn |
+   +---+                                                           +---+
 
-      In a laboratory testbed environment there exits incredible amount
-      of traffic on the network path between the endpoints ( also
-      contributed by other devices connected to such testbed).  It is
-      recommended to "policy route" [Ed note: define or put reference
-      here] all but the traffic wished to tested around the bottleneck
-      link desired to be tested against.
+                  Figure 1: Example of A Testbed Topology
+
+   o  In a laboratory testbed environment there exists large amount of
+      traffic on the network path between the endpoints, which may be
+      contributed by other devices connected to such a testbed.  It is
+      recommended to not route non-test traffic through the testbed.
 
    o  Define testbed attributes:
 
       *  Duration: defines the duration of the test.
 
       *  Path characteristics: defines the end-to-end transport level
-         path characteristics of the testbed in a particular a test
-         case.  Two sets of attributes describes the path
-         characteristics , one for the upstream path and the downstream
-         path direction.  The path characteristics for a particular path
-         direction is applicable to all the Ss sending traffic in that
-         path.  If only one is specified, it is used for both path
+         path characteristics of the testbed in a particular test case.
+         Two sets of attributes describes the path characteristics, one
+         for the upstream path and the other for the downstream path.
+         The path characteristics for a particular path direction is
+         applicable to all the Sources "S" sending traffic on that path.
+         If only one attribute is specified, it is used for both path
          directions.
 
          +  Path direction: upstream or downstream.
 
-         +  Path capacity: defines maximum capacity of the end-to-end
-            path
+         +  Bottleneck-link capacity: defines minimum capacity of the
+            end-to-end path
 
          +  One-way propagation delay: describes the end-to-end latency
             along the path when network queues are empty i.e., the time
@@ -229,7 +229,8 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
          +  Bottleneck queue type: for example, Droptail, FQ-CoDel, or
             PIE.
 
-         +  Bottleneck queue size: defines side of (in milliseconds).
+         +  Bottleneck queue size: defines size of queue in terms of
+            queuing time when the queue is full (in milliseconds).
 
          +  Path loss ratio: characterize the non-congested losses
             observed on the end-to-end path.  MUST describe the loss
@@ -256,24 +257,23 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
             -  Media source behaviour: describes the media encoder
                behavior.  It MUST define the main parameters than affect
                the adaptation behaviour.  This may include but not
-               limited to
+               limited to:
 
                o  Adaptability: describes the adaptation options.  For
                   example, in case of video it defines the range of
                   bitrate adaptation, frame rate adaption, video
-                  resolution adaptation.  In case voice, it defines the
-                  range of bitrate adaptation, sampling rate, frame
+                  resolution adaptation.  In case of voice, it defines
+                  the range of bitrate adaptation, sampling rate, frame
                   size.
 
                o  Output variation : for VBR encoder, it defines the
                   encoder output variation from the average target rate.
-                  For example on an average the encoder output may vary
+                  For example on average the encoder output may vary
                   between 5% to 15% above or below the average target
                   bit rate.
 
                o  Encoder's responsiveness to a new bit rate request:
                   value typically between 10ms to 1000ms.
-
 
 
 
@@ -314,8 +314,8 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
             -  Congestion control: enumerate the congestion control used
                by each type of competing traffic.
 
-            -  Traffic timeline: describes when the competing is added
-               and removed from the test case.
+            -  Traffic timeline: describes when the competing traffic is
+               added and removed from the test case.
 
       *  Additional attributes: describes attributes essential for
          implementing a test case which are not included in the above
@@ -342,7 +342,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 4.1.  Variable Available Capacity
 
-   In this test case the end-to-end path capacity between the two
+   In this test case the bottleneck-link capacity between the two
    endpoints varies over time.  This test is designed to measure the
    responsiveness of the candidate algorithm.  This test tries to
    address the requirement 1(a) in [I-D.ietf-rmcat-cc-requirements],
@@ -364,15 +364,15 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    Expected behavior: the candidate algorithms is expected to detect the
    variation in available capacity and adapt the media stream(s)
-   accordingly.  The flows stabilized around their maximum bitrate as
-   the as the maximum link capacity is large enough to accommodate the
+   accordingly.  The flows stabilize around their maximum bitrate as the
+   as the maximum link capacity is large enough to accommodate the
    flows.  When the available capacity drops, the flow(s) adapts by
    decreasing its sending bit rate, and when congestion disappears, the
    flow(s) are again expected to ramp up.
 
    To evaluate the performance of the candidate algorithms it is
-   expected to log enough information to visualize the following
-   metrics:
+   expected to log enough information to visualize the following metrics
+   at a fine enough time granularity:
 
    1.  Flow level:
 
@@ -402,7 +402,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
            +  median, maximum, minimum
 
-   Testbed Topology: Two (2) media sources S1 and S2 is connected to
+   Testbed Topology: Two (2) media sources S1 and S2 are connected to
    their corresponding R1 and R2.  The media traffic is transported over
    the upstream path and corresponding feedback/control traffic is
    transported over the downstream path.
@@ -421,7 +421,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    |S2 |====== /                                           \ ======|R2 |
    +---+                                                           +---+
 
-                         Figure 2: Simple Topology
+        Figure 2: Testbed Topology for Variable Available Capacity
 
    Testbed attributes:
 
@@ -431,9 +431,9 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Path direction: Upstream and downstream.
 
-      *  Path capacity : 4Mbps.
+      *  Bottleneck-link capacity: 4Mbps.
 
-      *  One-Way propagation delay: 100ms.
+      *  One-Way propagation delay: [10ms, 100ms].
 
       *  Maximum end-to-end jitter: 30ms.
 
@@ -482,7 +482,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
             -  Start time: 0s.
 
-            -  End time: 59s.
+            -  End time: 119s.
 
       *  Media startup behaviour: [200Kbps, 1500Kbps].
 
@@ -492,7 +492,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    o  Test specific setup
 
-      *  Number of bandwidth variation: Three (4)
+      *  Number of bandwidth variations: Three (4)
 
       *  Variation pattern:
 
@@ -546,11 +546,11 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    In this case, the application will attempt to ramp up to its maximum
    bit rate, since the link capacity is limited to a value lower, the
-   congestion control is expected to stabilize the sending bit rate
-   close to the available bottleneck capacity.  This situation can occur
-   when the endpoints are connected via thin long networks even though
-   the advertised capacity of the access network may be higher.  The
-   test case addresses the requirement 1 and 10 of the
+   congestion control scheme is expected to stabilize the sending bit
+   rate close to the available bottleneck capacity.  This situation can
+   occur when the endpoints are connected via thin long networks even
+   though the advertised capacity of the access network may be higher.
+   The test case addresses the requirement 1 and 10 of the
    [I-D.ietf-rmcat-cc-requirements].
 
 
@@ -563,12 +563,12 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
    Expected behavior: the candidate algorithm is expected to detect the
-   path capacity constrain, converges to maximum path capacity and adapt
-   the flow to avoid unwanted oscillation when the sending bitrate is
-   approaching the path maximum capacity.  The oscillations occur when
-   the media flow(s) attempts to reach its maximum bit rate, overshoots
-   the usage of the available bottleneck capacity, to rectify it reduces
-   the bit rate and starts to ramp up again.
+   path capacity constraint, converges to bottleneck link's capacity and
+   adapt the flow to avoid unwanted oscillation when the sending bit
+   rate is approaching the bottleneck link's capacity.  The oscillations
+   occur when the media flow(s) attempts to reach its maximum bit rate,
+   overshoots the usage of the available bottleneck capacity, to rectify
+   it reduces the bit rate and starts to ramp up again.
 
    Testbed topology: One media source S1 is connected to corresponding
    R1.  The media traffic is transported over the upstream path and
@@ -582,11 +582,11 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
                +-----+                               +-----+
                            <-- DOWNSTREAM
 
-                         Figure 3: Simple Topology
+           Figure 3: Testbed Topology for Limited Link Capacity
 
    To evaluate the performance of the candidate algorithms it is
-   expected to log enough information to visualize the following
-   metrics:
+   expected to log enough information to visualize the following metrics
+   at a fine enough time granularity:
 
    1.  Flow level:
 
@@ -628,9 +628,9 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Path direction: Upstream and downstream.
 
-      *  Path capacity : 1Mbps
+      *  Bottleneck-link capacity: 1Mbps
 
-      *  One-Way propagation delay: 100 ms
+      *  One-Way propagation delay: [10ms,100 ms]
 
       *  Maximum end-to-end jitter: 30ms.
 
@@ -718,8 +718,8 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    link should be saturated.
 
    To evaluate the performance of the candidate algorithms it is
-   expected to log enough information to visualize the following
-   metrics:
+   expected to log enough information to visualize the following metrics
+   metrics at a fine enough time granularity:
 
    1.  Flow level:
 
@@ -772,7 +772,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    |S3 |====== /                                           \ ======|R3 |
    +---+                                                           +---+
 
-                         Figure 4: Simple Topology
+            Figure 4: Testbed Topology for Multiple RMCAT Flows
 
    Testbed attributes:
 
@@ -790,9 +790,9 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Path direction: Upstream, Downstream
 
-      *  Path capacity: 3.5Mbps
+      *  Bottleneck-link capacity: 3.5Mbps
 
-      *  One-Way propagation delay: 50ms
+      *  One-Way propagation delay: [10ms, 50ms]
 
       *  Maximum end to end jitter: 30ms
 
@@ -880,7 +880,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    infinite amount of data to send and receive.  This is a scenario
    wherein a multimedia application co-exists with a large file
    download.  The test case measures the adaptivity of the candidate
-   algorithm to competing traffic, it addresses the requirements 8 in
+   algorithm to competing traffic, it addresses the requirement 8 in
    [I-D.ietf-rmcat-cc-requirements].
 
    Expected behavior: depending on the convergence observed in test case
@@ -899,8 +899,8 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
    To evaluate the performance of the candidate algorithms it is
-   expected to log enough information to visualize the following
-   metrics:
+   expected to log enough information to visualize the following metrics
+   at a fine enough time granularity:
 
    1.  Flow level:
 
@@ -929,15 +929,46 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
            +  5 and 95 percentile
 
-   Testbed topology: One (1) media source S_media is connected to
-   corresponding Rmedia.  One (1) TCP source S_tcp is connected to
-   corresponding R_tcp.  The media traffic is transported over the
-   upstream path and corresponding feedback/control traffic is
-   transported over the downstream path.  The TCP uploads traffic over
-   upstream path and downloads over downstream path.  Hence TCP traffic
-   exits in both path directions.
+   Testbed topology: One (1) media source S1 is connected to
+   corresponding R1, but both endpoints are additionally receiving and
+   sending data, respectively.  The media traffic (S1->S2) is
+   transported over the upstream path and corresponding feedback/control
+   traffic is transported over the downstream path.  Likewise media
+   traffic (S2->S1) is transported over the downstram path and
+   corresponding feedback/control traffic is transported over the
+   upstream path.  The TCP uploads traffic over upstream path and
+   downloads over downstream path.  Hence, TCP traffic exits in both
+   path directions.
 
-   [Editor's Note: add figure]
+
+
+
+
+
+
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 17]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+       +--+                                                       +--+
+       |S1|===== \                UPSTREAM -->           / =======|R1|
+       +--+      \\                                     //        +--+
+                   \\                                   //
+    +-----+      +-----+                             +-----+     +-----+
+    |R_tcp|======|  A  |---------------------------->|  B  |=====|R_tcp|
+    +-----+      |     |<----------------------------|     |     +-----+
+                 +-----+                             +-----+
+                    //                                   \\
+                   //          <-- DOWNSTREAM             \\
+      +--+       //                                       \\       +--+
+      |R2|====== /                                         \ ======|S2|
+      +--+                                                         +--+
+
+             Figure 5: Testbed Topology for TCP vs RMCAT Flows
 
    Testbed attributes:
 
@@ -947,16 +978,9 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Path direction: Upstream, Downstream
 
+      *  Bottleneck-link capacity: 2Mbps
 
-
-Sarker, et al.           Expires August 18, 2014               [Page 17]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
-      *  Path capacity: 2Mbps
-
-      *  One-Way propagation delay: [50ms, 200ms]
+      *  One-Way propagation delay: [10ms, 150ms]
 
       *  Maximum end to end jitter: 30ms
 
@@ -979,6 +1003,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media codec: VBR
 
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 18]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
          +  Media source behaviour:
 
             -  Adaptability
@@ -999,16 +1030,9 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
             -  Start time: 5s.
 
-            -  End time: 59s.
+            -  End time: 119s.
 
          +  Media startup behaviour: [200Kbps, 1500Kbps].
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 18]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
 
       *  Competing traffic:
 
@@ -1022,7 +1046,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
             -  Start time: 0s.
 
-            -  End time: 59s.
+            -  End time: 119s.
 
    o  Test specific setup: None
 
@@ -1034,6 +1058,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    clients (browsers) connect to a server and download a resource
    (typically a webpage, few images, text files, etc.) using several TCP
    connections (up to 4).  This scenario shows the performance of the
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 19]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
    multimedia application when several browser windows are active.  The
    test case measures the adaptivity of the candidate algorithm to
    competing web traffic, it addresses the requirements 2 in
@@ -1045,8 +1077,8 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    on the behaviour of the candidate algorithm.
 
    To evaluate the performance of the candidate algorithms it is
-   expected to log enough information to visualize the following
-   metrics:
+   expected to log enough information to visualize the following metrics
+   at a fine enough time granularity:
 
    1.  Flow level:
 
@@ -1058,13 +1090,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
            the frequency and magnitude of oscillations.
 
        D.  Variation in the sending rate of the TCP flow.
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 19]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
 
        E.  TCP throughput.
 
@@ -1082,15 +1107,25 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
            +  5 and 95 percentile
 
-   Testbed topology: One (1) media source S_media is connected to
-   corresponding Rmedia.  One (1) TCP source S_tcp is connected to
-   corresponding R_tcp.  The media traffic is transported over the
-   upstream path and corresponding feedback/control traffic is
-   transported over the downstream path.  The TCP uploads traffic over
-   upstream path and downloads over downstream path.  Hence TCP traffic
-   exits in both path directions.
+   Testbed topology: One (1) media source S1 is connected to
+   corresponding R1, but both endpoints are additionally receiving and
+   sending data, respectively.  The media traffic (S1->S2) is
+   transported over the upstream path and corresponding feedback/control
+   traffic is transported over the downstream path.  Likewise media
+   traffic (S2->S1) is transported over the downstram path and
+   corresponding feedback/control traffic is transported over the
 
-   [Editor's Note: add figure]
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 20]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+   upstream path.  The TCP uploads traffic over upstream path and
+   downloads over downstream path.  Hence, TCP traffic exits in both
+   path directions.  The topology described here is similar to the one
+   described in Figure 5.
 
    Testbed attributes:
 
@@ -1100,9 +1135,9 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Path direction: Upstream, Downstream
 
-      *  Path capacity: 2.0Mbps
+      *  Bottleneck-link capacity: 2.0Mbps
 
-      *  One-Way propagation delay: [50ms, 200ms]
+      *  One-Way propagation delay: [10ms, 150ms]
 
       *  Maximum end to end jitter: 30ms
 
@@ -1114,13 +1149,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
       *  Path loss ratio: 0.0%
 
    o  Application-related:
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 20]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
 
       *  Media Source:
 
@@ -1142,6 +1170,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
                o  Frame rate: 10fps - 30fps
 
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 21]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
             -  Variation from target bitrate: +/-5%
 
             -  Responsiveness to new bit rate request: 100ms
@@ -1152,7 +1188,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
             -  Start time: 0s.
 
-            -  End time: 59s.
+            -  End time: 299s.
 
          +  Media startup behaviour: [200Kbps, 1500Kbps].
 
@@ -1169,15 +1205,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
             sequence of file downloads interleaved with idle periods.
             See test specific setup.  Not all short TCPs start at the
             same time, 2 start in the ON state while 8 start in an OFF
-
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 21]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
             stats.  The model for the idle times for the OFF state is
             discussed in the Short-TCP model.
 
@@ -1199,6 +1226,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    Due to asymmetry nature of the link between communicating peers it is
    possible to observer lack such backchannel information due to
    impaired backchannel link (even when forward channel might be
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 22]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
    unimpaired).  This test case is designed to observer candidate
    congestion control behaviour in such an event.  This test case
    addresses requirement number 5 and in particular, requirement number
@@ -1212,8 +1247,8 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    reference case where the downstream channel has no impairments
 
    To evaluate the performance of the candidate algorithms it is
-   expected to log enough information to visualize the following
-   metrics:
+   expected to log enough information to visualize the following metrics
+   at a fine enough time granularity:
 
    1.  Flow level:
 
@@ -1227,13 +1262,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
        A.  Bandwidth utilization
 
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 22]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
        B.  Queue length (ms)
 
            +  average over the length of the session
@@ -1242,7 +1270,41 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    .
 
-   Testbed topology: [Editor's note: add topology description]
+   Testbed topology: One (1) media source S1 is connected to
+   corresponding R1, but both endpoints are additionally receiving and
+   sending data, respectively.  The media traffic (S1->S2) is
+   transported over the upstream path and corresponding feedback/control
+   traffic is transported over the downstream path.  Likewise media
+   traffic (S2->S1) is transported over the downstram path and
+   corresponding feedback/control traffic is transported over the
+   upstream path.
+
+
+
+
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 23]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+     +---+                                                         +---+
+     |S1 |===== \                UPSTREAM -->             / =======|R1 |
+     +---+      \\                                       //        +---+
+                 \\                                     //
+              +-----+                               +-----+
+              |  A  |------------------------------>|  B  |
+              |     |<------------------------------|     |
+              +-----+                               +-----+
+                 //                                     \\
+                //          <-- DOWNSTREAM               \\
+    +---+      //                                         \\       +---+
+    |R2 |===== /                                           \ ======|S2 |
+    +---+                                                          +---+
+
+          Figure 6: Testbed Topology for Congested Feedback Link
 
    Testbed attributes:
 
@@ -1252,9 +1314,9 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Path direction: Upstream and downstream.
 
-      *  Path capacity : 2Mbps.
+      *  Bottleneck-link capacity: 2Mbps.
 
-      *  One-Way propagation delay: 100ms.
+      *  One-Way propagation delay: [10ms, 100ms].
 
       *  Maximum end-to-end jitter: 30ms.
 
@@ -1276,19 +1338,19 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media codec: VBR
 
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 24]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
          +  Media source behaviour:
 
             -  Adaptability
 
                o  Bit rate range: 150 Kbps - 1.5 Mbps
-
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 23]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
 
                o  Frame Resolution: 144p - 720p (or 1080p)
 
@@ -1332,19 +1394,19 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media content: Foreman media sequence
 
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 25]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
          +  Media timeline:
 
             -  Start time: 0s.
 
             -  End time: 59s.
-
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 24]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
 
       *  Media startup behaviour: 200Kbps.
 
@@ -1388,19 +1450,19 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Variation pattern:
 
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 26]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
          +  Sequence number: 1
 
          +  Path direction: Downstream
 
          +  Bottleneck Capacity: 800kbps
-
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 25]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
 
          +  Start time: 30s
 
@@ -1432,8 +1494,8 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    same time instance.
 
    To evaluate the performance of the candidate algorithms it is
-   expected to log enough information to visualize the following
-   metrics:
+   expected to log enough information to visualize the following metrics
+   at a fine enough time granularity:
 
    1.  Flow level:
 
@@ -1444,25 +1506,33 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
        C.  Variation in sending bit rate and goodput.  Mainly observing
            the frequency and magnitude of oscillations.
 
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 27]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
        D.  Convergence time.
 
    2.  Transport level:
 
        A.  Bandwidth utilization.
 
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 26]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
        B.  Queue length (ms)
 
            +  average over the length of the session
 
            +  5 an 95 percentile
+
+   Testbed Topology: Five (5) media sources S1,S2,..,S5 are connected to
+   their corresponding media sinks R1,R2,..,R5.  The media traffic is
+   transported over the upstream path and corresponding feedback/control
+   traffic is transported over the downstream path.  The topology is the
+   same as test case 4.3 defined in Section 4.3.  The end-to-end path
+   delay for S1-R1 is 10ms, S2-R2 is 25ms, S3-R3 is 50ms, S4-R4 is
+   100ms, S5-R5 is 150ms.
 
    Testbed attributes:
 
@@ -1476,8 +1546,8 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Bottleneck link capacity: 3.0Mbps
 
-      *  One-Way propagation delay for each path is: 25ms, 50ms, 100ms,
-         150ms, 200ms.
+      *  One-Way propagation delay for each path is: 10ms, 25ms, 50ms,
+         100ms, 150ms.
 
       *  Maximum end to end jitter: 30ms
 
@@ -1493,6 +1563,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
          +  Media direction: Upstream
 
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 28]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
          +  Number of media sources: Five (5)
 
          +  Encoder configuration:
@@ -1506,13 +1583,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
             -  Frame rate: 10fps-30fps
 
             -  Variation from target bit rate: +/-5%
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 27]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
 
             -  Responsiveness to new bit rate request: 60ms
 
@@ -1547,28 +1617,29 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    flows and can pause/resume media flow at any point of time during the
    session.  This test case directly addresses the requirement number
    1.B in [I-D.ietf-rmcat-cc-requirements].  One can think it as a
-   variation of test case 4.3 however, it is different as the candidate
-   algorithms can use different strategies to increase it s efficiency,
-   for example the fairness, convergence time, reduce oscillation etc,
-   by capitalizing the fact that they have previous information of the
-   link.
+   variation of test case 4.3.  However, it is different as the
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 29]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
+   candidate algorithms can use different strategies to increase it s
+   efficiency, for example the fairness, convergence time, reduce
+   oscillation etc, by capitalizing the fact that they have previous
+   information of the link.
 
    To evaluate the performance of the candidate algorithms it is
-   expected to log enough information to visualize the following
-   metrics:
+   expected to log enough information to visualize the following metrics
+   at a fine enough time granularity:
 
    1.  Flow level:
 
        A.  End-to-end delay.
 
        B.  RTP packet losses observed at the receiving endpoint.
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 28]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
 
        C.  Variation in sending bit rate and goodput.  Mainly observing
            the frequency and magnitude of oscillations.
@@ -1587,9 +1658,11 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
            +  5 and 95 percentile
 
-   Testbed attributes: The general description of the test bed
-   parameters are same as test case 4.3 with changes in the test
-   specific setup as below-
+   Testbed Topology: Same as test case 4.3 defined in Section 4.3
+
+   Testbed attributes: The general description of the testbed parameters
+   are same as test case 4.3 with changes in the test specific setup as
+   below-
 
    o  Other test specific setup:
 
@@ -1600,6 +1673,14 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
          +  Start time: 0s
 
          +  Flow duration: 59s
+
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 30]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
          +  Pause time: not required
 
@@ -1619,14 +1700,7 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
       *  Media flow appearance:
 
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 29]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
-         +  Flow no: One (1)
+         +  Flow no: Three (3)
 
          +  Start time: 0s
 
@@ -1644,7 +1718,8 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 5.1.  Cellular Network Specific Test Cases
 
-   Additional cellular network specific test cases are define in [ref]
+   Additional cellular network specific test cases are define in
+   [I-D.draft-sarker-rmcat-cellular-eval-test-cases]
 
 5.2.  Wi-Fi Network Specific Test Cases
 
@@ -1652,6 +1727,16 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    [Editor's Note: We should encourage people to come up with possible
    WiFi Network specific test cases]
+
+
+
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 31]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
 6.  Security Considerations
 
@@ -1670,17 +1755,6 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    discussion carried out in the Design Team.
 
 9.  References
-
-
-
-
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 30]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
 
 9.1.  Normative References
 
@@ -1705,10 +1779,20 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
               Real-Time Transport Control Protocol (RTCP): Opportunities
               and Consequences", RFC 5506, April 2009.
 
-   [RFC5506.76zlj]
+   [RFC5506.tsj0]
               Johansson, I. and M. Westerlund, "Support for Reduced-Size
               Real-Time Transport Control Protocol (RTCP): Opportunities
               and Consequences", RFC 5506, April 2009.
+
+
+
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 32]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
 
    [I-D.ietf-avtcore-rtp-circuit-breakers]
               Perkins, C. and V. Singh, "Multimedia Congestion Control:
@@ -1723,20 +1807,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
    [I-D.ietf-rmcat-cc-requirements]
               Jesup, R., "Congestion Control Requirements For RMCAT",
-              draft-ietf-rmcat-cc-requirements-01 (work in progress),
-              December 2013.
+              draft-ietf-rmcat-cc-requirements-02 (work in progress),
+              February 2014.
 
-
-
-
-
-
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 31]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
+   [I-D.draft-sarker-rmcat-cellular-eval-test-cases]
+              Sarker, Z., "Evaluation Test Cases for Interactive Real-
+              Time Media over Cellular Networks", <http://www.ietf.org/
+              id/draft-sarker-rmcat-cellular-eval-test-cases-00.txt>.
 
 9.2.  Informative References
 
@@ -1766,6 +1843,13 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
               Xiph.org, , "Video Test Media",
               http://media.xiph.org/video/derf/ , .
 
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 33]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
+
+
    [HEVC-seq]
               HEVC, , "Test Sequences",
               http://www.netlab.tkk.fi/~varun/test_sequences/ , .
@@ -1787,13 +1871,6 @@ Authors' Addresses
    Email: zaheduzzaman.sarker@ericsson.com
 
 
-
-
-Sarker, et al.           Expires August 18, 2014               [Page 32]
-
-Internet-Draft          Test Scenarios for RMCAT           February 2014
-
-
    Varun Singh
    Aalto University
    School of Electrical Engineering
@@ -1812,6 +1889,21 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
    USA
 
    Email: xiaoqzhu@cisco.com
+
+
+
+
+
+
+
+
+
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 34]
+
+Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
    Michael A. Ramalho
@@ -1845,4 +1937,24 @@ Internet-Draft          Test Scenarios for RMCAT           February 2014
 
 
 
-Sarker, et al.           Expires August 18, 2014               [Page 33]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sarker, et al.           Expires August 18, 2014               [Page 35]
