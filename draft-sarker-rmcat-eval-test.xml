@@ -18,7 +18,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc symrefs="yes" ?>
-<rfc category="info" docName="draft-sarker-rmcat-eval-test-00"
+<rfc category="info" docName="draft-sarker-rmcat-eval-test-01"
      ipr="trust200902">
   <!-- What is the category field value-->
 
@@ -2092,8 +2092,6 @@
       &rfc5506;
 
       <!--RMCAT related -->
-
-      &rfc5506;
 
       &I-D.ietf-avtcore-rtp-circuit-breakers;
 
