@@ -405,7 +405,7 @@
                   pattern or loss model.</t>
                 </list></t>
 
-              <t>Application-related: defines the media-related behaviour for
+              <t>Application-related: defines the traffic source behaviour for
               implementing the test case <list style="symbols">
                   <t>Media traffic Source: defines the characteristics of the
                   media sources present. When using more than one media
@@ -1249,7 +1249,7 @@
         <t>Testbed attributes:</t>
 
         <t><list style="symbols">
-            <t>Test duration: 60s</t>
+            <t>Test duration: 80s</t>
 
             <t>Path characteristics: <list style="symbols">
                 <t>Bottleneck-link capacity: 2Mbps.</t>
@@ -1265,7 +1265,7 @@
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 0s.</t>
 
-                            <t>End time: 59s.</t>
+                            <t>End time: 79s.</t>
                           </list></t>
                       </list></t>
 
@@ -1277,7 +1277,7 @@
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 0s.</t>
 
-                            <t>End time: 59s.</t>
+                            <t>End time: 79s.</t>
                           </list></t>
                       </list></t>
                   </list></t>
@@ -1374,7 +1374,7 @@
         <t>Testbed attributes:</t>
 
         <t><list style="symbols">
-            <t>Test duration: 80s</t>
+            <t>Test duration: 60s</t>
 
             <t>Path characteristics: <list style="symbols">
                 <t>One-Way propagation delay for each path is: 10ms, 25ms,
@@ -1391,7 +1391,7 @@
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 0s.</t>
 
-                            <t>End time: 79s.</t>
+                            <t>End time: 59s.</t>
                           </list></t>
                       </list></t>
 
@@ -1403,7 +1403,7 @@
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 0s.</t>
 
-                            <t>End time: 79s.</t>
+                            <t>End time: 59s.</t>
                           </list></t>
                       </list></t>
                   </list></t>
