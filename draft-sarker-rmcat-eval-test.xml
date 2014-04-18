@@ -189,10 +189,10 @@
       <section title="Bottleneck Traffic Flows">
         <t>A real-time interactive communication client has to perform in the
         face of competition from the various other network traffics. The
-        typical network traffic may consists of follwoings:<list
+        typical network traffic may consists of followings:<list
             style="symbols">
-            <t>Competing with similar RMCAT flows. These competing flows may
-            use the same algorithm or another candidate RMCAT algorithm.</t>
+            <t>Compete with RMCAT flows. These competing flows may use the
+            same algorithm or another candidate RMCAT algorithm.</t>
 
             <t>Compete with long-lived and short-lived TCP flows.</t>
 
@@ -235,10 +235,10 @@
         <t>A real-world network typically consists of a mixture of links. The
         bottleneck can move from one node to another depending on the amount
         of cross-traffic or due to the varying link capacity. The design of
-        the experiments should take this into account. </t>
+        the experiments should take this into account.</t>
       </section>
 
-      <section title="Lantency and loss">
+      <section title="Latency and loss">
         <!-- -->
 
         <t>The end-to-end latency corresponds to the propagation delay of the
@@ -246,8 +246,8 @@
         connecting the sender to the receiver, it does not include queuing
         delay. Experiments are expected to verify that the congestion control
         is able to work in challenging situations, for example end-to-end path
-        which includes over trans-continental and/or satellite links. typical
-        path latency values can be categoried as below: <list style="numbers">
+        which includes over trans-continental and/or satellite links. Typical
+        path latency values can be categorized as below: <list style="numbers">
             <t>Very low latency: 0-1ms</t>
 
             <t>Low latency: 50ms</t>
@@ -280,7 +280,7 @@
         length in the current deployed Internet varies significantly. While
         the core backbone network has very short queue length, the home
         gateways usually have larger queue length. Those various queue lengths
-        can be categoried in the follwoing way: <list style="numbers">
+        can be categorized in the following way: <list style="numbers">
             <t>QoS-aware (or short): 70ms</t>
 
             <t>Nominal: 300-500ms</t>
@@ -302,7 +302,7 @@
       </section>
     </section>
 
-    <section anchor="TS" title="Basic Structure of Test cases">
+    <section anchor="TS" title="Structure of Test cases">
       <t>All test cases in this document follow a basic structure allowing
       implementers to describe a new test scenarios without repeatedly
       explaining common attributes. The structure includes a general
@@ -319,8 +319,8 @@
               <t>Additionally, describe the desired rate adaptation
               behaviour.</t>
 
-              <t>Define a checklist to evaluate the desired behaviour: this
-              indicates the minimum set of metrics (e.g., link utiilization,
+              <t>Define a check-list to evaluate the desired behaviour: this
+              indicates the minimum set of metrics (e.g., link utilization,
               media sending rate) that a proposed algorithm needs to measure
               to validate the expected rate adaptation behaviour. It should
               also indicate the time granularity (e.g., averaged over 10ms,
@@ -428,7 +428,7 @@
                       limited to: <list style="symbols">
                           <t>Adaptability: describes the adaptation options.
                           For example, in case of video it defines the range
-                          of bitrate adaptation, frame rate adaption, video
+                          of bitrate adaptation, frame rate adaptation, video
                           resolution adaptation. In case of voice, it defines
                           the range of bitrate adaptation, sampling rate,
                           frame size.</t>
@@ -500,11 +500,11 @@
       structure.</t>
     </section>
 
-    <section title="Recomended Evaluation Settings">
-      <t>This section describes receommended test case settings and could be
+    <section title="Recommended Evaluation Settings">
+      <t>This section describes recommended test case settings and could be
       overwritten by the respective test cases.</t>
 
-      <section anchor="EM" title="Evaluation metirces">
+      <section anchor="EM" title="Evaluation metircs">
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the following metrics
         at a fine enough time granularity: <list style="numbers">
@@ -535,9 +535,9 @@
       <section anchor="PC" title="Path characteristics">
         <t>Each path between a sender and receiver as described in figure
         <xref target="fig-eval-topo"></xref> should have following
-        characteristics unless a different settings described in a particular
-        test case. <list style="symbols">
-            <t>Path direction: Upstream and downstream.</t>
+        characteristics unless different settings are described in a
+        particular test case. <list style="symbols">
+            <t>Path direction: Upstream and Downstream.</t>
 
             <t>Bottleneck-link capacity: 4Mbps.</t>
 
@@ -554,9 +554,9 @@
       </section>
 
       <section anchor="MS" title="Media source">
-        <t>Each test case will one one of more media sources as described
-        below. if a particular test case requires different media source
-        behaviur then that will be descrined in the respective test case.<list
+        <t>Each test case will include one or more media sources as described
+        below. If a particular test case requires different media source
+        behavior then that will be described in the respective test case.<list
             style="symbols">
             <t>Media type: Video<list style="symbols">
                 <t>Media codec: VBR</t>
@@ -663,7 +663,7 @@
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 0s.</t>
 
-                            <t>End time: 59s.</t>
+                            <t>End time: 119s.</t>
                           </list></t>
                       </list></t>
 
@@ -675,7 +675,7 @@
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 0s.</t>
 
-                            <t>End time: 59s.</t>
+                            <t>End time: 119s.</t>
                           </list></t>
                       </list></t>
                   </list></t>
@@ -1361,7 +1361,7 @@
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the metrics described
-        in <xref target="EM"></xref> at a fine enough time granularity: </t>
+        in <xref target="EM"></xref> at a fine enough time granularity:</t>
 
         <t>Testbed Topology: Five (5) media sources S1,S2,..,S5 are connected
         to their corresponding media sinks R1,R2,..,R5. The media traffic is
@@ -1725,7 +1725,7 @@
       <t>This becomes an Appendix.</t>
 
       <section title="Jitter model">
-        <t>describs model for creating jitter</t>
+        <t>describes model for creating jitter</t>
       </section>
 
       <section title="TCP taffic model">
@@ -1737,7 +1737,7 @@
       </section>
 
       <section title="loss generation model">
-        <t>describs model for loss generation, for example, losses can be
+        <t>describes model for loss generation, for example, losses can be
         generated using traces, Gilbert-Elliot model, randomly (uncorrelated)
         loss.</t>
       </section>
