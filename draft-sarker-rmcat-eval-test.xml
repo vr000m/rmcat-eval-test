@@ -147,14 +147,14 @@
       <t>This memo describes a set of test cases for evaluating candidate
       RMCAT congestion control algorithm proposals, it is based on the
       guidelines enumerated in <xref
-      target="I-D.ietf-rmcat-eval-criteria"></xref> and requirements discussed
-      in <xref target="I-D.ietf-rmcat-cc-requirements"></xref>. The test cases
+      target="I-D.ietf-rmcat-eval-criteria" /> and the requirements discussed
+      in <xref target="I-D.ietf-rmcat-cc-requirements" />. The test cases
       cover basic usage scenarios and are described using a common structure,
       which allows for additional test cases to be added to those described
       herein to accommodate other topologies and/or the modeling of different
       link characteristics. Each test case incorporates the metrics,
       evaluation guidelines and parameters described in <xref
-      target="I-D.ietf-rmcat-eval-criteria"></xref>. It is the intention of
+      target="I-D.ietf-rmcat-eval-criteria" />. It is the intention of
       this work to capture the consensus of the RMCAT working group
       participants regarding the test cases upon which the performance of the
       candidate RMCAT proposals should be evaluated.</t>
@@ -428,6 +428,9 @@
 
             <t>path loss ratio: 0%.</t>
           </list></t>
+
+          <t>Examples of addional network parameters are discussed in <xref
+          target="add-params" />.</t>
       </section>
 
       <section anchor="MS" title="Media source">
@@ -1597,7 +1600,7 @@
         </section> 
     </section>
 -->
-    <section title="List of Network Parameters">
+    <section title="List of Network Parameters" anchor="add-params">
       
       <t>
         Instead of using the recommended evaluation settings in Section <xref
@@ -1605,16 +1608,16 @@
         choosing from the following values:
       </t>
 
-      <section title="One-way propagation delay">
+      <section anchor="scen-delay" title="One-way propagation delay">
         <!-- -->
 
         <t>The end-to-end latency corresponds to the propagation delay of the
         path, i.e., the time it takes for a packet to traverse the path
         connecting the sender to the receiver, it does not include queuing
         delay. Experiments are expected to verify that the congestion control
-        is able to work in challenging situations, for example end-to-end path
-        which includes over trans-continental and/or satellite links. Typical
-        path latency values can be categorized as below: 
+        is able to work in challenging situations, for example over trans-continental 
+        and/or satellite links. Typical values are: 
+
           <list style="numbers">
             <t>Very low latency: 0-1ms</t>
 
@@ -1628,9 +1631,8 @@
 
       <section anchor="scen-loss" title="End-to-end Loss">
 
-        <t>Similarly, to model lossy links, the experiments can choose one of
-        the following loss rates, the fractional loss is the ratio of packets
-        lost and packets sent. 
+        <t>To model lossy links, the experiments can choose one of the following 
+        loss rates, the fractional loss is the ratio of packets lost and packets sent.
           <list style="numbers">
             <t>no loss: 0%</t>
 
@@ -1651,6 +1653,7 @@
         the core backbone network has very short queue length, the home
         gateways usually have larger queue length. Those various queue lengths
         can be categorized in the following way: 
+
           <list style="numbers">
             <t>QoS-aware (or short): 70ms</t>
 
@@ -1681,18 +1684,31 @@
         <t>describes model for creating jitter</t>
       </section>
 
-      <section title="TCP taffic model">
-        <t>Long-lived TCP flows will download data throughout the session and
-        are expected to have infinite amount of data to send or receive.</t>
-
-        <t>[Open issue: short-lived/bursty TCP cross-traffic parameters are
-        still TBD.</t>
-      </section>
-
       <section title="loss generation model">
         <t>describes model for loss generation, for example, losses can be
         generated using traces, Gilbert-Elliot model, randomly (uncorrelated)
         loss.</t>
+      </section>
+
+
+      <section title="TCP taffic model">
+        <t>Long-lived TCP flows will download data throughout the session and
+        are expected to have infinite amount of data to send or receive.</t>
+
+
+        <t>Each short TCP flow is modeled as a sequence of file downloads interleaved 
+          with idle periods. Not all short TCPs start at the same time, i.e., some start 
+          in the ON state while others start in the OFF state.</t>
+        
+        <t>The short TCP flows can be modelled in two ways, 1) 100s of flows
+        fetching small (5-20 KB) amounts of data, or 2) 10s of flows fetching
+        slightly larger (100-1000KB) amounts of data.</t>
+        
+        <t>The idle period is typically derived from an exponential
+        distribution with the mean value of 10 seconds.</t>
+
+        <t>[Open issue: short-lived/bursty TCP cross-traffic parameters are
+        still to be agreed upon.</t>
       </section>
     </section>
   </back>
