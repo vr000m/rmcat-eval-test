@@ -147,14 +147,14 @@
       <t>This memo describes a set of test cases for evaluating candidate
       RMCAT congestion control algorithm proposals, it is based on the
       guidelines enumerated in <xref
-      target="I-D.ietf-rmcat-eval-criteria"></xref> and the requirements
-      discussed in <xref target="I-D.ietf-rmcat-cc-requirements"></xref>. The
-      test cases cover basic usage scenarios and are described using a common
-      structure, which allows for additional test cases to be added to those
-      described herein to accommodate other topologies and/or the modeling of
-      different link characteristics. Each test case incorporates the metrics,
+      target="I-D.ietf-rmcat-eval-criteria" /> and the requirements discussed
+      in <xref target="I-D.ietf-rmcat-cc-requirements" />. The test cases
+      cover basic usage scenarios and are described using a common structure,
+      which allows for additional test cases to be added to those described
+      herein to accommodate other topologies and/or the modeling of different
+      link characteristics. Each test case incorporates the metrics,
       evaluation guidelines and parameters described in <xref
-      target="I-D.ietf-rmcat-eval-criteria"></xref>. It is the intention of
+      target="I-D.ietf-rmcat-eval-criteria" />. It is the intention of
       this work to capture the consensus of the RMCAT working group
       participants regarding the test cases upon which the performance of the
       candidate RMCAT proposals should be evaluated.</t>
@@ -181,7 +181,7 @@
 
     <section anchor="TS" title="Structure of Test cases">
       <t>All test cases in this document follow a basic structure allowing
-      implementers to describe a new test scenario without repeatedly
+      implementers to describe a new test scenarios without repeatedly
       explaining common attributes. The structure includes a general
       description section that describes the test case and motivations,
       additionally it defines a set of attributes that characterize the
@@ -300,7 +300,7 @@
                       Rate (VBR)</t>
 
                       <t>Media source behaviour: describes the media encoder
-                      behavior. It MUST define the main parameters that affect
+                      behavior. It MUST define the main parameters than affect
                       the adaptation behaviour. This may include but not
                       limited to: <list style="symbols">
                           <t>Adaptability: describes the adaptation options.
@@ -377,7 +377,7 @@
       structure.</t>
     </section>
 
-    <section anchor="sec-rec-eval" title="Recommended Evaluation Settings">
+    <section title="Recommended Evaluation Settings" anchor="sec-rec-eval">
       <t>This section describes recommended test case settings and could be
       overwritten by the respective test cases.</t>
 
@@ -418,7 +418,7 @@
 
             <t>Bottleneck-link capacity: 4Mbps.</t>
 
-            <t>One-Way propagation delay: [50ms, 100ms].</t>
+            <t>One-Way propagation delay: [10ms, 100ms].</t>
 
             <t>Maximum end-to-end jitter: 30ms.</t>
 
@@ -429,8 +429,8 @@
             <t>path loss ratio: 0%.</t>
           </list></t>
 
-        <t>Examples of addional network parameters are discussed in <xref
-        target="add-params"></xref>.</t>
+          <t>Examples of addional network parameters are discussed in <xref
+          target="add-params" />.</t>
       </section>
 
       <section anchor="MS" title="Media source">
@@ -450,24 +450,14 @@
                         <t>Frame rate: 10fps - 30fps</t>
                       </list></t>
 
-                    <t>Variation from target bitrate: +/-5%. If nothing
-                    specified in the respective testcases the bitrate
-                    variation SHOULD be calculated over one (1) second period
-                    of time.</t>
+                    <t>Variation from target bitrate: +/-5%</t>
 
                     <t>Responsiveness to new bit rate request: 100ms</t>
                   </list></t>
 
-                <t>Media content: The media content should represent a typical
-                video convesation scenario with head and shoulder movement. We
-                recommend to use Foreman video sequence.</t>
+                <t>Media content: Foreman media sequence.</t>
 
-                <t>Media startup behaviour: [200Kbps]. It should be noted that
-                applications can use smart ways to select an optimal startup
-                bitrate values for a certain network condition. In such cases
-                the candidate proposals MAY show the effectiveness of such
-                smart approach as an additional information for the evaluation
-                process. </t>
+                <t>Media startup behaviour: [200Kbps, 1500Kbps].</t>
               </list></t>
           </list><list style="symbols">
             <t>Media type: Audio<list style="symbols">
@@ -778,7 +768,11 @@
 
             <t>Path characteristics: <list style="symbols">
                 <t>Bottleneck-link capacity: 3.5Mbps</t>
-              </list>Application-related: <list style="symbols">
+
+                <t>One-Way propagation delay: [10ms, 50ms]</t>
+              </list></t>
+
+            <t>Application-related: <list style="symbols">
                 <t>Media Source: <list style="symbols">
                     <t>Media type: Video<list style="symbols">
                         <t>Media direction: Upstream.</t>
@@ -903,11 +897,13 @@
             <t>Path characteristics: <list style="symbols">
                 <t>Bottleneck-link capacity: 2Mbps</t>
 
+                <t>One-Way propagation delay: [10ms, 150ms]</t>
+
                 <t>Bottleneck queue type: Droptail, but would benefit from
                 running the same test with different AQM schemes: FQ-Codel, or
                 PIE.</t>
 
-                <t>Bottleneck queue size: [20ms, 300ms, 1000ms]</t>
+                <t>Bottleneck queue size: [20ms, 250ms, 1000ms]</t>
               </list></t>
 
             <t>Application-related: <list style="symbols">
@@ -1014,6 +1010,8 @@
 
             <t>Path characteristics: <list style="symbols">
                 <t>Bottleneck-link capacity: 2.0Mbps</t>
+
+                <t>One-Way propagation delay: [10ms, 150ms]</t>
 
                 <t>Bottleneck queue type: Droptail, but would benefit from
                 running the same test with different AQM schemes: FQ-Codel, or
@@ -1602,11 +1600,13 @@
         </section> 
     </section>
 -->
-
-    <section anchor="add-params" title="List of Network Parameters">
-      <t>Instead of using the recommended evaluation settings in Section <xref
-      target="sec-rec-eval"></xref>, the implemntors can extend their tests by
-      choosing from the following values:</t>
+    <section title="List of Network Parameters" anchor="add-params">
+      
+      <t>
+        Instead of using the recommended evaluation settings in Section <xref
+        target="sec-rec-eval" />, the implemntors can extend their tests by
+        choosing from the following values:
+      </t>
 
       <section anchor="scen-delay" title="One-way propagation delay">
         <!-- -->
@@ -1615,9 +1615,10 @@
         path, i.e., the time it takes for a packet to traverse the path
         connecting the sender to the receiver, it does not include queuing
         delay. Experiments are expected to verify that the congestion control
-        is able to work in challenging situations, for example over
-        trans-continental and/or satellite links. Typical values are: <list
-            style="numbers">
+        is able to work in challenging situations, for example over trans-continental 
+        and/or satellite links. Typical values are: 
+
+          <list style="numbers">
             <t>Very low latency: 0-1ms</t>
 
             <t>Low latency: 50ms</t>
@@ -1629,9 +1630,10 @@
       </section>
 
       <section anchor="scen-loss" title="End-to-end Loss">
-        <t>To model lossy links, the experiments can choose one of the
-        following loss rates, the fractional loss is the ratio of packets lost
-        and packets sent. <list style="numbers">
+
+        <t>To model lossy links, the experiments can choose one of the following 
+        loss rates, the fractional loss is the ratio of packets lost and packets sent.
+          <list style="numbers">
             <t>no loss: 0%</t>
 
             <t>1%</t>
@@ -1641,7 +1643,7 @@
             <t>10%</t>
 
             <t>20%</t>
-          </list></t>
+          </list></t>  
       </section>
 
       <section anchor="scen-queue" title="DropTail Router Queue Length">
@@ -1650,13 +1652,16 @@
         length in the current deployed Internet varies significantly. While
         the core backbone network has very short queue length, the home
         gateways usually have larger queue length. Those various queue lengths
-        can be categorized in the following way: <list style="numbers">
+        can be categorized in the following way: 
+
+          <list style="numbers">
             <t>QoS-aware (or short): 70ms</t>
 
             <t>Nominal: 300-500ms</t>
 
             <t>Buffer-bloated: 1000-2000ms</t>
-          </list> Here the size of the queue is measured in bytes or packets
+          </list> 
+        Here the size of the queue is measured in bytes or packets
         and to convert the queue length measured in seconds to queue length in
         bytes:</t>
 
@@ -1676,32 +1681,7 @@
       <t>This becomes an Appendix.</t>
 
       <section title="Jitter model">
-        <t>We recommend that while using network simulator or immulator the
-        jitter model uses a FIFO describes model for creating jitter.
-        Following psuodo code descriobes the recomented jitter model.</t>
-
-        <t>/* returns max value between a and b */</t>
-
-        <t>function max (a,b);</t>
-
-        <t>/*Returns the next pseudorandom, uniformly distributed value
-        between 0.0 and 1.0 from this random number generator's sequence*/</t>
-
-        <t>function next();</t>
-
-        <t>/*defines maximum random delay*/</t>
-
-        <t>maxRandomDelay;</t>
-
-        <t>/*defines next sentTime*/</t>
-
-        <t>sentTime;</t>
-
-        <t>/*add an additional fixed delay+variable delay before sending the
-        packet*/</t>
-
-        <t>sendTime = max(sendTime, getTime()+fixedDelay +(maxRandomDelay *
-        randomGenerator.next()));</t>
+        <t>describes model for creating jitter</t>
       </section>
 
       <section title="loss generation model">
@@ -1710,19 +1690,20 @@
         loss.</t>
       </section>
 
+
       <section title="TCP taffic model">
         <t>Long-lived TCP flows will download data throughout the session and
         are expected to have infinite amount of data to send or receive.</t>
 
-        <t>Each short TCP flow is modeled as a sequence of file downloads
-        interleaved with idle periods. Not all short TCPs start at the same
-        time, i.e., some start in the ON state while others start in the OFF
-        state.</t>
 
+        <t>Each short TCP flow is modeled as a sequence of file downloads interleaved 
+          with idle periods. Not all short TCPs start at the same time, i.e., some start 
+          in the ON state while others start in the OFF state.</t>
+        
         <t>The short TCP flows can be modelled in two ways, 1) 100s of flows
         fetching small (5-20 KB) amounts of data, or 2) 10s of flows fetching
         slightly larger (100-1000KB) amounts of data.</t>
-
+        
         <t>The idle period is typically derived from an exponential
         distribution with the mean value of 10 seconds.</t>
 
