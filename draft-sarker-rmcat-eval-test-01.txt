@@ -5,11 +5,11 @@
 Network Working Group                                          Z. Sarker
 Internet-Draft                                               Ericsson AB
 Intended status: Informational                                  V. Singh
-Expires: October 21, 2014                               Aalto University
+Expires: November 17, 2014                              Aalto University
                                                                   X. Zhu
                                                               M. Ramalho
                                                            Cisco Systems
-                                                          April 19, 2014
+                                                            May 16, 2014
 
 
                Test Cases for Evaluating RMCAT Proposals
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 21, 2014.
+   This Internet-Draft will expire on November 17, 2014.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Sarker, et al.          Expires October 21, 2014                [Page 1]
+Sarker, et al.          Expires November 17, 2014               [Page 1]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
    publication of this document.  Please review these documents
@@ -89,7 +89,7 @@ Table of Contents
      6.2.  Wi-Fi Network Specific Test Cases . . . . . . . . . . . .  27
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  27
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  27
-   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  28
+   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  27
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  28
      10.1.  Normative References . . . . . . . . . . . . . . . . . .  28
      10.2.  Informative References . . . . . . . . . . . . . . . . .  29
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Sarker, et al.          Expires October 21, 2014                [Page 2]
+Sarker, et al.          Expires November 17, 2014               [Page 2]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
 1.  Introduction
@@ -142,7 +142,7 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 3.  Structure of Test cases
 
    All test cases in this document follow a basic structure allowing
-   implementers to describe a new test scenarios without repeatedly
+   implementers to describe a new test scenario without repeatedly
    explaining common attributes.  The structure includes a general
    description section that describes the test case and motivations,
    additionally it defines a set of attributes that characterize the
@@ -165,9 +165,9 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014                [Page 3]
+Sarker, et al.          Expires November 17, 2014               [Page 3]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
          100ms, or 1s) for measuring certain metrics.  Typical
@@ -221,9 +221,9 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014                [Page 4]
+Sarker, et al.          Expires November 17, 2014               [Page 4]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
          for the upstream path and the other for the downstream path.
@@ -277,13 +277,13 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014                [Page 5]
+Sarker, et al.          Expires November 17, 2014               [Page 5]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
             -  Media source behaviour: describes the media encoder
-               behavior.  It MUST define the main parameters than affect
+               behavior.  It MUST define the main parameters that affect
                the adaptation behaviour.  This may include but not
                limited to:
 
@@ -333,9 +333,9 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014                [Page 6]
+Sarker, et al.          Expires November 17, 2014               [Page 6]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
             -  Number of sources: defines the total number of competing
@@ -389,9 +389,9 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014                [Page 7]
+Sarker, et al.          Expires November 17, 2014               [Page 7]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
            +  average over the length of the session
@@ -403,18 +403,20 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 4.2.  Path characteristics
 
    Each path between a sender and receiver as described in figure
-   Figure 1 should have following characteristics unless different
-   settings are described in a particular test case.
+   Figure 1 must the following characteristics unless different settings
+   are described in a particular test case.
 
    o  Path direction: Upstream and Downstream.
 
    o  Bottleneck-link capacity: 4Mbps.
 
-   o  One-Way propagation delay: [10ms, 100ms].
+   o  One-Way propagation delay: 50ms.  (Additional values are
+      enumerated in Appendix A.1.)
 
    o  Maximum end-to-end jitter: 30ms.
 
-   o  Bottleneck queue type: Drop tail.
+   o  Bottleneck queue type: Drop tail.  Additional tests with other AQM
+      schemes are recommended: FQ-CoDel, PIE.
 
    o  Bottleneck queue size: 300ms.
 
@@ -436,19 +438,19 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
          +  Adaptability:
 
-            -  Bit rate range: 150 Kbps - 1.5 Mbps
+            -  Bit rate range: 150 Kbps - 3 Mbps
 
             -  Frame Resolution: 144p - 720p (or 1080p)
 
-            -  Frame rate: 10fps - 30fps
 
 
 
-
-Sarker, et al.          Expires October 21, 2014                [Page 8]
+Sarker, et al.          Expires November 17, 2014               [Page 8]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
+
+            -  Frame rate: 10fps - 30fps
 
          +  Variation from target bitrate: +/-5%
 
@@ -456,7 +458,8 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
       *  Media content: Foreman media sequence.
 
-      *  Media startup behaviour: [200Kbps, 1500Kbps].
+      *  Media startup behaviour: 150 Kbps.  (Use this value, unless the
+         algorithm describes its own start-up behavior.)
 
    o  Media type: Audio
 
@@ -498,12 +501,9 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-
-
-
-Sarker, et al.          Expires October 21, 2014                [Page 9]
+Sarker, et al.          Expires November 17, 2014               [Page 9]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
    To evaluate the performance of the candidate algorithms it is
@@ -557,9 +557,9 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014               [Page 10]
+Sarker, et al.          Expires November 17, 2014              [Page 10]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
             -  Media direction: Upstream.
@@ -613,9 +613,9 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014               [Page 11]
+Sarker, et al.          Expires November 17, 2014              [Page 11]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
       *  Variation pattern:
@@ -669,9 +669,9 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014               [Page 12]
+Sarker, et al.          Expires November 17, 2014              [Page 12]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
    o  Test duration: 60s
@@ -681,7 +681,7 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
       *  Bottleneck-link capacity: 1Mbps
 
       *  Bottleneck queue type: Droptail.  Additional tests with other
-         AQM schemes are recommended: FQ-CoDel, PIE
+         AQM schemes are recommended: FQ-CoDel, PIE.
 
    o  Application-related:
 
@@ -725,9 +725,9 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014               [Page 13]
+Sarker, et al.          Expires November 17, 2014              [Page 13]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
    interactive application sends more than one media flows to the same
@@ -781,9 +781,9 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014               [Page 14]
+Sarker, et al.          Expires November 17, 2014              [Page 14]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
    +---+                                                         +---+
@@ -810,8 +810,6 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
       *  Bottleneck-link capacity: 3.5Mbps
 
-      *  One-Way propagation delay: [10ms, 50ms]
-
    o  Application-related:
 
       *  Media Source:
@@ -833,17 +831,16 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
             -  Number of media sources: One (3)
 
-
-
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 15]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
             -  Media timeline: New media flows are added sequentially,
                at short time intervals.  See test specific setup below.
+
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 15]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
       *  Competing traffic:
 
@@ -891,15 +888,16 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
    collapse.  In the worst case, the media stream will fall to the
    minimum media bit rate.
 
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 16]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
    To evaluate the performance of the candidate algorithms it is
    expected to log enough information to visualize the following metrics
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 16]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
+
    in addition to the metrics described in Section 4.1 at a fine enough
    time granularity:
 
@@ -947,19 +945,14 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
       *  Bottleneck-link capacity: 2Mbps
 
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 17]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
-      *  One-Way propagation delay: [10ms, 150ms]
-
-      *  Bottleneck queue type: Droptail, but would benefit from running
-         the same test with different AQM schemes: FQ-Codel, or PIE.
-
       *  Bottleneck queue size: [20ms, 250ms, 1000ms]
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 17]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
    o  Application-related:
 
@@ -1003,14 +996,19 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
             -  End time: 119s.
 
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 18]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
    o  Test specific setup: None
+
+
+
+
+
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 18]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
 5.5.  RMCAT Flow competing with short TCP Flows
 
@@ -1058,24 +1056,19 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
    Testbed attributes:
 
-
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 19]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
    o  Test duration: 300s
+
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 19]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
    o  Path characteristics:
 
       *  Bottleneck-link capacity: 2.0Mbps
-
-      *  One-Way propagation delay: [10ms, 150ms]
-
-      *  Bottleneck queue type: Droptail, but would benefit from running
-         the same test with different AQM schemes: FQ-Codel, or PIE.
 
    o  Application-related:
 
@@ -1114,20 +1107,20 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
          +  Congestion algorithm: Default TCP Congestion control.
 
-
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 20]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
          +  Traffic timeline: Each short TCP flow is modeled as a
             sequence of file downloads interleaved with idle periods.
             See test specific setup.  Not all short TCPs start at the
             same time, 2 start in the ON state while 8 start in an OFF
             stats.  The model for the idle times for the OFF state is
             discussed in the Short-TCP model.
+
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 20]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
    o  Test specific setup:
 
@@ -1169,17 +1162,21 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
    transported over the upstream path and corresponding feedback/control
    traffic is transported over the downstream path.  Likewise media
    traffic (S2->S1) is transported over the downstream path and
-
-
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 21]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
    corresponding feedback/control traffic is transported over the
    upstream path.
+
+
+
+
+
+
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 21]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
      +---+                                                         +---+
      |S1 |===== \                UPSTREAM -->             / =======|R1 |
@@ -1227,14 +1224,15 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
             -  Number of media sources: One (1)
 
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 22]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
             -  Media timeline:
+
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 22]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
                o  Start time: 0s.
 
@@ -1282,15 +1280,15 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
          +  Sequence number: 1
 
-
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 23]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
          +  Path direction: Downstream
+
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 23]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
          +  Bottleneck Capacity: 800Kbps
 
@@ -1339,14 +1337,14 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
    o  Test duration: 60s
 
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 24]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
    o  Path characteristics:
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 24]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
       *  One-Way propagation delay for each path is: 10ms, 25ms, 50ms,
          100ms, 150ms.
@@ -1394,16 +1392,16 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
    more available bandwidth for the rest of the flows and as they are on
    a shared link.  When the paused media flow will resume it would no
    longer have the same bandwidth share on the link.  It has to make it
-
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 25]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
    way through the other existing flows in the link to achieve a fair
    share of the link capacity.  This test case is important specially
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 25]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
+
    for real-time interactive media which consists of more than one media
    flows and can pause/resume media flow at any point of time during the
    session.  This test case directly addresses the requirement number
@@ -1450,15 +1448,15 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
          +  Start time: 0s
 
-
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 26]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
          +  Flow duration: 59s
+
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 26]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
          +  Pause time: 20s
 
@@ -1502,22 +1500,19 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
    There are no IANA impacts in this memo.
 
-
-
-
-
-
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 27]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
 9.  Acknowledgements
 
    Much of this document is derived from previous work on congestion
    control at the IETF.
+
+
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 27]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
    The content and concepts within this document are a product of the
    discussion carried out in the Design Team.
@@ -1563,17 +1558,17 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
               draft-ietf-rmcat-cc-requirements-02 (work in progress),
               February 2014.
 
-
-
-Sarker, et al.          Expires October 21, 2014               [Page 28]
-
-Internet-Draft          Test Scenarios for RMCAT              April 2014
-
-
    [I-D.draft-sarker-rmcat-cellular-eval-test-cases]
               Sarker, Z., "Evaluation Test Cases for Interactive Real-
               Time Media over Cellular Networks", <http://www.ietf.org/
               id/draft-sarker-rmcat-cellular-eval-test-cases-00.txt>.
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 28]
+
+Internet-Draft          Test Scenarios for RMCAT                May 2014
+
 
 10.2.  Informative References
 
@@ -1621,9 +1616,14 @@ Appendix A.  List of Network Parameters
 
 
 
-Sarker, et al.          Expires October 21, 2014               [Page 29]
+
+
+
+
+
+Sarker, et al.          Expires November 17, 2014              [Page 29]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
 A.1.  One-way propagation delay
@@ -1677,9 +1677,9 @@ A.3.  DropTail Router Queue Length
 
 
 
-Sarker, et al.          Expires October 21, 2014               [Page 30]
+Sarker, et al.          Expires November 17, 2014              [Page 30]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
    Here the size of the queue is measured in bytes or packets and to
@@ -1694,13 +1694,14 @@ Appendix B.  Models
 
 B.1.  Jitter model
 
-   describes model for creating jitter
+   Describes the model for creating variation in packet arrival of the
+   RTP stream.
 
 B.2.  loss generation model
 
-   describes model for loss generation, for example, losses can be
-   generated using traces, Gilbert-Elliot model, randomly (uncorrelated)
-   loss.
+   Describes the model for generating packet losses, for example, losses
+   can be generated using traces, or using the Gilbert-Elliot model, or
+   randomly (uncorrelated loss).
 
 B.3.  TCP taffic model
 
@@ -1732,10 +1733,9 @@ Authors' Addresses
 
 
 
-
-Sarker, et al.          Expires October 21, 2014               [Page 31]
+Sarker, et al.          Expires November 17, 2014              [Page 31]
 
-Internet-Draft          Test Scenarios for RMCAT              April 2014
+Internet-Draft          Test Scenarios for RMCAT                May 2014
 
 
    Zaheduzzaman Sarker
@@ -1789,4 +1789,4 @@ Internet-Draft          Test Scenarios for RMCAT              April 2014
 
 
 
-Sarker, et al.          Expires October 21, 2014               [Page 32]
+Sarker, et al.          Expires November 17, 2014              [Page 32]

@@ -181,7 +181,7 @@
 
     <section anchor="TS" title="Structure of Test cases">
       <t>All test cases in this document follow a basic structure allowing
-      implementers to describe a new test scenarios without repeatedly
+      implementers to describe a new test scenario without repeatedly
       explaining common attributes. The structure includes a general
       description section that describes the test case and motivations,
       additionally it defines a set of attributes that characterize the
@@ -300,7 +300,7 @@
                       Rate (VBR)</t>
 
                       <t>Media source behaviour: describes the media encoder
-                      behavior. It MUST define the main parameters than affect
+                      behavior. It MUST define the main parameters that affect
                       the adaptation behaviour. This may include but not
                       limited to: <list style="symbols">
                           <t>Adaptability: describes the adaptation options.
@@ -411,18 +411,20 @@
 
       <section anchor="PC" title="Path characteristics">
         <t>Each path between a sender and receiver as described in figure
-        <xref target="fig-eval-topo"></xref> should have following
+        <xref target="fig-eval-topo"></xref> must the following
         characteristics unless different settings are described in a
         particular test case. <list style="symbols">
             <t>Path direction: Upstream and Downstream.</t>
 
             <t>Bottleneck-link capacity: 4Mbps.</t>
 
-            <t>One-Way propagation delay: [10ms, 100ms].</t>
+            <t>One-Way propagation delay: 50ms. (Additional
+              values are enumerated in <xref target="scen-delay" />.)</t>
 
             <t>Maximum end-to-end jitter: 30ms.</t>
 
-            <t>Bottleneck queue type: Drop tail.</t>
+            <t>Bottleneck queue type: Drop tail.  Additional tests with
+              other AQM schemes are recommended: FQ-CoDel, PIE.</t>
 
             <t>Bottleneck queue size: 300ms.</t>
 
@@ -443,7 +445,7 @@
 
                 <t>Media source behaviour: <list style="symbols">
                     <t>Adaptability: <list style="symbols">
-                        <t>Bit rate range: 150 Kbps - 1.5 Mbps</t>
+                        <t>Bit rate range: 150 Kbps - 3 Mbps</t>
 
                         <t>Frame Resolution: 144p - 720p (or 1080p)</t>
 
@@ -457,7 +459,9 @@
 
                 <t>Media content: Foreman media sequence.</t>
 
-                <t>Media startup behaviour: [200Kbps, 1500Kbps].</t>
+                <t>Media startup behaviour: 150 Kbps. (Use this value, unless
+                  the algorithm describes its own start-up behavior.)</t>
+                
               </list></t>
           </list><list style="symbols">
             <t>Media type: Audio<list style="symbols">
@@ -658,7 +662,7 @@
                 <t>Bottleneck-link capacity: 1Mbps</t>
 
                 <t>Bottleneck queue type: Droptail. Additional tests with
-                other AQM schemes are recommended: FQ-CoDel, PIE</t>
+                other AQM schemes are recommended: FQ-CoDel, PIE.</t>
               </list></t>
 
             <t>Application-related: <list style="symbols">
@@ -769,7 +773,7 @@
             <t>Path characteristics: <list style="symbols">
                 <t>Bottleneck-link capacity: 3.5Mbps</t>
 
-                <t>One-Way propagation delay: [10ms, 50ms]</t>
+                <!-- <t>One-Way propagation delay: [10ms, 50ms]</t> -->
               </list></t>
 
             <t>Application-related: <list style="symbols">
@@ -897,11 +901,7 @@
             <t>Path characteristics: <list style="symbols">
                 <t>Bottleneck-link capacity: 2Mbps</t>
 
-                <t>One-Way propagation delay: [10ms, 150ms]</t>
-
-                <t>Bottleneck queue type: Droptail, but would benefit from
-                running the same test with different AQM schemes: FQ-Codel, or
-                PIE.</t>
+                <!-- <t>One-Way propagation delay: [10ms, 150ms]</t> -->
 
                 <t>Bottleneck queue size: [20ms, 250ms, 1000ms]</t>
               </list></t>
@@ -1011,11 +1011,8 @@
             <t>Path characteristics: <list style="symbols">
                 <t>Bottleneck-link capacity: 2.0Mbps</t>
 
-                <t>One-Way propagation delay: [10ms, 150ms]</t>
+                <!-- <t>One-Way propagation delay: [10ms, 150ms]</t> -->
 
-                <t>Bottleneck queue type: Droptail, but would benefit from
-                running the same test with different AQM schemes: FQ-Codel, or
-                PIE.</t>
               </list></t>
 
             <t>Application-related: <list style="symbols">
@@ -1681,13 +1678,14 @@
       <t>This becomes an Appendix.</t>
 
       <section title="Jitter model">
-        <t>describes model for creating jitter</t>
+        <t>Describes the model for creating variation in packet arrival of 
+          the RTP stream.</t>
       </section>
 
       <section title="loss generation model">
-        <t>describes model for loss generation, for example, losses can be
-        generated using traces, Gilbert-Elliot model, randomly (uncorrelated)
-        loss.</t>
+        <t>Describes the model for generating packet losses, for example, 
+          losses can be generated using traces, or using the Gilbert-Elliot 
+          model, or randomly (uncorrelated loss).</t>
       </section>
 
 
