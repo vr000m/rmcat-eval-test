@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!ENTITY rfc2119 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
-<!ENTITY rfc3550 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3550.xml">
-<!ENTITY rfc3551 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3551.xml">
-<!ENTITY rfc3611 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3611.xml">
-<!ENTITY rfc4585 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4585.xml">
-<!ENTITY rfc5506 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5506.xml">
-<!ENTITY rfc5166 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5166.xml">
-<!ENTITY rfc5033 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5033.xml">
-<!ENTITY rfc5681 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5681.xml">
-<!ENTITY I-D.ietf-rmcat-cc-requirements PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-rmcat-cc-requirements.xml">
-<!ENTITY I-D.ietf-avtcore-rtp-circuit-breakers PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-avtcore-rtp-circuit-breakers.xml">
-<!ENTITY I-D.ietf-rmcat-eval-criteria PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-rmcat-eval-criteria.xml">
-<!ENTITY I-D.ietf-rtcweb-use-cases-and-requirements PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-rtcweb-use-cases-and-requirements.xml">
+<!ENTITY rfc2119 PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY rfc3550 PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3550.xml">
+<!ENTITY rfc3551 PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3551.xml">
+<!ENTITY rfc3611 PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3611.xml">
+<!ENTITY rfc4585 PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4585.xml">
+<!ENTITY rfc5506 PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5506.xml">
+<!ENTITY rfc5166 PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5166.xml">
+<!ENTITY rfc5033 PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5033.xml">
+<!ENTITY rfc5681 PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5681.xml">
+<!ENTITY I-D.ietf-rmcat-cc-requirements PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-rmcat-cc-requirements.xml">
+<!ENTITY I-D.ietf-avtcore-rtp-circuit-breakers PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-avtcore-rtp-circuit-breakers.xml">
+<!ENTITY I-D.ietf-rmcat-eval-criteria PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-rmcat-eval-criteria.xml">
+<!ENTITY I-D.ietf-rtcweb-use-cases-and-requirements PUBLIC "" "http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-rtcweb-use-cases-and-requirements.xml">
 ]>
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <?rfc toc="yes" ?>
@@ -147,19 +147,15 @@
       <t>This memo describes a set of test cases for evaluating candidate
       RMCAT congestion control algorithm proposals, it is based on the
       guidelines enumerated in <xref
-      target="I-D.ietf-rmcat-eval-criteria" /> and the requirements discussed
-      in <xref target="I-D.ietf-rmcat-cc-requirements" />. The test cases
-      cover basic usage scenarios and are described using a common structure,
-      which allows for additional test cases to be added to those described
-      herein to accommodate other topologies and/or the modeling of different
-      link characteristics. Each test case incorporates the metrics,
-      evaluation guidelines and parameters described in <xref
-      target="I-D.ietf-rmcat-eval-criteria" />. It is the intention of
-      this work to capture the consensus of the RMCAT working group
-      participants regarding the test cases upon which the performance of the
-      candidate RMCAT proposals should be evaluated.</t>
-
-      <t></t>
+      target="I-D.ietf-rmcat-eval-criteria"></xref> and the requirements
+      discussed in <xref target="I-D.ietf-rmcat-cc-requirements"></xref>. The
+      test cases cover basic usage scenarios and are described using a common
+      structure, which allows for additional test cases to be added to those
+      described herein to accommodate other topologies and/or the modeling of
+      different path characteristics. It is the intention of this work to
+      capture the consensus of the RMCAT working group participants regarding
+      the test cases upon which the performance of the candidate RMCAT
+      proposals should be evaluated.</t>
     </section>
 
     <section anchor="sec-terminology" title="Terminology">
@@ -208,18 +204,25 @@
           <t>Define testbed topology: every test case needs to define an
           evaluation testbed topology. <xref target="fig-eval-topo"></xref>
           shows such an evaluation topology. In this evaluation topology,
-          S1..Sn are traffic sources, these sources either generate media
-          traffic and use an RMCAT candidate congestion control algorithm or
-          use a different congestion control algorithm than that one used in
-          the media source. R1..Rn are the corresponding receivers. A test
-          case can have one or more such traffic source (S) and corresponding
+          S1..Sn are traffic sources, these sources generate media traffic and
+          use either an RMCAT candidate congestion control algorithm or use a
+          different congestion control algorithm than that one used in the
+          media source. R1..Rn are the corresponding receivers. A test case
+          can have one or more such traffic source (S) and corresponding
           receiver (R). The path from the source to destination is denoted as
           upstream and the path from a destination to a source is denoted as
-          downstream. It is possible for a testbed to have different path
-          characteristics in either directions. The following basic structure
-          of test case has been described from the perspective of endpoints
+          downstream. The following basic structure of test case has been
+          described from the perspective of media generating endpoints
           attached on the left-hand side of <xref
-          target="fig-eval-topo"></xref>.</t>
+          target="fig-eval-topo"></xref>. In this setup media flows in
+          upstream direction and corresponding control messages flows in the
+          downstream direction. However, it is possible to have media flows in
+          the both upsteam and downsteam direction. In that case it is
+          expected that the downstream path does not introduce any impairments
+          and has enough capacity to accomodate both media and control
+          messages. It should be noted that depending on test cases It is
+          possible to have different path characteristics in either
+          directions.</t>
 
           <t><figure anchor="fig-eval-topo"
               title="Example of A Testbed Topology">
@@ -238,12 +241,11 @@
 |Sn |====== /                                           \ ======|Rn |   
 +---+                                                           +---+   
 ]]></artwork>
-            </figure></t>
-
-          <t>In a laboratory testbed environment there exists large amount of
-          traffic on the network path between the endpoints, which may be
-          contributed by other devices connected to such a testbed. It is
-          recommended to not route non-test traffic through the testbed.</t>
+            </figure>In a laboratory testbed environment there exists large
+          amount of traffic on the network path between the endpoints, which
+          may be contributed by other devices connected to such a testbed. It
+          is recommended to not route non-test traffic through the
+          testbed.</t>
 
           <t>Define testbed attributes: <list style="symbols">
               <t>Duration: defines the duration of the test.</t>
@@ -377,7 +379,7 @@
       structure.</t>
     </section>
 
-    <section title="Recommended Evaluation Settings" anchor="sec-rec-eval">
+    <section anchor="sec-rec-eval" title="Recommended Evaluation Settings">
       <t>This section describes recommended test case settings and could be
       overwritten by the respective test cases.</t>
 
@@ -410,29 +412,30 @@
       </section>
 
       <section anchor="PC" title="Path characteristics">
-        <t>Each path between a sender and receiver as described in figure
-        <xref target="fig-eval-topo"></xref> must the following
-        characteristics unless different settings are described in a
-        particular test case. <list style="symbols">
+        <t>Each path between a sender and receiver as described in <xref
+        target="fig-eval-topo"></xref> must have the following characteristics
+        unless different settings are described in a particular test case.
+        <list style="symbols">
             <t>Path direction: Upstream and Downstream.</t>
 
             <t>Bottleneck-link capacity: 4Mbps.</t>
 
-            <t>One-Way propagation delay: 50ms. (Additional
-              values are enumerated in <xref target="scen-delay" />.)</t>
+            <t>One-Way propagation delay: 50ms. It is encouraged to tests with
+            additional propagation delays mentioned in <xref
+            target="scen-delay"></xref></t>
 
             <t>Maximum end-to-end jitter: 30ms.</t>
 
-            <t>Bottleneck queue type: Drop tail.  Additional tests with
-              other AQM schemes are recommended: FQ-CoDel, PIE.</t>
+            <t>Bottleneck queue type: Drop tail. Additional tests with other
+            AQM schemes are recommended: FQ-CoDel, PIE.</t>
 
             <t>Bottleneck queue size: 300ms.</t>
 
             <t>path loss ratio: 0%.</t>
           </list></t>
 
-          <t>Examples of addional network parameters are discussed in <xref
-          target="add-params" />.</t>
+        <t>Examples of addional network parameters are discussed in <xref
+        target="add-params"></xref>.</t>
       </section>
 
       <section anchor="MS" title="Media source">
@@ -445,23 +448,46 @@
 
                 <t>Media source behaviour: <list style="symbols">
                     <t>Adaptability: <list style="symbols">
-                        <t>Bit rate range: 150 Kbps - 3 Mbps</t>
+                        <t>Bit rate range: 150 Kbps - 1.5 Mbps. In real-life
+                        application the bitrate range can vary a lot depeding
+                        on the provided service, for example, the maximum
+                        bitrate can be up to 4Mbps. However, for running tests
+                        to evaluate the congestion control algorithms it is
+                        more important to have a look at how they are reacting
+                        to certain amount of bandwidth change. Also it is
+                        possible that the media traffic generator used in a
+                        particular simulator or testbed if not capable of
+                        generating higher bitrate. Hence we selected a
+                        suitable bitrate range for most of applications to
+                        achieve and designed the test cases accordingly. If
+                        other bitrate range is used in the test cases than the
+                        mentined the corresponding media timeline, path
+                        capacity variation also need to be scalced
+                        accordingly.</t>
 
                         <t>Frame Resolution: 144p - 720p (or 1080p)</t>
 
                         <t>Frame rate: 10fps - 30fps</t>
                       </list></t>
 
-                    <t>Variation from target bitrate: +/-5%</t>
+                    <t>Variation from target bitrate: +/-5%. If nothing
+                    specified in the respective testcases the bitrate
+                    variation SHOULD be calculated over one (1) second period
+                    of time.</t>
 
                     <t>Responsiveness to new bit rate request: 100ms</t>
                   </list></t>
 
-                <t>Media content: Foreman media sequence.</t>
+                <t>Media content: The media content should represent a typical
+                video convesation scenario with head and shoulder movement. We
+                recommend to use Foreman video sequence.</t>
 
-                <t>Media startup behaviour: 150 Kbps. (Use this value, unless
-                  the algorithm describes its own start-up behavior.)</t>
-                
+                <t>Media startup behaviour: 200Kbps. It should be noted that
+                applications can use smart ways to select an optimal startup
+                bitrate values for a certain network condition. In such cases
+                the candidate proposals MAY show the effectiveness of such
+                smart approach as an additional information for the evaluation
+                process.</t>
               </list></t>
           </list><list style="symbols">
             <t>Media type: Audio<list style="symbols">
@@ -474,7 +500,8 @@
     </section>
 
     <section anchor="TC" title="Basic Test Cases">
-      <section anchor="VAC" title="Variable Available Capacity">
+      <section anchor="VACS"
+               title="Variable Available Capacity with single RMCAT flow">
         <t>In this test case the bottleneck-link capacity between the two
         endpoints varies over time. This test is designed to measure the
         responsiveness of the candidate algorithm. This test tries to address
@@ -487,47 +514,47 @@
             <t>change in available capacity due to interface change and/or
             routing change.</t>
 
-            <t>persistent network load due to competing traffic</t>
+            <t>maximum Media Bit Rate is Greater than Link Capacity. In this
+            case, the application will attempt to ramp up to its maximum bit
+            rate, since the link capacity is limited to a value lower, the
+            congestion control scheme is expected to stabilize the sending bit
+            rate close to the available bottleneck capacity. This situation
+            can occur when the endpoints are connected via thin long networks
+            even though the advertised capacity of the access network may be
+            higher. The test case addresses the requirement 1 and 10 of the
+            <xref target="I-D.ietf-rmcat-cc-requirements"></xref>.</t>
           </list>It should be noted that the exact variation in available
         capacity due to any of the above depends on the under-lying
         technologies. Hence, we describe a set of known factors, which may be
         extended to devise a more specific test case targeting certain
         behaviour in a certain network environment.</t>
 
-        <t>Expected behavior: the candidate algorithms is expected to detect
-        the variation in available capacity and adapt the media stream(s)
-        accordingly. The flows stabilize around their maximum bitrate as the
-        as the maximum link capacity is large enough to accommodate the flows.
-        When the available capacity drops, the flow(s) adapts by decreasing
-        its sending bit rate, and when congestion disappears, the flow(s) are
-        again expected to ramp up.</t>
+        <t>Expected behavior: the candidate algorithm is expected to detect
+        the path capacity constraint, converges to bottleneck link's capacity
+        and adapt the flow to avoid unwanted oscillation when the sending bit
+        rate is approaching the bottleneck link's capacity. The oscillations
+        occur when the media flow(s) attempts to reach its maximum bit rate,
+        overshoots the usage of the available bottleneck capacity, to rectify
+        it reduces the bit rate and starts to ramp up again.</t>
+
+        <t>Testbed topology: One media source S1 is connected to corresponding
+        R1. The media traffic is transported over the upstream path and
+        corresponding feedback/control traffic is transported over the
+        downstream path. <figure anchor="fig-eval-topo-4-2"
+            title="Testbed Topology for Limited Link Capacity">
+            <artwork><![CDATA[
+                             UPSTREAM -->                          
++---+       +-----+                               +-----+       +---+   
+|S1 |=======|  A  |------------------------------>|  B  |=======|R1 |   
++---+       |     |<------------------------------|     |       +---+   
+            +-----+                               +-----+               
+                        <-- DOWNSTREAM       
+]]></artwork>
+          </figure></t>
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the metrics described
         in <xref target="EM"></xref> at a fine enough time granularity:</t>
-
-        <t>Testbed Topology: Two (2) media sources S1 and S2 are connected to
-        their corresponding R1 and R2. The media traffic is transported over
-        the upstream path and corresponding feedback/control traffic is
-        transported over the downstream path. <figure
-            anchor="fig-eval-topo-4-1"
-            title="Testbed Topology for Variable Available Capacity">
-            <artwork><![CDATA[
-+---+                                                         +---+   
-|S1 |===== \                 UPSTREAM -->            / =======|R1 |   
-+---+      \\                                       //        +---+   
-            \\                                     //                 
-            +-----+                               +-----+  
-            |  A  |------------------------------>|  B  |  
-            |     |<------------------------------|     |   
-            +-----+                               +-----+               
-             //                                     \\         
-             //          <-- DOWNSTREAM               \\                
-+---+       //                                         \\       +---+   
-|S2 |====== /                                           \ ======|R2 |   
-+---+                                                           +---+   
-]]></artwork>
-          </figure></t>
 
         <t>Testbed attributes:</t>
 
@@ -569,125 +596,238 @@
                   </list></t>
               </list></t>
 
-            <t>Test specific setup: <list style="symbols">
-                <t>Number of bandwidth variations: Three (4)</t>
-
-                <t>Variation pattern: <list style="symbols">
-                    <t>Sequence number: 1</t>
-
-                    <t>Path direction: Upstream</t>
-
-                    <t>Bottleneck Capacity: 2Mbps.</t>
-
-                    <t>Start time: 25s</t>
-                  </list></t>
-
-                <t>Variation pattern: <list style="symbols">
-                    <t>Sequence number: 2</t>
-
-                    <t>Path direction: Upstream</t>
-
-                    <t>Bottleneck Capacity: 3.5Mbps</t>
-
-                    <t>Start time: 50s</t>
-                  </list></t>
-
-                <t>Variation pattern: <list style="symbols">
-                    <t>Sequence number: 3</t>
-
-                    <t>Path direction: Upstream</t>
-
-                    <t>Bottleneck Capacity: 1Mbps</t>
-
-                    <t>Start time: 75s</t>
-                  </list></t>
-
-                <t>Variation pattern: <list style="symbols">
-                    <t>Sequence number: 4</t>
-
-                    <t>Path direction: Upstream</t>
-
-                    <t>Bottleneck Capacity: 2Mbps</t>
-
-                    <t>Start time: 100s</t>
-                  </list></t>
-              </list></t>
+            <t>Test specific setup: This test uses path capacity variation as
+            listed in <xref target="VACS_US"></xref></t>
           </list></t>
+
+        <texttable anchor="VACS_US"
+                   title="Path capacity variation pattern for upstream">
+          <ttcol>Variation pattern index</ttcol>
+
+          <ttcol>Path direction</ttcol>
+
+          <ttcol>Start time</ttcol>
+
+          <ttcol>Path capacity</ttcol>
+
+          <c>One</c>
+
+          <c>Upstream</c>
+
+          <c>0s</c>
+
+          <c>1Mbps</c>
+
+          <c>Two</c>
+
+          <c>Upstream</c>
+
+          <c>40s</c>
+
+          <c>2.5Kbps</c>
+
+          <c>Three</c>
+
+          <c>Upstream</c>
+
+          <c>60s</c>
+
+          <c>600Kbps</c>
+
+          <c>Four</c>
+
+          <c>Upstream</c>
+
+          <c>80s</c>
+
+          <c>1Mbps</c>
+
+          <postamble>Table 1: Path capacity variation pattern for
+          upstream</postamble>
+        </texttable>
+
+        <t></t>
       </section>
 
-      <section title="Maximum Media Bit Rate is Greater than Link Capacity">
-        <t>In this case, the application will attempt to ramp up to its
-        maximum bit rate, since the link capacity is limited to a value lower,
-        the congestion control scheme is expected to stabilize the sending bit
-        rate close to the available bottleneck capacity. This situation can
-        occur when the endpoints are connected via thin long networks even
-        though the advertised capacity of the access network may be higher.
-        The test case addresses the requirement 1 and 10 of the <xref
-        target="I-D.ietf-rmcat-cc-requirements"></xref>.</t>
+      <section anchor="VACM"
+               title="Variable Available Capacity with multiple RMCAT flows">
+        <t>This test case is similar to <xref target="VACS"></xref>. However
+        in addition this test will also consider persistent network load due
+        to competing traffic.</t>
 
-        <t>Expected behavior: the candidate algorithm is expected to detect
-        the path capacity constraint, converges to bottleneck link's capacity
-        and adapt the flow to avoid unwanted oscillation when the sending bit
-        rate is approaching the bottleneck link's capacity. The oscillations
-        occur when the media flow(s) attempts to reach its maximum bit rate,
-        overshoots the usage of the available bottleneck capacity, to rectify
-        it reduces the bit rate and starts to ramp up again.</t>
-
-        <t>Testbed topology: One media source S1 is connected to corresponding
-        R1. The media traffic is transported over the upstream path and
-        corresponding feedback/control traffic is transported over the
-        downstream path. <figure anchor="fig-eval-topo-4-2"
-            title="Testbed Topology for Limited Link Capacity">
-            <artwork><![CDATA[
-                             UPSTREAM -->                          
-+---+       +-----+                               +-----+       +---+   
-|S1 |=======|  A  |------------------------------>|  B  |=======|R1 |   
-+---+       |     |<------------------------------|     |       +---+   
-            +-----+                               +-----+               
-                        <-- DOWNSTREAM       
-]]></artwork>
-          </figure></t>
+        <t>Expected behavior: the candidate algorithms is expected to detect
+        the variation in available capacity and adapt the media stream(s)
+        accordingly. The flows stabilize around their maximum bitrate as the
+        as the maximum link capacity is large enough to accommodate the flows.
+        When the available capacity drops, the flow(s) adapts by decreasing
+        its sending bit rate, and when congestion disappears, the flow(s) are
+        again expected to ramp up.</t>
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the metrics described
         in <xref target="EM"></xref> at a fine enough time granularity:</t>
 
+        <t>Testbed Topology: Two (2) media sources S1 and S2 are connected to
+        their corresponding R1 and R2. The media traffic is transported over
+        the upstream path and corresponding feedback/control traffic is
+        transported over the downstream path. <figure
+            anchor="fig-eval-topo-4-1"
+            title="Testbed Topology for Variable Available Capacity">
+            <artwork><![CDATA[
++---+                                                         +---+   
+|S1 |===== \                 UPSTREAM -->            / =======|R1 |   
++---+      \\                                       //        +---+   
+            \\                                     //                 
+            +-----+                               +-----+  
+            |  A  |------------------------------>|  B  |  
+            |     |<------------------------------|     |   
+            +-----+                               +-----+               
+             //                                     \\         
+             //          <-- DOWNSTREAM               \\                
++---+       //                                         \\       +---+   
+|S2 |====== /                                           \ ======|R2 |   
++---+                                                           +---+   
+]]></artwork>
+          </figure></t>
+
+        <t>Testbed attributes:</t>
+
+        <t>Testbed attributes are similar as decribed in <xref
+        target="VACS"></xref> except the test specific capacity variation
+        setup. </t>
+
+        <t>Test specific setup: This test uses path capacity variation as
+        listed in <xref target="VACM_US"></xref></t>
+
+        <texttable anchor="VACM_US"
+                   title="Path capacity variation pattern for upstream">
+          <ttcol>Variation pattern index</ttcol>
+
+          <ttcol>Path direction</ttcol>
+
+          <ttcol>Start time</ttcol>
+
+          <ttcol>Path capacity</ttcol>
+
+          <c>One</c>
+
+          <c>Upstream</c>
+
+          <c>25s</c>
+
+          <c>2Mbps</c>
+
+          <c>Two</c>
+
+          <c>Upstream</c>
+
+          <c>50s</c>
+
+          <c>3.5Kbps</c>
+
+          <c>Three</c>
+
+          <c>Upstream</c>
+
+          <c>75s</c>
+
+          <c>1Mbps</c>
+
+          <c>Four</c>
+
+          <c>Upstream</c>
+
+          <c>100s</c>
+
+          <c>2Mbps</c>
+
+          <postamble>Table 2: Path capacity variation pattern for
+          upstream</postamble>
+        </texttable>
+      </section>
+
+      <section title="Congested Feedback Link">
+        <t>RMCAT WG has been chartered to define algorithms for RTP hence it
+        is assumed that RTCP, RTP header extension or such would be used as
+        signalling means for the adaptation algorithm in the backchannel. Due
+        to asymmetry nature of the link between communicating peers it is
+        possible to observer lack such backchannel information due to impaired
+        backchannel link (even when forward channel might be unimpaired). This
+        test case is designed to observer candidate congestion control
+        behaviour in such an event. This test case addresses requirement
+        number 5 and in particular, requirement number 7.</t>
+
+        <t>It is expected that the candidate algorithms should cope with the
+        lack of backchannel information and adapt to minimize the performance
+        degradation of media flows in the forward channel.</t>
+
+        <t>It SHOULD be noted that for this test case log is needed for the
+        reference case where the downstream channel has no impairments</t>
+
+        <t>To evaluate the performance of the candidate algorithms it is
+        expected to log enough information to visualize the metrics described
+        in <xref target="EM"></xref> at a fine enough time granularity: .</t>
+
+        <t>Testbed topology: One (1) media source S1 is connected to
+        corresponding R1, but both endpoints are additionally receiving and
+        sending data, respectively. The media traffic (S1-&gt;S2) is
+        transported over the upstream path and corresponding feedback/control
+        traffic is transported over the downstream path. Likewise media
+        traffic (S2-&gt;S1) is transported over the downstream path and
+        corresponding feedback/control traffic is transported over the
+        upstream path.</t>
+
+        <t><figure anchor="fig-eval-topo-4-6"
+            title="Testbed Topology for Congested Feedback Link">
+            <artwork><![CDATA[
+	 +---+                                                         +---+   
+	 |S1 |===== \                UPSTREAM -->             / =======|R1 |   
+	 +---+      \\                                       //        +---+   
+	             \\                                     //                 
+       		  +-----+                               +-----+   
+			  |  A  |------------------------------>|  B  |
+			  |     |<------------------------------|     |
+	          +-----+                               +-----+               
+	             //                                     \\        
+	            //          <-- DOWNSTREAM               \\                
+	+---+      //                                         \\       +---+   
+	|R2 |===== /                                           \ ======|S2 |   
+	+---+                                                          +---+   
+	]]></artwork>
+          </figure></t>
+
         <t>Testbed attributes:</t>
 
         <t><list style="symbols">
-            <t>Test duration: 60s</t>
+            <t>Test duration: 80s</t>
 
-            <t>Path characteristics: as described in <xref
-            target="PC"></xref><list style="symbols">
-                <t>Bottleneck-link capacity: 1Mbps</t>
-
-                <t>Bottleneck queue type: Droptail. Additional tests with
-                other AQM schemes are recommended: FQ-CoDel, PIE.</t>
+            <t>Path characteristics: <list style="symbols">
+                <t>Bottleneck-link capacity: 2Mbps.</t>
               </list></t>
 
             <t>Application-related: <list style="symbols">
                 <t>Media Source: <list style="symbols">
                     <t>Media type: Video<list style="symbols">
-                        <t>Media direction: Upstream.</t>
+                        <t>Media direction: Upstream and downstream</t>
 
                         <t>Number of media sources: One (1)</t>
 
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 0s.</t>
 
-                            <t>End time: 59s.</t>
+                            <t>End time: 79s.</t>
                           </list></t>
                       </list></t>
 
                     <t>Media type: Audio<list style="symbols">
-                        <t>Media direction: Upstream.</t>
+                        <t>Media direction: Upstream and Downstream</t>
 
                         <t>Number of media sources: One (1)</t>
 
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 0s.</t>
 
-                            <t>End time: 59s.</t>
+                            <t>End time: 79s.</t>
                           </list></t>
                       </list></t>
                   </list></t>
@@ -697,8 +837,82 @@
                   </list></t>
               </list></t>
 
-            <t>Test specific setup: None</t>
+            <t>Test specific setup: This test uses path capacity variations to
+            create congested feedback link. <xref target="CFL_US"> </xref>
+            lists the variation patterns applied to the upstream path and
+            <xref target="CFL_DS"></xref> lists the variation patterns applied
+            to the downstream path.</t>
           </list></t>
+
+        <texttable anchor="CFL_US"
+                   title="Path capacity variation pattern for upstream">
+          <ttcol>Variation pattern index</ttcol>
+
+          <ttcol>Path direction</ttcol>
+
+          <ttcol>Start time</ttcol>
+
+          <ttcol>Path capacity</ttcol>
+
+          <c>One</c>
+
+          <c>Upstream</c>
+
+          <c>20s</c>
+
+          <c>1Mbps</c>
+
+          <c>Two</c>
+
+          <c>Upstream</c>
+
+          <c>40s</c>
+
+          <c>600Kbps</c>
+
+          <c>Three</c>
+
+          <c>Upstream</c>
+
+          <c>60s</c>
+
+          <c>2Mbps</c>
+
+          <postamble>Table 3: Path capacity variation pattern for
+          upstream</postamble>
+        </texttable>
+
+        <t></t>
+
+        <texttable anchor="CFL_DS"
+                   title="Path capacity variation pattern for downstream">
+          <ttcol>Variation pattern index</ttcol>
+
+          <ttcol>Path direction</ttcol>
+
+          <ttcol>Start time</ttcol>
+
+          <ttcol>Path Capacity</ttcol>
+
+          <c>One</c>
+
+          <c>Downstream</c>
+
+          <c>30s</c>
+
+          <c>800Kbps</c>
+
+          <c>Two</c>
+
+          <c>Downstream</c>
+
+          <c>60s</c>
+
+          <c>2Mbps</c>
+
+          <postamble>Table 4: Path capacity variation pattern for
+          downstream</postamble>
+        </texttable>
       </section>
 
       <section anchor="TC4-3"
@@ -713,7 +927,7 @@
         simplicity it is assumed that there are no other competing traffic
         sources in the bottleneck link and that there is sufficient capacity
         to accommodate all the flows individually. While this appears to be a
-        variant of the test case defined in <xref target="VAC"></xref> ,
+        variant of the test case defined in <xref target="VACM"></xref> ,
         however it tests the capacity sharing distribution of the candidate
         algorithm. Whereas, the previous test case measures the stability and
         responsiveness of the candidate algorithm. This test case particularly
@@ -834,6 +1048,80 @@
           </list></t>
       </section>
 
+      <section title="Round Trip Time Fairness">
+        <t>In this test case, more than one RMCAT media flow shares the
+        bottleneck link, but the end-to-end path latency for each RMCAT flow
+        is different. For the sake of simplicity it is assumed that there are
+        no other competing traffic sources in the bottleneck link and that
+        there is sufficient capacity to accommodate all the flows. While this
+        appears to be a variant of the test case 4.2, it tests the capacity
+        sharing distribution of the candidate algorithm under different RTTs.
+        This test case particularly addresses the requirements 2 <xref
+        target="I-D.ietf-rmcat-cc-requirements"></xref>.</t>
+
+        <t>It is expected that the competing flows will converge to an optimum
+        bit rate to accommodate all the flows with minimum possible latency
+        and loss. Specifically, the test introduces five media flows at the
+        same time instance.</t>
+
+        <t>To evaluate the performance of the candidate algorithms it is
+        expected to log enough information to visualize the metrics described
+        in <xref target="EM"></xref> at a fine enough time granularity:</t>
+
+        <t>Testbed Topology: Five (5) media sources S1,S2,..,S5 are connected
+        to their corresponding media sinks R1,R2,..,R5. The media traffic is
+        transported over the upstream path and corresponding feedback/control
+        traffic is transported over the downstream path. The topology is the
+        same as test case 4.3 defined in <xref target="TC4-3"></xref>. The
+        end-to-end path delay for S1-R1 is 10ms, S2-R2 is 25ms, S3-R3 is 50ms,
+        S4-R4 is 100ms, S5-R5 is 150ms.</t>
+
+        <t>Testbed attributes:</t>
+
+        <t><list style="symbols">
+            <t>Test duration: 60s</t>
+
+            <t>Path characteristics: <list style="symbols">
+                <t>One-Way propagation delay for each path is: 10ms, 25ms,
+                50ms, 100ms, 150ms.</t>
+              </list></t>
+
+            <t>Application-related: <list style="symbols">
+                <t>Media Source: <list style="symbols">
+                    <t>Media type: Video<list style="symbols">
+                        <t>Media direction: Upstream</t>
+
+                        <t>Number of media sources: One (5)</t>
+
+                        <t>Media timeline: <list style="symbols">
+                            <t>Start time: 0s.</t>
+
+                            <t>End time: 59s.</t>
+                          </list></t>
+                      </list></t>
+
+                    <t>Media type: Audio<list style="symbols">
+                        <t>Media direction: Upstream.</t>
+
+                        <t>Number of media sources: One (5)</t>
+
+                        <t>Media timeline: <list style="symbols">
+                            <t>Start time: 0s.</t>
+
+                            <t>End time: 59s.</t>
+                          </list></t>
+                      </list></t>
+                  </list></t>
+
+                <t>Competing traffic: <list style="symbols">
+                    <t>Number of sources : Zero (0)</t>
+                  </list></t>
+              </list></t>
+
+            <t>Test specific setup: None</t>
+          </list></t>
+      </section>
+
       <section title="RMCAT Flow competing with a long TCP Flow">
         <t>In this test case, one or more RMCAT media flow shares the
         bottleneck link with at least one long lived TCP flows. Long lived TCP
@@ -903,7 +1191,7 @@
 
                 <!-- <t>One-Way propagation delay: [10ms, 150ms]</t> -->
 
-                <t>Bottleneck queue size: [20ms, 250ms, 1000ms]</t>
+                <t>Bottleneck queue size: [20ms, 300ms, 1000ms]</t>
               </list></t>
 
             <t>Application-related: <list style="symbols">
@@ -1012,7 +1300,6 @@
                 <t>Bottleneck-link capacity: 2.0Mbps</t>
 
                 <!-- <t>One-Way propagation delay: [10ms, 150ms]</t> -->
-
               </list></t>
 
             <t>Application-related: <list style="symbols">
@@ -1070,227 +1357,6 @@
                     seconds.</t>
                   </list></t>
               </list></t>
-          </list></t>
-      </section>
-
-      <section title="Congested Feedback Link">
-        <t>RMCAT WG has been chartered to define algorithms for RTP hence it
-        is assumed that RTCP, RTP header extension or such would be used as
-        signalling means for the adaptation algorithm in the backchannel. Due
-        to asymmetry nature of the link between communicating peers it is
-        possible to observer lack such backchannel information due to impaired
-        backchannel link (even when forward channel might be unimpaired). This
-        test case is designed to observer candidate congestion control
-        behaviour in such an event. This test case addresses requirement
-        number 5 and in particular, requirement number 7.</t>
-
-        <t>It is expected that the candidate algorithms should cope with the
-        lack of backchannel information and adapt to minimize the performance
-        degradation of media flows in the forward channel.</t>
-
-        <t>It SHOULD be noted that for this test case log is needed for the
-        reference case where the downstream channel has no impairments</t>
-
-        <t>To evaluate the performance of the candidate algorithms it is
-        expected to log enough information to visualize the metrics described
-        in <xref target="EM"></xref> at a fine enough time granularity: .</t>
-
-        <t>Testbed topology: One (1) media source S1 is connected to
-        corresponding R1, but both endpoints are additionally receiving and
-        sending data, respectively. The media traffic (S1-&gt;S2) is
-        transported over the upstream path and corresponding feedback/control
-        traffic is transported over the downstream path. Likewise media
-        traffic (S2-&gt;S1) is transported over the downstream path and
-        corresponding feedback/control traffic is transported over the
-        upstream path.</t>
-
-        <t><figure anchor="fig-eval-topo-4-6"
-            title="Testbed Topology for Congested Feedback Link">
-            <artwork><![CDATA[
-	 +---+                                                         +---+   
-	 |S1 |===== \                UPSTREAM -->             / =======|R1 |   
-	 +---+      \\                                       //        +---+   
-	             \\                                     //                 
-       		  +-----+                               +-----+   
-			  |  A  |------------------------------>|  B  |
-			  |     |<------------------------------|     |
-	          +-----+                               +-----+               
-	             //                                     \\        
-	            //          <-- DOWNSTREAM               \\                
-	+---+      //                                         \\       +---+   
-	|R2 |===== /                                           \ ======|S2 |   
-	+---+                                                          +---+   
-	]]></artwork>
-          </figure></t>
-
-        <t>Testbed attributes:</t>
-
-        <t><list style="symbols">
-            <t>Test duration: 80s</t>
-
-            <t>Path characteristics: <list style="symbols">
-                <t>Bottleneck-link capacity: 2Mbps.</t>
-              </list></t>
-
-            <t>Application-related: <list style="symbols">
-                <t>Media Source: <list style="symbols">
-                    <t>Media type: Video<list style="symbols">
-                        <t>Media direction: Upstream and downstream</t>
-
-                        <t>Number of media sources: One (1)</t>
-
-                        <t>Media timeline: <list style="symbols">
-                            <t>Start time: 0s.</t>
-
-                            <t>End time: 79s.</t>
-                          </list></t>
-                      </list></t>
-
-                    <t>Media type: Audio<list style="symbols">
-                        <t>Media direction: Upstream and Downstream</t>
-
-                        <t>Number of media sources: One (1)</t>
-
-                        <t>Media timeline: <list style="symbols">
-                            <t>Start time: 0s.</t>
-
-                            <t>End time: 79s.</t>
-                          </list></t>
-                      </list></t>
-                  </list></t>
-
-                <t>Competing traffic: <list style="symbols">
-                    <t>Number of sources : Zero (0)</t>
-                  </list></t>
-              </list></t>
-
-            <t>Test specific setup: <list style="symbols">
-                <t>Number of bandwidth variation: Two (5)</t>
-
-                <t>Variation pattern: <list style="symbols">
-                    <t>Sequence number: 1</t>
-
-                    <t>Path direction: Upstream</t>
-
-                    <t>Bottleneck Capacity: 1Mbps</t>
-
-                    <t>Start time: 20s</t>
-                  </list></t>
-
-                <t>Variation pattern: <list style="symbols">
-                    <t>Sequence number: 2</t>
-
-                    <t>Path direction: Upstream</t>
-
-                    <t>Bottleneck Capacity: 600Kbps</t>
-
-                    <t>Start time: 40s</t>
-                  </list></t>
-
-                <t>Variation pattern: <list style="symbols">
-                    <t>Sequence number: 3</t>
-
-                    <t>Path direction: Upstream</t>
-
-                    <t>Bottleneck Capacity: 2Mbps</t>
-
-                    <t>Start time: 60s</t>
-                  </list></t>
-
-                <t>Variation pattern: <list style="symbols">
-                    <t>Sequence number: 1</t>
-
-                    <t>Path direction: Downstream</t>
-
-                    <t>Bottleneck Capacity: 800Kbps</t>
-
-                    <t>Start time: 30s</t>
-                  </list></t>
-
-                <t>Variation pattern: <list style="symbols">
-                    <t>Sequence number: 2</t>
-
-                    <t>Path direction: Downstream</t>
-
-                    <t>Bottleneck Capacity: 2Mbps</t>
-
-                    <t>Start time: 60s</t>
-                  </list></t>
-              </list></t>
-          </list></t>
-      </section>
-
-      <section title="Round Trip Time Fairness">
-        <t>In this test case, more than one RMCAT media flow shares the
-        bottleneck link, but the end-to-end path latency for each RMCAT flow
-        is different. For the sake of simplicity it is assumed that there are
-        no other competing traffic sources in the bottleneck link and that
-        there is sufficient capacity to accommodate all the flows. While this
-        appears to be a variant of the test case 4.2, it tests the capacity
-        sharing distribution of the candidate algorithm under different RTTs.
-        This test case particularly addresses the requirements 2 <xref
-        target="I-D.ietf-rmcat-cc-requirements"></xref>.</t>
-
-        <t>It is expected that the competing flows will converge to an optimum
-        bit rate to accommodate all the flows with minimum possible latency
-        and loss. Specifically, the test introduces five media flows at the
-        same time instance.</t>
-
-        <t>To evaluate the performance of the candidate algorithms it is
-        expected to log enough information to visualize the metrics described
-        in <xref target="EM"></xref> at a fine enough time granularity:</t>
-
-        <t>Testbed Topology: Five (5) media sources S1,S2,..,S5 are connected
-        to their corresponding media sinks R1,R2,..,R5. The media traffic is
-        transported over the upstream path and corresponding feedback/control
-        traffic is transported over the downstream path. The topology is the
-        same as test case 4.3 defined in <xref target="TC4-3"></xref>. The
-        end-to-end path delay for S1-R1 is 10ms, S2-R2 is 25ms, S3-R3 is 50ms,
-        S4-R4 is 100ms, S5-R5 is 150ms.</t>
-
-        <t>Testbed attributes:</t>
-
-        <t><list style="symbols">
-            <t>Test duration: 60s</t>
-
-            <t>Path characteristics: <list style="symbols">
-                <t>One-Way propagation delay for each path is: 10ms, 25ms,
-                50ms, 100ms, 150ms.</t>
-              </list></t>
-
-            <t>Application-related: <list style="symbols">
-                <t>Media Source: <list style="symbols">
-                    <t>Media type: Video<list style="symbols">
-                        <t>Media direction: Upstream</t>
-
-                        <t>Number of media sources: One (5)</t>
-
-                        <t>Media timeline: <list style="symbols">
-                            <t>Start time: 0s.</t>
-
-                            <t>End time: 59s.</t>
-                          </list></t>
-                      </list></t>
-
-                    <t>Media type: Audio<list style="symbols">
-                        <t>Media direction: Upstream.</t>
-
-                        <t>Number of media sources: One (5)</t>
-
-                        <t>Media timeline: <list style="symbols">
-                            <t>Start time: 0s.</t>
-
-                            <t>End time: 59s.</t>
-                          </list></t>
-                      </list></t>
-                  </list></t>
-
-                <t>Competing traffic: <list style="symbols">
-                    <t>Number of sources : Zero (0)</t>
-                  </list></t>
-              </list></t>
-
-            <t>Test specific setup: None</t>
           </list></t>
       </section>
 
@@ -1371,11 +1437,25 @@
               </list></t>
           </list></t>
       </section>
+    </section>
 
-      <!--jhj-->
+    <section title="Other potential test cases">
+      <t>It has been noticed that there are other interesting test cases
+      besides the basis test cases listed in this memo which are more focused
+      on particular network feature and/or topologies. In lots of cases these
+      test cases provide additional information that can help evaluating
+      particular solution. This section lists such test cases as potential
+      test cases.</t>
 
       <section title="Explicit Congestion Notification Usage">
-        <t>TBD</t>
+        <t>This test case requires to run all the basic test cases with the
+        availability of Explicit Congestion Notification (ECN) feature
+        enabled. The goal of this test is to exibit that the candidate
+        algorithms does not fail when ECN signals are available.</t>
+      </section>
+
+      <section title="Nested bottleneck">
+        <t><!--put your text here.....--></t>
       </section>
     </section>
 
@@ -1597,13 +1677,11 @@
         </section> 
     </section>
 -->
-    <section title="List of Network Parameters" anchor="add-params">
-      
-      <t>
-        Instead of using the recommended evaluation settings in Section <xref
-        target="sec-rec-eval" />, the implemntors can extend their tests by
-        choosing from the following values:
-      </t>
+
+    <section anchor="add-params" title="List of Network Parameters">
+      <t>In addition to the recommended evaluation settings in Section <xref
+      target="sec-rec-eval"></xref>, the implemntors can extend their tests by
+      choosing from the following values:</t>
 
       <section anchor="scen-delay" title="One-way propagation delay">
         <!-- -->
@@ -1612,10 +1690,9 @@
         path, i.e., the time it takes for a packet to traverse the path
         connecting the sender to the receiver, it does not include queuing
         delay. Experiments are expected to verify that the congestion control
-        is able to work in challenging situations, for example over trans-continental 
-        and/or satellite links. Typical values are: 
-
-          <list style="numbers">
+        is able to work in challenging situations, for example over
+        trans-continental and/or satellite links. Typical values are: <list
+            style="numbers">
             <t>Very low latency: 0-1ms</t>
 
             <t>Low latency: 50ms</t>
@@ -1627,10 +1704,9 @@
       </section>
 
       <section anchor="scen-loss" title="End-to-end Loss">
-
-        <t>To model lossy links, the experiments can choose one of the following 
-        loss rates, the fractional loss is the ratio of packets lost and packets sent.
-          <list style="numbers">
+        <t>To model lossy links, the experiments can choose one of the
+        following loss rates, the fractional loss is the ratio of packets lost
+        and packets sent. <list style="numbers">
             <t>no loss: 0%</t>
 
             <t>1%</t>
@@ -1640,7 +1716,7 @@
             <t>10%</t>
 
             <t>20%</t>
-          </list></t>  
+          </list></t>
       </section>
 
       <section anchor="scen-queue" title="DropTail Router Queue Length">
@@ -1649,16 +1725,13 @@
         length in the current deployed Internet varies significantly. While
         the core backbone network has very short queue length, the home
         gateways usually have larger queue length. Those various queue lengths
-        can be categorized in the following way: 
-
-          <list style="numbers">
+        can be categorized in the following way: <list style="numbers">
             <t>QoS-aware (or short): 70ms</t>
 
             <t>Nominal: 300-500ms</t>
 
             <t>Buffer-bloated: 1000-2000ms</t>
-          </list> 
-        Here the size of the queue is measured in bytes or packets
+          </list> Here the size of the queue is measured in bytes or packets
         and to convert the queue length measured in seconds to queue length in
         bytes:</t>
 
@@ -1675,33 +1748,32 @@
     </section>
 
     <section anchor="app-additional" title="Models">
-      <t>This becomes an Appendix.</t>
-
       <section title="Jitter model">
-        <t>Describes the model for creating variation in packet arrival of 
-          the RTP stream.</t>
+        <t>[Editor's note :We recommend that while using network simulator or
+        immulator the jitter model uses a FIFO describes model for creating
+        jitter. Following psuodo code descriobes the recomented jitter model.
+        For, example, random jitter based on uniform distribution]</t>
       </section>
 
       <section title="loss generation model">
-        <t>Describes the model for generating packet losses, for example, 
-          losses can be generated using traces, or using the Gilbert-Elliot 
-          model, or randomly (uncorrelated loss).</t>
+        <t>[Editor's note : Describes the model for generating packet losses,
+        for example, losses can be generated using traces, or using the
+        Gilbert-Elliot model, or randomly (uncorrelated loss).]</t>
       </section>
-
 
       <section title="TCP taffic model">
         <t>Long-lived TCP flows will download data throughout the session and
         are expected to have infinite amount of data to send or receive.</t>
 
+        <t>Each short TCP flow is modeled as a sequence of file downloads
+        interleaved with idle periods. Not all short TCPs start at the same
+        time, i.e., some start in the ON state while others start in the OFF
+        state.</t>
 
-        <t>Each short TCP flow is modeled as a sequence of file downloads interleaved 
-          with idle periods. Not all short TCPs start at the same time, i.e., some start 
-          in the ON state while others start in the OFF state.</t>
-        
         <t>The short TCP flows can be modelled in two ways, 1) 100s of flows
         fetching small (5-20 KB) amounts of data, or 2) 10s of flows fetching
         slightly larger (100-1000KB) amounts of data.</t>
-        
+
         <t>The idle period is typically derived from an exponential
         distribution with the mean value of 10 seconds.</t>
 
