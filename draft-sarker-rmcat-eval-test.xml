@@ -130,8 +130,7 @@
       required to implement congestion control. The RMCAT working group is
       currently working on candidate algorithms for such interactive real-time
       multimedia applications. This document describes the test cases to be
-      used in the evaluation of the performance of those candidate
-      algorithms.</t>
+      used in the performance evaluation of those candidate algorithms.</t>
 
       <!--The draft defines a structure on how to define test cases and uses
 	  that stracture to define test case those are essensial to RMCAT to evaluate
@@ -179,8 +178,8 @@
       <t>All test cases in this document follow a basic structure allowing
       implementers to describe a new test scenario without repeatedly
       explaining common attributes. The structure includes a general
-      description section that describes the test case and motivations,
-      additionally it defines a set of attributes that characterize the
+      description section that describes the test case and its motivation.
+      Additionally the test case defines a set of attributes that characterize the
       testbed, i.e., the network path between communicating peers and the
       diverse traffic sources.</t>
 
@@ -199,6 +198,7 @@
               also indicate the time granularity (e.g., averaged over 10ms,
               100ms, or 1s) for measuring certain metrics. Typical measurement
               interval is 200ms.</t>
+              <!-- we agreed this should be 200ms or was it based on some IPPM doc? -->
             </list></t>
 
           <t>Define testbed topology: every test case needs to define an
@@ -220,7 +220,7 @@
           directions. In that case, unless otherwise specified by the test case,
           it is expected that the backward path does not introduce any impairments
           and has enough capacity to accomodate both media and feedback/control
-          messages. It should be noted that depending on test cases it is
+          messages. It should be noted that depending on the test cases it is
           possible to have different path characteristics in either directions.</t>
 
           <t><figure anchor="fig-eval-topo"
@@ -263,7 +263,10 @@
               path characteristics for a particular path direction is
               applicable to all the Sources "S" sending traffic on that path.
               If only one attribute is specified, it is used for both path
-              directions. <list style="symbols">
+              directions, however, unless specified the reverse path has no
+              capacity restrictions and no path loss.
+
+              <list style="symbols">
                   <t>Path direction: forward or backward.</t>
 
                   <t>Bottleneck-link capacity: defines minimum capacity of the
@@ -298,6 +301,8 @@
                   different attributes are enumerated separately for each
                   different media source. <list style="symbols">
                       <t>Media type: Video/Voice/Application/Text</t>
+                      <!-- VS: we should remove Application/text because, we
+                           currently have no media source behaviour for them. -->
 
                       <t>Media flow direction: forward, backward or
                       both.</t>
@@ -309,46 +314,62 @@
                       Rate (VBR)</t>
 
                       <t>Media source behaviour: describes the media encoder
-                      behavior. It MUST define the main parameters that affect
+                      behavior. It defines the main parameters that affect
                       the adaptation behaviour. This may include but not
                       limited to: 
                           <list style="symbols">
                           <t>Adaptability: describes the adaptation options.
-                          For example, in case of video it defines the range
-                          of bitrate adaptation, frame rate adaptation, video
-                          resolution adaptation. In case of voice, it defines
-                          the range of bitrate adaptation, sampling rate,
-                          frame size.</t>
+                          For example, in the case of video it defines the following 
+                          ranges of adaptation: bit rate, frame rate, video resolution.
+                          Similarly, in the case of voice, it defines the range of bit
+                          rate adaptation, the sampling rate variation, and the variation 
+                          in packetization interval.</t>
 
                           <!-- XZ:  why would we care about frame rate/resolution
                           from a congesion control point of view? -->
 
+                          <!-- VS: I think these are just strategies for performing 
+                          congestion control. fewer bits because of a smaller resolution?
+
+                          IMO we just want to make sure that the strategies employed 
+                          are equivalent.
+                          -->
+
                           <t>Output variation : for a VBR encoder it defines
                           the encoder output variation from the average target
-			  rate over a particular measurement interval.
-			  For example, on average the encoder output may
+                  			  rate over a particular measurement interval.
+                  			  For example, on average the encoder output may
                           vary between 5% to 15% above or below the average
-			  target bit rate when measured over a 100 ms time window.
-			  The time interval over which the variation is
-		  		specified MUST be provided.</t>
+                  			  target bit rate when measured over a 100 ms time window.
+                  			  The time interval over which the variation is
+                  		  	specified must be provided.</t>
+
+                          <!-- VS: I suppose this applies to traffic models 
+                          and not to real codecs. Zahed, perhaps just adding
+                          media source model instead of source behavior? -->
 
                           <t>Responsiveness to a new bit rate request: the lag
-			  in time between a new bit rate request and actual rate
-			  changes in encoder output. Depending on the encoder,
-			  this value may be specified in absolute time (e.g.
-			  10ms to 1000ms) or other appropriate metric (next frame
-			  interva time).</t>
+                  			  in time between a new bit rate request and actual rate
+                  			  changes in encoder output. Depending on the encoder,
+                  			  this value may be specified in absolute time (e.g.
+                  			  10ms to 1000ms) or other appropriate metric (next frame
+                  			  interval time).</t>
+                          <!-- VS: I suppose this is the maximum time it takes to 
+                          adapt?-->
+
+                          <!-- VS: in any case this should read as a model when
+                          not using a real codec/media source.-->
                           </list></t>
 
                       <t>Media content: describes the chosen media sequences;
-                      For example, test sequences are available at:
-		      <xref target="xiph-seq"></xref>
-		      <xref target="HEVC-seq"></xref>.</t>
+                      For example, test sequences are available at: 
+                      <xref target="xiph-seq"></xref> and 
+                      <xref target="HEVC-seq"></xref>.</t>
 
                       <t>Media timeline: describes the point when the media
                       source is introduced and removed from the testbed. For
-                      example, the media source may start transmitting immediately
-		      when the test case begins, or after a few seconds.</t>
+                      example, the media source may start transmitting immediately 
+                      when the test case begins, or after a few seconds.</t>
 
                       <t>Startup behaviour: the media starts at a defined bit
                       rate, which may be the minimum, maximum bit rate, or a
@@ -672,8 +693,8 @@
 
           <c>1Mbps</c>
 
-          <postamble>Table 1: Path capacity variation pattern for
-          forward direction</postamble>
+         <!--  <postamble>Table 1: Path capacity variation pattern for
+          forward direction</postamble> -->
         </texttable>
 
 	 
@@ -778,39 +799,41 @@
 
           <c>2Mbps</c>
 
-          <postamble>Table 2: Path capacity variation pattern for
-          forward direction</postamble>
+          <!-- <postamble>Table 2: Path capacity variation pattern for
+          forward direction</postamble> -->
         </texttable>
       </section>
 
       <section title="Bidirectional RMCAT Flows">
         <t>RMCAT WG has been chartered to define algorithms for RTP hence it
-        is assumed that RTCP, RTP header extension or such would be used as
-        signalling means for the adaptation algorithm in the backchannel. Due
-        to asymmetry nature of the link between communicating peers it is
-        possible to observer lack such backchannel information due to impaired
-        backchannel link (even when forward channel might be unimpaired). This
-        test case is designed to observer candidate congestion control
+        is assumed that RTCP, RTP header extension or such would be used by 
+        the congestion control algorithm in the backchannel. Due
+        to asymmetric nature of the link between communicating peers it is
+        possible for a participating peer to not receive such feedback 
+        information due to an impaired or congested backchannel 
+        (even when the forward channel might not be impaired). This
+        test case is designed to observe the candidate congestion control
         behaviour in such an event. This test case addresses requirement
         number 5 and in particular, requirement number 7.</t>
 
-        <t>It is expected that the candidate algorithms should cope with the
-        lack of backchannel information and adapt to minimize the performance
+        <t>It is expected that the candidate algorithms is able to cope with the
+        lack of feedback information and adapt to minimize the performance
         degradation of media flows in the forward channel.</t>
 
-        <t>It SHOULD be noted that for this test case log is needed for the
-        reference case where the backward channel has no impairments</t>
+        <t>It should be noted that for this test case: logs are compared with 
+          the reference case, i.e, when the backward channel has no impairments</t>
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the metrics described
-        in <xref target="EM"></xref> at a fine enough time granularity: .</t>
+        in <xref target="EM"></xref> at a fine-grained time intervals: </t>
+        <!-- VS: how small is fine-grained time intervals ? -->
 
         <t>Testbed topology: One (1) media source S1 is connected to
         corresponding R1, but both endpoints are additionally receiving and
-        sending data, respectively. The media traffic (S1-&gt;S2) is
+        sending data, respectively. The media traffic (S1-&gt;R1) is
         transported over the forward path and corresponding feedback/control
         traffic is transported over the backward path. Likewise media
-        traffic (S2-&gt;S1) is transported over the backward path and
+        traffic (S2-&gt;R2) is transported over the backward path and
         corresponding feedback/control traffic is transported over the
         forward path.</t>
 
@@ -915,8 +938,8 @@
 
           <c>2Mbps</c>
 
-          <postamble>Table 3: Path capacity variation pattern for
-          forward direction</postamble>
+          <!-- <postamble>Table 3: Path capacity variation pattern for
+          forward direction</postamble> -->
         </texttable>
 
         <t></t>
@@ -947,8 +970,8 @@
 
           <c>2Mbps</c>
 
-          <postamble>Table 4: Path capacity variation pattern for
-          backward direction</postamble>
+         <!--  <postamble>Table 4: Path capacity variation pattern for
+          backward direction</postamble> -->
         </texttable>
       </section>
 
@@ -1185,13 +1208,13 @@
               </list></t>
           </list></t>
 
-        <t>Testbed topology: Two (2) media sources S1 and S2 are connected to
-        corresponding R1 and R2. In addition, there is a long-live TCP flow
+        <t>Testbed topology: One (1) media source S1 is connected to
+        corresponding media sink, R1. In addition, there is a long-live TCP flow
         sharing the same bottleneck link. The media traffic is
         transported over the forward path and corresponding feedback/control
         traffic is transported over the backward path. The TCP traffic goes
-	over the forward path with acknowledgement packets flowing along the
-	backward path.</t>
+	      over the forward path with acknowledgement packets flowing along the
+	      backward path.</t>
 
 	<!-- XZ: I've updated the above descriptions in accordance with
 	the new topology  -->
@@ -1203,15 +1226,15 @@
 	 |S1|===== \              Forward -->              / =======|R1|   
 	 +--+      \\                                     //        +--+   
 	            \\                                   //                 
-  +-----+      +-----+                             +-----+     +-----+   
-  |S_tcp|======|  A  |---------------------------->|  B  |=====|R_tcp|   
-  +-----+      |     |<----------------------------|     |     +-----+   
-               +-----+                             +-----+               
+            +-----+                             +-----+
+            |  A  |---------------------------->|  B  |
+            |     |<----------------------------|     |
+            +-----+                             +-----+             
 	             //                                   \\        
-	            //        <-- Backward                 \\                
-	+--+       //                                       \\        +--+   
-	|S2|====== /                                          \ ======|R2|   
-	+--+                                                          +--+   
+	            //        <-- Backward                 \\             
+	+-----+    //                                       \\    +-----+   
+	|S_tcp|=== /                                         \ ===|R_tcp|   
+	+-----+                                                   +-----+   
 	]]></artwork>
           </figure></t>
 
@@ -1233,7 +1256,7 @@
                     <t>Media type: Video<list style="symbols">
                         <t>Media direction: forward</t>
 
-                        <t>Number of media sources: two (2)</t>
+                        <t>Number of media sources: One (1)</t>
 
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 5s.</t>
@@ -1245,7 +1268,7 @@
                     <t>Media type: Audio<list style="symbols">
                         <t>Media direction: forward</t>
 
-                        <t>Number of media sources: two (2)</t>
+                        <t>Number of media sources: One (1)</t>
 
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 5s.</t>
@@ -1254,6 +1277,8 @@
                           </list></t>
                       </list></t>
                   </list></t>
+                  <t>Additionally, implementers are encouraged to run the 
+                    experiment with multiple media sources.</t>
 
                 <t>Competing traffic: <list style="symbols">
                     <t>Number and Types of sources : one (1), long-lived
@@ -1264,14 +1289,16 @@
                     <t>Congestion control: Default TCP congestion control.</t>
 
                     <t>Traffic timeline: <list style="symbols">
-                        <t>Start time: 0s. <!--ZS: now a days TCP implementation uses
+                        <t>Start time: 0s.</t>
+                         <!--ZS: now a days TCP implementation uses
 		different techniques like auto tuning, hence if media and data traffic
 		start at the same the receiver window may be tuned in a way that it does
 		not grow more than a certain value. Hence this test case will require a
 		wamp-up time where TCP settings are settled down. However, this also
 		means we need to make sure the warm-up session does not sature the link
-		capacity when the media flows are inserted.--> <!-- VS: I think we can split into 3 cases, TCP starts before, TCP starts
-	together with media, TCP starts after media. How does that sound? --></t>
+		capacity when the media flows are inserted.--> 
+    <!-- VS: I think we can split into 3 cases, TCP starts before, TCP starts
+	together with media, TCP starts after media. How does that sound? -->
 
                         <t>End time: 119s.</t>
                       </list></t>
