@@ -323,16 +323,6 @@
                           the sampling rate variation, and the variation in
                           packetization interval.</t>
 
-                          <!-- XZ:  why would we care about frame rate/resolution
-                          from a congesion control point of view? -->
-
-                          <!-- VS: I think these are just strategies for performing 
-                          congestion control. fewer bits because of a smaller resolution?
-
-                          IMO we just want to make sure that the strategies employed 
-                          are equivalent.
-                          -->
-
                           <t>Output variation : for a VBR encoder it defines
                           the encoder output variation from the average target
                           rate over a particular measurement interval. For
@@ -352,12 +342,6 @@
                           encoder, this value may be specified in absolute
                           time (e.g. 10ms to 1000ms) or other appropriate
                           metric (next frame interval time).</t>
-
-                          <!-- VS: I suppose this is the maximum time it takes to 
-                          adapt?-->
-
-                          <!-- VS: in any case this should read as a model when
-                          not using a real codec/media source.-->
                         </list></t>
 
                       <t>Media content: describes the chosen media sequences;
@@ -466,7 +450,8 @@
             additional propagation delays mentioned in <xref
             target="scen-delay"></xref></t>
 
-            <t>Maximum end-to-end jitter: 30ms.</t>
+            <t>Maximum end-to-end jitter: 30ms. Jitter models are described in
+            <xref target="JM"></xref></t>
 
             <t>Bottleneck queue type: Drop tail. It is encouraged to test with
             other AQM schemes, such as FQ-CoDel and PIE.</t>
@@ -560,7 +545,7 @@
             rate close to the available bottleneck capacity. This situation
             can occur when the endpoints are connected via thin long networks
             even though the advertised capacity of the access network may be
-            higher. </t>
+            higher.</t>
 
             <!-- XZ: the above text may need to be removed? -->
           </list>It should be noted that the exact variation in available
@@ -809,7 +794,7 @@
         participating peer to not receive such feedback information due to an
         impaired or congested backchannel (even when the forward channel might
         not be impaired). This test case is designed to observe the candidate
-        congestion control behaviour in such an event. </t>
+        congestion control behaviour in such an event.</t>
 
         <t>It is expected that the candidate algorithms is able to cope with
         the lack of feedback information and adapt to minimize the performance
@@ -853,7 +838,7 @@
         <t>Testbed attributes:</t>
 
         <t><list style="symbols">
-            <t>Test duration: 80s</t>
+            <t>Test duration: 100s</t>
 
             <t>Path characteristics: <list style="symbols">
                 <t>Bottleneck-link capacity: 2Mbps.</t>
@@ -869,7 +854,7 @@
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 0s.</t>
 
-                            <t>End time: 79s.</t>
+                            <t>End time: 99s.</t>
                           </list></t>
                       </list></t>
 
@@ -881,7 +866,7 @@
                         <t>Media timeline: <list style="symbols">
                             <t>Start time: 0s.</t>
 
-                            <t>End time: 79s.</t>
+                            <t>End time: 99s.</t>
                           </list></t>
                       </list></t>
                   </list></t>
@@ -912,19 +897,27 @@
 
           <c>Forward</c>
 
-          <c>20s</c>
+          <c>0s</c>
 
-          <c>1Mbps</c>
+          <c>2Mbps</c>
 
           <c>Two</c>
 
           <c>Forward</c>
 
-          <c>40s</c>
+          <c>20s</c>
 
-          <c>600Kbps</c>
+          <c>1Mbps</c>
 
           <c>Three</c>
+
+          <c>Forward</c>
+
+          <c>40s</c>
+
+          <c>500Kbps</c>
+
+          <c>Four</c>
 
           <c>Forward</c>
 
@@ -952,15 +945,23 @@
 
           <c>Backward</c>
 
-          <c>30s</c>
+          <c>0s</c>
 
-          <c>800Kbps</c>
+          <c>2Mbps</c>
 
           <c>Two</c>
 
           <c>Backward</c>
 
-          <c>60s</c>
+          <c>35s</c>
+
+          <c>800Kbps</c>
+
+          <c>Three</c>
+
+          <c>Backward</c>
+
+          <c>70s</c>
 
           <c>2Mbps</c>
 
@@ -985,7 +986,7 @@
         target="VACM"></xref>, it focuses on the capacity sharing aspect of
         the candidate algorithm. The previous test case, on the other hand,
         measures adaptability, stability, and responsiveness of the candidate
-        algorithm. </t>
+        algorithm.</t>
 
         <t>Expected behavior: It is expected that the competing flows will
         converge to an optimum bit rate to accommodate all the flows with
@@ -997,7 +998,7 @@
 
         <t>To evaluate the performance of the candidate algorithms it is
         expected to log enough information to visualize the metrics described
-        in <xref target="EM"></xref> at a fine enough time granularity: </t>
+        in <xref target="EM"></xref> at a fine enough time granularity:</t>
 
         <t>Testbed topology: Three media sources S1, S2, S3 are connected to
         respective R1, R2, R3. The media traffic is transported over the
@@ -1096,7 +1097,7 @@
         that there is sufficient capacity to accommodate all the flows. While
         this appears to be a variant of test case 5.2, it focuses on the
         capacity sharing aspect of the candidate algorithm under different
-        RTTs. </t>
+        RTTs.</t>
 
         <t>It is expected that the competing flows will converge to bit rates
         to accommodate all the flows with minimum possible latency and loss.
@@ -1479,7 +1480,7 @@
         enabled. The goal of this test is to exibit that the candidate
         algorithms does not fail when ECN signals are available. With ECN
         signals enabled the algorithms are expected to perform better than
-        their delay based varients. </t>
+        their delay based varients.</t>
       </section>
 
       <section title="Multiple Bottlenecks">
@@ -1541,12 +1542,20 @@
                 <t>Path capacity between B and C = 8Mbps.</t>
 
                 <t>Path capacity between C and D = 1.5Mbps.</t>
+
+                <t>One-Way propagation delay: <list style="numbers">
+                    <t>Between S1 and R1 : 100ms</t>
+
+                    <t>Between S2 and R2: 40ms</t>
+
+                    <t>Between S3 and R3: 40ms</t>
+                  </list></t>
               </list></t>
 
             <t>Application-related: <list style="symbols">
                 <t>Media Source: <list style="symbols">
                     <t>Media type: Video <list style="symbols">
-                        <t>Media direction: Forward </t>
+                        <t>Media direction: Forward</t>
 
                         <t>Number of media sources: Three (3)</t>
 
@@ -1864,14 +1873,119 @@
     </section>
 
     <section anchor="app-additional" title="Models">
-      <section title="Jitter model">
-        <t>[Editor's note :We recommend that while using network simulator or
-        immulator the jitter model uses a FIFO describes model for creating
-        jitter. Following psuodo code descriobes the recomented jitter model.
-        For, example, random jitter based on uniform distribution]</t>
+      <section anchor="JM" title="Jitter models">
+        <t>This section defines jitter model for the purposes of this
+        document. When jitter is to be applied to both the RMCAT flow and any
+        competing flow (such as a TCP competing flow), the competing flow will
+        use the jitter definition below that does not allow for re-ordering of
+        packets on the competing flow (see NR-RBPDV definition below).</t>
+
+        <t>Jitter is an overloaded term in communications. Its meaning is
+        typically associated with the variation of a metric (e.g., delay) with
+        respect to some reference metric (e.g., average delay or minimum
+        delay). For example, RFC 3550 jitter is a smoothed estimate of jitter
+        which is particularly meaningful if the underlying packet delay
+        variation was caused by a Gaussian random process.</t>
+
+        <t>Because jitter is an overloaded term, we instead use the term
+        Packet Delay Variation (PDV) to desribe the variation of delay of
+        individual packets in the same sense as the IETF IPPM WG has defined
+        PDV in their documents.</t>
+
+        <t>Most measured delay distributions in packet network systems are
+        one-sided. In the usual case there is typically one packet that
+        transited the network with the minimum delay, then a majority of
+        packets also transit the system within some variation from this
+        minimum delay, and then a minority of the packets transits the network
+        with delays higher than the median or average transit time (these are
+        outliers). Although infrequent, outliers can cause significant
+        deleterious operation in adaptive systems and should be considered in
+        RMCAT adaptation designs.</t>
+
+        <t>In this section we define two different bounded PDV
+        characteristics, 1) Random Bounded PDV and 2) Approximately Random
+        Subject To No-Reordering Bounded PDV.</t>
+
+        <t>Random Bounded PDV (RBPDV):</t>
+
+        <t>The RBPDV probability distribution function (pdf) is specified to
+        be of some mathematically describable function which includes some
+        practical minimum and maximum discrete values suitable for testing.
+        For example, the minimum value, x_min, might be specified as the
+        minimum transit time packet and the maximum value, x_max, might be
+        idefined to be two standard deviations higher than the mean.</t>
+
+        <t>Since we are typically interested in the distribution relative to
+        the mean delay packet, we define the zero mean PVD sample, z(n), to be
+        z(n) = x(n) - x_mean, where x(n) is a sample of the RBPDV random
+        variable x and x_mean is the mean of x.</t>
+
+        <t>We assume here that s(n) is the original source time of packet n
+        and the post-jitter induced emmission time, j(n), for packet n is j(n)
+        = {[z(n) + x_mean] + s(n)}. It follows that the separation in the
+        post-jitter time of packets n and n+1 is {[s(n+1)-s(n)] -
+        [z(n)-z(n+1)]}. Since the first term is always a positive quantity, we
+        note that packet reordering at the receiver is possible whenever the
+        second term is greater than the first. Said another way, whenever the
+        difference in possible zero mean PDV sample delays (i.e.,
+        [x_max-x_min]) exceeds the inter-departure time of any two sent
+        packets, we have the possibility of packet re-ordering.</t>
+
+        <t>There are important use cases in real networks where packets can
+        become re-ordered such as in load balancing topologies and during
+        route changes. However, for the vast majority of cases there is no
+        packet re-ordering because most of the time packets follow the same
+        path. Due to this, if a packet becomes overly delayed, the packets
+        after it on that flow are also delayed. This is especially true for
+        mobile wireless links where there are per-flow queues prior to base
+        station scheduling. Owing to this important use case, we define
+        another PDV profile similar to the above, but one that does not allow
+        for re-ordering within a flow.</t>
+
+        <t>Approximately Random Subject to No-Reordering Bounded PDV
+        (NR-RPVD):</t>
+
+        <t>No Reordering RPDV, NR-RPVD, is defined similarly to the above with
+        one important exception. Let serial(n) be defined as the serialization
+        delay of packet n at the lowest bottleneck link rate (or other
+        appropriate rate) in a given test. Then we produce all the post-jitter
+        values for j(n) for n = 1, 2, ... N, where N is the length of the
+        source sequence s to be jittered. The exception can be stated as
+        follows: We revisit all j(n) beginning from index n=2, and if j(n) is
+        determined to be less than [j(n-1)+serial(n-1)], we redefine j(n) to
+        be equal to [j(n-1)+serial(n-1)] and continue for all remaining n
+        (i.e., n = 3, 4, .. N). This models the case where the packet n is
+        sent immediately after packet (n-1) at the bottleneck link rate.
+        Although this is generally the theoretical minimum in that it assumes
+        that no other packets from other flows are in-between packet n and n+1
+        at the bottleneck link, it is a reasonable assumption for per flow
+        queuing.</t>
+
+        <t>We note that this assumption holds for some important exception
+        cases, such as packets immediately following outliers. There are a
+        multitude of software controlled elements common on end-to-end
+        Internet paths (such as firewalls, ALGs and other middleboxes) which
+        stop processing packets while servicing other functions (e.g., garbage
+        collection). Often these devices do not drop packets, but rather queue
+        them for later processing and cause many of the outliers. Thus NR-RPVD
+        models this particular use case (assuming serial(n+1) is defined
+        appropriately for the device causing the outlier) and thus is believed
+        to be important for adaptation development for RMCAT.</t>
+
+        <t>[Editor's Note: It may require to define test distributions as
+        well. Example test distrubution may include-</t>
+
+        <t>1 - Two-sided: Uniform PDV Distribution. Two quantities to define:
+        x_min and x_max.</t>
+
+        <t>2 - Two-sided: Truncated Gaussian PDV Distribution. Four quantities
+        to define: the appropriate x_min and x_max for test (e.g., +/- two
+        sigma values), the standard deviation and the mean.</t>
+
+        <t>3 - One Sided: TBD]</t>
       </section>
 
-      <section title="loss generation model">
+      <section title="Loss generation model">
         <t>[Editor's note : Describes the model for generating packet losses,
         for example, losses can be generated using traces, or using the
         Gilbert-Elliot model, or randomly (uncorrelated loss).]</t>
@@ -1894,7 +2008,7 @@
         distribution with the mean value of 10 seconds.</t>
 
         <t>[Open issue: short-lived/bursty TCP cross-traffic parameters are
-        still to be agreed upon.</t>
+        still to be agreed upon].</t>
       </section>
     </section>
   </back>
