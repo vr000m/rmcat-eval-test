@@ -1892,12 +1892,16 @@
         variation was caused by a Gaussian random process.</t>
 
         <t>Because jitter is an overloaded term, we instead use the term
-        Packet Delay Variation (PDV) to desribe the variation of delay of
+        Packet Delay Variation (PDV) to describe the variation of delay of
         individual packets in the same sense as the IETF IPPM WG has defined
-        PDV in their documents.</t>
+        PDV in their documents (e.g., RFC 3393) and as the ITU-T SG16 has
+        defined IP Packet Delay Variation (IPDV) in their documents (e.g.,
+        Y.1540).</t>
 
-        <t>Most measured delay distributions in packet network systems are
-        one-sided. In the usual case there is typically one packet that
+        <t>Most PDV distributions in packet network systems are one-sided
+        distributions (the measurement of which with a finite number of
+        measurement samples result in one-sided histograms). In the usual
+        packet network transport case there is typically one packet that
         transited the network with the minimum delay, then a majority of
         packets also transit the system within some variation from this
         minimum delay, and then a minority of the packets transits the network
