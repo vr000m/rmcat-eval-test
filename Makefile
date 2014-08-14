@@ -5,9 +5,9 @@
 #             echo Working directory is dirty >&2; \
 #         fi
 
-DRAFTS =	draft-sarker-rmcat-eval-test.txt \
-					draft-sarker-rmcat-eval-test.html \
-					draft-sarker-rmcat-eval-test.pdf
+DRAFTS =	draft-ietf-rmcat-eval-test.txt \
+					draft-ietf-rmcat-eval-test.html \
+					draft-ietf-rmcat-eval-test.pdf
 CMDSEP = ;
 #VERSION = 00 
 
