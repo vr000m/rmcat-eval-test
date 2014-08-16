@@ -28,91 +28,63 @@
 
     <author fullname="Zaheduzzaman Sarker" initials="Z" surname="Sarker">
       <organization>Ericsson AB</organization>
-
       <address>
         <postal>
           <street></street>
-
           <city>Lule&aring;</city>
-
           <region>SE</region>
-
           <code>977 53</code>
-
           <country>Sweden</country>
         </postal>
-
         <phone>+46 10 717 37 43</phone>
-
         <email>zaheduzzaman.sarker@ericsson.com</email>
       </address>
     </author>
 
     <author fullname="Varun Singh" initials="V" surname="Singh">
       <organization>Aalto University</organization>
-
       <address>
         <postal>
           <street>School of Electrical Engineering</street>
-
           <street>Otakaari 5 A</street>
-
           <city>Espoo</city>
-
           <region>FIN</region>
-
           <code>02150</code>
-
           <country>Finland</country>
         </postal>
-
         <email>varun@comnet.tkk.fi</email>
-
         <uri>http://www.netlab.tkk.fi/~varun/</uri>
       </address>
     </author>
 
     <author fullname=" Xiaoqing Zhu" initials="X" surname="Zhu">
       <organization>Cisco Systems</organization>
-
       <address>
         <postal>
           <street>510 McCarthy Blvd</street>
-
           <city>Milpitas</city>
-
           <region>CA</region>
-
           <code>95134</code>
-
           <country>USA</country>
         </postal>
-
         <email>xiaoqzhu@cisco.com</email>
       </address>
     </author>
 
-    <author fullname="Michael A. Ramalho" initials="M. A." surname="Ramalho">
-      <organization abbrev="Cisco Systems">Cisco Systems, Inc.</organization>
-
-      <address>
-        <postal>
-          <street>8000 Hawkins Road</street>
-
-          <city>Sarasota</city>
-
-          <region>FL</region>
-
-          <code>34241</code>
-
-          <country>USA</country>
-        </postal>
-
-        <phone>+1 919 476 2038</phone>
-
-        <email>mramalho@cisco.com</email>
-      </address>
-    </author>
+   <author fullname="Michael A. Ramalho" initials="M. A." surname="Ramalho">
+     <organization abbrev="Cisco Systems">Cisco Systems, Inc.</organization>
+     <address>
+       <postal>
+         <street>6310 Watercrest Way Unit 203</street>
+         <city>Lakewood Ranch</city>
+         <region>FL</region>
+         <code>34202-5211</code>
+         <country>USA</country>
+       </postal>
+       <phone>+1 919 476 2038</phone>
+       <email>mramalho@cisco.com</email>
+     </address>
+   </author>
 
     <date year="2014" />
 
