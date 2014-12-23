@@ -18,8 +18,7 @@
 <?rfc toc="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc symrefs="yes" ?>
-<rfc category="info" docName="draft-ietf-rmcat-eval-test-00"
-     ipr="trust200902">
+<rfc category="info" docName="draft-ietf-rmcat-eval-test-01" ipr="trust200902">
   <!-- What is the category field value-->
 
   <front>
@@ -28,63 +27,91 @@
 
     <author fullname="Zaheduzzaman Sarker" initials="Z" surname="Sarker">
       <organization>Ericsson AB</organization>
+
       <address>
         <postal>
           <street></street>
+
           <city>Lule&aring;</city>
+
           <region>SE</region>
+
           <code>977 53</code>
+
           <country>Sweden</country>
         </postal>
+
         <phone>+46 10 717 37 43</phone>
+
         <email>zaheduzzaman.sarker@ericsson.com</email>
       </address>
     </author>
 
     <author fullname="Varun Singh" initials="V" surname="Singh">
       <organization>Aalto University</organization>
+
       <address>
         <postal>
           <street>School of Electrical Engineering</street>
+
           <street>Otakaari 5 A</street>
+
           <city>Espoo</city>
+
           <region>FIN</region>
+
           <code>02150</code>
+
           <country>Finland</country>
         </postal>
+
         <email>varun@comnet.tkk.fi</email>
+
         <uri>http://www.netlab.tkk.fi/~varun/</uri>
       </address>
     </author>
 
     <author fullname=" Xiaoqing Zhu" initials="X" surname="Zhu">
       <organization>Cisco Systems</organization>
+
       <address>
         <postal>
           <street>510 McCarthy Blvd</street>
+
           <city>Milpitas</city>
+
           <region>CA</region>
+
           <code>95134</code>
+
           <country>USA</country>
         </postal>
+
         <email>xiaoqzhu@cisco.com</email>
       </address>
     </author>
 
-   <author fullname="Michael A. Ramalho" initials="M. A." surname="Ramalho">
-     <organization abbrev="Cisco Systems">Cisco Systems, Inc.</organization>
-     <address>
-       <postal>
-         <street>6310 Watercrest Way Unit 203</street>
-         <city>Lakewood Ranch</city>
-         <region>FL</region>
-         <code>34202-5211</code>
-         <country>USA</country>
-       </postal>
-       <phone>+1 919 476 2038</phone>
-       <email>mramalho@cisco.com</email>
-     </address>
-   </author>
+    <author fullname="Michael A. Ramalho" initials="M. A." surname="Ramalho">
+      <organization abbrev="Cisco Systems">Cisco Systems, Inc.</organization>
+
+      <address>
+        <postal>
+          <street>6310 Watercrest Way Unit 203</street>
+
+          <city>Lakewood Ranch</city>
+
+          <region>FL</region>
+
+          <code>34202-5211</code>
+
+          <country>USA</country>
+        </postal>
+
+        <phone>+1 919 476 2038</phone>
+
+        <email>mramalho@cisco.com</email>
+      </address>
+    </author>
 
     <date year="2014" />
 
@@ -912,7 +939,7 @@
 
           <ttcol>Start time</ttcol>
 
-          <ttcol>Path Capacity</ttcol>
+          <ttcol>Path capacity</ttcol>
 
           <c>One</c>
 
@@ -1034,32 +1061,68 @@
                   </list></t>
               </list></t>
 
-            <t>Test Specific Information: <list style="symbols">
-                <t>Media flow timeline: <list style="symbols">
-                    <t>Flow ID: One (1)</t>
-
-                    <t>Start time: 0s</t>
-
-                    <t>End time: 119s</t>
-                  </list></t>
-
-                <t>Media flow timeline: <list style="symbols">
-                    <t>Flow ID: Two (2)</t>
-
-                    <t>Start time: 20s</t>
-
-                    <t>End time: 119s</t>
-                  </list></t>
-
-                <t>Media flow timeline: <list style="symbols">
-                    <t>Flow ID: Three (3)</t>
-
-                    <t>Start time: 40s</t>
-
-                    <t>End time: 119s</t>
-                  </list></t>
-              </list></t>
+            <t>Test Specific Information: <xref target="MTL_CF"></xref>
+            defines the media timeline for both media type.</t>
           </list></t>
+
+        <texttable anchor="MTL_CF"
+                   title="Media Timeline for Video and Audio media sources">
+          <ttcol>Flow IF</ttcol>
+
+          <ttcol>Media type</ttcol>
+
+          <ttcol>Start time</ttcol>
+
+          <ttcol>End time</ttcol>
+
+          <c>1</c>
+
+          <c>Video</c>
+
+          <c>0s</c>
+
+          <c>119s</c>
+
+          <c>2</c>
+
+          <c>Video</c>
+
+          <c>20s</c>
+
+          <c>119s</c>
+
+          <c>3</c>
+
+          <c>Video</c>
+
+          <c>40s</c>
+
+          <c>119s</c>
+
+          <c>4</c>
+
+          <c>Audio</c>
+
+          <c>0s</c>
+
+          <c>119s</c>
+
+          <c>5</c>
+
+          <c>Audio</c>
+
+          <c>20s</c>
+
+          <c>119s</c>
+
+          <c>6</c>
+
+          <c>Audio</c>
+
+          <c>40s</c>
+
+          <c>119s</c>
+        </texttable>
       </section>
 
       <section title="Round Trip Time Fairness">
@@ -1092,7 +1155,7 @@
         <t>Testbed attributes:</t>
 
         <t><list style="symbols">
-            <t>Test duration: 120s</t>
+            <t>Test duration: 300s</t>
 
             <t>Path characteristics: <list style="symbols">
                 <t>One-Way propagation delay for each flow: 10ms, 25ms, 50ms,
@@ -1106,11 +1169,9 @@
 
                         <t>Number of media sources: Five (5)</t>
 
-                        <t>Media timeline: <list style="symbols">
-                            <t>Start time: 0s.</t>
-
-                            <t>End time: 119s.</t>
-                          </list></t>
+                        <t>Media timeline: New media flows are added
+                        sequentially, at short time intervals. See test
+                        specific setup below.</t>
                       </list></t>
 
                     <t>Media type: Audio<list style="symbols">
@@ -1118,11 +1179,9 @@
 
                         <t>Number of media sources: Five (5)</t>
 
-                        <t>Media timeline: <list style="symbols">
-                            <t>Start time: 0s.</t>
-
-                            <t>End time: 119s.</t>
-                          </list></t>
+                        <t>Media timeline: New media flows are added
+                        sequentially, at short time intervals. See test
+                        specific setup below.</t>
                       </list></t>
                   </list></t>
 
@@ -1131,8 +1190,100 @@
                   </list></t>
               </list></t>
 
-            <t>Test Specific Information: None</t>
+            <t>Test Specific Information: <xref target="MTL_RTT"></xref>
+            defines the media timeline for both media type. </t>
           </list></t>
+
+        <texttable anchor="MTL_RTT"
+                   title="Media Timeline for Video and Audio media sources">
+          <ttcol>Flow IF</ttcol>
+
+          <ttcol>Media type</ttcol>
+
+          <ttcol>Start time</ttcol>
+
+          <ttcol>End time</ttcol>
+
+          <c>1</c>
+
+          <c>Video</c>
+
+          <c>0s</c>
+
+          <c>299s</c>
+
+          <c>2</c>
+
+          <c>Video</c>
+
+          <c>10s</c>
+
+          <c>299s</c>
+
+          <c>3</c>
+
+          <c>Video</c>
+
+          <c>20s</c>
+
+          <c>299s</c>
+
+          <c>4</c>
+
+          <c>Video</c>
+
+          <c>30s</c>
+
+          <c>299s</c>
+
+          <c>5</c>
+
+          <c>Video</c>
+
+          <c>40s</c>
+
+          <c>299s</c>
+
+          <c>6</c>
+
+          <c>Audio</c>
+
+          <c>0</c>
+
+          <c>299s</c>
+
+          <c>7</c>
+
+          <c>Audio</c>
+
+          <c>10s</c>
+
+          <c>299s</c>
+
+          <c>8</c>
+
+          <c>Audio</c>
+
+          <c>20s</c>
+
+          <c>299s</c>
+
+          <c>9</c>
+
+          <c>Audio</c>
+
+          <c>30s</c>
+
+          <c>299s</c>
+
+          <c>10</c>
+
+          <c>Audio</c>
+
+          <c>40s</c>
+
+          <c>299s</c>
+        </texttable>
       </section>
 
       <section title="RMCAT Flow competing with a long TCP Flow">
@@ -1646,9 +1797,11 @@
           <title>Evaluation Test Cases for Interactive Real-Time Media over
           Cellular Networks</title>
 
-          <author fullname="Zaheduzzaman Sarker" initials="Z" surname="Sarker" ></author>
-          <author fullname="Ingemar Johansson" initials="I" surname="Johansson" ></author>
-          
+          <author fullname="Zaheduzzaman Sarker" initials="Z" surname="Sarker"></author>
+
+          <author fullname="Ingemar Johansson" initials="I"
+                  surname="Johansson"></author>
+
           <date month="6" year="2014" />
         </front>
       </reference>
